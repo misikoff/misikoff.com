@@ -2,18 +2,14 @@ import Head from 'next/head'
 import Layout from '../../components/layout'
 
 export default function Home() {
-  return ( 
+  return (
     <Layout>
-      <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <div className="flex flex-col items-center justify-center py-2 min-h-screen">
         <Head>
           <title>Sandboxes</title>
         </Head>
 
-        <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-          
-        </main>
-
-        
+        <main className="flex flex-1 flex-col items-center justify-center px-20 w-full text-center"></main>
       </div>
     </Layout>
   )

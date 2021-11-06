@@ -2,16 +2,16 @@ import Head from 'next/head'
 import Layout from '../components/layout'
 
 export default function Home() {
-  return ( 
+  return (
     <Layout>
-      <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <div className="flex flex-col items-center justify-center py-2 min-h-screen">
         <Head>
           <title>Create Next App</title>
           <link rel="icon" href="/favicon.ico" />
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         </Head>
 
-        <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
+        <main className="flex flex-1 flex-col items-center justify-center px-20 w-full text-center">
           <h1 className="text-6xl font-bold">
             Welcome to{' '}
             <a className="text-blue-600" href="https://nextjs.org">
@@ -26,11 +26,11 @@ export default function Home() {
             </code>
           </p>
 
-          <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
+          <div className="flex flex-wrap items-center justify-around mt-6 max-w-4xl sm:w-full">
             <a
               href="https://nextjs.org/docs"
-              className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-              >
+              className="mt-6 p-6 w-96 text-left hover:text-blue-600 focus:text-blue-600 border rounded-xl"
+            >
               <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
               <p className="mt-4 text-xl">
                 Find in-depth information about Next.js features and API.
@@ -39,8 +39,8 @@ export default function Home() {
 
             <a
               href="https://nextjs.org/learn"
-              className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-              >
+              className="mt-6 p-6 w-96 text-left hover:text-blue-600 focus:text-blue-600 border rounded-xl"
+            >
               <h3 className="text-2xl font-bold">Learn &rarr;</h3>
               <p className="mt-4 text-xl">
                 Learn about Next.js in an interactive course with quizzes!
@@ -49,8 +49,8 @@ export default function Home() {
 
             <a
               href="https://github.com/vercel/next.js/tree/master/examples"
-              className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-              >
+              className="mt-6 p-6 w-96 text-left hover:text-blue-600 focus:text-blue-600 border rounded-xl"
+            >
               <h3 className="text-2xl font-bold">Examples &rarr;</h3>
               <p className="mt-4 text-xl">
                 Discover and deploy boilerplate example Next.js projects.
@@ -59,8 +59,8 @@ export default function Home() {
 
             <a
               href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-              >
+              className="mt-6 p-6 w-96 text-left hover:text-blue-600 focus:text-blue-600 border rounded-xl"
+            >
               <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
               <p className="mt-4 text-xl">
                 Instantly deploy your Next.js site to a public URL with Vercel.
@@ -75,9 +75,9 @@ export default function Home() {
             href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
-            >
+          >
             Powered by{' '}
-            <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
+            <img src="/vercel.svg" alt="Vercel Logo" className="ml-2 h-4" />
           </a>
         </footer>
       </div>
