@@ -6,6 +6,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "lint-staged": {
+    "*.{js,jsx}": "yarn lint"
+  },
   "dependencies": {
     "@headlessui/react": "^1.4.1",
     "@heroicons/react": "^1.0.5",
@@ -19,6 +22,8 @@
     "eslint-config-next": "12.0.3",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
     "postcss": "^8.3.5",
     "prettier": "^2.4.1",
     "prettier-plugin-tailwind": "^2.2.12",
