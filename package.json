@@ -7,7 +7,7 @@
     "lint": "next lint"
   },
   "lint-staged": {
-    "*.{js,jsx}": "yarn lint"
+    "*.{js,jsx}": "eslint"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.1",
