@@ -70,7 +70,7 @@ class MyDocument extends Document {
           /> */}
 
           <meta name="twitter:card" content="summary" />
-          <meta name="twitter:url" content="https://yourdomain.com" />
+          <meta name="twitter:url" content="https://nextjs.misikoff.com" />
           <meta name="twitter:title" content="PWA App" />
           <meta
             name="twitter:description"
@@ -78,17 +78,17 @@ class MyDocument extends Document {
           />
           <meta
             name="twitter:image"
-            content="https://yourdomain.com/icons/manifest-icon-192.maskable.png"
+            content="https://nextjs.misikoff.com/icons/manifest-icon-192.maskable.png"
           />
           <meta name="twitter:creator" content="@TMisikoff" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content="PWA App" />
           <meta property="og:description" content="Best PWA App in the world" />
           <meta property="og:site_name" content="PWA App" />
-          <meta property="og:url" content="https://yourdomain.com" />
+          <meta property="og:url" content="https://nextjs.misikoff.com" />
           <meta
             property="og:image"
-            content="https://yourdomain.com/icons/apple-icon-180.png"
+            content="https://nextjs.misikoff.com/icons/apple-icon-180.png"
           />
 
           {/* apple splash screen images */}
