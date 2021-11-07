@@ -28,7 +28,7 @@ class MyDocument extends Document {
           <meta name="msapplication-tap-highlight" content="no" />
           <meta name="theme-color" content="#ffffff" />
 
-          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+          <link rel="apple-touch-icon" href="/icons-auto/apple-icon-180.png" />
           {/* <link
             rel="apple-touch-icon"
             sizes="152x152"
@@ -58,7 +58,11 @@ class MyDocument extends Document {
             href="/icons/favicon-16x16.png"
           /> */}
           <link rel="manifest" href="/manifest.json" />
-          <link rel="mask-icon" href="/icons/icon_64x64.png" color="#3a7ff3" />
+          <link
+            rel="mask-icon"
+            href="/icons-auto/manifest-icon-192.maskable.png"
+            color="#3a7ff3"
+          />
           <link rel="shortcut icon" href="/favicon.ico" />
           {/* <link
             rel="stylesheet"
@@ -74,9 +78,9 @@ class MyDocument extends Document {
           />
           <meta
             name="twitter:image"
-            content="https://yourdomain.com/icons/android-chrome-192x192.png"
+            content="https://yourdomain.com/icons/manifest-icon-192.maskable.png"
           />
-          <meta name="twitter:creator" content="@DavidWShadow" />
+          <meta name="twitter:creator" content="@TMisikoff" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content="PWA App" />
           <meta property="og:description" content="Best PWA App in the world" />
@@ -84,45 +88,45 @@ class MyDocument extends Document {
           <meta property="og:url" content="https://yourdomain.com" />
           <meta
             property="og:image"
-            content="https://yourdomain.com/icons/apple-touch-icon.png"
+            content="https://yourdomain.com/icons/apple-icon-180.png"
           />
 
           {/* apple splash screen images */}
-          {/* <link
+          <link
             rel="apple-touch-startup-image"
-            href="/images/apple_splash_2048.png"
+            href="/icons-auto/apple-splash-2048-2732.jpg"
             sizes="2048x2732"
           />
           <link
             rel="apple-touch-startup-image"
-            href="/images/apple_splash_1668.png"
+            href="/icons-auto/apple-splash-1668-2224.jpg"
             sizes="1668x2224"
           />
           <link
             rel="apple-touch-startup-image"
-            href="/images/apple_splash_1536.png"
+            href="/icons-auto/apple-splash-1536-2048.jpg"
             sizes="1536x2048"
           />
           <link
             rel="apple-touch-startup-image"
-            href="/images/apple_splash_1125.png"
+            href="/icons-auto/apple-splash-1125-2436.jpg"
             sizes="1125x2436"
           />
           <link
             rel="apple-touch-startup-image"
-            href="/images/apple_splash_1242.png"
+            href="/icons-auto/apple-splash-1242-2208.jpg"
             sizes="1242x2208"
           />
           <link
             rel="apple-touch-startup-image"
-            href="/images/apple_splash_750.png"
+            href="/icons-auto/apple-splash-750-1334.jpg"
             sizes="750x1334"
           />
           <link
             rel="apple-touch-startup-image"
-            href="/images/apple_splash_640.png"
+            href="/icons-auto/apple-splash-640-1136.jpg"
             sizes="640x1136"
-          /> */}
+          />
         </Head>
         <body className="h-full">
           <Main />
