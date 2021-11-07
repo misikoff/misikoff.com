@@ -1,16 +1,19 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react'
+import Link from 'next/link'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { useRouter } from 'next/router'
+import Image from 'next/image'
+import TitleLogo from 'public/titleLogo.svg'
+import Logo from 'public/logo.svg'
+import UserImage from 'public/userImage.jpeg'
 
 const user = {
   name: 'Tom Cook',
   email: 'tom@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  image: UserImage,
 }
-
-import { useRouter } from 'next/router'
 
 const navigation = [
   { name: 'Articles', href: 'articles', current: false },
@@ -28,7 +31,6 @@ function classNames(...classes) {
 
 export default function Example({ children }) {
   const router = useRouter()
-  console.log(router)
   navigation.forEach((n) => {
     n.current = '/' + n.href === router.route
   })
@@ -49,33 +51,38 @@ export default function Example({ children }) {
               <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16">
                   <div className="flex">
-                    <div className="flex flex-shrink-0 items-center text-red-100 text-lg">
-                      <img
-                        className="block w-auto h-8 lg:hidden"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                        alt="Workflow"
-                      />
-                      <img
-                        className="hidden w-auto h-8 lg:block"
-                        src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
-                        alt="Workflow"
-                      />
-                    </div>
+                    <Link href="/">
+                      <a className="group flex flex-shrink-0 items-center">
+                        <img
+                          className="block w-auto h-8 lg:hidden"
+                          src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                          alt="Workflow"
+                        />
+                        <img
+                          className="hidden w-auto h-8 lg:block"
+                          src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
+                          alt="Workflow"
+                        />
+                        <span className="ml-2 group-hover:text-blue-500 text-gray-600 text-lg font-bold transition-colors duration-200">
+                          misikoff
+                        </span>
+                      </a>
+                    </Link>
                     <div className="hidden sm:flex sm:-my-px sm:ml-6 sm:space-x-8">
                       {navigation.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className={classNames(
-                            item.current
-                              ? 'border-indigo-500 text-gray-900'
-                              : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                            'inline-flex items-center pt-1 px-1 text-sm font-medium border-b-2'
-                          )}
-                          aria-current={item.current ? 'page' : undefined}
-                        >
-                          {item.name}
-                        </a>
+                        <Link key={item.name} href={item.href}>
+                          <a
+                            className={classNames(
+                              item.current
+                                ? 'border-indigo-500 text-gray-900'
+                                : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                              'inline-flex items-center pt-1 px-1 text-sm font-medium border-b-2'
+                            )}
+                            aria-current={item.current ? 'page' : undefined}
+                          >
+                            {item.name}
+                          </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -93,11 +100,15 @@ export default function Example({ children }) {
                       <div>
                         <Menu.Button className="flex items-center max-w-xs text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                           <span className="sr-only">Open user menu</span>
-                          <img
-                            className="w-8 h-8 rounded-full"
-                            src={user.imageUrl}
-                            alt=""
-                          />
+                          <div className="relative w-8 h-8">
+                            <Image
+                              className="rounded-full"
+                              src={user.image}
+                              alt=""
+                              layout="fill" // required
+                              objectFit="cover"
+                            />
+                          </div>
                         </Menu.Button>
                       </div>
                       <Transition
@@ -113,15 +124,16 @@ export default function Example({ children }) {
                           {userNavigation.map((item) => (
                             <Menu.Item key={item.name}>
                               {({ active }) => (
-                                <a
-                                  href={item.href}
-                                  className={classNames(
-                                    active ? 'bg-gray-100' : '',
-                                    'block px-4 py-2 text-gray-700 text-sm'
-                                  )}
-                                >
-                                  {item.name}
-                                </a>
+                                <Link href={item.href}>
+                                  <a
+                                    className={classNames(
+                                      active ? 'bg-gray-100' : '',
+                                      'block px-4 py-2 text-gray-700 text-sm'
+                                    )}
+                                  >
+                                    {item.name}
+                                  </a>
+                                </Link>
                               )}
                             </Menu.Item>
                           ))}
@@ -168,11 +180,15 @@ export default function Example({ children }) {
                 <div className="pb-3 pt-4 border-t border-gray-200">
                   <div className="flex items-center px-4">
                     <div className="flex-shrink-0">
-                      <img
-                        className="w-10 h-10 rounded-full"
-                        src={user.imageUrl}
-                        alt=""
-                      />
+                      <div className="relative w-10 h-10">
+                        <Image
+                          className="rounded-full"
+                          src={user.image}
+                          alt=""
+                          layout="fill" // required
+                          objectFit="cover"
+                        />
+                      </div>
                     </div>
                     <div className="ml-3">
                       <div className="text-gray-800 text-base font-medium">
@@ -209,13 +225,13 @@ export default function Example({ children }) {
         </Disclosure>
 
         <div className="py-10">
-          <header>
+          {/* <header>
             <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-8">
               <h1 className="text-gray-900 text-3xl font-bold leading-tight">
                 Dashboard
               </h1>
             </div>
-          </header>
+          </header> */}
           <main>
             <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
               {/* Replace with your content */}

@@ -4,7 +4,7 @@ import Layout from 'components/layout'
 export default function Home() {
   return (
     <Layout>
-      <div className="flex flex-col items-center justify-center py-2 min-h-screen">
+      <div className="flex flex-col items-center justify-center py-2">
         <Head>
           <title>Sandboxes</title>
         </Head>
