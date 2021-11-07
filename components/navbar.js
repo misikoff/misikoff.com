@@ -5,8 +5,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import TitleLogo from 'public/titleLogo.svg'
-import Logo from 'public/logo.svg'
+import Logo from 'public/icon.png'
 import UserImage from 'public/userImage.jpeg'
 
 const user = {
@@ -53,15 +52,26 @@ export default function Example({ children }) {
                   <div className="flex">
                     <Link href="/">
                       <a className="group flex flex-shrink-0 items-center">
-                        <img
+                        {/* <Image
                           className="block w-auto h-8 lg:hidden"
-                          src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                          alt="Workflow"
+                          src={Logo}
+                          alt="snowball"
+                          height="32px"
+                          width="32px"
                         />
-                        <img
+                        <Image
                           className="hidden w-auto h-8 lg:block"
-                          src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
-                          alt="Workflow"
+                          src={Logo}
+                          alt="snowball"
+                          height="32px"
+                          width="32px"
+                        /> */}
+                        <Image
+                          className="block w-auto h-8"
+                          src={Logo}
+                          alt="snowball"
+                          height="32px"
+                          width="32px"
                         />
                         <span className="ml-2 group-hover:text-blue-500 text-gray-600 text-lg font-bold transition-colors duration-200">
                           misikoff
