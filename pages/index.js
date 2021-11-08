@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Layout from 'components/layout'
+import Globe from 'components/globe'
 
 export default function Example() {
   return (
@@ -122,7 +123,7 @@ export default function Example() {
                   </Link>
                 </div>
               </div>
-              {/* <globe /> */}
+              <Globe />
             </div>
           </main>
         </div>
