@@ -1,148 +1,113 @@
 import Layout from 'components/layout'
+import Steps from 'components/steps'
+import Header from 'components/header'
+import { ArrowNarrowRightIcon } from '@heroicons/react/outline'
 
-/* This example requires Tailwind CSS v2.0+ */
-import { CheckIcon } from '@heroicons/react/solid'
+function TextArrow(text) {
+  return (
+    <span className="group inline-flex items-center hover:text-blue-500 text-gray-500 text-xs font-bold duration-200">
+      more about {text}
+      <ArrowNarrowRightIcon class="w-6 h-6 opacity-0 group-hover:opacity-100 transform duration-200" />
+    </span>
+  )
+}
 
-const steps = [
+const frameWorkSteps = [
   {
-    name: 'Create account',
-    description: 'Vitae sed mi luctus laoreet.',
-    href: '#',
-    status: 'complete',
-  },
-  {
-    name: 'Profile information',
-    description: 'Cursus semper viverra facilisis et et some more.',
-    href: '#',
+    name: 'Next.js',
+    description: '',
+    href: 'https://nextjs.com',
     status: 'current',
+    bonusBlock: (
+      <>
+        <p>
+          {'"'}Next.js gives you the best developer experience with all the
+          features you need for production: hybrid static & server rendering,
+          TypeScript support, smart bundling, route pre-fetching, and more. No
+          config needed.{'"'}
+        </p>
+        {TextArrow('Next.js')}
+      </>
+    ),
   },
   {
-    name: 'Business information',
-    description: 'Penatibus eu quis ante.',
-    href: '#',
-    status: 'upcoming',
-  },
-  {
-    name: 'Theme',
-    description: 'Faucibus nec enim leo et.',
-    href: '#',
-    status: 'upcoming',
-  },
-  {
-    name: 'Preview',
-    description: 'Iusto et officia maiores porro ad non quas.',
-    href: '#',
-    status: 'upcoming',
+    name: 'Tailwind CSS',
+    description: '',
+    href: 'https://tailwindcss.com',
+    status: 'current',
+    bonusBlock: (
+      <>
+        <p>
+          {'"'}A utility-first CSS framework packed with classes like{' '}
+          <span className="text-black font-mono font-bold">flex</span>,{' '}
+          <span className="text-black font-mono font-bold">pt-4</span>,{' '}
+          <span className="text-black font-mono font-bold">text-center</span>{' '}
+          and <span className="text-black font-mono font-bold">rotate-90</span>{' '}
+          that can be composed to build any design, directly in your markup.
+          {'"'}
+        </p>
+        {TextArrow('Tailwind CSS')}
+      </>
+    ),
   },
 ]
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+const animationSteps = [
+  {
+    name: 'Anime.js',
+    description: '',
+    href: 'https://animejs.com',
+    status: 'current',
+    bonusBlock: (
+      <>
+        <p>
+          {'"'}
+          <em>Anime.js</em> (<code>/ˈæn.ə.meɪ/</code>) is a lightweight
+          JavaScript animation library with a simple, yet powerful API.
+          <br />
+          It works with CSS properties, SVG, DOM attributes and JavaScript
+          Objects.{'"'}
+        </p>
+        {TextArrow('Anime.js')}
+      </>
+    ),
+  },
+  {
+    name: 'Highcharts',
+    description: '',
+    href: 'https://highcharts.com',
+    status: 'current',
+    bonusBlock: (
+      <>
+        <p>
+          {'"'}Highcharts makes it easy for developers to set up interactive
+          charts in their web pages
+          {'"'}
+        </p>
+        {TextArrow('Highcharts')}
+      </>
+    ),
+  },
+]
 
 export default function Example() {
   return (
     <Layout>
-      <nav aria-label="Progress">
-        <ol role="list" className="overflow-hidden">
-          {steps.map((step, stepIdx) => (
-            <li
-              key={step.name}
-              className={classNames(
-                stepIdx !== steps.length - 1 ? 'pb-10' : '',
-                'relative'
-              )}
-            >
-              {step.status === 'complete' ? (
-                <>
-                  {stepIdx !== steps.length - 1 ? (
-                    <div
-                      className="absolute left-4 top-4 -ml-px mt-0.5 w-0.5 h-full bg-indigo-600"
-                      aria-hidden="true"
-                    />
-                  ) : null}
-                  <a
-                    href={step.href}
-                    className="group relative flex items-start"
-                  >
-                    <span className="flex items-center h-9">
-                      <span className="relative z-10 flex items-center justify-center w-8 h-8 bg-indigo-600 group-hover:bg-indigo-800 rounded-full">
-                        <CheckIcon
-                          className="w-5 h-5 text-white"
-                          aria-hidden="true"
-                        />
-                      </span>
-                    </span>
-                    <span className="flex flex-col ml-4 min-w-0">
-                      <span className="text-xs font-semibold tracking-wide uppercase">
-                        {step.name}
-                      </span>
-                      <span className="text-gray-500 text-sm">
-                        {step.description}
-                      </span>
-                    </span>
-                  </a>
-                </>
-              ) : step.status === 'current' ? (
-                <>
-                  {stepIdx !== steps.length - 1 ? (
-                    <div
-                      className="absolute left-4 top-4 -ml-px mt-0.5 w-0.5 h-full bg-gray-300"
-                      aria-hidden="true"
-                    />
-                  ) : null}
-                  <a
-                    href={step.href}
-                    className="group relative flex items-start"
-                    aria-current="step"
-                  >
-                    <span className="flex items-center h-9" aria-hidden="true">
-                      <span className="relative z-10 flex items-center justify-center w-8 h-8 bg-white border-2 border-indigo-600 rounded-full">
-                        <span className="w-2.5 h-2.5 bg-indigo-600 rounded-full" />
-                      </span>
-                    </span>
-                    <span className="flex flex-col ml-4 min-w-0">
-                      <span className="text-indigo-600 text-xs font-semibold tracking-wide uppercase">
-                        {step.name}
-                      </span>
-                      <span className="text-gray-500 text-sm">
-                        {step.description}
-                      </span>
-                    </span>
-                  </a>
-                </>
-              ) : (
-                <>
-                  {stepIdx !== steps.length - 1 ? (
-                    <div
-                      className="absolute left-4 top-4 -ml-px mt-0.5 w-0.5 h-full bg-gray-300"
-                      aria-hidden="true"
-                    />
-                  ) : null}
-                  <a
-                    href={step.href}
-                    className="group relative flex items-start"
-                  >
-                    <span className="flex items-center h-9" aria-hidden="true">
-                      <span className="relative z-10 flex items-center justify-center w-8 h-8 bg-white border-2 border-gray-300 group-hover:border-gray-400 rounded-full">
-                        <span className="w-2.5 h-2.5 group-hover:bg-gray-300 bg-transparent rounded-full" />
-                      </span>
-                    </span>
-                    <span className="flex flex-col ml-4 min-w-0">
-                      <span className="text-gray-500 text-xs font-semibold tracking-wide uppercase">
-                        {step.name}
-                      </span>
-                      <span className="text-gray-500 text-sm">
-                        {step.description}
-                      </span>
-                    </span>
-                  </a>
-                </>
-              )}
-            </li>
-          ))}
-        </ol>
-      </nav>
+      <div className="relative pb-16 pt-4 overflow-hidden md:pt-8">
+        <div className="relative px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-prose text-lg">
+            <Header category="Tech Stack" title="How It's Made" />
+
+            <span className="flex mb-2 mt-8 text-lg font-bold">Frameworks</span>
+            <Steps steps={frameWorkSteps} />
+
+            <span className="flex mb-2 mt-8 text-lg font-bold">
+              Animation Libraries
+            </span>
+            <Steps steps={animationSteps} />
+          </div>
+        </div>
+      </div>
     </Layout>
   )
 }

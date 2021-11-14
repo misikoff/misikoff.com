@@ -4,5 +4,4 @@ module.exports = withPWA({
   pwa: {
     dest: 'public',
   },
-  // other next config
 })
