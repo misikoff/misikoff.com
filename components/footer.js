@@ -1,3 +1,4 @@
+import Link from 'next/link'
 /* This example requires Tailwind CSS v2.0+ */
 import GitHubIcon from 'components/icons/social/GitHub'
 import CodePenIcon from 'components/icons/social/CodePen'
@@ -48,12 +49,11 @@ export default function Example() {
         >
           {navigation.main.map((item) => (
             <div key={item.name} className="px-5 py-2">
-              <a
-                href={item.href}
-                className="text-gray-500 hover:text-gray-900 text-base"
-              >
-                {item.name}
-              </a>
+              <Link href={item.href}>
+                <a className="text-gray-500 hover:text-gray-900 text-base">
+                  {item.name}
+                </a>
+              </Link>
             </div>
           ))}
         </nav>
@@ -62,7 +62,7 @@ export default function Example() {
             <a
               key={item.name}
               href={item.href}
-              className="text-gray-400 hover:text-gray-500"
+              className="text-gray-400 hover:text-gray-500 transform hover:scale-125 transition-all duration-75"
             >
               <span className="sr-only">{item.name}</span>
               <item.icon className="w-6 h-6" aria-hidden="true" />
