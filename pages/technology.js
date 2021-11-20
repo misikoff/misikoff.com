@@ -1,4 +1,3 @@
-import Layout from 'components/layout'
 import Steps from 'components/steps'
 import Header from 'components/header'
 import { ArrowNarrowRightIcon } from '@heroicons/react/outline'
@@ -7,7 +6,7 @@ function TextArrow(text) {
   return (
     <span className="group inline-flex items-center hover:text-blue-500 text-gray-500 text-xs font-bold duration-200">
       more about {text}
-      <ArrowNarrowRightIcon class="w-6 h-6 opacity-0 group-hover:opacity-100 transform duration-200" />
+      <ArrowNarrowRightIcon className="w-6 h-6 opacity-0 group-hover:opacity-100 transform duration-200" />
     </span>
   )
 }
@@ -90,24 +89,64 @@ const animationSteps = [
   },
 ]
 
+const pipelinesteps = [
+  {
+    name: 'GitHub',
+    description: '',
+    href: 'https://github.com',
+    status: 'current',
+    bonusBlock: (
+      <>
+        <p>
+          {'"'}
+          Millions of developers and companies build, ship, and maintain their
+          software on GitHub—the largest and most advanced development platform
+          in the world.{'"'}
+        </p>
+        {TextArrow('GitHub')}
+      </>
+    ),
+  },
+  {
+    name: 'Vercel',
+    description: '',
+    href: 'https://vercel.com',
+    status: 'current',
+    bonusBlock: (
+      <>
+        <p>
+          {'"'}Vercel combines the best developer experience with an obsessive
+          focus on end-user performance. Our platform enables frontend teams to
+          do their best work.
+          {'"'}
+        </p>
+        {TextArrow('Vercel')}
+      </>
+    ),
+  },
+]
+
 export default function Example() {
   return (
-    <Layout>
-      <div className="relative pb-16 pt-4 overflow-hidden md:pt-8">
-        <div className="relative px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-prose text-lg">
-            <Header category="Tech Stack" title="How It's Made" />
+    <div className="relative pb-16 pt-4 overflow-hidden md:pt-8">
+      <div className="relative px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-prose text-lg">
+          <Header category="Tech Stack" title="How It's Made" />
 
-            <span className="flex mb-2 mt-8 text-lg font-bold">Frameworks</span>
-            <Steps steps={frameWorkSteps} />
+          <span className="flex mb-2 mt-8 text-lg font-bold">Frameworks</span>
+          <Steps steps={frameWorkSteps} />
 
-            <span className="flex mb-2 mt-8 text-lg font-bold">
-              Animation Libraries
-            </span>
-            <Steps steps={animationSteps} />
-          </div>
+          <span className="flex mb-2 mt-8 text-lg font-bold">
+            Animation Libraries
+          </span>
+          <Steps steps={animationSteps} />
+
+          <span className="flex mb-2 mt-8 text-lg font-bold">
+            CI/CD Pipeline
+          </span>
+          <Steps steps={pipelinesteps} />
         </div>
       </div>
-    </Layout>
+    </div>
   )
 }
