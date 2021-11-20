@@ -9,10 +9,7 @@ import DevpostIcon from 'components/icons/social/Devpost'
 const curYear = new Date().getFullYear()
 
 const navigation = {
-  main: [
-    { name: 'Technology', href: '/technology' },
-    { name: 'test', href: '/test' },
-  ],
+  main: [{ name: 'Technology', href: '/technology' }],
   social: [
     {
       name: 'Twitter',
