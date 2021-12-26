@@ -9,5 +9,8 @@ module.exports = withPWA(
       dest: 'public',
     },
     pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+    images: {
+      domains: ['images.unsplash.com'],
+    },
   })
 )
