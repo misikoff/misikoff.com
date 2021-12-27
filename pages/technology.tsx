@@ -2,7 +2,7 @@ import Steps from 'components/steps'
 import Header from 'components/header'
 import { ArrowNarrowRightIcon } from '@heroicons/react/outline'
 
-function TextArrow(text) {
+function TextArrow(text: string) {
   return (
     <span className="group inline-flex items-center hover:text-blue-500 text-gray-500 text-xs font-bold duration-200">
       more about {text}
