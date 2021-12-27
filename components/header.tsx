@@ -1,15 +1,21 @@
-export default function Header(props) {
+export default function Header({
+  category,
+  title,
+}: {
+  category?: string
+  title?: string
+}) {
   return (
     <div>
-      {props.category && (
+      {category && (
         <span className="block text-center text-blue-600 text-base font-semibold tracking-wide uppercase">
-          {props.category}
+          {category}
         </span>
       )}
-      {props.title && (
+      {title && (
         <h1>
           <span className="block mt-2 text-center text-gray-900 text-3xl font-extrabold tracking-tight leading-8 sm:text-4xl">
-            {props.title}
+            {title}
           </span>
         </h1>
       )}

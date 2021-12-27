@@ -1,3 +1,4 @@
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 // import { getPostBySlug, getAllPosts } from 'lib/api'
 
@@ -7,7 +8,31 @@ import matter from 'gray-matter'
 import Link from 'next/link'
 import Image from 'next/image'
 
-const Home = ({ posts }) => {
+export const getStaticProps: GetStaticProps = async (_) => {
+  const files = fs.readdirSync(path.join('content/articles'))
+  console.log(files)
+  const posts = files.map((filename) => {
+    const markdownWithMeta = fs.readFileSync(
+      path.join('content/articles', filename),
+      'utf-8'
+    )
+    const { data: frontMatter } = matter(markdownWithMeta)
+
+    return {
+      frontMatter,
+      slug: filename.split('.')[0],
+    }
+  })
+
+  return {
+    props: {
+      posts,
+    },
+  }
+}
+
+const Home = ({ posts = [] as Post[] }) => {
+  console.log({ posts })
   // const posts = getAllPosts(['slug'])
 
   return (
@@ -17,7 +42,7 @@ const Home = ({ posts }) => {
       </Head>
 
       <main className="flex flex-1 flex-col items-center justify-center px-20 w-full text-center">
-        {posts.map((post, index) => (
+        {posts.map((post, index: number) => (
           <Link href={'/articles/' + post.slug} passHref key={index}>
             <div className="card pointer mb-3" style={{ maxWidth: '540px' }}>
               <div className="row g-0">
@@ -49,29 +74,6 @@ const Home = ({ posts }) => {
       </main>
     </div>
   )
-}
-
-export const getStaticProps = async () => {
-  const files = fs.readdirSync(path.join('content/articles'))
-  console.log(files)
-  const posts = files.map((filename) => {
-    const markdownWithMeta = fs.readFileSync(
-      path.join('content/articles', filename),
-      'utf-8'
-    )
-    const { data: frontMatter } = matter(markdownWithMeta)
-
-    return {
-      frontMatter,
-      slug: filename.split('.')[0],
-    }
-  })
-
-  return {
-    props: {
-      posts,
-    },
-  }
 }
 
 export default Home

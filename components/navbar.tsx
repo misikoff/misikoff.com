@@ -18,17 +18,12 @@ const navigation = [
   { name: 'Articles', href: '/articles', current: false },
   { name: 'Sandboxes', href: '/sandboxes', current: false },
 ]
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
-]
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example({ children }) {
+export default function Example({ children = {} as JSX.Element }) {
   const router = useRouter()
   navigation.forEach((n) => {
     n.current = n.href === router.route
@@ -152,7 +147,7 @@ export default function Example({ children }) {
               {/* <div className="px-4 py-8 sm:px-0">
                 <div className="border-4 border-dashed border-gray-200 rounded-lg h-96" />
               </div> */}
-              {children}
+              {/* {children} */}
               {/* /End replace */}
             </div>
           </main>
