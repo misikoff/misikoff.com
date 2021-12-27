@@ -9,7 +9,7 @@ export default function Example() {
     animationRef.current = anime({
       targets: '.el',
       translateX: 250,
-      delay: function (el, i) {
+      delay: function (_, i: number) {
         return i * 100
       },
       loop: true,

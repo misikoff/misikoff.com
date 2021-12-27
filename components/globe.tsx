@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import anime from 'animejs'
 // import utilityFunctions from 'utils/utilityFunctions'
 // consider how to implement shuffling
@@ -59,7 +59,7 @@ export default function Example() {
         style={{ clipPath: 'circle(50% at 50% 50%)' }}
         className="group relative mx-auto w-48 h-48 bg-blue-200 hover:bg-blue-50 transition-colors duration-1000 md:w-96 md:h-96"
       >
-        {curWaves.map((wave, index) => {
+        {curWaves.map((_, index) => {
           return (
             <div
               key={index}

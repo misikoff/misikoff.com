@@ -22,7 +22,7 @@ export default function Example() {
     anime({
       targets: '.el',
       translateX: 250,
-      delay: function (el, i) {
+      delay: function (_, i: number) {
         return i * 100
       },
       loop: true,
@@ -53,10 +53,10 @@ export default function Example() {
 
   return (
     <>
-      <button onClick={() => animationRef.current.restart()}>Restart</button>
+      {/* <button onClick={() => animationRef.current.restart()}>Restart</button> */}
       <div className="el w-4 h-4 bg-green-400" />
       {/* {waveShapes} */}
-      {waveShapes.map((wave, index) => {
+      {waveShapes.map((_, index) => {
         return (
           <svg
             key={index}

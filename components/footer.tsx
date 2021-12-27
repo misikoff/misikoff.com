@@ -65,7 +65,7 @@ export default function Example() {
               className="text-gray-400 hover:text-gray-500 transform hover:scale-125 transition-all duration-75"
             >
               <span className="sr-only">{item.name}</span>
-              <item.icon className="w-6 h-6" aria-hidden="true" />
+              <item.icon aria-hidden="true" />
             </a>
           ))}
         </div>
