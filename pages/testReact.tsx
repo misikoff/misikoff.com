@@ -1,8 +1,8 @@
-import anime from 'animejs'
+import anime, { AnimeInstance } from 'animejs'
 import { useEffect, useRef } from 'react'
 
 export default function Example() {
-  const animationRef = useRef(null)
+  const animationRef = useRef<AnimeInstance | null>(null)
 
   useEffect(() => {
     console.log('in use effect')
@@ -20,7 +20,7 @@ export default function Example() {
 
   return (
     <>
-      <button onClick={() => animationRef.current.restart()}>Restart</button>
+      <button onClick={() => animationRef.current?.restart()}>Restart</button>
       <div className="el w-4 h-4 bg-green-400" />
     </>
   )

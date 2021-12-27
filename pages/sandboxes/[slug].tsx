@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
-import { MDXRemote } from 'next-mdx-remote'
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
@@ -23,7 +23,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const slug = params?.slug
   const markdownWithMeta = fs.readFileSync(
     path.join('content/sandboxes', slug + '.mdx'),
     'utf-8'
@@ -41,7 +42,13 @@ export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
   }
 }
 
-const PostPage = ({ frontMatter: { title, date }, mdxSource }) => {
+const PostPage = ({
+  frontMatter: { title, date },
+  mdxSource,
+}: {
+  frontMatter: { title: string; date: Date }
+  mdxSource: MDXRemoteSerializeResult
+}) => {
   return (
     <div className="mt-4">
       <h1>{title}</h1>

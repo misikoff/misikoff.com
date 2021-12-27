@@ -1,25 +1,33 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { CheckIcon } from '@heroicons/react/solid'
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example(props) {
+type Step = {
+  href: string
+  name: string
+  status: string
+  description: string
+  bonusBlock: JSX.Element
+}
+
+export default function Example({ steps = [] as Step[] }) {
   return (
     <nav aria-label="Progress">
       <ol role="list" className="overflow-hidden">
-        {props.steps.map((step, stepIdx) => (
+        {steps.map((step, stepIdx: number) => (
           <li
             key={step.name}
             className={classNames(
-              stepIdx !== props.steps.length - 1 ? 'pb-10' : '',
+              stepIdx !== steps.length - 1 ? 'pb-10' : '',
               'relative'
             )}
           >
             {step.status === 'complete' ? (
               <>
-                {stepIdx !== props.steps.length - 1 ? (
+                {stepIdx !== steps.length - 1 ? (
                   <div
                     className="absolute left-4 top-4 -ml-px mt-0.5 w-0.5 h-full bg-indigo-600"
                     aria-hidden="true"
@@ -47,7 +55,7 @@ export default function Example(props) {
               </>
             ) : step.status === 'current' ? (
               <>
-                {stepIdx !== props.steps.length - 1 ? (
+                {stepIdx !== steps.length - 1 ? (
                   <div
                     className="absolute left-4 top-4 -ml-px mt-0.5 w-0.5 h-full bg-gray-300"
                     aria-hidden="true"
@@ -76,7 +84,7 @@ export default function Example(props) {
               </>
             ) : (
               <>
-                {stepIdx !== props.steps.length - 1 ? (
+                {stepIdx !== steps.length - 1 ? (
                   <div
                     className="absolute left-4 top-4 -ml-px mt-0.5 w-0.5 h-full bg-gray-300"
                     aria-hidden="true"
