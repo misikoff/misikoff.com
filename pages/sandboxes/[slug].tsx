@@ -9,7 +9,7 @@ import matter from 'gray-matter'
 // const components = { Nav, Button, SyntaxHighlighter }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const files = fs.readdirSync(path.join('content/articles'))
+  const files = fs.readdirSync(path.join('content/sandboxes'))
 
   const paths = files.map((filename) => ({
     params: {
