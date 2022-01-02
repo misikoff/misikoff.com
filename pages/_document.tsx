@@ -60,6 +60,8 @@ class MyDocument extends Document {
           />
           <link rel="icon" href="/favicon.ico" />
 
+          <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:url" content="https://nextjs.misikoff.com" />
           <meta name="twitter:title" content="PWA App" />
