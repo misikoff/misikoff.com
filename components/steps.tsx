@@ -29,24 +29,24 @@ export default function Example({ steps = [] as Step[] }) {
               <>
                 {stepIdx !== steps.length - 1 ? (
                   <div
-                    className="absolute left-4 top-4 -ml-px mt-0.5 w-0.5 h-full bg-indigo-600"
+                    className="absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600"
                     aria-hidden="true"
                   />
                 ) : null}
                 <a href={step.href} className="group relative flex items-start">
-                  <span className="flex items-center h-9">
-                    <span className="relative z-10 flex items-center justify-center w-8 h-8 bg-indigo-600 group-hover:bg-indigo-800 rounded-full">
+                  <span className="flex h-9 items-center">
+                    <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 group-hover:bg-indigo-800">
                       <CheckIcon
-                        className="w-5 h-5 text-white"
+                        className="h-5 w-5 text-white"
                         aria-hidden="true"
                       />
                     </span>
                   </span>
-                  <span className="flex flex-col ml-4 min-w-0">
-                    <span className="text-xs font-semibold tracking-wide uppercase">
+                  <span className="ml-4 flex min-w-0 flex-col">
+                    <span className="text-xs font-semibold uppercase tracking-wide">
                       {step.name}
                     </span>
-                    <span className="text-gray-500 text-sm">
+                    <span className="text-sm text-gray-500">
                       {step.description}
                       {step.bonusBlock}
                     </span>
@@ -57,7 +57,7 @@ export default function Example({ steps = [] as Step[] }) {
               <>
                 {stepIdx !== steps.length - 1 ? (
                   <div
-                    className="absolute left-4 top-4 -ml-px mt-0.5 w-0.5 h-full bg-gray-300"
+                    className="absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-gray-300"
                     aria-hidden="true"
                   />
                 ) : null}
@@ -66,16 +66,16 @@ export default function Example({ steps = [] as Step[] }) {
                   className="group relative flex items-start"
                   aria-current="step"
                 >
-                  <span className="flex items-center h-9" aria-hidden="true">
-                    <span className="relative z-10 flex items-center justify-center w-8 h-8 bg-white border-2 border-indigo-600 rounded-full">
-                      <span className="w-2.5 h-2.5 bg-indigo-600 rounded-full" />
+                  <span className="flex h-9 items-center" aria-hidden="true">
+                    <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 border-indigo-600 bg-white">
+                      <span className="h-2.5 w-2.5 rounded-full bg-indigo-600" />
                     </span>
                   </span>
-                  <span className="flex flex-col ml-4 min-w-0">
-                    <span className="text-indigo-600 text-xs font-semibold tracking-wide uppercase">
+                  <span className="ml-4 flex min-w-0 flex-col">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-indigo-600">
                       {step.name}
                     </span>
-                    <span className="text-gray-500 text-sm">
+                    <span className="text-sm text-gray-500">
                       {step.description}
                       {step.bonusBlock}
                     </span>
@@ -86,21 +86,21 @@ export default function Example({ steps = [] as Step[] }) {
               <>
                 {stepIdx !== steps.length - 1 ? (
                   <div
-                    className="absolute left-4 top-4 -ml-px mt-0.5 w-0.5 h-full bg-gray-300"
+                    className="absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-gray-300"
                     aria-hidden="true"
                   />
                 ) : null}
                 <a href={step.href} className="group relative flex items-start">
-                  <span className="flex items-center h-9" aria-hidden="true">
-                    <span className="relative z-10 flex items-center justify-center w-8 h-8 bg-white border-2 border-gray-300 group-hover:border-gray-400 rounded-full">
-                      <span className="w-2.5 h-2.5 group-hover:bg-gray-300 bg-transparent rounded-full" />
+                  <span className="flex h-9 items-center" aria-hidden="true">
+                    <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 border-gray-300 bg-white group-hover:border-gray-400">
+                      <span className="h-2.5 w-2.5 rounded-full bg-transparent group-hover:bg-gray-300" />
                     </span>
                   </span>
-                  <span className="flex flex-col ml-4 min-w-0">
-                    <span className="text-gray-500 text-xs font-semibold tracking-wide uppercase">
+                  <span className="ml-4 flex min-w-0 flex-col">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">
                       {step.name}
                     </span>
-                    <span className="text-gray-500 text-sm">
+                    <span className="text-sm text-gray-500">
                       {step.description}
                       {step.bonusBlock}
                     </span>

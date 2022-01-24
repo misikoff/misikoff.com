@@ -57,14 +57,14 @@ export default function Example() {
       {/* {curWaves[0]} */}
       <div
         style={{ clipPath: 'circle(50% at 50% 50%)' }}
-        className="group relative mx-auto w-48 h-48 bg-blue-200 hover:bg-blue-50 transition-colors duration-1000 md:w-96 md:h-96"
+        className="group relative mx-auto h-48 w-48 bg-blue-200 transition-colors duration-1000 hover:bg-blue-50 md:h-96 md:w-96"
       >
         {curWaves.map((_, index) => {
           return (
             <div
               key={index}
               className={
-                'absolute w-full h-1/5 ' +
+                'absolute h-1/5 w-full ' +
                 (index === 0
                   ? 'top-1/5'
                   : index === 1
@@ -98,7 +98,7 @@ export default function Example() {
               </svg>
               <div
                 className={
-                  'flex -mt-0.5 h-24 transition-colors duration-1000 ' +
+                  '-mt-0.5 flex h-24 transition-colors duration-1000 ' +
                   (index === 0
                     ? 'bg-blue-300 group-hover:bg-blue-200'
                     : index === 1

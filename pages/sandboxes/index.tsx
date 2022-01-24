@@ -7,7 +7,7 @@ export default function Home() {
         <title>Sandboxes</title>
       </Head>
 
-      <main className="flex flex-1 flex-col items-center justify-center px-20 w-full text-center"></main>
+      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center"></main>
     </div>
   )
 }

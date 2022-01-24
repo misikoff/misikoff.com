@@ -4,9 +4,9 @@ import { ArrowNarrowRightIcon } from '@heroicons/react/outline'
 
 function TextArrow(text: string) {
   return (
-    <span className="group inline-flex items-center hover:text-blue-500 text-gray-500 text-xs font-bold duration-200">
+    <span className="group inline-flex items-center text-xs font-bold text-gray-500 duration-200 hover:text-blue-500">
       more about {text}
-      <ArrowNarrowRightIcon className="w-6 h-6 opacity-0 group-hover:opacity-100 transform duration-200" />
+      <ArrowNarrowRightIcon className="h-6 w-6 transform opacity-0 duration-200 group-hover:opacity-100" />
     </span>
   )
 }
@@ -38,10 +38,10 @@ const frameWorkSteps = [
       <>
         <p>
           {'"'}A utility-first CSS framework packed with classes like{' '}
-          <span className="text-black font-mono font-bold">flex</span>,{' '}
-          <span className="text-black font-mono font-bold">pt-4</span>,{' '}
-          <span className="text-black font-mono font-bold">text-center</span>{' '}
-          and <span className="text-black font-mono font-bold">rotate-90</span>{' '}
+          <span className="font-mono font-bold text-black">flex</span>,{' '}
+          <span className="font-mono font-bold text-black">pt-4</span>,{' '}
+          <span className="font-mono font-bold text-black">text-center</span>{' '}
+          and <span className="font-mono font-bold text-black">rotate-90</span>{' '}
           that can be composed to build any design, directly in your markup.
           {'"'}
         </p>
@@ -128,20 +128,20 @@ const pipelinesteps = [
 
 export default function Example() {
   return (
-    <div className="relative pb-16 pt-4 overflow-hidden md:pt-8">
+    <div className="relative overflow-hidden pb-16 pt-4 md:pt-8">
       <div className="relative px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-prose text-lg">
           <Header category="Tech Stack" title="How It's Made" />
 
-          <span className="flex mb-2 mt-8 text-lg font-bold">Frameworks</span>
+          <span className="mb-2 mt-8 flex text-lg font-bold">Frameworks</span>
           <Steps steps={frameWorkSteps} />
 
-          <span className="flex mb-2 mt-8 text-lg font-bold">
+          <span className="mb-2 mt-8 flex text-lg font-bold">
             Animation Libraries
           </span>
           <Steps steps={animationSteps} />
 
-          <span className="flex mb-2 mt-8 text-lg font-bold">
+          <span className="mb-2 mt-8 flex text-lg font-bold">
             CI/CD Pipeline
           </span>
           <Steps steps={pipelinesteps} />
