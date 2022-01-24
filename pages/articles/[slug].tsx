@@ -4,9 +4,11 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import Header from 'components/header'
 // import SyntaxHighlighter from 'react-syntax-highlighter'
 
 // const components = { Nav, Button, SyntaxHighlighter }
+const components = { Header }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const files = fs.readdirSync(path.join('content/articles'))
@@ -52,8 +54,8 @@ const PostPage = ({
   return (
     <div className="mt-4">
       <h1>{title}</h1>
-      {/* <MDXRemote {...mdxSource} components={components} /> */}
-      <MDXRemote {...mdxSource} />
+      <MDXRemote {...mdxSource} components={components} />
+      {/* <MDXRemote {...mdxSource} /> */}
     </div>
   )
 }

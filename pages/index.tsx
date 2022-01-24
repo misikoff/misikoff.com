@@ -5,12 +5,12 @@ export default function Example() {
   return (
     <div className="relative overflow-hidden">
       <div
-        className="hidden sm:absolute sm:inset-y-0 sm:block sm:w-full sm:h-full"
+        className="hidden sm:absolute sm:inset-y-0 sm:block sm:h-full sm:w-full"
         aria-hidden="true"
       >
-        <div className="relative mx-auto max-w-7xl h-full">
+        <div className="relative mx-auto h-full max-w-7xl">
           <svg
-            className="absolute right-full transform translate-x-1/4 translate-y-1/4 lg:translate-x-1/2"
+            className="absolute right-full translate-x-1/4 translate-y-1/4 transform lg:translate-x-1/2"
             width="404"
             height="784"
             fill="none"
@@ -42,7 +42,7 @@ export default function Example() {
             />
           </svg>
           <svg
-            className="absolute left-full transform -translate-x-1/4 -translate-y-3/4 md:-translate-y-1/2 lg:-translate-x-1/2"
+            className="absolute left-full -translate-x-1/4 -translate-y-3/4 transform md:-translate-y-1/2 lg:-translate-x-1/2"
             width="404"
             height="784"
             fill="none"
@@ -77,13 +77,13 @@ export default function Example() {
       </div>
 
       <div className="relative pb-16 pt-6 sm:pb-24">
-        <div className="mx-auto px-4 max-w-7xl sm:px-6" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6" />
 
-        <main className="mx-auto px-4 max-w-7xl sm:mt-0">
+        <main className="mx-auto max-w-7xl px-4 sm:mt-0">
           <div className="text-center">
-            <h1 className="text-gray-900 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+            <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
               <span className="">Thomas Misikoff</span>
-              <div className="flex flex-row items-center justify-center text-blue-600 text-2xl sm:text-3xl md:text-4xl">
+              <div className="flex flex-row items-center justify-center text-2xl text-blue-600 sm:text-3xl md:text-4xl">
                 <span> software engineer </span>
 
                 <span className="px-2 text-black"> • </span>
@@ -91,30 +91,30 @@ export default function Example() {
                 <span> statistical analyst </span>
               </div>
             </h1>
-            <p className="mt-3 mx-auto max-w-md text-left text-gray-500 text-base sm:text-lg md:mt-8 md:max-w-3xl md:text-xl">
+            <p className="mx-auto mt-3 max-w-md text-left text-base text-gray-500 sm:text-lg md:mt-8 md:max-w-3xl md:text-xl">
               This is a growing hub where I discuss novel concepts and their
               applications.
               <br />
               <br />
               Content is broken up into{' '}
-              <span className="px-1 text-blue-600 font-mono">
+              <span className="px-1 font-mono text-blue-600">
                 articles
               </span> and{' '}
-              <span className="pl-1 text-blue-600 font-mono">sandboxes</span>.
+              <span className="pl-1 font-mono text-blue-600">sandboxes</span>.
               Articles have a narrative focus, often introducing concepts to be
               explored experimentally through sandboxes.
             </p>
-            <div className="mt-8 mx-auto max-w-md sm:flex sm:justify-center md:mt-8">
+            <div className="mx-auto mt-8 max-w-md sm:flex sm:justify-center md:mt-8">
               <div className="rounded-md shadow">
                 <Link href="/articles">
-                  <a className="flex items-center justify-center px-8 py-3 w-full text-white text-base font-medium bg-blue-600 hover:bg-blue-700 border border-transparent rounded-md md:px-10 md:py-4 md:text-lg">
+                  <a className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-8 py-3 text-base font-medium text-white hover:bg-blue-700 md:px-10 md:py-4 md:text-lg">
                     Read Articles
                   </a>
                 </Link>
               </div>
               <div className="mt-3 rounded-md shadow sm:ml-3 sm:mt-0">
                 <Link href="/sandboxes">
-                  <a className="flex items-center justify-center px-8 py-3 w-full text-blue-600 text-base font-medium hover:bg-gray-50 bg-white border border-transparent rounded-md md:px-10 md:py-4 md:text-lg">
+                  <a className="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-blue-600 hover:bg-gray-50 md:px-10 md:py-4 md:text-lg">
                     Explore Sandboxes
                   </a>
                 </Link>

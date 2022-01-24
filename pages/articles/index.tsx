@@ -8,6 +8,8 @@ import matter from 'gray-matter'
 import Link from 'next/link'
 import Image from 'next/image'
 
+import PostList from 'components/postList'
+
 export const getStaticProps: GetStaticProps = async (_) => {
   const files = fs.readdirSync(path.join('content/articles'))
   console.log(files)
@@ -41,8 +43,8 @@ const Home = ({ posts = [] as Post[] }) => {
         <title>Articles</title>
       </Head>
 
-      <main className="flex flex-1 flex-col items-center justify-center px-20 w-full text-center">
-        {posts.map((post, index: number) => (
+      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
+        {/* {posts.map((post, index: number) => (
           <Link href={'/articles/' + post.slug} passHref key={index}>
             <div className="card pointer mb-3" style={{ maxWidth: '540px' }}>
               <div className="row g-0">
@@ -70,7 +72,9 @@ const Home = ({ posts = [] as Post[] }) => {
               </div>
             </div>
           </Link>
-        ))}
+        ))} */}
+
+        <PostList posts={posts} pathPrefix="/articles/" />
       </main>
     </div>
   )

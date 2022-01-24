@@ -8,13 +8,13 @@ export default function Header({
   return (
     <div>
       {category && (
-        <span className="block text-center text-blue-600 text-base font-semibold tracking-wide uppercase">
+        <span className="block text-center text-base font-semibold uppercase tracking-wide text-blue-600">
           {category}
         </span>
       )}
       {title && (
         <h1>
-          <span className="block mt-2 text-center text-gray-900 text-3xl font-extrabold tracking-tight leading-8 sm:text-4xl">
+          <span className="mt-2 block text-center text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl">
             {title}
           </span>
         </h1>
