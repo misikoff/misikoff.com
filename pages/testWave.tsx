@@ -54,21 +54,21 @@ export default function Example() {
   return (
     <>
       {/* <button onClick={() => animationRef.current.restart()}>Restart</button> */}
-      <div className="el h-4 w-4 bg-green-400" />
+      <div className='el h-4 w-4 bg-green-400' />
       {/* {waveShapes} */}
       {waveShapes.map((_, index) => {
         return (
           <svg
             key={index}
-            id="wave"
+            id='wave'
             className={'transition-colors duration-1000 hover:text-blue-200'}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1440 320"
+            xmlns='http://www.w3.org/2000/svg'
+            viewBox='0 0 1440 320'
           >
             <path
               className={'loop-alternate-infinity' + index}
-              fill="currentColor"
-              fillOpacity="1"
+              fill='currentColor'
+              fillOpacity='1'
               d={waveShapes[index].d}
             />
           </svg>

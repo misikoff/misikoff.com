@@ -21,7 +21,7 @@ export default function Example() {
   return (
     <>
       <button onClick={() => animationRef.current?.restart()}>Restart</button>
-      <div className="el h-4 w-4 bg-green-400" />
+      <div className='el h-4 w-4 bg-green-400' />
     </>
   )
 }

@@ -38,12 +38,12 @@ const Home = ({ posts = [] as Post[] }) => {
   // const posts = getAllPosts(['slug'])
 
   return (
-    <div className="flex flex-col items-center justify-center py-2">
+    <div className='flex flex-col items-center justify-center py-2'>
       <Head>
         <title>Articles</title>
       </Head>
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
+      <main className='flex w-full flex-1 flex-col items-center justify-center px-20 text-center'>
         {/* {posts.map((post, index: number) => (
           <Link href={'/articles/' + post.slug} passHref key={index}>
             <div className="card pointer mb-3" style={{ maxWidth: '540px' }}>
@@ -74,7 +74,7 @@ const Home = ({ posts = [] as Post[] }) => {
           </Link>
         ))} */}
 
-        <PostList posts={posts} pathPrefix="/articles/" />
+        <PostList posts={posts} pathPrefix='/articles/' />
       </main>
     </div>
   )

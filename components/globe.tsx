@@ -53,11 +53,11 @@ export default function Example() {
   }, [])
 
   return (
-    <div className="mt-8">
+    <div className='mt-8'>
       {/* {curWaves[0]} */}
       <div
         style={{ clipPath: 'circle(50% at 50% 50%)' }}
-        className="group relative mx-auto h-48 w-48 bg-blue-200 transition-colors duration-1000 hover:bg-blue-50 md:h-96 md:w-96"
+        className='group relative mx-auto h-48 w-48 bg-blue-200 transition-colors duration-1000 hover:bg-blue-50 md:h-96 md:w-96'
       >
         {curWaves.map((_, index) => {
           return (
@@ -75,7 +75,7 @@ export default function Example() {
               }
             >
               <svg
-                id="wave"
+                id='wave'
                 className={
                   'transition-colors duration-1000 group-hover:text-blue-200 ' +
                   (index === 0
@@ -86,13 +86,13 @@ export default function Example() {
                     ? 'text-blue-500'
                     : 'text-blue-600')
                 }
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 1440 320"
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 1440 320'
               >
                 <path
                   className={'loop-alternate-infinity' + index}
-                  fill="currentColor"
-                  fillOpacity="1"
+                  fill='currentColor'
+                  fillOpacity='1'
                   d={curWaves[index]}
                 />
               </svg>

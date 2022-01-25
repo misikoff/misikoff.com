@@ -50,7 +50,7 @@ const PostPage = ({
   mdxSource: MDXRemoteSerializeResult
 }) => {
   return (
-    <div className="mt-4">
+    <div className='mt-4'>
       <h1>{title}</h1>
       {/* <MDXRemote {...mdxSource} components={components} /> */}
       <MDXRemote {...mdxSource} />

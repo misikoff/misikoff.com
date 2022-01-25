@@ -38,15 +38,15 @@ export default function Example({ children = {} as JSX.Element }) {
         <body class="h-full">
         ```
       */}
-      <div className="min-h-full">
-        <Disclosure as="nav" className="border-b border-gray-200 bg-white">
+      <div className='min-h-full'>
+        <Disclosure as='nav' className='border-b border-gray-200 bg-white'>
           {({ open }) => (
             <>
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 md:mx-0 lg:px-8">
-                <div className="flex h-16 justify-between">
-                  <div className="flex">
-                    <Link href="/">
-                      <a className="group flex flex-shrink-0 items-center">
+              <div className='mx-auto max-w-7xl px-4 sm:px-6 md:mx-0 lg:px-8'>
+                <div className='flex h-16 justify-between'>
+                  <div className='flex'>
+                    <Link href='/'>
+                      <a className='group flex flex-shrink-0 items-center'>
                         {/* <Image
                           className="block w-auto h-8 lg:hidden"
                           src={Logo}
@@ -62,18 +62,18 @@ export default function Example({ children = {} as JSX.Element }) {
                           width="32px"
                         /> */}
                         <Image
-                          className="block h-8 w-auto"
+                          className='block h-8 w-auto'
                           src={Logo}
-                          alt="snowball"
-                          height="32px"
-                          width="32px"
+                          alt='snowball'
+                          height='32px'
+                          width='32px'
                         />
-                        <span className="ml-2 text-lg font-bold text-gray-600 transition-colors duration-200 group-hover:text-blue-500">
+                        <span className='ml-2 text-lg font-bold text-gray-600 transition-colors duration-200 group-hover:text-blue-500'>
                           misikoff
                         </span>
                       </a>
                     </Link>
-                    <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
+                    <div className='hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8'>
                       {navigation.map((item) => (
                         <Link key={item.name} href={item.href}>
                           <a
@@ -92,16 +92,16 @@ export default function Example({ children = {} as JSX.Element }) {
                     </div>
                   </div>
 
-                  <div className="-mr-2 flex items-center sm:hidden">
+                  <div className='-mr-2 flex items-center sm:hidden'>
                     {/* Mobile menu button */}
-                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                      <span className="sr-only">Open main menu</span>
+                    <Disclosure.Button className='inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
+                      <span className='sr-only'>Open main menu</span>
                       {open ? (
-                        <XIcon className="block h-6 w-6" aria-hidden="true" />
+                        <XIcon className='block h-6 w-6' aria-hidden='true' />
                       ) : (
                         <MenuIcon
-                          className="block h-6 w-6"
-                          aria-hidden="true"
+                          className='block h-6 w-6'
+                          aria-hidden='true'
                         />
                       )}
                     </Disclosure.Button>
@@ -109,12 +109,12 @@ export default function Example({ children = {} as JSX.Element }) {
                 </div>
               </div>
 
-              <Disclosure.Panel className="sm:hidden">
-                <div className="space-y-1 pb-3 pt-2">
+              <Disclosure.Panel className='sm:hidden'>
+                <div className='space-y-1 pb-3 pt-2'>
                   {navigation.map((item) => (
                     <Disclosure.Button
                       key={item.name}
-                      as="a"
+                      as='a'
                       href={item.href}
                       className={classNames(
                         item.current
@@ -133,7 +133,7 @@ export default function Example({ children = {} as JSX.Element }) {
           )}
         </Disclosure>
 
-        <div className="">
+        <div className=''>
           {/* <header>
             <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-8">
               <h1 className="text-gray-900 text-3xl font-bold leading-tight">
@@ -142,7 +142,7 @@ export default function Example({ children = {} as JSX.Element }) {
             </div>
           </header> */}
           <main>
-            <div className="">
+            <div className=''>
               {/* Replace with your content */}
               {/* <div className="px-4 py-8 sm:px-0">
                 <div className="border-4 border-dashed border-gray-200 rounded-lg h-96" />
