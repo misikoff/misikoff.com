@@ -3,7 +3,7 @@ import React from 'react'
 function Icon() {
   return (
     <svg
-      className='h-6 w-6 fill-current'
+      className='h-6 w-6'
       aria-hidden='true'
       enableBackground='new 0 0 56.693 56.693'
       viewBox='0 0 56.693 56.693'

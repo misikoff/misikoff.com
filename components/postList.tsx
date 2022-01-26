@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import TaillwindImage from 'components/TailwindImage'
 import Link from 'next/link'
 
 function prettyDate(dateString: string) {
@@ -28,19 +28,18 @@ export default function PostList({
         <li key={article.frontMatter.title}>
           <Link href={pathPrefix + article.slug}>
             <a className='group my-4 cursor-pointer'>
-              <div className='flex flex-col overflow-hidden rounded-lg shadow-md transition-shadow group-hover:shadow-lg'>
-                <div className='flex-shrink-0'>
-                  <Image
-                    className='h-48 w-full object-cover'
+              <div className=' flex w-full max-w-lg flex-col overflow-hidden rounded-lg shadow-md transition-shadow group-hover:shadow-lg'>
+                <div className='w-full flex-shrink-0'>
+                  <TaillwindImage
+                    className='h-48 w-full'
                     src={article.frontMatter.thumbnailUrl}
                     alt='Article Image'
-                    width={500}
-                    height={400}
-                    objectFit='cover'
+                    width={400}
+                    height={200}
                   />
                 </div>
                 <div className='flex flex-1 flex-col justify-between bg-white p-6'>
-                  <div className='flex-1'>
+                  <div className='flex-1 text-left'>
                     {article.frontMatter.tags &&
                       article.frontMatter.tags.length && (
                         <div className='inline-flex gap-x-2'>
@@ -70,7 +69,7 @@ export default function PostList({
                         <time dateTime={article.frontMatter.date}>
                           {prettyDate(article.frontMatter.date)}
                         </time>
-                        {!hideReadTime && (
+                        {article.readingTime && !hideReadTime && (
                           <>
                             <span aria-hidden='true'>&middot;</span>
                             <span>

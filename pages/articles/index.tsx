@@ -5,9 +5,8 @@ import Head from 'next/head'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import Link from 'next/link'
-import Image from 'next/image'
 
+import Header from 'components/header'
 import PostList from 'components/postList'
 
 export const getStaticProps: GetStaticProps = async (_) => {
@@ -38,45 +37,17 @@ const Home = ({ posts = [] as Post[] }) => {
   // const posts = getAllPosts(['slug'])
 
   return (
-    <div className='flex flex-col items-center justify-center py-2'>
+    <>
       <Head>
         <title>Articles</title>
       </Head>
-
-      <main className='flex w-full flex-1 flex-col items-center justify-center px-20 text-center'>
-        {/* {posts.map((post, index: number) => (
-          <Link href={'/articles/' + post.slug} passHref key={index}>
-            <div className="card pointer mb-3" style={{ maxWidth: '540px' }}>
-              <div className="row g-0">
-                <div className="col-md-8">
-                  <div className="card-body">
-                    <h5 className="card-title">{post.frontMatter.title}</h5>
-                    <p className="card-text">{post.frontMatter.description}</p>
-                    <p className="card-text">
-                      <small className="text-muted">
-                        {post.frontMatter.date}
-                      </small>
-                    </p>
-                  </div>
-                </div>
-                <div className="col-md-4 m-auto">
-                  <Image
-                    src={post.frontMatter.thumbnailUrl}
-                    className="img-fluid rounded-start mt-1"
-                    alt="thumbnail"
-                    width={500}
-                    height={400}
-                    objectFit="cover"
-                  />
-                </div>
-              </div>
-            </div>
-          </Link>
-        ))} */}
-
-        <PostList posts={posts} pathPrefix='/articles/' />
-      </main>
-    </div>
+      <div className='flex flex-col items-center justify-center'>
+        <main className='flex w-full flex-1 flex-col items-center justify-center px-20 text-center'>
+          <Header title='Articles' className='mb-4 md:mb-8' />
+          <PostList posts={posts} pathPrefix='/articles/' />
+        </main>
+      </div>
+    </>
   )
 }
 
