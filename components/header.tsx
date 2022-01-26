@@ -1,12 +1,14 @@
 export default function Header({
   category,
   title,
+  className,
 }: {
   category?: string
   title?: string
+  className?: string
 }) {
   return (
-    <div>
+    <div className={className}>
       {category && (
         <span className='block text-center text-base font-semibold uppercase tracking-wide text-blue-600'>
           {category}

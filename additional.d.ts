@@ -12,6 +12,8 @@ type Post = {
     tags: string[]
     thumbnailUrl: string
     title: string
+    readingTime?: string
+    numbers?: string
   }
   slug: string
   //   author: string

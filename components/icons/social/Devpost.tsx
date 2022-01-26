@@ -3,14 +3,11 @@ import React from 'react'
 function Icon() {
   return (
     <svg
-      className='h-6 w-6 fill-current'
+      className='h-6 w-6'
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 280.3 242.7'
     >
-      <polygon
-        className='fill-current'
-        points='70.1,242.7 0,121.4 70.1,0 210.2,0 280.3,121.4 210.2,242.7 	'
-      />
+      <polygon points='70.1,242.7 0,121.4 70.1,0 210.2,0 280.3,121.4 210.2,242.7 	' />
 
       <path
         fill='#FFFFFF'
