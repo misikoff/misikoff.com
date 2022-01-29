@@ -8,7 +8,7 @@ import PlayCard from './playCard'
 export default function Chassis({
   children,
 }: {
-  children: JSX.Element | string
+  children?: any //JSX.Element | string | null
 }) {
   const [game, _] = useState(new CoinTossGame())
   const [playedAlready, setPlayedAlready] = useState(game.playedAlready)

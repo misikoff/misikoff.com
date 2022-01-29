@@ -4,17 +4,17 @@ import TailwindImage from 'components/twImage'
 type UnsplashProps = {
   className: string
   src: string
-  alt: string
+  alt?: string
   height: number
   width: number
   q: number
   facepad: number
   fit: string
-  ixlib: string
-  auto: string
-  crop: string
-  dpr: string
-  skipTailwindWrapper: boolean
+  ixlib?: string
+  auto?: string
+  crop?: string
+  dpr?: string
+  skipTailwindWrapper?: boolean
 }
 
 export default function Layout({
