@@ -9,16 +9,21 @@ import path from 'path'
 import matter from 'gray-matter'
 import Header from 'components/header'
 
-const DynamicHeader = dynamic(() => import('components/header'))
-const Link = dynamic(() => import('next/link'))
-const TaillwindImage = dynamic(() => import('components/twImage'))
-const UnsplashImage = dynamic(() => import('components/unsplashImage'))
-const ChartTest = dynamic(() => import('components/blogHelpers/mult/chassis'))
+import DynamicHeader from 'components/header'
+import Link from 'next/link'
+import TailwindImage from 'components/twImage'
+import UnsplashImage from 'components/unsplashImage'
+import ChartTest from 'components/blogHelpers/mult/chassis'
+// const DynamicHeader = dynamic(() => import('components/header'))
+// const Link = dynamic(() => import('next/link'))
+// const TaillwindImage = dynamic(() => import('components/twImage'))
+// const UnsplashImage = dynamic(() => import('components/unsplashImage'))
+// const ChartTest = dynamic(() => import('components/blogHelpers/mult/chassis'))
 
 const components = {
   Header: DynamicHeader,
   Link,
-  TaillwindImage,
+  TailwindImage,
   UnsplashImage,
   ChartTest,
 }
