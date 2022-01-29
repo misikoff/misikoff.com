@@ -16,7 +16,7 @@ import UnsplashImage from 'components/unsplashImage'
 import ChartTest from 'components/blogHelpers/mult/chassis'
 // const DynamicHeader = dynamic(() => import('components/header'))
 // const Link = dynamic(() => import('next/link'))
-// const TaillwindImage = dynamic(() => import('components/twImage'))
+// const TailwindImage = dynamic(() => import('components/twImage'))
 // const UnsplashImage = dynamic(() => import('components/unsplashImage'))
 // const ChartTest = dynamic(() => import('components/blogHelpers/mult/chassis'))
 
