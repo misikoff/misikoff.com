@@ -1,4 +1,4 @@
-import TaillwindImage from 'components/TailwindImage'
+import TaillwindImage from 'components/twImage'
 import Link from 'next/link'
 
 function prettyDate(dateString: string) {
@@ -22,6 +22,7 @@ export default function PostList({
   pathPrefix = '',
   hideReadTime = false,
 }) {
+  console.log({ received: posts })
   return (
     <ul className='space-y-8'>
       {posts.map((article) => (
@@ -69,34 +70,38 @@ export default function PostList({
                         <time dateTime={article.frontMatter.date}>
                           {prettyDate(article.frontMatter.date)}
                         </time>
-                        {article.readingTime && !hideReadTime && (
+                        {article.frontMatter.readingTime && !hideReadTime && (
                           <>
                             <span aria-hidden='true'>&middot;</span>
                             <span>
-                              {Math.ceil(article.readingTime / 60000)}-minute
-                              read
+                              {Math.ceil(
+                                article.frontMatter.readingTime.time / 60000
+                              )}
+                              -minute read
                             </span>
                           </>
                         )}
                       </div>
-                      {article.number && (
+                      {article.frontMatter.numbers && (
                         <div className='space-x-3'>
-                          {Object.keys(article.numbers).map((name) => (
-                            <span key={name}>
-                              {article.numbers[name] && (
-                                <span className='inline-flex space-x-1 align-baseline'>
-                                  <span className='font-mono font-semibold text-black'>
-                                    {article.numbers[name]}
+                          {Object.keys(article.frontMatter.numbers).map(
+                            (name) => (
+                              <span key={name}>
+                                {article.frontMatter.numbers![name] && (
+                                  <span className='inline-flex space-x-1 align-baseline'>
+                                    <span className='font-mono font-semibold text-black'>
+                                      {article.frontMatter.numbers![name]}
+                                    </span>
+                                    <span>
+                                      {article.frontMatter.numbers![name] === 1
+                                        ? name.substring(0, name.length - 1)
+                                        : name}
+                                    </span>
                                   </span>
-                                  <span>
-                                    {article.numbers[name] === 1
-                                      ? name.substring(0, name.length - 1)
-                                      : name}
-                                  </span>
-                                </span>
-                              )}
-                            </span>
-                          ))}
+                                )}
+                              </span>
+                            )
+                          )}
                         </div>
                       )}
                     </div>

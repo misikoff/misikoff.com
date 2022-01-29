@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Logo from 'public/icon.png'
 import UserImage from 'public/userImage.jpeg'
+import utilityFunctions from 'lib/utilityFunctions'
 
 const user = {
   name: 'Tom Cook',
@@ -18,10 +19,6 @@ const navigation = [
   { name: 'Articles', href: '/articles', current: false },
   { name: 'Sandboxes', href: '/sandboxes', current: false },
 ]
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
-}
 
 export default function Example({ children = {} as JSX.Element }) {
   const router = useRouter()
@@ -77,7 +74,7 @@ export default function Example({ children = {} as JSX.Element }) {
                       {navigation.map((item) => (
                         <Link key={item.name} href={item.href}>
                           <a
-                            className={classNames(
+                            className={utilityFunctions.classNames(
                               item.current
                                 ? 'border-indigo-500 text-gray-900'
                                 : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
@@ -116,7 +113,7 @@ export default function Example({ children = {} as JSX.Element }) {
                       key={item.name}
                       as='a'
                       href={item.href}
-                      className={classNames(
+                      className={utilityFunctions.classNames(
                         item.current
                           ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
                           : 'border-transparent text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800',

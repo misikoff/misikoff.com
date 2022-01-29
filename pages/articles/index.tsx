@@ -1,5 +1,7 @@
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
+import readingTime from 'reading-time'
+
 // import { getPostBySlug, getAllPosts } from 'lib/api'
 
 import fs from 'fs'
@@ -20,7 +22,12 @@ export const getStaticProps: GetStaticProps = async (_) => {
     const { data: frontMatter } = matter(markdownWithMeta)
 
     return {
-      frontMatter,
+      // frontMatter,
+      frontMatter: {
+        wordCount: markdownWithMeta.split(/\s+/gu).length,
+        readingTime: readingTime(markdownWithMeta),
+        ...frontMatter,
+      },
       slug: filename.split('.')[0],
     }
   })

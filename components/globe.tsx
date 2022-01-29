@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import anime from 'animejs'
-// import utilityFunctions from 'utils/utilityFunctions'
+// import utilityFunctions from 'lib/utilityFunctions'
 // consider how to implement shuffling
 
 const numWaves = 4
