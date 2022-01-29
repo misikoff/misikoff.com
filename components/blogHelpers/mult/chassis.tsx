@@ -208,14 +208,13 @@ export default function Chassis({
             adding or subtracting a proportion of the pot.
           </h3>
           <pre>
-            Adding 50% of the pot leaves you with 150% of the pot. (100% + 50%).
+            Adding 50% of the pot leaves you with 150% of the pot. (100% + 50%)
             <br />
             150% of x is equal to 1.5x.
             <br />
             This means the heads factor is 1.5.
             <br />
-            Reducing the pot by 40% leaves you with 60% of the pot. (100% -
-            40%).
+            Reducing the pot by 40% leaves you with 60% of the pot. (100% - 40%)
             <br />
             60% of x is equal to 0.6x.
             <br />
@@ -296,20 +295,20 @@ export default function Chassis({
           <br />
           Therefore, you would need to gain 33.333% on heads in order to break
           even.
+          <h2>References</h2>
+          <p>
+            This article was inspired by the work of Ole Peters in the field of
+            ergodicity economics. Visit his{' '}
+            <a
+              href='https://ergodicityeconomics.com/'
+              className='transition-colors duration-75 hover:text-blue-600'
+            >
+              blog
+            </a>{' '}
+            to learn more.
+          </p>
         </div>
       )}
-      <h2>References</h2>
-      <p>
-        This article was inspired by the work of Ole Peters in the field of
-        ergodicity economics. Visit his{' '}
-        <a
-          href='https://ergodicityeconomics.com/'
-          className='transition-colors duration-75 hover:text-blue-600'
-        >
-          blog
-        </a>{' '}
-        to learn more.
-      </p>
     </div>
   )
 }
