@@ -45,8 +45,10 @@ export default function LikelihoodChart({
   }, [probabilities])
 
   return (
-    <div className={className}>
-      <HighchartsReact highcharts={Highcharts} options={chartOptions} />
-    </div>
+    <HighchartsReact
+      containerProps={{ className }}
+      highcharts={Highcharts}
+      options={chartOptions}
+    />
   )
 }

@@ -14,7 +14,7 @@ export default function AnimatedNumber({
   name,
   value,
 }: {
-  className: string
+  className?: string
   name: string
   value: number
 }) {
@@ -22,7 +22,7 @@ export default function AnimatedNumber({
   const animationRef = useRef<AnimeInstance | null>(null)
 
   useEffect(() => {
-    const logEl = document.querySelector('.' + name) as Element
+    const logEl = document.getElementById(name) as Element
     const currentDisplayedValue = Number(logEl.innerHTML.replace('$', ''))
 
     const changeObject = { currentDisplayedValue }
@@ -39,5 +39,9 @@ export default function AnimatedNumber({
     setCurVal(value)
   }, [name, value])
 
-  return <div className={`${name} ${className}`}>{formatter(curVal)}</div>
+  return (
+    <div id={name} className={className}>
+      {formatter(curVal)}
+    </div>
+  )
 }

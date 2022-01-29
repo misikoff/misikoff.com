@@ -3,8 +3,6 @@ import Header from 'components/header'
 import Link from 'next/link'
 import TailwindImage from 'components/twImage'
 import UnsplashImage from 'components/unsplashImage'
-import ChartTest from 'components/blogHelpers/mult/chassis'
-
 import Chassis from 'components/blogHelpers/mult/chassis'
 
 export default function PostPage() {
@@ -40,7 +38,7 @@ export default function PostPage() {
               width={1310}
               height={873}
             />
-            {/* <TaillwindImage
+            {/* <TailwindImage
                 className='h-96 w-full'
                 src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&w=1310&h=873&q=100&facepad=3"
                 alt='Article Image'
@@ -54,7 +52,7 @@ export default function PostPage() {
           </figure>
           ## Your Turn The area between you and the game clears. Do you play?
           {'>'} Carpe diem.
-          <ChartTest>
+          <Chassis>
             <p className='font-bold text-gray-900'>
               Want to make your own rules? Visit the sandbox to see how changing
               the parameters of the game affects the distribution of outcomes.
@@ -79,7 +77,7 @@ export default function PostPage() {
               </a>{' '}
               to learn more.
             </p>
-          </ChartTest>
+          </Chassis>
           <Chassis />
         </div>
       </div>

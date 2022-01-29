@@ -19,6 +19,9 @@ export default function Sandbox() {
   const [headsFactor, setHeadsFactor] = useState(game.headsFactor)
   const [tailsFactor, setTailsFactor] = useState(game.tailsFactor)
 
+  const [probabilities, setProbabilities] = useState(game.probabilities)
+  const [results, setResults] = useState(game.results)
+
   function handleStartChanged(event: any) {
     setStartVal(game.setStartVal(event.target.value))
   }
@@ -37,18 +40,30 @@ export default function Sandbox() {
 
   useEffect(() => {
     game.on('event', (values: number[]) => {
-      console.log('should set values')
       setValues([...values])
     })
 
     game.on('ready', (newVal: boolean) => {
       setReady(newVal)
     })
+    game.on(
+      'updated-norm',
+      ({
+        probabilities,
+        results,
+      }: {
+        probabilities: number[]
+        results: number[]
+      }) => {
+        setProbabilities([...probabilities])
+        setResults([...results])
+      }
+    )
   }, [game])
 
   return (
-    <div className='mt-5 mb-16 w-full'>
-      <div className='flex flex-col md:flex-row'>
+    <div className='w-full'>
+      <div className='flex flex-col gap-x-4 md:flex-row'>
         <div className='flex flex-col shadow-md xl:max-w-lg'>
           <div className='mb-4 p-4'>
             <h3 className='text-lg font-medium leading-6 text-gray-900'>
@@ -82,7 +97,7 @@ export default function Sandbox() {
                   .
                 </li>
                 <li className={Number(tailsFactor) === 0 ? 'invisible' : ''}>
-                  After each tails the pot is
+                  After each tails the pot is{' '}
                   <span
                     className={utilityFunctions.classNames(
                       tailsFactor > 0 ? 'text-green-700' : 'text-red-600',
@@ -244,19 +259,16 @@ export default function Sandbox() {
           </div>
         </div>
 
-        <div className='flex w-full flex-col md:mt-0 md:ml-4'>
+        <div className='flex w-full flex-col'>
           <PlayCard game={game} />
           <ResultChart className='mt-4 flex-grow' values={values} />
         </div>
       </div>
 
       <div className='flex w-full flex-col md:flex-row'>
-        <LikelihoodChart
-          className='w-full'
-          probabilities={game.probabilities}
-        />
+        <LikelihoodChart className='w-full' probabilities={probabilities} />
 
-        <PayoffChart className='w-full' results={game.results} />
+        <PayoffChart className='w-full' results={results} />
       </div>
     </div>
   )

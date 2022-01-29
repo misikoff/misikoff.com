@@ -7,21 +7,21 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import Header from 'components/header'
+// import Header from 'components/header'
 
-const DynamicHeader = dynamic(() => import('components/header'))
+const Header = dynamic(() => import('components/header'))
 const Link = dynamic(() => import('next/link'))
-const TaillwindImage = dynamic(() => import('components/twImage'))
+const TailwindImage = dynamic(() => import('components/twImage'))
 const UnsplashImage = dynamic(() => import('components/unsplashImage'))
-const ChartTest = dynamic(() => import('components/blogHelpers/mult/chassis'))
+const Chassis = dynamic(() => import('components/blogHelpers/mult/chassis'))
 const MultSandbox = dynamic(() => import('components/blogHelpers/mult/sandbox'))
 
 const components = {
-  Header: DynamicHeader,
+  Header,
   Link,
-  TaillwindImage,
+  TailwindImage,
   UnsplashImage,
-  ChartTest,
+  Chassis,
   MultSandbox,
 }
 
@@ -70,11 +70,9 @@ const PostPage = ({
       <Head>
         <title>{title}</title>
       </Head>
-      <div className='mt-4'>
-        <div className='mx-auto'>
-          {/* <Header title={title} category={category} /> */}
-          <MDXRemote {...mdxSource} components={components} />
-        </div>
+      <div className='mx-auto mt-4 mb-16'>
+        {/* <Header title={title} category={category} /> */}
+        <MDXRemote {...mdxSource} components={components} />
       </div>
     </>
   )

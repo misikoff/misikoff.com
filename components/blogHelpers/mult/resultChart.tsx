@@ -52,8 +52,10 @@ export default function ResultChart({
   }, [values])
 
   return (
-    <div className={className}>
-      <HighchartsReact highcharts={Highcharts} options={chartOptions} />
-    </div>
+    <HighchartsReact
+      highcharts={Highcharts}
+      options={chartOptions}
+      containerProps={{ className }}
+    />
   )
 }

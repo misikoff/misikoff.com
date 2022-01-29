@@ -8,24 +8,22 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import Header from 'components/header'
-
-import DynamicHeader from 'components/header'
 import Link from 'next/link'
 import TailwindImage from 'components/twImage'
 import UnsplashImage from 'components/unsplashImage'
-import ChartTest from 'components/blogHelpers/mult/chassis'
-// const DynamicHeader = dynamic(() => import('components/header'))
+import Chassis from 'components/blogHelpers/mult/chassis'
+// const Header = dynamic(() => import('components/header'))
 // const Link = dynamic(() => import('next/link'))
 // const TailwindImage = dynamic(() => import('components/twImage'))
 // const UnsplashImage = dynamic(() => import('components/unsplashImage'))
-// const ChartTest = dynamic(() => import('components/blogHelpers/mult/chassis'))
+// const Chassis = dynamic(() => import('components/blogHelpers/mult/chassis'))
 
 const components = {
-  Header: DynamicHeader,
+  Header,
   Link,
   TailwindImage,
   UnsplashImage,
-  ChartTest,
+  Chassis,
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -73,9 +71,9 @@ const PostPage = ({
       <Head>
         <title>{title}</title>
       </Head>
-      <div className='mt-4'>
+      <div className='mx-auto mt-4'>
+        <Header title={title} category={category} />
         <div className='prose mx-auto'>
-          <Header title={title} category={category} />
           <MDXRemote {...mdxSource} components={components} />
         </div>
       </div>
