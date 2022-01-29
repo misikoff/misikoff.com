@@ -6,7 +6,6 @@ export class CoinTossGame extends EventEmitter {
   private ready = true
   public playedAlready = false
   private pass = false
-  private curVal = 0
   private tosses = [] as boolean[]
   public values = [] as number[]
   public results = [] as number[]
@@ -19,7 +18,6 @@ export class CoinTossGame extends EventEmitter {
     public numTosses = 10
   ) {
     super()
-    this.curVal = startVal
     this.setNorm()
   }
 
@@ -29,6 +27,14 @@ export class CoinTossGame extends EventEmitter {
 
   public curMedian() {
     return statisticsFunctions.median(this.results)
+  }
+
+  public curVal() {
+    if (!this.values.length) {
+      return this.startVal
+    } else {
+      return this.values[this.values.length - 1]
+    }
   }
 
   public headsCount() {
@@ -46,50 +52,38 @@ export class CoinTossGame extends EventEmitter {
       this.startVal = value
     }
 
-    if (!this.tosses.length) {
-      this.curVal = this.startVal
-    }
     this.handleChangeMade()
 
     return this.startVal
   }
 
-  //   TODO figure this out
   public setNumTosses(newTosses: number) {
     if (newTosses < 0) {
-      this.numTosses = 0
-    } else {
-      if (newTosses > 100) {
-        newTosses = 100
-      }
-      // else if (newTosses < 0) {
-      //   newTosses = 10
-      // }
-
-      //   if (this.ready && this.playedAlready) {
-      //     if (newTosses > this.tosses.length) {
-      //       for (let i = 0; i < newTosses - this.tosses.length; i++) {
-      //         const newToss = this.getRandomBoolean()
-      //         const curVal = this.values[this.values.length - 1]
-
-      //         this.tosses.push(newToss)
-      //         this.values.push(this.getNextVal(newToss, curVal))
-      //       }
-      //     } else {
-      //       for (let i = 0; i < this.tosses.length - newTosses; i++) {
-      //         this.tosses.pop()
-      //         this.values.pop()
-      //       }
-      //     }
-
-      //     const length = this.values.length
-      //     const nextVal = this.values[length - 1]
-      //     this.curVal = nextVal
-      //   }
-      //   this.numTosses = newTosses
-      //   this.setNorm()
+      newTosses = 0
+    } else if (newTosses > 100) {
+      newTosses = 100
     }
-    this.numTosses = newTosses
+
+    if (newTosses !== this.numTosses) {
+      if (this.ready && this.playedAlready) {
+        if (newTosses > this.tosses.length) {
+          for (let i = 0; i < newTosses - this.tosses.length; i++) {
+            const newToss = this.getRandomBoolean()
+
+            this.tosses.push(newToss)
+            this.values.push(this.getNextVal(newToss, this.curVal()))
+          }
+        } else {
+          for (let i = 0; i < this.tosses.length - newTosses; i++) {
+            this.tosses.pop()
+            this.values.pop()
+          }
+        }
+        this.emit('event', this.values)
+      }
+      this.numTosses = newTosses
+      this.setNorm()
+    }
 
     return this.numTosses
   }
@@ -177,6 +171,10 @@ export class CoinTossGame extends EventEmitter {
 
     this.results = results
     this.probabilities = probabilities
+    this.emit('updated-norm', {
+      probabilities: this.probabilities,
+      results: this.results,
+    })
   }
 
   private rerunWithNewFactor() {
@@ -190,11 +188,6 @@ export class CoinTossGame extends EventEmitter {
       this.values.push(nextVal)
     }
 
-    this.curVal = this.values[this.values.length - 1]
-
-    console.log('rerun')
-    console.log({ values: this.values.toString() })
-    console.log(this.curVal)
     this.emit('event', this.values)
   }
 
@@ -213,15 +206,14 @@ export class CoinTossGame extends EventEmitter {
       return curVal * (1 + this.tailsFactor / 100)
     }
   }
+
   private go(coinToss: boolean) {
     const curVal = this.values[this.values.length - 1]
     const nextVal = this.getNextVal(coinToss, curVal)
 
     this.values.push(nextVal)
 
-    this.curVal = nextVal
     this.emit('event', this.values)
-    console.log({ values: this.values.toString() })
   }
 
   private handleChangeMade() {

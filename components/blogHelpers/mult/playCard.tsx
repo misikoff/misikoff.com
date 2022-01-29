@@ -30,10 +30,8 @@ export default function PlayCard({
 
   useEffect(() => {
     game.on('event', (values: number[]) => {
-      console.log('should set values')
       setValues([...values])
-
-      setCurVal(values[values.length - 1])
+      setCurVal(game.curVal())
     })
 
     game.on('played', () => {

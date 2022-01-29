@@ -1,4 +1,4 @@
-import TaillwindImage from 'components/twImage'
+import TailwindImage from 'components/twImage'
 import Link from 'next/link'
 
 function prettyDate(dateString: string) {
@@ -22,7 +22,6 @@ export default function PostList({
   pathPrefix = '',
   hideReadTime = false,
 }) {
-  console.log({ received: posts })
   return (
     <ul className='space-y-8'>
       {posts.map((article) => (
@@ -31,7 +30,7 @@ export default function PostList({
             <a className='group my-4 cursor-pointer'>
               <div className=' flex w-full max-w-lg flex-col overflow-hidden rounded-lg shadow-md transition-shadow group-hover:shadow-lg'>
                 <div className='w-full flex-shrink-0'>
-                  <TaillwindImage
+                  <TailwindImage
                     className='h-48 w-full'
                     src={article.frontMatter.thumbnailUrl}
                     alt='Article Image'

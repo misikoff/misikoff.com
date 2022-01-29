@@ -18,7 +18,6 @@ export default function Example() {
   // const waveRef = useRef(null)
 
   useEffect(() => {
-    console.log('in use effect')
     anime({
       targets: '.el',
       translateX: 250,
@@ -34,9 +33,9 @@ export default function Example() {
       return w.d
     })
     curWaves.forEach((_, i) => {
-      console.log(
-        'cur index: ' + i + ' and change index: ' + ((i + 1) % curWaves.length)
-      )
+      // console.log(
+      //   'cur index: ' + i + ' and change index: ' + ((i + 1) % curWaves.length)
+      // )
       anime({
         targets: '.loop-alternate-infinity' + i,
         d: curWaves[(i + 1) % curWaves.length],

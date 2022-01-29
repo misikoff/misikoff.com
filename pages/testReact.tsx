@@ -5,7 +5,6 @@ export default function Example() {
   const animationRef = useRef<AnimeInstance | null>(null)
 
   useEffect(() => {
-    console.log('in use effect')
     animationRef.current = anime({
       targets: '.el',
       translateX: 250,

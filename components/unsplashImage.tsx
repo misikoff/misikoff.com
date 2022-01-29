@@ -2,7 +2,7 @@ import Image from 'next/image'
 import TailwindImage from 'components/twImage'
 
 type UnsplashProps = {
-  className: string
+  className?: string
   src: string
   alt?: string
   height: number

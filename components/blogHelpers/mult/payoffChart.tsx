@@ -49,8 +49,10 @@ export default function PayoffChart({
   }, [results])
 
   return (
-    <div className={className}>
-      <HighchartsReact highcharts={Highcharts} options={chartOptions} />
-    </div>
+    <HighchartsReact
+      containerProps={{ className }}
+      highcharts={Highcharts}
+      options={chartOptions}
+    />
   )
 }
