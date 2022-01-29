@@ -1,4 +1,3 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react'
 import Link from 'next/link'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
@@ -20,22 +19,17 @@ const navigation = [
   { name: 'Sandboxes', href: '/sandboxes', current: false },
 ]
 
-export default function Example({ children = {} as JSX.Element }) {
+export default function Example({
+  className = '',
+  children = {} as JSX.Element,
+}) {
   const router = useRouter()
   navigation.forEach((n) => {
     n.current = n.href === router.route
   })
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full">
-        <body class="h-full">
-        ```
-      */}
-      <div className='min-h-full'>
+      <div className={`${className} min-h-full`}>
         <Disclosure as='nav' className='border-b border-gray-200 bg-white'>
           {({ open }) => (
             <>
