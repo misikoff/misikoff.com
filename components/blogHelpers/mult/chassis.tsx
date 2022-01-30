@@ -73,7 +73,7 @@ export default function Chassis({
             <div className='mt-6'>
               Importantly, the payoffs are <i>not</i> symmetricly distributed.
               They are highly skewed. More than half of players lose money, but
-              a few make a huge profit. Your mathematician friend was right, the
+              a few make a huge profit. Your calculations were right, the
               average return is about <strong>$162</strong>, but{' '}
               <strong>62%</strong> of players walk away from the game with less
               than <strong>$60</strong>.

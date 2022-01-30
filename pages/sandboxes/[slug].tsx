@@ -1,12 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
-import Head from 'next/head'
 
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import HeadHelper from 'components/headHelper'
 // import Header from 'components/header'
 
 const Header = dynamic(() => import('components/header'))
@@ -52,6 +52,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
+      slug,
       frontMatter,
       mdxSource,
     },
@@ -59,17 +60,27 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 const PostPage = ({
-  frontMatter: { title, category, date },
+  slug,
+  frontMatter: { title, description, category, date },
   mdxSource,
 }: {
-  frontMatter: { title: string; category: string; date: Date }
+  slug: string
+  frontMatter: {
+    title: string
+    description: string
+    category: string
+    date: Date
+  }
   mdxSource: MDXRemoteSerializeResult
 }) => {
   return (
     <>
-      <Head>
-        <title>{title}</title>
-      </Head>
+      <HeadHelper
+        pageTitle={title}
+        title={`${title} - Misikoff`}
+        url={`https://misikoff.com/sandboxes/${slug}`}
+        description={description}
+      />
       <div className='mx-auto mt-4 mb-16'>
         {/* <Header title={title} category={category} /> */}
         <MDXRemote {...mdxSource} components={components} />

@@ -1,5 +1,4 @@
 import { GetStaticProps } from 'next'
-import Head from 'next/head'
 import readingTime from 'reading-time'
 
 // import { getPostBySlug, getAllPosts } from 'lib/api'
@@ -10,6 +9,7 @@ import matter from 'gray-matter'
 
 import Header from 'components/header'
 import PostList from 'components/postList'
+import HeadHelper from 'components/headHelper'
 
 export const getStaticProps: GetStaticProps = async (_) => {
   const files = fs.readdirSync(path.join('content/articles'))
@@ -45,9 +45,12 @@ const Home = ({ posts = [] as Post[] }) => {
 
   return (
     <>
-      <Head>
-        <title>Articles</title>
-      </Head>
+      <HeadHelper
+        pageTitle='Articles'
+        title='Articles - Misikoff'
+        url='https://misikoff.com/articles'
+        description='Read stories introducing novel statistical concepts.'
+      />
       <div className='flex flex-col items-center justify-center'>
         <main className='flex w-full flex-1 flex-col items-center justify-center px-4 text-center md:px-20'>
           <Header title='Articles' className='mb-4 md:mb-8' />
