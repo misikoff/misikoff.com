@@ -1,6 +1,7 @@
 import Steps from 'components/steps'
 import Header from 'components/header'
 import { ArrowNarrowRightIcon } from '@heroicons/react/outline'
+import HeadHelper from 'components/headHelper'
 
 function TextArrow(text: string) {
   return (
@@ -19,12 +20,13 @@ const frameWorkSteps = [
     status: 'current',
     bonusBlock: (
       <>
-        <p>
-          {'"'}Next.js gives you the best developer experience with all the
-          features you need for production: hybrid static & server rendering,
-          TypeScript support, smart bundling, route pre-fetching, and more. No
-          config needed.{'"'}
-        </p>
+        <q>
+          Next.js gives you the best developer experience with all the features
+          you need for production: hybrid static & server rendering, TypeScript
+          support, smart bundling, route pre-fetching, and more. No config
+          needed.
+        </q>
+        <br />
         {TextArrow('Next.js')}
       </>
     ),
@@ -36,15 +38,15 @@ const frameWorkSteps = [
     status: 'current',
     bonusBlock: (
       <>
-        <p>
-          {'"'}A utility-first CSS framework packed with classes like{' '}
+        <q>
+          A utility-first CSS framework packed with classes like{' '}
           <span className='font-mono font-bold text-black'>flex</span>,{' '}
           <span className='font-mono font-bold text-black'>pt-4</span>,{' '}
           <span className='font-mono font-bold text-black'>text-center</span>{' '}
           and <span className='font-mono font-bold text-black'>rotate-90</span>{' '}
           that can be composed to build any design, directly in your markup.
-          {'"'}
-        </p>
+        </q>
+        <br />
         {TextArrow('Tailwind CSS')}
       </>
     ),
@@ -59,14 +61,14 @@ const animationSteps = [
     status: 'current',
     bonusBlock: (
       <>
-        <p>
-          {'"'}
+        <q>
           <em>Anime.js</em> (<code>/ˈæn.ə.meɪ/</code>) is a lightweight
           JavaScript animation library with a simple, yet powerful API.
           <br />
           It works with CSS properties, SVG, DOM attributes and JavaScript
-          Objects.{'"'}
-        </p>
+          Objects.
+        </q>
+        <br />
         {TextArrow('Anime.js')}
       </>
     ),
@@ -78,11 +80,11 @@ const animationSteps = [
     status: 'current',
     bonusBlock: (
       <>
-        <p>
-          {'"'}Highcharts makes it easy for developers to set up interactive
-          charts in their web pages
-          {'"'}
-        </p>
+        <q>
+          Highcharts makes it easy for developers to set up interactive charts
+          in their web pages
+        </q>
+        <br />
         {TextArrow('Highcharts')}
       </>
     ),
@@ -97,12 +99,12 @@ const pipelinesteps = [
     status: 'current',
     bonusBlock: (
       <>
-        <p>
-          {'"'}
+        <q>
           Millions of developers and companies build, ship, and maintain their
           software on GitHub—the largest and most advanced development platform
-          in the world.{'"'}
-        </p>
+          in the world.
+        </q>
+        <br />
         {TextArrow('GitHub')}
       </>
     ),
@@ -114,12 +116,12 @@ const pipelinesteps = [
     status: 'current',
     bonusBlock: (
       <>
-        <p>
-          {'"'}Vercel combines the best developer experience with an obsessive
-          focus on end-user performance. Our platform enables frontend teams to
-          do their best work.
-          {'"'}
-        </p>
+        <q>
+          Vercel combines the best developer experience with an obsessive focus
+          on end-user performance. Our platform enables frontend teams to do
+          their best work.
+        </q>
+        <br />
         {TextArrow('Vercel')}
       </>
     ),
@@ -128,25 +130,33 @@ const pipelinesteps = [
 
 export default function Example() {
   return (
-    <div className='relative overflow-hidden pb-16 pt-4 md:pt-8'>
-      <div className='relative px-4 sm:px-6 lg:px-8'>
-        <div className='mx-auto max-w-prose text-lg'>
-          <Header category='Tech Stack' title="How It's Made" />
+    <>
+      <HeadHelper
+        pageTitle='Technology'
+        title='Technology - Misikoff'
+        description='Learn about the technology powering the site'
+        url='https://misikoff/technology'
+      />
+      <div className='relative overflow-hidden pb-16 pt-4 md:pt-8'>
+        <div className='relative px-4 sm:px-6 lg:px-8'>
+          <div className='mx-auto max-w-prose text-lg'>
+            <Header category='Tech Stack' title="How It's Made" />
 
-          <span className='mb-2 mt-8 flex text-lg font-bold'>Frameworks</span>
-          <Steps steps={frameWorkSteps} />
+            <span className='mb-2 mt-8 flex text-lg font-bold'>Frameworks</span>
+            <Steps steps={frameWorkSteps} />
 
-          <span className='mb-2 mt-8 flex text-lg font-bold'>
-            Animation Libraries
-          </span>
-          <Steps steps={animationSteps} />
+            <span className='mb-2 mt-8 flex text-lg font-bold'>
+              Animation Libraries
+            </span>
+            <Steps steps={animationSteps} />
 
-          <span className='mb-2 mt-8 flex text-lg font-bold'>
-            CI/CD Pipeline
-          </span>
-          <Steps steps={pipelinesteps} />
+            <span className='mb-2 mt-8 flex text-lg font-bold'>
+              CI/CD Pipeline
+            </span>
+            <Steps steps={pipelinesteps} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }

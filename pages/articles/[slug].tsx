@@ -1,6 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
-import Head from 'next/head'
 
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
@@ -12,6 +11,7 @@ import Link from 'next/link'
 import TailwindImage from 'components/twImage'
 import UnsplashImage from 'components/unsplashImage'
 import Chassis from 'components/blogHelpers/mult/chassis'
+import HeadHelper from 'components/headHelper'
 // const Header = dynamic(() => import('components/header'))
 // const Link = dynamic(() => import('next/link'))
 // const TailwindImage = dynamic(() => import('components/twImage'))
@@ -53,6 +53,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
+      slug,
       frontMatter,
       mdxSource,
     },
@@ -60,19 +61,29 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 const PostPage = ({
-  frontMatter: { title, category, date },
+  slug,
+  frontMatter: { title, description, category, date },
   mdxSource,
 }: {
-  frontMatter: { title: string; category: string; date: Date }
+  slug: string
+  frontMatter: {
+    title: string
+    description: string
+    category: string
+    date: Date
+  }
   mdxSource: MDXRemoteSerializeResult
 }) => {
   return (
     <>
-      <Head>
-        <title>{title}</title>
-      </Head>
+      <HeadHelper
+        pageTitle={title}
+        title={`${title} - Misikoff`}
+        url={`https://misikoff.com/articles/${slug}`}
+        description={description}
+      />
       <div className='mx-auto mt-4'>
-        <Header title={title} category={category} />
+        <Header title={title} category={category} className='mb-6' />
         <div className='prose mx-auto'>
           <MDXRemote {...mdxSource} components={components} />
         </div>

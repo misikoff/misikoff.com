@@ -1,0 +1,45 @@
+import Head from 'next/head'
+
+export default function HeadHelper({
+  pageTitle,
+  title,
+  url,
+  description,
+}: {
+  pageTitle?: string
+  title?: string
+  url?: string
+  description?: string
+}) {
+  return (
+    <Head>
+      {pageTitle && <title>{pageTitle}</title>}
+      {url && (
+        <>
+          <meta property='twitter:url' key='twitter:url' content={url} />
+          <meta property='og:url' key='og:url' content={url} />
+        </>
+      )}
+      {title && (
+        <>
+          <meta property='twitter:title' key='twitter:title' content={title} />
+          <meta property='og:title' key='og:title' content={title} />
+        </>
+      )}
+      {description && (
+        <>
+          <meta
+            property='twitter:description'
+            key='twitter:description'
+            content={description}
+          />
+          <meta
+            property='og:description'
+            key='og:description'
+            content={description}
+          />
+        </>
+      )}
+    </Head>
+  )
+}
