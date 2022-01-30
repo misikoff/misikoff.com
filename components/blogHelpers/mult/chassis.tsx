@@ -4,6 +4,7 @@ import LikelihoodChart from './likelihoodChart'
 import PayoffChart from './payoffChart'
 import ResultChart from './resultChart'
 import PlayCard from './playCard'
+import FractionHelper from 'components/fractionHelper'
 
 export default function Chassis({
   children,
@@ -89,9 +90,9 @@ export default function Chassis({
           <br />
           <br />
           After each toss we multiply the pot by some number. In the scenario
-          above, we multiply the pot by 1.5 (100% + 50% = 150% {'—>'}
-          1.5) after each heads, and by 0.6 (100% - 40% = 60% {'—>'} 0.6) after
-          each tails.
+          above, we multiply the pot by 1.5 (100% + 50% = 150% {'—>'} 1.5) after
+          each heads, <br />
+          and by 0.6 (100% - 40% = 60% {'—>'} 0.6) after each tails.
           <br />
           <br />
           So we can call <b>1.5</b> the heads factor and <b>0.6</b> the tails
@@ -210,13 +211,14 @@ export default function Chassis({
           <pre>
             Adding 50% of the pot leaves you with 150% of the pot. (100% + 50%)
             <br />
-            150% of x is equal to 1.5x.
+            150% of x = 1.5x
             <br />
             This means the heads factor is 1.5.
             <br />
+            <br />
             Reducing the pot by 40% leaves you with 60% of the pot. (100% - 40%)
             <br />
-            60% of x is equal to 0.6x.
+            60% of x = 0.6x
             <br />
             This means the tails factor is 0.6.
             <br />
@@ -237,12 +239,17 @@ export default function Chassis({
           To break even, you need the tails factor to be the reciprocal of the
           heads factor, because a number multiplied by its reciprocal is 1,
           i.e., 100%. If, like in the scenario above, the heads factor is 1.5
-          (which can be represented as 3/2) you would need the tails factor to
-          be its reciprocal, 2/3. A tails factor of 2/3 corresponds to losing
+          (which can be represented as{' '}
+          <FractionHelper numerator={3} denominator={2} />) you would need the
+          tails factor to be its reciprocal,{' '}
+          <FractionHelper numerator={2} denominator={3} />. A tails factor of{' '}
+          <FractionHelper numerator={2} denominator={3} /> corresponds to losing
           33.333% after each tails.
           <pre>
-            heads factor * tails factor * b<br /> = 3/2 * 2/3 * <i>b</i>
-            <br />= 6/6 * <i>b</i>
+            heads factor * tails factor * b<br /> ={' '}
+            <FractionHelper numerator={3} denominator={2} /> *{' '}
+            <FractionHelper numerator={2} denominator={3} /> * <i>b</i>
+            <br />= <FractionHelper numerator={6} denominator={6} /> * <i>b</i>
             <br />= 1 * <i>b</i> = <i>b</i>
           </pre>
           The loss of 40% described above is a larger loss, so you would lose
@@ -275,17 +282,24 @@ export default function Chassis({
             Losing 25% means you are left with 75% of what you had. (100% - 25%
             = 75%).
             <br />
-            75% = 75/100 = 3/4.
+            75% = <FractionHelper numerator={75} denominator={100} /> ={' '}
+            <FractionHelper numerator={3} denominator={4} />.
             <br />
-            {'->'} the tails factor is 3/4.
-            <br />
-            <br />
-            The reciprocal of 3/4 is 4/3.
-            <br />
-            {'->'} the heads factor is 4/3.
+            {'->'} the tails factor is{' '}
+            <FractionHelper numerator={3} denominator={4} />.
             <br />
             <br />
-            4/3 = 1.33333.
+            The reciprocal of <FractionHelper
+              numerator={3}
+              denominator={4}
+            />{' '}
+            is <FractionHelper numerator={4} denominator={3} />.
+            <br />
+            {'->'} the heads factor is{' '}
+            <FractionHelper numerator={4} denominator={3} />.
+            <br />
+            <br />
+            <FractionHelper numerator={4} denominator={3} /> = 1.33333.
             <br />
             As a percent, that{"'"}s 133.333%.
             <br />
