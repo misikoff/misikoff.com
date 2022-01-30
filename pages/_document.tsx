@@ -5,14 +5,17 @@ class MyDocument extends Document {
     return (
       <Html lang='en' className='h-full'>
         <Head>
-          <meta name='application-name' content='PWA App' />
+          <meta name='application-name' content='Misikoff' />
           <meta name='apple-mobile-web-app-capable' content='yes' />
           <meta
             name='apple-mobile-web-app-status-bar-style'
             content='default'
           />
-          <meta name='apple-mobile-web-app-title' content='PWA App' />
-          <meta name='description' content='Best PWA App in the world' />
+          <meta name='apple-mobile-web-app-title' content='Misikoff' />
+          <meta
+            name='description'
+            content='This is a growing hub where I discuss novel concepts and their applications.'
+          />
           <meta name='format-detection' content='telephone=no' />
           <meta name='mobile-web-app-capable' content='yes' />
           {/* <meta
@@ -63,26 +66,33 @@ class MyDocument extends Document {
           <link rel='stylesheet' href='https://rsms.me/inter/inter.css' />
 
           <meta name='twitter:card' content='summary' />
-          <meta name='twitter:url' content='https://nextjs.misikoff.com' />
-          <meta name='twitter:title' content='PWA App' />
+          <meta name='twitter:url' content='https://misikoff.com' />
+          <meta name='twitter:title' content='Misikoff' />
           <meta
             name='twitter:description'
-            content='Best PWA App in the world'
+            content='This is a growing hub where I discuss novel concepts and their applications.'
           />
           <meta
             name='twitter:image'
-            content='https://nextjs.misikoff.com/icons/manifest-icon-192.maskable.png'
+            content='https://misikoff.com/icons-auto/manifest-icon-192.maskable.png'
           />
+          <meta name='twitter:image:alt' content='water globe logo' />
+          <meta name='twitter:site' content='@TMisikoff' />
           <meta name='twitter:creator' content='@TMisikoff' />
+
           <meta property='og:type' content='website' />
-          <meta property='og:title' content='PWA App' />
-          <meta property='og:description' content='Best PWA App in the world' />
-          <meta property='og:site_name' content='PWA App' />
-          <meta property='og:url' content='https://nextjs.misikoff.com' />
+          <meta property='og:title' content='Misikoff' />
+          <meta
+            property='og:description'
+            content='This is a growing hub where I discuss novel concepts and their applications.'
+          />
+          <meta property='og:site_name' content='Misikoff' />
+          <meta property='og:url' content='https://misikoff.com' />
           <meta
             property='og:image'
-            content='https://nextjs.misikoff.com/icons/apple-icon-180.png'
+            content='https://misikoff.com/icons-auto/apple-icon-180.png'
           />
+          <meta property='og:image:alt' content='water globe logo' />
 
           {/* apple splash screen images */}
           {/* <link
