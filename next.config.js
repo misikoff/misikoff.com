@@ -6,6 +6,14 @@ const withMDX = require('@next/mdx')({
 
 module.exports = withPWA(
   withMDX({
+    async rewrites() {
+      return [
+        {
+          source: '/bear.js',
+          destination: 'https://cdn.panelbear.com/analytics.js',
+        },
+      ]
+    },
     pwa: {
       dest: 'public',
     },

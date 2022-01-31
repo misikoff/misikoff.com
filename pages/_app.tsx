@@ -15,7 +15,7 @@ const meta = {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
-  usePanelbear('4BATPpqorpU')
+  usePanelbear('4BATPpqorpU', { scriptSrc: '/bear.js' })
 
   return (
     <>
