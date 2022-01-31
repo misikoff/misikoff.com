@@ -4,6 +4,8 @@ import 'tailwindcss/tailwind.css'
 
 import Layout from 'components/layout'
 
+import { usePanelbear } from '@panelbear/panelbear-nextjs'
+
 const meta = {
   title: 'Misikoff',
   description:
@@ -13,6 +15,8 @@ const meta = {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
+  usePanelbear('4BATPpqorpU')
+
   return (
     <>
       <Head>
