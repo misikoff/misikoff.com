@@ -4,6 +4,12 @@ import AnimatedNumber from 'components/animatedNumber'
 import utilityFunctions from 'lib/utilityFunctions'
 import { CoinTossGame } from './coinToss'
 
+const nfObject = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  signDisplay: 'always',
+})
+
 export default function PlayCard({
   game,
   showPass = false,
@@ -69,7 +75,7 @@ export default function PlayCard({
             <dt className='truncate text-sm font-medium text-gray-500'>
               Current Value
             </dt>
-            <dd className='flex items-baseline'>
+            <dd className='md:flex md:items-baseline'>
               <AnimatedNumber
                 value={curVal}
                 name='curVal'
@@ -77,7 +83,7 @@ export default function PlayCard({
               />
 
               {values.length > 1 && (
-                <div className='ml-2 flex items-baseline text-sm font-semibold text-green-600'>
+                <div className='flex items-baseline text-sm font-semibold text-green-600 md:ml-2'>
                   <ArrowUpIcon
                     className={utilityFunctions.classNames(
                       change > 0
@@ -89,7 +95,7 @@ export default function PlayCard({
                   <span className='sr-only'>
                     {change > 0 ? 'Increased by' : 'Decreased by'}
                   </span>
-                  {Math.abs(change).toFixed(2)}
+                  {nfObject.format(change).replace('$', '')}
                 </div>
               )}
             </dd>
