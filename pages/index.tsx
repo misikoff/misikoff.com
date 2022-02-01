@@ -16,7 +16,7 @@ export default function Example() {
           <main className='mx-auto max-w-7xl px-4 sm:mt-0'>
             <div className='text-center'>
               <h1 className='text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl'>
-                <span className=''>Thomas Misikoff</span>
+                <span className=''>Tommy Misikoff</span>
                 <div className='flex flex-row items-center justify-center text-2xl text-blue-600 sm:text-3xl md:text-4xl'>
                   <span> software engineer </span>
 
