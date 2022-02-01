@@ -38,6 +38,14 @@ export default function Sandbox() {
     setTailsFactor(game.setTailsFactor(event.target.value))
   }
 
+  function getTossDescriptor() {
+    if (numTosses == 1) {
+      return 'coin toss'
+    } else {
+      return 'consecutive coin tosses'
+    }
+  }
+
   useEffect(() => {
     game.on('event', (values: number[]) => {
       setValues([...values])
@@ -79,42 +87,39 @@ export default function Sandbox() {
                     : Number(startVal).toFixed(2)}
                 </strong>{' '}
                 to play. Your bet is put into the pot. Your payoff is determined
-                by <strong>{numTosses}</strong> consecutive coin tosses.
+                by <strong>{numTosses}</strong> {getTossDescriptor()}.
               </p>
               <ul>
                 <li className={Number(headsFactor) === 0 ? 'invisible' : ''}>
-                  After each heads the pot is{' '}
+                  After each heads the pot{' '}
                   <span
                     className={utilityFunctions.classNames(
                       headsFactor > 0 ? 'text-green-700' : 'text-red-600',
                       'font-extrabold transition-colors duration-200'
                     )}
                   >
-                    {(headsFactor > 0 ? 'increased ' : 'decreased ') +
+                    {(headsFactor > 0 ? 'increases ' : 'decreases ') +
                       Math.abs(headsFactor)}
                     %
                   </span>
                   .
                 </li>
                 <li className={Number(tailsFactor) === 0 ? 'invisible' : ''}>
-                  After each tails the pot is{' '}
+                  After each tails the pot{' '}
                   <span
                     className={utilityFunctions.classNames(
                       tailsFactor > 0 ? 'text-green-700' : 'text-red-600',
                       'font-extrabold transition-colors duration-200'
                     )}
                   >
-                    {(tailsFactor > 0 ? 'increased ' : 'decreased ') +
+                    {(tailsFactor > 0 ? 'increases ' : 'decreases ') +
                       Math.abs(tailsFactor)}
                     %
                   </span>
                   .
                 </li>
               </ul>
-              <p>
-                After <strong>{numTosses}</strong> tosses, whatever{"'"}s in the
-                pot is yours.
-              </p>
+              <p>At the end, whatever{"'"}s in the pot is yours.</p>
             </div>
           </div>
           <div className='mb-4 p-4'>
@@ -139,7 +144,7 @@ export default function Sandbox() {
                       type='number'
                       name='bet'
                       disabled={!ready}
-                      className='block w-full rounded-md border-gray-300 pl-7 focus:border-blue-500 focus:ring-blue-500 sm:text-sm'
+                      className='block w-full rounded-md border-gray-300 pl-8 focus:border-blue-500 focus:ring-blue-500 sm:text-sm'
                       placeholder='100'
                       value={startVal}
                       onChange={handleStartChanged}
@@ -160,7 +165,7 @@ export default function Sandbox() {
                       disabled={!ready}
                       type='number'
                       name='tosses'
-                      className='block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm'
+                      className='block w-full rounded-md border-gray-300 pl-8 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm'
                       placeholder='10'
                       value={numTosses}
                       onChange={handleNumTossesChanged}
@@ -185,7 +190,7 @@ export default function Sandbox() {
                       disabled={!ready}
                       type='number'
                       name='headsFactor'
-                      className='block w-full rounded-md border-gray-300 pr-10 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm'
+                      className='block w-full rounded-md border-gray-300 pl-8 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm'
                       placeholder='50'
                       value={headsFactor}
                       onChange={handleHeadsFactorChanged}
@@ -208,7 +213,7 @@ export default function Sandbox() {
                       disabled={!ready}
                       type='number'
                       name='tailsFactor'
-                      className='block w-full rounded-md border-gray-300 pr-10 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm'
+                      className='block w-full rounded-md border-gray-300 pl-8 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm'
                       placeholder='50'
                       value={tailsFactor}
                       onChange={handleTailsFactorChanged}
@@ -223,12 +228,12 @@ export default function Sandbox() {
             <h3 className='text-lg font-medium leading-6 text-gray-900'>
               Properties
             </h3>
-            <div className='mt-5 grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow md:grid-cols-2 md:divide-y-0 md:divide-x'>
+            <div className='mt-5 grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow'>
               <dl className='px-4 py-5 sm:p-6'>
                 <dt className='text-base font-normal text-gray-900'>
                   Expected Value
                 </dt>
-                <dd className='mt-1 flex items-baseline justify-between overflow-ellipsis md:block lg:flex'>
+                <dd className='mt-1 flex items-baseline justify-between overflow-ellipsis'>
                   <div className='flex items-baseline text-2xl font-semibold text-blue-600'>
                     <AnimatedNumber
                       value={game.curExpValue()}
@@ -244,7 +249,7 @@ export default function Sandbox() {
                   <dt className='text-base font-normal text-gray-900'>
                     Median Value
                   </dt>
-                  <dd className='mt-1 flex items-baseline justify-between md:block lg:flex'>
+                  <dd className='mt-1 flex items-baseline justify-between'>
                     <div className='flex items-baseline text-2xl font-semibold text-blue-600'>
                       <AnimatedNumber
                         value={game.curMedian()}

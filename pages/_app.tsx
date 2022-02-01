@@ -11,7 +11,7 @@ const meta = {
   description:
     'This is a growing hub where I discuss novel concepts and their applications.',
   url: 'https://misikoff.com',
-  logoAlt: 'water globe logo',
+  logoAlt: 'wave ball logo',
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -129,6 +129,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           key='og:image:alt'
           content={meta.logoAlt}
         />
+
+        <meta name='author' content='Tommy Misikoff' />
       </Head>
       <Layout>
         <Component {...pageProps} />

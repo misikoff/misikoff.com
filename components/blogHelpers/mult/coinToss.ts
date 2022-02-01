@@ -2,6 +2,23 @@ import statisticsFunctions from 'lib/statistics'
 import utilityFunctions from 'lib/utilityFunctions'
 const EventEmitter = require('events')
 
+type BoundType = { [key: string]: number[] }
+const BOUNDS = {
+  numTosses: [1, 20],
+  headsFactor: [-100, 100],
+  tailsFactor: [-100, 100],
+  startVal: [1, 100],
+} as BoundType
+
+function handleBounds(value: number, boundKey: string) {
+  if (value < BOUNDS[boundKey][0]) {
+    return BOUNDS[boundKey][0]
+  } else if (value > BOUNDS[boundKey][1]) {
+    return BOUNDS[boundKey][1]
+  } else {
+    return value
+  }
+}
 export class CoinTossGame extends EventEmitter {
   private ready = true
   public playedAlready = false
@@ -44,25 +61,14 @@ export class CoinTossGame extends EventEmitter {
   }
 
   public setStartVal(value: number) {
-    if (value > 1000) {
-      this.startVal = 1000
-    } else if (value < 0) {
-      this.startVal = 100
-    } else {
-      this.startVal = value
-    }
-
+    this.startVal = handleBounds(value, 'startVal')
     this.handleChangeMade()
 
     return this.startVal
   }
 
-  public setNumTosses(newTosses: number) {
-    if (newTosses < 0) {
-      newTosses = 0
-    } else if (newTosses > 100) {
-      newTosses = 100
-    }
+  public setNumTosses(value: number) {
+    const newTosses = handleBounds(value, 'numTosses')
 
     if (newTosses !== this.numTosses) {
       if (this.ready && this.playedAlready) {
@@ -89,28 +95,16 @@ export class CoinTossGame extends EventEmitter {
   }
 
   public setHeadsFactor(value: number) {
-    if (value > 100) {
-      this.headsFactor = 100
-    } else if (value < -100) {
-      this.headsFactor = -100
-    } else {
-      this.headsFactor = value
-    }
-
+    this.headsFactor = handleBounds(value, 'headsFactor')
     this.handleChangeMade()
+
     return this.headsFactor
   }
 
   public setTailsFactor(value: number) {
-    if (value > 100) {
-      this.tailsFactor = 100
-    } else if (value < -100) {
-      this.tailsFactor = -100
-    } else {
-      this.tailsFactor = value
-    }
-
+    this.tailsFactor = handleBounds(value, 'tailsFactor')
     this.handleChangeMade()
+
     return this.tailsFactor
   }
 

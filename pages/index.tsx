@@ -6,7 +6,11 @@ import HeadHelper from 'components/headHelper'
 export default function Example() {
   return (
     <>
-      <HeadHelper pageTitle='Misikoff' />
+      <HeadHelper
+        pageTitle='Misikoff'
+        image='https://drive.google.com/file/d/1ZzrBBJ8O73kTlWK3HDjLtfgPuKodbVnK/preview'
+        alt='website home page with logo'
+      />
       <div className='relative overflow-hidden'>
         <DotPattern />
 
