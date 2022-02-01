@@ -8,7 +8,7 @@ export default function Example() {
     <>
       <HeadHelper
         pageTitle='Misikoff'
-        image='https://drive.google.com/file/d/1ZzrBBJ8O73kTlWK3HDjLtfgPuKodbVnK/preview'
+        image='https://misikoff.com/homeScreen.png'
         alt='website home page with logo'
       />
       <div className='relative overflow-hidden'>

@@ -62,7 +62,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 const PostPage = ({
   slug,
-  frontMatter: { title, description, category, date },
+  frontMatter: { title, description, category, date, thumbnailUrl, alt },
   mdxSource,
 }: {
   slug: string
@@ -71,6 +71,8 @@ const PostPage = ({
     description: string
     category: string
     date: Date
+    thumbnailUrl: string
+    alt: string
   }
   mdxSource: MDXRemoteSerializeResult
 }) => {
@@ -81,6 +83,9 @@ const PostPage = ({
         title={`${title} - Misikoff`}
         url={`https://misikoff.com/articles/${slug}`}
         description={description}
+        // test for linkedin
+        image={`${thumbnailUrl}.png`}
+        alt={alt}
       />
       <div className='mx-auto mt-4'>
         <Header title={title} category={category} className='mb-6' />
