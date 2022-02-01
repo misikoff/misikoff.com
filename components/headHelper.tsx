@@ -5,11 +5,15 @@ export default function HeadHelper({
   title,
   url,
   description,
+  image,
+  alt,
 }: {
   pageTitle?: string
   title?: string
   url?: string
   description?: string
+  image?: string
+  alt?: string
 }) {
   return (
     <Head>
@@ -40,6 +44,8 @@ export default function HeadHelper({
           />
         </>
       )}
+      {image && <meta property='og:image' key='og:image' content={image} />}
+      {alt && <meta property='og:image:alt' key='og:image:alt' content={alt} />}
     </Head>
   )
 }

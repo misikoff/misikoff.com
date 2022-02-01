@@ -3,7 +3,8 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang='en' className='h-full'>
+      // prefix needed for LinkedIn
+      <Html lang='en' className='h-full' prefix='og: http://ogp.me/ns#'>
         <Head>
           <link rel='manifest' href='/manifest.json' />
           {/* images */}
