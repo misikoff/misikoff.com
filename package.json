@@ -13,7 +13,7 @@
     "@next/mdx": "^12.0.9",
     "@panelbear/panelbear-nextjs": "^1.0.3",
     "animejs": "^3.2.1",
-    "highcharts": "^9.3.2",
+    "highcharts": "^9.3.3",
     "highcharts-react-official": "^3.1.0",
     "next": "^12.0.9",
     "next-mdx-remote": "^3.0.8",
