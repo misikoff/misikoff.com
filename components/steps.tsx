@@ -1,6 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { CheckIcon } from '@heroicons/react/solid'
-import utilityFunctions from 'lib/utilityFunctions'
+import classNames from 'classnames'
 
 type Step = {
   href: string
@@ -17,7 +17,7 @@ export default function Example({ steps = [] as Step[] }) {
         {steps.map((step, stepIdx: number) => (
           <li
             key={step.name}
-            className={utilityFunctions.classNames(
+            className={classNames(
               stepIdx !== steps.length - 1 ? 'pb-10' : '',
               'relative'
             )}

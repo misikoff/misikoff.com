@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import classNames from 'classnames'
 import { CoinTossGame } from './coinToss'
 import LikelihoodChart from './likelihoodChart'
 import PayoffChart from './payoffChart'
 import ResultChart from './resultChart'
 import PlayCard from './playCard'
 import AnimatedNumber from 'components/animatedNumber'
-
-import utilityFunctions from 'lib/utilityFunctions'
 
 export default function Sandbox() {
   const [game, _] = useState(new CoinTossGame())
@@ -93,7 +92,7 @@ export default function Sandbox() {
                 <li className={Number(headsFactor) === 0 ? 'invisible' : ''}>
                   After each heads the pot{' '}
                   <span
-                    className={utilityFunctions.classNames(
+                    className={classNames(
                       headsFactor > 0 ? 'text-green-700' : 'text-red-600',
                       'font-extrabold transition-colors duration-200'
                     )}
@@ -107,7 +106,7 @@ export default function Sandbox() {
                 <li className={Number(tailsFactor) === 0 ? 'invisible' : ''}>
                   After each tails the pot{' '}
                   <span
-                    className={utilityFunctions.classNames(
+                    className={classNames(
                       tailsFactor > 0 ? 'text-green-700' : 'text-red-600',
                       'font-extrabold transition-colors duration-200'
                     )}

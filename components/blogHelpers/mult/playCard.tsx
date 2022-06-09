@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { CashIcon, ArrowUpIcon } from '@heroicons/react/solid'
+import classNames from 'classnames'
 import AnimatedNumber from 'components/animatedNumber'
-import utilityFunctions from 'lib/utilityFunctions'
 import { CoinTossGame } from './coinToss'
 
 const nfObject = new Intl.NumberFormat('en-US', {
@@ -85,7 +85,7 @@ export default function PlayCard({
               {values.length > 1 && (
                 <div className='flex items-baseline text-sm font-semibold text-green-600 md:ml-2'>
                   <ArrowUpIcon
-                    className={utilityFunctions.classNames(
+                    className={classNames(
                       change > 0
                         ? 'rotate-0 text-green-500'
                         : 'rotate-180 text-red-500',
