@@ -4,9 +4,9 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+import classNames from 'classnames'
 import Logo from 'public/icon.png'
 import UserImage from 'public/userImage.jpeg'
-import utilityFunctions from 'lib/utilityFunctions'
 
 const user = {
   name: 'Tom Cook',
@@ -68,7 +68,7 @@ export default function Example({
                       {navigation.map((item) => (
                         <Link key={item.name} href={item.href}>
                           <a
-                            className={utilityFunctions.classNames(
+                            className={classNames(
                               item.current
                                 ? 'border-indigo-500 text-gray-900'
                                 : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
@@ -107,7 +107,7 @@ export default function Example({
                       key={item.name}
                       as='a'
                       href={item.href}
-                      className={utilityFunctions.classNames(
+                      className={classNames(
                         item.current
                           ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
                           : 'border-transparent text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800',
