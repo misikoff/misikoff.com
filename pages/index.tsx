@@ -22,11 +22,7 @@ export default function Example() {
               <h1 className='text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl'>
                 <span className=''>Tommy Misikoff</span>
                 <div className='flex flex-row items-center justify-center text-2xl text-blue-600 sm:text-3xl md:text-4xl'>
-                  <span> software engineer </span>
-
-                  <span className='px-2 text-black'> • </span>
-
-                  <span> statistical analyst </span>
+                  software engineer
                 </div>
               </h1>
               <p className='mx-auto mt-3 max-w-md text-left text-base text-gray-500 sm:text-lg md:mt-8 md:max-w-3xl md:text-xl'>
