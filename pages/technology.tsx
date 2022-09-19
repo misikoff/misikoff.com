@@ -1,13 +1,13 @@
 import Steps from 'components/steps'
 import Header from 'components/header'
-import { ArrowNarrowRightIcon } from '@heroicons/react/outline'
+import { ArrowLongRightIcon } from '@heroicons/react/24/outline'
 import HeadHelper from 'components/headHelper'
 
 function TextArrow(text: string) {
   return (
     <span className='group inline-flex items-center text-xs font-bold text-gray-500 duration-200 hover:text-blue-500'>
       more about {text}
-      <ArrowNarrowRightIcon className='h-6 w-6 transform opacity-0 duration-200 group-hover:opacity-100' />
+      <ArrowLongRightIcon className='h-6 w-6 transform opacity-0 duration-200 group-hover:opacity-100' />
     </span>
   )
 }

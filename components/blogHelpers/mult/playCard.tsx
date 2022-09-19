@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { CashIcon, ArrowUpIcon } from '@heroicons/react/solid'
+import { BanknotesIcon, ArrowUpIcon } from '@heroicons/react/24/solid'
 import classNames from 'classnames'
 import AnimatedNumber from 'components/animatedNumber'
 import { CoinTossGame } from './coinToss'
@@ -69,7 +69,7 @@ export default function PlayCard({
       <div className='px-4 py-5 sm:p-6'>
         <div className='flex items-center'>
           <div className='flex-shrink-0 rounded-md bg-blue-400 p-3'>
-            <CashIcon className='h-6 w-6 text-white' />
+            <BanknotesIcon className='h-6 w-6 text-white' />
           </div>
           <dl className='ml-5 w-0 flex-1'>
             <dt className='truncate text-sm font-medium text-gray-500'>
