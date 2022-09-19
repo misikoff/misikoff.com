@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import Link from 'next/link'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { MenuIcon, XIcon } from '@heroicons/react/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import classNames from 'classnames'
@@ -88,9 +88,12 @@ export default function Example({
                     <Disclosure.Button className='inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
                       <span className='sr-only'>Open main menu</span>
                       {open ? (
-                        <XIcon className='block h-6 w-6' aria-hidden='true' />
+                        <XMarkIcon
+                          className='block h-6 w-6'
+                          aria-hidden='true'
+                        />
                       ) : (
-                        <MenuIcon
+                        <Bars3Icon
                           className='block h-6 w-6'
                           aria-hidden='true'
                         />
