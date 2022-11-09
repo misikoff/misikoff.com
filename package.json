@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
-    "@commitlint/config-conventional": "^17.1.0",
+    "@commitlint/config-conventional": "^17.2.0",
     "@tailwindcss/typography": "^0.5.8",
     "@types/animejs": "^3.1.6",
     "@types/classnames": "^2.3.1",
