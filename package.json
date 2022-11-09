@@ -29,7 +29,7 @@
     "@tailwindcss/typography": "^0.5.8",
     "@types/animejs": "^3.1.6",
     "@types/classnames": "^2.3.1",
-    "@types/react": "^18.0.24",
+    "@types/react": "^18.0.25",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.27.0",
     "eslint-config-next": "^12.3.1",
