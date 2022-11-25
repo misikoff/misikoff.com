@@ -40,18 +40,19 @@ export default function PostList({
               </div>
               <div className='flex flex-1 flex-col justify-between bg-white p-6'>
                 <div className='flex-1 text-left'>
-                  {article.frontMatter.tags && article.frontMatter.tags.length && (
-                    <div className='inline-flex gap-x-2'>
-                      {article.frontMatter.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className='rounded-full bg-blue-400 px-2 py-1 text-xs font-semibold tracking-widest text-white'
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
+                  {article.frontMatter.tags &&
+                    article.frontMatter.tags.length && (
+                      <div className='inline-flex gap-x-2'>
+                        {article.frontMatter.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className='rounded-full bg-blue-400 px-2 py-1 text-xs font-semibold tracking-widest text-white'
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
 
                   <div className='mt-2 block'>
                     <p className='text-xl font-semibold text-gray-900'>
