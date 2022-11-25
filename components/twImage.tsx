@@ -24,8 +24,6 @@ export default function Example({
   priority = false,
   src = '',
   alt = '',
-  width = 0 as number,
-  height = 0 as number,
 }) {
   return (
     <div className={`relative ${className}`}>
@@ -35,11 +33,9 @@ export default function Example({
         blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(50, 50))}`}
         src={src}
         alt={alt}
-        layout='fill'
+        fill={true}
         objectFit='cover'
         className='rounded-md'
-        // width={400}
-        // height={200}
       />
       {/* <img
         src={`data:image/svg+xml;base64,${toBase64(shimmer(50, 50))}`}

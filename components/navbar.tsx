@@ -36,48 +36,49 @@ export default function Example({
               <div className='mx-auto max-w-7xl px-4 sm:px-6 md:mx-0 lg:px-8'>
                 <div className='flex h-16 justify-between'>
                   <div className='flex'>
-                    <Link href='/'>
-                      <a className='group flex flex-shrink-0 items-center'>
-                        {/* <Image
-                          className="block w-auto h-8 lg:hidden"
-                          src={Logo}
-                          alt="snowball"
-                          height="32px"
-                          width="32px"
-                        />
-                        <Image
-                          className="hidden w-auto h-8 lg:block"
-                          src={Logo}
-                          alt="snowball"
-                          height="32px"
-                          width="32px"
-                        /> */}
-                        <Image
-                          className='block h-8 w-auto'
-                          src={Logo}
-                          alt='snowball'
-                          height='32px'
-                          width='32px'
-                        />
-                        <span className='ml-2 text-lg font-bold text-gray-600 transition-colors duration-200 group-hover:text-blue-500'>
-                          misikoff
-                        </span>
-                      </a>
+                    <Link
+                      href='/'
+                      className='group flex flex-shrink-0 items-center'
+                    >
+                      {/* <Image
+                      className="block w-auto h-8 lg:hidden"
+                      src={Logo}
+                      alt="snowball"
+                      height={32}
+                      width={32}
+                    />
+                    <Image
+                      className="hidden w-auto h-8 lg:block"
+                      src={Logo}
+                      alt="snowball"
+                      height={32}
+                      width={32}
+                    /> */}
+                      <Image
+                        className='block h-8 w-auto'
+                        src={Logo}
+                        alt='snowball'
+                        height={32}
+                        width={32}
+                      />
+                      <span className='ml-2 text-lg font-bold text-gray-600 transition-colors duration-200 group-hover:text-blue-500'>
+                        misikoff
+                      </span>
                     </Link>
                     <div className='hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8'>
                       {navigation.map((item) => (
-                        <Link key={item.name} href={item.href}>
-                          <a
-                            className={classNames(
-                              item.current
-                                ? 'border-indigo-500 text-gray-900'
-                                : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                              'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
-                            )}
-                            aria-current={item.current ? 'page' : undefined}
-                          >
-                            {item.name}
-                          </a>
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          className={classNames(
+                            item.current
+                              ? 'border-indigo-500 text-gray-900'
+                              : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                            'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
+                          )}
+                          aria-current={item.current ? 'page' : undefined}
+                        >
+                          {item.name}
                         </Link>
                       ))}
                     </div>
@@ -129,18 +130,18 @@ export default function Example({
 
         <div className=''>
           {/* <header>
-            <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-8">
-              <h1 className="text-gray-900 text-3xl font-bold leading-tight">
-                Dashboard
-              </h1>
-            </div>
-          </header> */}
+          <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-8">
+            <h1 className="text-gray-900 text-3xl font-bold leading-tight">
+              Dashboard
+            </h1>
+          </div>
+        </header> */}
           <main>
             <div className=''>
               {/* Replace with your content */}
               {/* <div className="px-4 py-8 sm:px-0">
-                <div className="border-4 border-dashed border-gray-200 rounded-lg h-96" />
-              </div> */}
+              <div className="border-4 border-dashed border-gray-200 rounded-lg h-96" />
+            </div> */}
               {/* {children} */}
               {/* /End replace */}
             </div>

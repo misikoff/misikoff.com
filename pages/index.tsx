@@ -41,17 +41,19 @@ export default function Example() {
               </p>
               <div className='mx-auto mt-8 max-w-md sm:flex sm:justify-center md:mt-8'>
                 <div className='rounded-md shadow'>
-                  <Link href='/articles'>
-                    <a className='flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-8 py-3 text-base font-medium text-white hover:bg-blue-700 md:px-10 md:py-4 md:text-lg'>
-                      Read Articles
-                    </a>
+                  <Link
+                    href='/articles'
+                    className='flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-8 py-3 text-base font-medium text-white hover:bg-blue-700 md:px-10 md:py-4 md:text-lg'
+                  >
+                    Read Articles
                   </Link>
                 </div>
                 <div className='mt-3 rounded-md shadow sm:ml-3 sm:mt-0'>
-                  <Link href='/sandboxes'>
-                    <a className='flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-blue-600 hover:bg-gray-50 md:px-10 md:py-4 md:text-lg'>
-                      Explore Sandboxes
-                    </a>
+                  <Link
+                    href='/sandboxes'
+                    className='flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-blue-600 hover:bg-gray-50 md:px-10 md:py-4 md:text-lg'
+                  >
+                    Explore Sandboxes
                   </Link>
                 </div>
               </div>

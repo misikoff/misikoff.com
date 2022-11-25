@@ -58,14 +58,6 @@ export default function Layout({
       />
     )
   } else {
-    return (
-      <TailwindImage
-        className={className}
-        src={fullSrc()}
-        alt={alt}
-        width={width}
-        height={height}
-      />
-    )
+    return <TailwindImage className={className} src={fullSrc()} alt={alt} />
   }
 }

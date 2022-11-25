@@ -39,12 +39,12 @@ export default function PostPage() {
               height={873}
             />
             {/* <TailwindImage
-                className='h-96 w-full'
-                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&w=1310&h=873&q=100&facepad=3"
-                alt='Article Image'
-                width={400}
-                height={200}
-            /> */}
+              className='h-96 w-full'
+              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&w=1310&h=873&q=100&facepad=3"
+              alt='Article Image'
+              width={400}
+              height={200}
+          /> */}
             <figcaption>
               Your mathematician friend. He bears a striking resemblance to a
               stock photo you saw online.
@@ -58,10 +58,11 @@ export default function PostPage() {
               the parameters of the game affects the distribution of outcomes.
             </p>
             <div className='isolate mt-4 flex justify-center'>
-              <Link href='/sandboxes/multiplicativePayoffs'>
-                <a className='inline-flex cursor-pointer items-center justify-center rounded-md border border-transparent bg-blue-100 px-5 py-3 text-base font-medium text-blue-700 transition-colors duration-75 hover:bg-blue-600 hover:text-white'>
-                  Go To Sandbox
-                </a>
+              <Link
+                href='/sandboxes/multiplicativePayoffs'
+                className='inline-flex cursor-pointer items-center justify-center rounded-md border border-transparent bg-blue-100 px-5 py-3 text-base font-medium text-blue-700 transition-colors duration-75 hover:bg-blue-600 hover:text-white'
+              >
+                Go To Sandbox
               </Link>
             </div>
             <p>
