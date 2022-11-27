@@ -1,5 +1,6 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const { fontFamily } = require('tailwindcss/defaultTheme')
 
+/** @type {import('tailwindcss').Config} \*/
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -9,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['var(--font-inter)', ...fontFamily.sans],
       },
       spacing: {
         '1/5': '20%',
