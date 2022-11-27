@@ -33,9 +33,8 @@ export default function Example({
         blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(50, 50))}`}
         src={src}
         alt={alt}
-        fill={true}
-        objectFit='cover'
-        className='rounded-md'
+        fill
+        className='rounded-md object-cover'
       />
       {/* <img
         src={`data:image/svg+xml;base64,${toBase64(shimmer(50, 50))}`}
