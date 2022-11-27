@@ -81,9 +81,6 @@ class MyDocument extends Document {
             href="/icons-auto/apple-splash-640-1136.jpg"
             sizes="640x1136"
           /> */}
-
-          {/* styles */}
-          <link rel='stylesheet' href='https://rsms.me/inter/inter.css' />
         </Head>
         <body className='h-full'>
           <Main />

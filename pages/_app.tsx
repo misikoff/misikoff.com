@@ -1,10 +1,9 @@
 import { AppProps } from 'next/dist/shared/lib/router/router'
 import Head from 'next/head'
-import 'tailwindcss/tailwind.css'
-
 import Layout from 'components/layout'
-
+import { Inter } from '@next/font/google'
 import { usePanelbear } from '@panelbear/panelbear-nextjs'
+import 'tailwindcss/tailwind.css'
 
 const meta = {
   title: 'Misikoff',
@@ -13,6 +12,11 @@ const meta = {
   url: 'https://misikoff.com',
   logoAlt: 'wave ball logo',
 }
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
 
 function MyApp({ Component, pageProps }: AppProps) {
   usePanelbear('4BATPpqorpU', { scriptSrc: '/bear.js' })
@@ -132,7 +136,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         <meta name='author' content='Tommy Misikoff' />
       </Head>
-      <Layout>
+      <Layout className={`${inter.variable} font-sans`}>
         <Component {...pageProps} />
       </Layout>
     </>
