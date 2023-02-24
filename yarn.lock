@@ -1243,10 +1243,10 @@
   resolved "https://registry.yarnpkg.com/@next/font/-/font-13.2.0.tgz#677b3fc67243bccbae94d7d1e96a494be98206c4"
   integrity sha512-pWoegIxqegV+9+gFmRCZao6xhA2m3kKS34lMXqShJ5ibRuyHkP/tfDE82LzYZmVQ3p51ZrkwTugNwy/ohiE2cA==
 
-"@next/mdx@^13.1.5":
-  version "13.1.5"
-  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-13.1.5.tgz#9e100eed0af5d3c946382cf7a77d310a4948307e"
-  integrity sha512-j+syay//B029UPOpCbk7ZkrMGNC9Br4XWFk/RFN0BjIp8/fAtHRjQrE4OoVfMf9y/+mYVXrHTjahfzAVDlqvag==
+"@next/mdx@^13.2.1":
+  version "13.2.1"
+  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-13.2.1.tgz#67969ec2dcd81a2a53ade955f3981df64f1e993d"
+  integrity sha512-kWriuAxU3euPUugwoOI7WEo596QeHsxrbneKvItwrfu4YYZZLKNPHSnkLHvF7tlO9TjiPbFqYlK2xHK02Lp2SA==
   dependencies:
     source-map "^0.7.0"
 
