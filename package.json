@@ -10,7 +10,7 @@
     "@headlessui/react": "^1.7.11",
     "@heroicons/react": "^2.0.16",
     "@mdx-js/loader": "^2.2.1",
-    "@next/font": "^13.2.0",
+    "@next/font": "^13.2.1",
     "@next/mdx": "^13.2.1",
     "@panelbear/panelbear-nextjs": "^2.0.1",
     "animejs": "^3.2.1",
