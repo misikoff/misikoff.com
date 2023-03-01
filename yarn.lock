@@ -1238,10 +1238,10 @@
   dependencies:
     glob "7.1.7"
 
-"@next/font@^13.2.0":
-  version "13.2.0"
-  resolved "https://registry.yarnpkg.com/@next/font/-/font-13.2.0.tgz#677b3fc67243bccbae94d7d1e96a494be98206c4"
-  integrity sha512-pWoegIxqegV+9+gFmRCZao6xhA2m3kKS34lMXqShJ5ibRuyHkP/tfDE82LzYZmVQ3p51ZrkwTugNwy/ohiE2cA==
+"@next/font@^13.2.3":
+  version "13.2.3"
+  resolved "https://registry.yarnpkg.com/@next/font/-/font-13.2.3.tgz#96d8a1b431425b47e01f3620118d570e2148e312"
+  integrity sha512-7EHzk0f7FVYICLUZTpyPk93IfcTUao++Xt1Sgb+Zk5dVOCYHabqLtlF5ywSoXIqyFlo0qlshEBxsrzHAGTWkDw==
 
 "@next/mdx@^13.2.1":
   version "13.2.1"
