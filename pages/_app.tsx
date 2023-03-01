@@ -1,7 +1,7 @@
 import { AppProps } from 'next/dist/shared/lib/router/router'
 import Head from 'next/head'
 import Layout from 'components/layout'
-import { Inter } from '@next/font/google'
+import { Inter } from 'next/font/google'
 import { usePanelbear } from '@panelbear/panelbear-nextjs'
 import 'tailwindcss/tailwind.css'
 
