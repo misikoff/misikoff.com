@@ -1,8 +1,4 @@
-import { AppProps } from 'next/dist/shared/lib/router/router'
 import Head from 'next/head'
-import Layout from 'components/layout'
-import { Inter } from 'next/font/google'
-import 'tailwindcss/tailwind.css'
 
 const meta = {
   title: 'Misikoff',
@@ -12,12 +8,7 @@ const meta = {
   logoAlt: 'wave ball logo',
 }
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-})
-
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp() {
   return (
     <>
       <Head>
@@ -133,9 +124,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         <meta name='author' content='Tommy Misikoff' />
       </Head>
-      <Layout className={`${inter.variable} font-sans`}>
-        <Component {...pageProps} />
-      </Layout>
     </>
   )
 }

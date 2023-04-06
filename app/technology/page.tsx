@@ -1,7 +1,7 @@
 import Steps from 'components/steps'
 import Header from 'components/header'
 import { ArrowLongRightIcon } from '@heroicons/react/24/outline'
-import HeadHelper from 'components/headHelper'
+// import HeadHelper from 'components/headHelper'
 
 function TextArrow(text: string) {
   return (
@@ -128,35 +128,38 @@ const pipelinesteps = [
   },
 ]
 
-export default function Example() {
-  return (
-    <>
-      <HeadHelper
+{
+  /* <HeadHelper
         pageTitle='Technology'
         title='Technology - Misikoff'
         description='Learn about the technology powering the site'
         url='https://misikoff/technology'
-      />
-      <div className='relative overflow-hidden pb-16 pt-4 md:pt-8'>
-        <div className='relative px-4 sm:px-6 lg:px-8'>
-          <div className='mx-auto max-w-prose text-lg'>
-            <Header category='Tech Stack' title="How It's Made" />
+      /> */
+}
 
-            <span className='mb-2 mt-8 flex text-lg font-bold'>Frameworks</span>
-            <Steps steps={frameWorkSteps} />
+export default function TechnologyPage() {
+  return (
+    // <>
+    <div className='relative overflow-hidden pb-16 pt-4 md:pt-8'>
+      <div className='relative px-4 sm:px-6 lg:px-8'>
+        <div className='mx-auto max-w-prose text-lg'>
+          <Header category='Tech Stack' title="How It's Made" />
 
-            <span className='mb-2 mt-8 flex text-lg font-bold'>
-              Animation Libraries
-            </span>
-            <Steps steps={animationSteps} />
+          <span className='mb-2 mt-8 flex text-lg font-bold'>Frameworks</span>
+          <Steps steps={frameWorkSteps} />
 
-            <span className='mb-2 mt-8 flex text-lg font-bold'>
-              CI/CD Pipeline
-            </span>
-            <Steps steps={pipelinesteps} />
-          </div>
+          <span className='mb-2 mt-8 flex text-lg font-bold'>
+            Animation Libraries
+          </span>
+          <Steps steps={animationSteps} />
+
+          <span className='mb-2 mt-8 flex text-lg font-bold'>
+            CI/CD Pipeline
+          </span>
+          <Steps steps={pipelinesteps} />
         </div>
       </div>
-    </>
+    </div>
+    // </>
   )
 }

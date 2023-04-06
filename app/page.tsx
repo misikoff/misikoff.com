@@ -1,16 +1,16 @@
 import Link from 'next/link'
 import Globe from 'components/globe'
 import DotPattern from 'components/dotPattern'
-import HeadHelper from 'components/headHelper'
+// import HeadHelper from 'components/headHelper'
 
-export default function Example() {
+export default async function IndexPage() {
   return (
     <>
-      <HeadHelper
+      {/* <HeadHelper
         pageTitle='Misikoff'
         image='https://misikoff.com/homeScreen.png'
         alt='website home page with logo'
-      />
+      /> */}
       <div className='relative overflow-hidden'>
         <DotPattern />
 

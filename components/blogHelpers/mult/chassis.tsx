@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useState } from 'react'
 import { CoinTossGame } from './coinToss'
 import LikelihoodChart from './likelihoodChart'
@@ -11,7 +13,7 @@ export default function Chassis({
 }: {
   children?: any //JSX.Element | string | null
 }) {
-  const [game, _] = useState(new CoinTossGame())
+  const [game] = useState(new CoinTossGame())
   const [playedAlready, setPlayedAlready] = useState(game.playedAlready)
   const [values, setValues] = useState([game.startVal])
 

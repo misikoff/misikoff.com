@@ -9,9 +9,12 @@ import matter from 'gray-matter'
 
 import Header from 'components/header'
 import PostList from 'components/postList'
-import HeadHelper from 'components/headHelper'
+// import HeadHelper from 'components/headHelper'
 
-export const getStaticProps: GetStaticProps = async (_) => {
+export default async function Home() {
+  // console.log({ posts })
+  // const posts = getAllPosts(['slug'])
+
   const files = fs.readdirSync(path.join('content/articles'))
   console.log(files)
   const posts = files.map((filename) => {
@@ -32,33 +35,20 @@ export const getStaticProps: GetStaticProps = async (_) => {
     }
   })
 
-  return {
-    props: {
-      posts,
-    },
-  }
-}
-
-const Home = ({ posts = [] as Post[] }) => {
-  console.log({ posts })
-  // const posts = getAllPosts(['slug'])
-
   return (
-    <>
-      <HeadHelper
-        pageTitle='Articles'
-        title='Articles - Misikoff'
-        url='https://misikoff.com/articles'
-        description='Read stories introducing novel statistical concepts.'
-      />
-      <div className='flex flex-col items-center justify-center'>
-        <main className='flex w-full flex-1 flex-col items-center justify-center px-4 text-center md:px-20'>
-          <Header title='Articles' className='mb-4 md:mb-8' />
-          <PostList posts={posts} pathPrefix='/articles/' />
-        </main>
-      </div>
-    </>
+    // <>
+    // {/* <HeadHelper
+    // pageTitle='Articles'
+    // title='Articles - Misikoff'
+    // url='https://misikoff.com/articles'
+    // description='Read stories introducing novel statistical concepts.'
+    // /> */}
+    <div className='flex flex-col items-center justify-center'>
+      <main className='flex w-full flex-1 flex-col items-center justify-center px-4 text-center md:px-20'>
+        <Header title='Articles' className='mb-4 md:mb-8' />
+        <PostList posts={posts} pathPrefix='/articles/' />
+      </main>
+    </div>
+    // </>
   )
 }
-
-export default Home
