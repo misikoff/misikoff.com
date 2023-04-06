@@ -1,3 +1,5 @@
+'use client'
+
 import anime, { AnimeInstance } from 'animejs'
 import { useEffect, useRef } from 'react'
 
