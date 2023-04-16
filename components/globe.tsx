@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect } from 'react'
 import anime from 'animejs'
 // import utilityFunctions from 'lib/utilityFunctions'
