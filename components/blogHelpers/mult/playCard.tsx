@@ -130,7 +130,7 @@ export default function PlayCard({
             </button>
           )}
           {pass && (
-            <span className='mt-2 ml-2 inline-block'>
+            <span className='ml-2 mt-2 inline-block'>
               Ok. Let{"'"}s watch someone else play then.
             </span>
           )}

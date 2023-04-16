@@ -1,18 +1,13 @@
+'use client'
+
 import { Fragment } from 'react'
 import Link from 'next/link'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import Image from 'next/image'
 import classNames from 'classnames'
 import Logo from 'public/icon.png'
-import UserImage from 'public/userImage.jpeg'
-
-const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
-  image: UserImage,
-}
 
 const navigation = [
   { name: 'Articles', href: '/articles', current: false },
@@ -23,10 +18,10 @@ export default function Example({
   className = '',
   children = {} as JSX.Element,
 }) {
-  const router = useRouter()
-  navigation.forEach((n) => {
-    n.current = n.href === router.route
-  })
+  // const router = useRouter()
+  // navigation.forEach((n) => {
+  //   n.current = n.href === router.route
+  // })
   return (
     <>
       <div className={`${className} min-h-full`}>
@@ -127,26 +122,6 @@ export default function Example({
             </>
           )}
         </Disclosure>
-
-        <div className=''>
-          {/* <header>
-          <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-8">
-            <h1 className="text-gray-900 text-3xl font-bold leading-tight">
-              Dashboard
-            </h1>
-          </div>
-        </header> */}
-          <main>
-            <div className=''>
-              {/* Replace with your content */}
-              {/* <div className="px-4 py-8 sm:px-0">
-              <div className="border-4 border-dashed border-gray-200 rounded-lg h-96" />
-            </div> */}
-              {/* {children} */}
-              {/* /End replace */}
-            </div>
-          </main>
-        </div>
       </div>
     </>
   )
