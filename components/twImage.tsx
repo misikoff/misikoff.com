@@ -1,23 +1,9 @@
+'use client'
+
+import { useState } from 'react'
 import Image from 'next/image'
-
-const shimmer = (w: number, h: number) => `
-<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <linearGradient id="g">
-      <stop stop-color="#222" offset="20%" />
-      <stop stop-color="#333" offset="50%" />
-      <stop stop-color="#222" offset="70%" />
-    </linearGradient>
-  </defs>
-  <rect width="${w}" height="${h}" class="fill-black" />
-  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
-  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
-</svg>`
-
-const toBase64 = (str: string) =>
-  typeof window === 'undefined'
-    ? Buffer.from(str).toString('base64')
-    : window.btoa(str)
+import { clsx as classNames } from 'clsx'
+import { PhotoIcon } from '@heroicons/react/24/outline'
 
 export default function Example({
   className = '',
@@ -25,21 +11,27 @@ export default function Example({
   src = '',
   alt = '',
 }) {
-  return (
-    <div className={`relative ${className}`}>
+  const [isLoading, setLoading] = useState(true)
+
+  return src ? (
+    <div className='overflow-clip rounded-md'>
       <Image
         priority={priority}
-        placeholder='blur'
-        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(50, 50))}`}
         src={src}
         alt={alt}
-        fill
-        className='rounded-md object-cover'
+        height={300}
+        width={400}
+        className={classNames(
+          className,
+          'object-cover duration-700 ease-in-out group-hover:opacity-75',
+          isLoading
+            ? 'scale-110 blur-2xl grayscale'
+            : 'scale-100 blur-0 grayscale-0'
+        )}
+        onLoadingComplete={() => setLoading(false)}
       />
-      {/* <img
-        src={`data:image/svg+xml;base64,${toBase64(shimmer(50, 50))}`}
-        className="rounded-md"
-      /> */}
     </div>
+  ) : (
+    <PhotoIcon className={`${className} h-full w-full stroke-gray-400`} />
   )
 }
