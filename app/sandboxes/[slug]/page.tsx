@@ -1,14 +1,11 @@
+import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
-
-import { serialize } from 'next-mdx-remote/serialize'
-import { MDXRemote } from 'next-mdx-remote'
+import Header from 'components/header'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-// import HeadHelper from 'components/headHelper'
-// import Header from 'components/header'
+import { compileMDX } from 'next-mdx-remote/rsc'
 
-const Header = dynamic(() => import('components/header'))
 const Link = dynamic(() => import('next/link'))
 const TailwindImage = dynamic(() => import('components/twImage'))
 const UnsplashImage = dynamic(() => import('components/unsplashImage'))
@@ -24,19 +21,19 @@ const components = {
   MultSandbox,
 }
 
+export const metadata: Metadata = {
+  title: 'Sandboxes - Misikoff',
+  description: 'Explore statistical concepts through interactive environments.',
+}
+
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join('content/sandboxes'))
 
-  const paths = files.map((filename) => ({
+  return files.map((filename) => ({
     params: {
       slug: filename.replace('.mdx', ''),
     },
   }))
-
-  return {
-    paths,
-    // fallback: false,
-  }
 }
 
 export default async function SandboxSlugPage({
@@ -50,21 +47,19 @@ export default async function SandboxSlugPage({
     'utf-8'
   )
 
-  const { data: frontMatter, content } = matter(markdownWithMeta)
-  const mdxSource = await serialize(content)
+  const { content, frontmatter } = await compileMDX<{ title: string }>({
+    source: markdownWithMeta,
+    options: { parseFrontmatter: true },
+    components,
+  })
 
   return (
-    // <>
-    // <HeadHelper
-    //   pageTitle={title}
-    //   title={`${title} - Misikoff`}
-    //   url={`https://misikoff.com/sandboxes/${slug}`}
-    //   description={description}
-    // />
     <div className='mx-auto mb-16 mt-4'>
-      <Header title={frontMatter.title} category={frontMatter.category} />
-      <MDXRemote {...mdxSource} components={components} />
+      <Header
+        title={frontmatter.title}
+        // category={frontMatter.category}
+      />
+      {content}
     </div>
-    // </>
   )
 }

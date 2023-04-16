@@ -1,7 +1,12 @@
+import type { Metadata } from 'next'
 import Steps from 'components/steps'
 import Header from 'components/header'
 import { ArrowLongRightIcon } from '@heroicons/react/24/outline'
-// import HeadHelper from 'components/headHelper'
+
+export const metadata: Metadata = {
+  title: 'Technology - Misikoff',
+  description: 'Learn about the technology powering the site',
+}
 
 function TextArrow(text: string) {
   return (
@@ -128,18 +133,8 @@ const pipelinesteps = [
   },
 ]
 
-{
-  /* <HeadHelper
-        pageTitle='Technology'
-        title='Technology - Misikoff'
-        description='Learn about the technology powering the site'
-        url='https://misikoff/technology'
-      /> */
-}
-
 export default function TechnologyPage() {
   return (
-    // <>
     <div className='relative overflow-hidden pb-16 pt-4 md:pt-8'>
       <div className='relative px-4 sm:px-6 lg:px-8'>
         <div className='mx-auto max-w-prose text-lg'>
@@ -160,6 +155,5 @@ export default function TechnologyPage() {
         </div>
       </div>
     </div>
-    // </>
   )
 }
