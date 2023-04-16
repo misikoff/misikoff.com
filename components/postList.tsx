@@ -1,4 +1,4 @@
-import TailwindImage from 'components/twImage'
+import TailwindImage from 'components/tailwindImage'
 import Link from 'next/link'
 
 function prettyDate(dateString: string) {

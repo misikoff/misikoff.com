@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Header from 'components/header'
-// import TailwindImage from 'components/twImage'
+// import TailwindImage from 'components/tailwindImage'
 // import UnsplashImage from 'components/unsplashImage'
 // import Chassis from 'components/blogHelpers/mult/chassis'
 import fs from 'fs'
@@ -11,7 +11,7 @@ import { compileMDX } from 'next-mdx-remote/rsc'
 import dynamic from 'next/dynamic'
 // const Header = dynamic(() => import('components/header'))
 // const Link = dynamic(() => import('next/link'))
-const TailwindImage = dynamic(() => import('components/twImage'))
+const TailwindImage = dynamic(() => import('components/tailwindImage'))
 const UnsplashImage = dynamic(() => import('components/unsplashImage'))
 const Chassis = dynamic(() => import('components/blogHelpers/mult/chassis'))
 

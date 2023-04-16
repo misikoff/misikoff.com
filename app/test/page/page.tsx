@@ -2,7 +2,7 @@
 
 import Header from 'components/header'
 import Link from 'next/link'
-// import TailwindImage from 'components/twImage'
+// import TailwindImage from 'components/tailwindImage'
 import UnsplashImage from 'components/unsplashImage'
 import Chassis from 'components/blogHelpers/mult/chassis'
 
