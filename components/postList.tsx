@@ -36,6 +36,9 @@ export default function PostList({
                   className='h-48 w-full'
                   src={article.frontMatter.thumbnailUrl}
                   alt='Article Image'
+                  width={600}
+                  height={450}
+                  unsplash
                 />
               </div>
               <div className='flex flex-1 flex-col justify-between bg-white p-6'>
