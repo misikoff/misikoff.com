@@ -27,9 +27,7 @@ export async function generateStaticParams() {
   const files = fs.readdirSync(path.join('content/articles'))
 
   return files.map((filename) => ({
-    params: {
-      slug: filename.replace('.mdx', ''),
-    },
+    slug: filename.replace('.mdx', ''),
   }))
 }
 
