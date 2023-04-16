@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Navbar from 'components/navbar'
 import Footer from 'components/footer'
+import { Analytics } from '@vercel/analytics/react'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} flex min-h-screen flex-col bg-white font-sans`}
       >
+        <Analytics />
         <Navbar />
         <main className='flex-grow p-4'>{children}</main>
         <Footer />
