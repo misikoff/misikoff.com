@@ -10,7 +10,7 @@ import PlayCard from './playCard'
 import AnimatedNumber from 'components/animatedNumber'
 
 export default function Sandbox() {
-  const [game, _] = useState(new CoinTossGame())
+  const [game] = useState(new CoinTossGame())
   const [ready, setReady] = useState(true)
 
   const [values, setValues] = useState([game.startVal])
@@ -75,9 +75,9 @@ export default function Sandbox() {
       <div className='flex flex-col gap-x-4 md:flex-row'>
         <div className='flex flex-col shadow-md xl:max-w-lg'>
           <div className='mb-4 p-4'>
-            <h3 className='text-lg font-medium leading-6 text-gray-900'>
+            <h2 className='text-lg font-medium leading-6 text-gray-900'>
               Premise
-            </h3>
+            </h2>
             <div className='prose prose-lg mx-auto mt-6 text-gray-500'>
               <p>
                 It costs{' '}
@@ -124,9 +124,9 @@ export default function Sandbox() {
             </div>
           </div>
           <div className='mb-4 p-4'>
-            <h3 className='text-lg font-medium leading-6 text-gray-900'>
+            <h2 className='text-lg font-medium leading-6 text-gray-900'>
               Parameters
-            </h3>
+            </h2>
             <div className='mt-3 flex'>
               <div className='flex flex-col justify-between'>
                 <div>
@@ -226,9 +226,9 @@ export default function Sandbox() {
           </div>
 
           <div className='mb-4 p-4'>
-            <h3 className='text-lg font-medium leading-6 text-gray-900'>
+            <h2 className='text-lg font-medium leading-6 text-gray-900'>
               Properties
-            </h3>
+            </h2>
             <div className='mt-5 grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow'>
               <dl className='px-4 py-5 sm:p-6'>
                 <dt className='text-base font-normal text-gray-900'>
