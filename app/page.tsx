@@ -14,7 +14,6 @@ export default async function IndexPage() {
 
       <div className='relative pb-16 pt-6 sm:pb-24'>
         <div className='mx-auto max-w-7xl px-4 sm:px-6' />
-
         <main className='mx-auto max-w-7xl px-4 sm:mt-0'>
           <div className='text-center'>
             <h1 className='text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl'>
