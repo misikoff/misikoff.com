@@ -1,13 +1,13 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import classNames from 'classnames'
 import { CoinTossGame } from './coinToss'
 import LikelihoodChart from './likelihoodChart'
 import PayoffChart from './payoffChart'
 import ResultChart from './resultChart'
 import PlayCard from './playCard'
 import AnimatedNumber from 'components/animatedNumber'
+import { clsx as classNames } from 'clsx'
 
 export default function Sandbox() {
   const [game] = useState(new CoinTossGame())

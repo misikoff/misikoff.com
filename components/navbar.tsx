@@ -1,27 +1,23 @@
 'use client'
 
-import { Fragment } from 'react'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-// import { useRouter } from 'next/router'
 import Image from 'next/image'
-import classNames from 'classnames'
 import Logo from 'public/icon.png'
+import { clsx as classNames } from 'clsx'
 
 const navigation = [
   { name: 'Articles', href: '/articles', current: false },
   { name: 'Sandboxes', href: '/sandboxes', current: false },
 ]
 
-export default function Example({
-  className = '',
-  children = {} as JSX.Element,
-}) {
-  // const router = useRouter()
-  // navigation.forEach((n) => {
-  //   n.current = n.href === router.route
-  // })
+export default function Example({ className = '' }) {
+  const router = useRouter()
+  navigation.forEach((n) => {
+    n.current = n.href === router.route
+  })
   return (
     <>
       <div className={`${className} min-h-full`}>
