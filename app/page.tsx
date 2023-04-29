@@ -4,7 +4,7 @@ import Globe from 'components/globe'
 import DotPattern from 'components/dotPattern'
 
 export const metadata: Metadata = {
-  title: 'Misikoff',
+  title: 'misikoff',
 }
 
 export default async function IndexPage() {

@@ -7,6 +7,7 @@ import Logo from 'public/icon.png'
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { clsx as classNames } from 'clsx'
+import { motion } from 'framer-motion'
 
 const navigation = [
   { name: 'Articles', href: '/articles', current: false },
@@ -14,13 +15,35 @@ const navigation = [
 ]
 
 export default function Example({ className = '' }) {
-  let pathname = usePathname() || '/'
-  if (pathname.includes('/blog/')) {
-    pathname = '/blog'
-  }
+  const pathname = usePathname() || '/'
   navigation.forEach((n) => {
     n.current = pathname.startsWith(n.href)
   })
+
+  function hoverBar(path: string, startsWith = false) {
+    const shouldShowBar = startsWith
+      ? pathname.startsWith(path)
+      : pathname === path
+    return (
+      <div className='relative'>
+        <div className='absolute bottom-0 w-full '>
+          {shouldShowBar ? (
+            <motion.div
+              layoutId='bottom-bar'
+              transition={{
+                ease: 'easeInOut',
+                duration: 0.25,
+              }}
+            >
+              <div className='border-b-2 border-indigo-500' />
+            </motion.div>
+          ) : (
+            <div className='border-b-2 border-transparent transition-colors duration-150 group-hover:border-gray-300' />
+          )}
+        </div>
+      </div>
+    )
+  }
 
   return (
     <>
@@ -31,50 +54,42 @@ export default function Example({ className = '' }) {
               <div className='mx-auto max-w-7xl px-4 sm:px-6 md:mx-0 lg:px-8'>
                 <div className='flex h-16 justify-between'>
                   <div className='flex'>
-                    <Link
-                      href='/'
-                      className='group flex flex-shrink-0 items-center'
-                    >
-                      {/* <Image
-                      className="block w-auto h-8 lg:hidden"
-                      src={Logo}
-                      alt="snowball"
-                      height={32}
-                      width={32}
-                    />
-                    <Image
-                      className="hidden w-auto h-8 lg:block"
-                      src={Logo}
-                      alt="snowball"
-                      height={32}
-                      width={32}
-                    /> */}
-                      <Image
-                        className='block h-8 w-auto'
-                        src={Logo}
-                        alt='snowball'
-                        height={32}
-                        width={32}
-                      />
-                      <span className='ml-2 text-lg font-bold text-gray-600 transition-colors duration-200 group-hover:text-blue-500'>
-                        misikoff
-                      </span>
-                    </Link>
-                    <div className='hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8'>
+                    <div className='flex items-center'>
+                      <Link href='/' className='group flex flex-shrink-0'>
+                        <div className='flex space-x-2'>
+                          <Image
+                            className='block h-8 w-auto'
+                            src={Logo}
+                            alt='snowball'
+                            height={32}
+                            width={32}
+                          />
+                          <div>
+                            <span className='text-lg font-bold text-gray-600 transition-colors duration-200 group-hover:text-blue-500'>
+                              misikoff
+                            </span>
+                            {hoverBar('/')}
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                    <div className='hidden items-center sm:-my-px sm:ml-6 sm:flex sm:space-x-8 md:flex'>
                       {navigation.map((item) => (
-                        <Link
-                          key={item.name}
-                          href={item.href}
-                          className={classNames(
-                            item.current
-                              ? 'border-indigo-500 text-gray-900'
-                              : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                            'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
-                          )}
-                          aria-current={item.current ? 'page' : undefined}
-                        >
-                          {item.name}
-                        </Link>
+                        <div className='group' key={item.name}>
+                          <Link
+                            href={item.href}
+                            className={classNames(
+                              item.current
+                                ? 'text-gray-900'
+                                : 'text-gray-600 group-hover:text-gray-700',
+                              ' inline-flex items-center px-1 text-sm font-medium transition-colors duration-150'
+                            )}
+                            aria-current={item.current ? 'page' : undefined}
+                          >
+                            {item.name}
+                          </Link>
+                          {hoverBar(item.href, true)}
+                        </div>
                       ))}
                     </div>
                   </div>
