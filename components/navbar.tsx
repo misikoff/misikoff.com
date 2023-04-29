@@ -1,11 +1,11 @@
 'use client'
 
-import { useRouter } from 'next/router'
+import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import Logo from 'public/icon.png'
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import Image from 'next/image'
-import Logo from 'public/icon.png'
 import { clsx as classNames } from 'clsx'
 
 const navigation = [
@@ -14,10 +14,14 @@ const navigation = [
 ]
 
 export default function Example({ className = '' }) {
-  const router = useRouter()
+  let pathname = usePathname() || '/'
+  if (pathname.includes('/blog/')) {
+    pathname = '/blog'
+  }
   navigation.forEach((n) => {
-    n.current = n.href === router.route
+    n.current = pathname.startsWith(n.href)
   })
+
   return (
     <>
       <div className={`${className} min-h-full`}>
