@@ -1,47 +1,43 @@
-import anime, { AnimeInstance } from 'animejs'
 import { useEffect, useState, useRef } from 'react'
+import { animate } from 'framer-motion'
 
 const nfObject = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
 })
+
 function formatter(value: number) {
   return nfObject.format(value)
 }
 
 export default function AnimatedNumber({
   className = '',
-  name,
   value,
 }: {
   className?: string
-  name: string
   value: number
 }) {
   const [curVal, setCurVal] = useState(value)
-  const animationRef = useRef<AnimeInstance | null>(null)
+  const nodeRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    const logEl = document.getElementById(name) as Element
-    const currentDisplayedValue = Number(logEl.innerHTML.replace('$', ''))
+    if (curVal !== value) {
+      const node = nodeRef.current
+      if (node) {
+        const controls = animate(curVal, value, {
+          duration: 1,
+          onUpdate(value) {
+            node.textContent = formatter(value)
+          },
+          onComplete() {
+            setCurVal(value)
+          },
+        })
 
-    const changeObject = { currentDisplayedValue }
-    animationRef.current = anime({
-      targets: changeObject,
-      currentDisplayedValue: value,
-      round: 0,
-      easing: 'linear',
-      update() {
-        logEl.innerHTML = formatter(changeObject.currentDisplayedValue)
-      },
-    })
+        return () => controls.stop()
+      }
+    }
+  }, [curVal, value])
 
-    setCurVal(value)
-  }, [name, value])
-
-  return (
-    <div id={name} className={className}>
-      {formatter(curVal)}
-    </div>
-  )
+  return <div ref={nodeRef} className={className} />
 }

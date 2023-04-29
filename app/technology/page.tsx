@@ -60,21 +60,15 @@ const frameWorkSteps = [
 
 const animationSteps = [
   {
-    name: 'Anime.js',
+    name: 'Framer Motion',
     description: '',
-    href: 'https://animejs.com',
+    href: 'https://www.framer.com/motion/',
     status: 'current',
     bonusBlock: (
       <>
-        <q>
-          <em>Anime.js</em> (<code>/ˈæn.ə.meɪ/</code>) is a lightweight
-          JavaScript animation library with a simple, yet powerful API.
-          <br />
-          It works with CSS properties, SVG, DOM attributes and JavaScript
-          Objects.
-        </q>
+        <q>Framer Motion is a simple yet powerful motion library for React.</q>
         <br />
-        {TextArrow('Anime.js')}
+        {TextArrow('Framer Motion')}
       </>
     ),
   },

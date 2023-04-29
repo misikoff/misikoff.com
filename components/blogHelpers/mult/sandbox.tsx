@@ -238,7 +238,6 @@ export default function Sandbox() {
                   <div className='flex items-baseline text-2xl font-semibold text-blue-600'>
                     <AnimatedNumber
                       value={game.curExpValue()}
-                      name='curExpValue'
                       className='w-48 text-2xl font-semibold text-gray-900'
                     />
                   </div>
@@ -254,7 +253,6 @@ export default function Sandbox() {
                     <div className='flex items-baseline text-2xl font-semibold text-blue-600'>
                       <AnimatedNumber
                         value={game.curMedian()}
-                        name='curMedian'
                         className='w-48 text-2xl font-semibold text-gray-900'
                       />
                     </div>

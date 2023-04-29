@@ -78,7 +78,6 @@ export default function PlayCard({
             <dd className='md:flex md:items-baseline'>
               <AnimatedNumber
                 value={curVal}
-                name='curVal'
                 className='w-48 text-2xl font-semibold text-gray-900'
               />
 
