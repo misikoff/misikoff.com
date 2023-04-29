@@ -24,21 +24,23 @@ export default function Example({ className = '' }) {
     const shouldShowBar = startsWith
       ? pathname.startsWith(path)
       : pathname === path
+
     return (
       <div className='relative'>
-        <div className='absolute bottom-0 w-full '>
+        {/* <div className='absolute bottom-0 w-full '> */}
+        <div className='absolute top-[18px] w-full '>
           {shouldShowBar ? (
             <motion.div
-              layoutId='bottom-bar'
+              layoutId='bottomBar'
               transition={{
                 ease: 'easeInOut',
                 duration: 0.25,
               }}
             >
-              <div className='border-b-2 border-indigo-500' />
+              <div className='rounded-full border-b-2 border-indigo-500' />
             </motion.div>
           ) : (
-            <div className='border-b-2 border-transparent transition-colors duration-150 group-hover:border-gray-300' />
+            <div className='rounded-full border-b-2 border-transparent transition-colors duration-150 group-hover:border-gray-300' />
           )}
         </div>
       </div>
