@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { BanknotesIcon, ArrowUpIcon } from '@heroicons/react/24/solid'
-import classNames from 'classnames'
 import AnimatedNumber from 'components/animatedNumber'
 import { CoinTossGame } from './coinToss'
+import { clsx as classNames } from 'clsx'
 
 const nfObject = new Intl.NumberFormat('en-US', {
   style: 'currency',
