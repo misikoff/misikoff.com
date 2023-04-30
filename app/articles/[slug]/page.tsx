@@ -1,27 +1,7 @@
-import Link from 'next/link'
 import Header from 'components/header'
-// import TailwindImage from 'components/tailwindImage'
-// import UnsplashImage from 'components/unsplashImage'
-// import Chassis from 'components/blogHelpers/mult/chassis'
+import { customParser } from 'lib/api'
 import fs from 'fs'
-import matter from 'gray-matter'
 import path from 'path'
-import { compileMDX } from 'next-mdx-remote/rsc'
-
-import dynamic from 'next/dynamic'
-// const Header = dynamic(() => import('components/header'))
-// const Link = dynamic(() => import('next/link'))
-const TailwindImage = dynamic(() => import('components/tailwindImage'))
-const UnsplashImage = dynamic(() => import('components/unsplashImage'))
-const Chassis = dynamic(() => import('components/blogHelpers/mult/chassis'))
-
-const components = {
-  Header,
-  Link,
-  TailwindImage,
-  UnsplashImage,
-  Chassis,
-}
 
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join('content/articles'))
@@ -42,11 +22,7 @@ export default async function PostPage({
     'utf-8'
   )
 
-  const { content, frontmatter } = await compileMDX<{ title: string }>({
-    source: markdownWithMeta,
-    options: { parseFrontmatter: true },
-    components,
-  })
+  const { content, frontmatter } = await customParser(markdownWithMeta)
 
   return (
     <div className='mx-auto mt-4'>
