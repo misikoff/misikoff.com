@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import Logo from 'public/icon.png'
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { clsx as classNames } from 'clsx'
+import { clsx } from 'clsx'
 import { motion } from 'framer-motion'
 
 const navigation = [
@@ -80,7 +80,7 @@ export default function Example({ className = '' }) {
                         <div className='group' key={item.name}>
                           <Link
                             href={item.href}
-                            className={classNames(
+                            className={clsx(
                               item.current
                                 ? 'text-gray-900'
                                 : 'text-gray-600 group-hover:text-gray-700',
@@ -123,7 +123,7 @@ export default function Example({ className = '' }) {
                       key={item.name}
                       as='a'
                       href={item.href}
-                      className={classNames(
+                      className={clsx(
                         item.current
                           ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
                           : 'border-transparent text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800',

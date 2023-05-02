@@ -7,7 +7,7 @@ import PayoffChart from 'app/articles/multiplicativePayoffs/helpers/payoffChart'
 import ResultChart from 'app/articles/multiplicativePayoffs/helpers/resultChart'
 import PlayCard from 'app/articles/multiplicativePayoffs/helpers/playCard'
 import AnimatedNumber from 'components/animatedNumber'
-import { clsx as classNames } from 'clsx'
+import { clsx } from 'clsx'
 
 export default function Sandbox() {
   const [game] = useState(new CoinTossGame())
@@ -94,7 +94,7 @@ export default function Sandbox() {
                 <li className={Number(headsFactor) === 0 ? 'invisible' : ''}>
                   After each heads the pot{' '}
                   <span
-                    className={classNames(
+                    className={clsx(
                       headsFactor > 0 ? 'text-green-700' : 'text-red-600',
                       'font-extrabold transition-colors duration-200'
                     )}
@@ -108,7 +108,7 @@ export default function Sandbox() {
                 <li className={Number(tailsFactor) === 0 ? 'invisible' : ''}>
                   After each tails the pot{' '}
                   <span
-                    className={classNames(
+                    className={clsx(
                       tailsFactor > 0 ? 'text-green-700' : 'text-red-600',
                       'font-extrabold transition-colors duration-200'
                     )}

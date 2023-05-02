@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { BanknotesIcon, ArrowUpIcon } from '@heroicons/react/24/solid'
 import AnimatedNumber from 'components/animatedNumber'
 import { CoinTossGame } from './coinToss'
-import { clsx as classNames } from 'clsx'
+import { clsx } from 'clsx'
 
 const nfObject = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -84,7 +84,7 @@ export default function PlayCard({
               {values.length > 1 && (
                 <div className='flex items-baseline text-sm font-semibold text-green-600 md:ml-2'>
                   <ArrowUpIcon
-                    className={classNames(
+                    className={clsx(
                       change > 0
                         ? 'rotate-0 text-green-500'
                         : 'rotate-180 text-red-500',

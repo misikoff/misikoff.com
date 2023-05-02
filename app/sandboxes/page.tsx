@@ -2,7 +2,6 @@
 import Header from 'components/header'
 import PostList from 'components/postList'
 import fs from 'fs'
-import readingTime from 'reading-time'
 import { getFileList } from 'lib/api'
 
 // export const metadata: Metadata = {
@@ -27,7 +26,6 @@ export default async function Sandboxes() {
       metadata = {
         ...metadata,
         wordCount: markdownWithMeta.split(/\s+/gu).length,
-        readingTime: readingTime(markdownWithMeta) as { time: number },
       }
       console.log(metadata)
       return {
