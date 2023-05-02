@@ -14,6 +14,7 @@ type FrontMatter = {
   readingTime?: { time: number }
   numbers?: ?{ [key: string]: number }
   wordCount?: number
+  alt?: string
 }
 
 type Post = {

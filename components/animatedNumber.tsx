@@ -1,21 +1,19 @@
 import { useEffect, useState, useRef } from 'react'
 import { animate } from 'framer-motion'
 
-const nfObject = new Intl.NumberFormat('en-US', {
+const defaultFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
 })
 
-function formatter(value: number) {
-  return nfObject.format(value)
-}
-
 export default function AnimatedNumber({
   className = '',
   value,
+  formatter = defaultFormatter,
 }: {
   className?: string
   value: number
+  formatter?: Intl.NumberFormat
 }) {
   const [curVal, setCurVal] = useState(value)
   const nodeRef = useRef<HTMLDivElement | null>(null)
@@ -27,7 +25,7 @@ export default function AnimatedNumber({
         const controls = animate(curVal, value, {
           duration: 1,
           onUpdate(value) {
-            node.textContent = formatter(value)
+            node.textContent = formatter.format(value)
           },
           onComplete() {
             setCurVal(value)
@@ -37,7 +35,7 @@ export default function AnimatedNumber({
         return () => controls.stop()
       }
     }
-  }, [curVal, value])
+  }, [curVal, formatter, value])
 
   return <div ref={nodeRef} className={className} />
 }

@@ -1,26 +1,7 @@
-import dynamic from 'next/dynamic'
 import fs from 'fs'
+import { readdir } from 'fs/promises'
 import matter from 'gray-matter'
-import { compileMDX } from 'next-mdx-remote/rsc'
 import { join } from 'path'
-import rehypeKatex from 'rehype-katex'
-import remarkBreaks from 'remark-breaks'
-import remarkMath from 'remark-math'
-const Link = dynamic(() => import('next/link'))
-const Header = dynamic(() => import('components/header'))
-const TailwindImage = dynamic(() => import('components/tailwindImage'))
-const UnsplashImage = dynamic(() => import('components/unsplashImage'))
-const Chassis = dynamic(() => import('components/blogHelpers/mult/chassis'))
-const MultSandbox = dynamic(() => import('components/blogHelpers/mult/sandbox'))
-
-const components = {
-  Header,
-  Link,
-  TailwindImage,
-  UnsplashImage,
-  Chassis,
-  MultSandbox,
-}
 
 const postsDirectory = join(process.cwd(), 'content/articles')
 console.log({ postsDirectory })
@@ -67,16 +48,17 @@ export function getAllPosts(fields = [] as any[]) {
   return posts
 }
 
-export async function customParser(source: string) {
-  return await compileMDX<{ title: string }>({
-    source,
-    options: {
-      parseFrontmatter: true,
-      mdxOptions: {
-        rehypePlugins: [rehypeKatex],
-        remarkPlugins: [remarkBreaks, remarkMath],
-      },
-    },
-    components,
-  })
+export const getFileList: any = async (dirName: string) => {
+  let files = [] as any[]
+  const items = await readdir(dirName, { withFileTypes: true })
+
+  for (const item of items) {
+    if (item.isDirectory()) {
+      files = [...files, ...(await getFileList(`${dirName}/${item.name}`))]
+    } else if (item.name.endsWith('.mdx')) {
+      files.push(`${dirName}/${item.name}`)
+    }
+  }
+
+  return files
 }

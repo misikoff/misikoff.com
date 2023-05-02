@@ -1,37 +1,41 @@
-import type { Metadata } from 'next'
+// import type { Metadata } from 'next'
 import Header from 'components/header'
 import PostList from 'components/postList'
 import fs from 'fs'
-import matter from 'gray-matter'
-import path from 'path'
 import readingTime from 'reading-time'
+import { getFileList } from 'lib/api'
 
-export const dynamicParams = true
+// export const metadata: Metadata = {
+//   title: 'Sandboxes - Misikoff',
+//   description: 'Explore statistical concepts through interactive environments.',
+// }
 
-export const metadata: Metadata = {
-  title: 'Sandboxes - Misikoff',
-  description: 'Explore statistical concepts through interactive environments.',
-}
+export default async function Sandboxes() {
+  const mdxFiles = await getFileList('app/sandboxes')
 
-export default function Sandboxes() {
-  const files = fs.readdirSync(path.join('content/sandboxes'))
-  console.log(files)
-  const posts: Post[] = files.map((filename) => {
-    const markdownWithMeta = fs.readFileSync(
-      path.join('content/sandboxes', filename),
-      'utf-8'
-    )
-    const { data: frontMatter } = matter(markdownWithMeta)
+  console.log({ mdxFiles })
 
-    return {
-      frontMatter: {
+  const posts = await Promise.all(
+    mdxFiles.map(async (p: string) => {
+      let metadata = {} as any
+      const curModule = await import(`${p}`)
+      if (curModule.metadata) {
+        metadata = curModule.metadata
+      }
+
+      const markdownWithMeta = fs.readFileSync(p, 'utf-8')
+      metadata = {
+        ...metadata,
         wordCount: markdownWithMeta.split(/\s+/gu).length,
         readingTime: readingTime(markdownWithMeta) as { time: number },
-        ...frontMatter,
-      } as FrontMatter,
-      slug: filename.split('.')[0],
-    }
-  })
+      }
+      console.log(metadata)
+      return {
+        frontMatter: { ...metadata },
+        slug: p.replace('app/sandboxes/', '').replace('/page.mdx', ''),
+      }
+    })
+  )
 
   return (
     <div className='flex flex-col items-center justify-center'>

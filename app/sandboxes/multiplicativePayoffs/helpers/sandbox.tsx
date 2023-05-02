@@ -1,11 +1,11 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { CoinTossGame } from './coinToss'
-import LikelihoodChart from './likelihoodChart'
-import PayoffChart from './payoffChart'
-import ResultChart from './resultChart'
-import PlayCard from './playCard'
+import { CoinTossGame } from 'app/articles/multiplicativePayoffs/helpers/coinToss'
+import LikelihoodChart from 'app/articles/multiplicativePayoffs/helpers/likelihoodChart'
+import PayoffChart from 'app/articles/multiplicativePayoffs/helpers/payoffChart'
+import ResultChart from 'app/articles/multiplicativePayoffs/helpers/resultChart'
+import PlayCard from 'app/articles/multiplicativePayoffs/helpers/playCard'
 import AnimatedNumber from 'components/animatedNumber'
 import { clsx as classNames } from 'clsx'
 

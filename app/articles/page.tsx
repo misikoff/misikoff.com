@@ -2,36 +2,41 @@ import { Metadata } from 'next'
 import Header from 'components/header'
 import PostList from 'components/postList'
 import fs from 'fs'
-import matter from 'gray-matter'
-import path from 'path'
+import { getFileList } from 'lib/api'
 import readingTime from 'reading-time'
 
-export const dynamicParams = true
-
-export const metadata: Metadata = {
-  title: 'Articles - Misikoff',
-  description: 'Read stories introducing novel statistical concepts.',
-}
+// export const metadata: Metadata = {
+//   title: 'Articles - Misikoff',
+//   description: 'Read stories introducing novel statistical concepts.',
+// }
 
 export default async function Home() {
-  const files = fs.readdirSync(path.join('content/articles'))
-  console.log(files)
-  const posts: Post[] = files.map((filename) => {
-    const markdownWithMeta = fs.readFileSync(
-      path.join('content/articles', filename),
-      'utf-8'
-    )
-    const { data: frontMatter } = matter(markdownWithMeta)
+  const mdxFiles = await getFileList('app/articles')
 
-    return {
-      frontMatter: {
+  console.log({ mdxFiles })
+
+  const posts = await Promise.all(
+    mdxFiles.map(async (p: string) => {
+      let metadata = {} as any
+      const curModule = await import(`${p}`)
+      if (curModule.metadata) {
+        metadata = curModule.metadata
+      }
+
+      const markdownWithMeta = fs.readFileSync(p, 'utf-8')
+      metadata = {
+        ...metadata,
         wordCount: markdownWithMeta.split(/\s+/gu).length,
         readingTime: readingTime(markdownWithMeta) as { time: number },
-        ...frontMatter,
-      } as FrontMatter,
-      slug: filename.split('.')[0],
-    }
-  })
+      }
+      console.log(metadata)
+      return {
+        frontMatter: { ...metadata },
+        slug: p.replace('app/articles/', '').replace('/page.mdx', ''),
+      }
+    })
+  )
+  // console.log({ posts })
 
   return (
     <div className='flex flex-col items-center justify-center'>
