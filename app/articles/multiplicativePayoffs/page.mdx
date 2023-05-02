@@ -1,0 +1,62 @@
+import Link from 'next/link'
+import Header from 'components/tailwindImage'
+import TailwindImage from 'components/tailwindImage'
+import ArticleLayout from 'app/articles/articleLayout'
+import Chassis from './helpers/chassis'
+
+export const title = 'Multiplicative Payoffs'
+export const category = 'Risk In The Real World'
+export const tags = ['ergodicity', 'nonlinearity']
+export const description = 'A simple game demonstrates the effects of compounding earnings. Does expected value provide enough information to make a smart decision?'
+export const thumbnailUrl = 'https://images.unsplash.com/photo-1585347374528-f2a81c8693b3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format'
+export const alt = 'coin embedded in snow'
+export const published = true
+export const date = '2022-01-29'
+
+export const metadata = {
+  title,
+  description,
+  thumbnailUrl,
+  tags,
+  date,
+  alt
+}
+
+Suppose you find a new game in your neighborhood casino.
+It costs **$100** to play. Your bet is put into the pot. Your
+payoff is determined by **10** consecutive coin tosses.
+
+* After each heads the pot <span className="font-extrabold text-green-700">increases 50%</span>.
+* After each tails the pot <span className="font-extrabold text-red-600">decreases 40%</span>.
+
+After **10** tosses, whatever's in the pot is yours.
+
+<figure>
+  <TailwindImage
+    className='h-96 w-full'
+    src={thumbnailUrl}
+    alt={alt}
+    width={600}
+    height={450}
+    priority
+    unsplash
+  />
+</figure>
+
+You perform some quick calculations and find the expected value of the pot at the end of the game is about **$162.88**.
+
+Would you play?
+
+<Chassis>
+  <div className="font-bold text-gray-900">
+    Want to make your own rules? Visit the sandbox to see how changing
+    the parameters of the game affects the distribution of outcomes.
+  </div>
+  <div className="flex justify-center mt-4 isolate">
+    <Link href="/sandboxes/multiplicativePayoffs" className="no-underline hover:bg-blue-600 cursor-pointer inline-flex items-center justify-center px-5 py-3 text-base font-medium text-blue-700 bg-blue-100 border border-transparent rounded-md hover:text-white duration-75 transition-colors">
+      Go To Sandbox
+    </Link>
+  </div>
+</Chassis>
+
+export default ({ children }) => <ArticleLayout title={metadata.title}>{children}</ArticleLayout>

@@ -35,7 +35,7 @@ export default function PostList({
                 <TailwindImage
                   className='h-48 w-full'
                   src={article.frontMatter.thumbnailUrl}
-                  alt='Article Image'
+                  alt={article.frontMatter.alt}
                   width={600}
                   height={450}
                   unsplash

@@ -1,0 +1,36 @@
+{/* ---
+title: Multiplicative Payoffs
+tags: ['ergodicity', 'nonlinearity']
+description: 'Explore the divergence between expected values and real outcomes as you manipulate a game involving consecutive coin tosses.'
+thumbnailUrl: 'https://images.unsplash.com/photo-1585347374528-f2a81c8693b3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format'
+published: true
+numbers: {variables: 4, measures: 2, charts: 3}
+date: '2022-01-29'
+--- */}
+import SandboxLayout from 'app/sandboxes/sandboxLayout'
+import MultSandbox from './helpers/sandbox'
+
+export const title = 'Multiplicative Payoffs'
+export const category = 'Risk In The Real World'
+export const tags = ['ergodicity', 'nonlinearity']
+export const description = 'Explore the divergence between expected values and real outcomes as you manipulate a game involving consecutive coin tosses.'
+export const thumbnailUrl = 'https://images.unsplash.com/photo-1585347374528-f2a81c8693b3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format'
+export const alt = 'coin embedded in snow'
+export const numbers = { variables: 4, measures: 2, charts: 3 }
+export const published = true
+
+export const date = '2022-01-29'
+
+export const metadata = {
+  title,
+  description,
+  thumbnailUrl,
+  tags,
+  date,
+  numbers,
+  alt
+}
+
+<MultSandbox />
+
+export default ({ children }) => <SandboxLayout title={metadata.title}>{children}</SandboxLayout>

@@ -26,7 +26,7 @@ export default function Example({ className = '' }) {
       : pathname === path
 
     return (
-      <div className='relative'>
+      <div className='relative hidden sm:flex'>
         {/* <div className='absolute bottom-0 w-full '> */}
         <div className='absolute top-[18px] w-full '>
           {shouldShowBar ? (

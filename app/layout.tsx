@@ -4,12 +4,12 @@ import Footer from 'components/footer'
 import { Analytics } from '@vercel/analytics/react'
 import { Inter } from 'next/font/google'
 import 'katex/dist/katex.min.css'
+import 'tailwindcss/tailwind.css'
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
 })
-import 'tailwindcss/tailwind.css'
 
 export const metadata: Metadata = {
   title: 'Misikoff',
