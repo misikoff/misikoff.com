@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { clsx as classNames } from 'clsx'
+import { clsx } from 'clsx'
+
 import { PhotoIcon } from '@heroicons/react/24/outline'
 
 export default function TailwindImage({
@@ -27,7 +28,7 @@ export default function TailwindImage({
         alt={alt}
         height={height}
         width={width}
-        className={classNames(
+        className={clsx(
           className,
           'object-cover duration-700 ease-in-out group-hover:opacity-75',
           isLoading
