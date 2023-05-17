@@ -1,9 +1,3 @@
-// declare var apstag: any
-
-// interface Window {
-//   googletag: googletag.Googletag | { cmd: any[] }
-// }
-
 type FrontMatter = {
   title: string
   date: string
