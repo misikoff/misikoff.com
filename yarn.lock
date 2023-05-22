@@ -371,10 +371,10 @@
   dependencies:
     glob "7.1.7"
 
-"@next/mdx@^13.4.2":
-  version "13.4.2"
-  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-13.4.2.tgz#2ec40024969feccca386e841d4ae675bfe25436b"
-  integrity sha512-AT/gxEGkKOwceFSTvoa97vAJh0KsDcw+oW1UFTW4e0zcJCmvieniJoq+JHLMzKoyfC9VjozeCR9yGAchZrli1A==
+"@next/mdx@^13.4.3":
+  version "13.4.3"
+  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-13.4.3.tgz#e5a9bfa5756b4b9602e2cba3392712a598953b22"
+  integrity sha512-ubDW9DIoGpb9WgkVyvnnvNq2BekGnv2NZ+38SCVyijfzF/+sdAGzJ2NIobuKiMurmKMwFtZ3Hh0Y1Hj1zOddcQ==
   dependencies:
     source-map "^0.7.0"
 
@@ -1697,7 +1697,7 @@ eslint-scope@^7.2.0:
     esrecurse "^4.3.0"
     estraverse "^5.2.0"
 
-eslint-visitor-keys@^3.3.0, eslint-visitor-keys@^3.4.1:
+eslint-visitor-keys@^3.3.0, eslint-visitor-keys@^3.4.0, eslint-visitor-keys@^3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-3.4.1.tgz#c22c48f48942d08ca824cc526211ae400478a994"
   integrity sha512-pZnmmLwYzf+kWaM/Qgrvpen51upAktaaiI01nsJD/Yr3lMOdNtq0cxkrrg16w64VtisN6okbs7Q8AfGqj4c9fA==
