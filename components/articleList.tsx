@@ -1,0 +1,72 @@
+import Link from 'next/link'
+import TailwindImage from 'components/tailwindImage'
+import { Article } from 'contentlayer/generated'
+import { format, parseISO } from 'date-fns'
+
+export default function ArticleList({ articles = [] as Article[] }) {
+  return (
+    <ul className='space-y-8'>
+      {articles.map((articles) => (
+        <li key={articles.title}>
+          <Link href={articles.url} className='group my-4 cursor-pointer'>
+            <div className=' flex w-full max-w-lg flex-col overflow-hidden rounded-lg shadow-md transition-shadow group-hover:shadow-lg'>
+              <div className='w-full flex-shrink-0'>
+                <TailwindImage
+                  className='h-48 w-full'
+                  src={articles.thumbnailUrl}
+                  alt={articles.alt}
+                  width={600}
+                  height={450}
+                  unsplash
+                />
+              </div>
+              <div className='flex flex-1 flex-col justify-between bg-white p-6'>
+                <div className='flex-1 text-left'>
+                  {articles.tags && articles.tags.length && (
+                    <div className='inline-flex gap-x-2'>
+                      {articles.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className='rounded-full bg-blue-400 px-2 py-1 text-xs font-semibold tracking-widest text-white'
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className='mt-2 block'>
+                    <p className='text-xl font-semibold text-gray-900'>
+                      {articles.title}
+                    </p>
+                    <p className='mt-3 text-base text-gray-500'>
+                      {articles.description}
+                    </p>
+                  </div>
+                </div>
+                <div className='mt-6 flex items-center'>
+                  <div className='flex w-full flex-col justify-between space-y-2 text-sm text-gray-500 sm:flex-row sm:space-x-1 sm:space-y-0'>
+                    <div className='space-x-1'>
+                      <time dateTime={articles.date}>
+                        {format(parseISO(articles.date), 'LLLL d, yyyy')}
+                      </time>
+                      {articles.readingTime && (
+                        <>
+                          <span aria-hidden='true'>&middot;</span>
+                          <span>
+                            {Math.ceil(articles.readingTime / 60000)}
+                            -minute read
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )
+}
