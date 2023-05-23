@@ -1,25 +1,21 @@
-import Link from 'next/link'
-import TailwindImage from 'components/tailwindImage'
-import ArticleLayout from 'app/articles/articleLayout'
-import Chassis from './helpers/chassis'
+---
+title: Multiplicative Payoffs
+category: Risk In The Real World
+tags: ['ergodicity', 'nonlinearity']
+description: A simple game demonstrates the effects of compounding earnings. Does expected value provide enough information to make a smart decision?
+thumbnailUrl: https://images.unsplash.com/photo-1585347374528-f2a81c8693b3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format
+alt: coin embedded in snow
+date: 2022-01-29 CST
+published: true
+---
 
-export const title = 'Multiplicative Payoffs'
-export const category = 'Risk In The Real World'
-export const tags = ['ergodicity', 'nonlinearity']
-export const description = 'A simple game demonstrates the effects of compounding earnings. Does expected value provide enough information to make a smart decision?'
+{/* // import Link from 'next/link' */}
+{/* // import TailwindImage from 'components/tailwindImage' */}
+{/* // import ArticleLayout from 'app/articles/articleLayout' */}
+{/* // import Chassis from './helpers/chassis' */}
+
 export const thumbnailUrl = 'https://images.unsplash.com/photo-1585347374528-f2a81c8693b3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format'
 export const alt = 'coin embedded in snow'
-export const published = true
-export const date = '2022-01-29'
-
-export const metadata = {
-  title,
-  description,
-  thumbnailUrl,
-  tags,
-  date,
-  alt
-}
 
 Suppose you find a new game in your neighborhood casino.
 It costs **$100** to play. Your bet is put into the pot. Your
@@ -29,6 +25,8 @@ payoff is determined by **10** consecutive coin tosses.
 * After each tails the pot <span className="font-extrabold text-red-600">decreases 40%</span>.
 
 After **10** tosses, whatever's in the pot is yours.
+
+<Link href='/'>home</Link>
 
 <figure>
   <TailwindImage
@@ -57,5 +55,3 @@ Would you play?
     </Link>
   </div>
 </Chassis>
-
-export default ({ children }) => <ArticleLayout title={metadata.title}>{children}</ArticleLayout>
