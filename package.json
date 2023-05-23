@@ -35,7 +35,7 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-mdx": "^2.1.0",
     "eslint-plugin-markdown": "^3.0.0",
-    "eslint-plugin-mdx": "^2.0.5",
+    "eslint-plugin-mdx": "^2.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "gray-matter": "^4.0.3",
     "husky": "^8.0.3",

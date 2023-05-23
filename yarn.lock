@@ -1643,7 +1643,7 @@ eslint-import-resolver-typescript@^3.5.2:
     is-glob "^4.0.3"
     synckit "^0.8.5"
 
-eslint-mdx@^2.0.5, eslint-mdx@^2.1.0:
+eslint-mdx@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/eslint-mdx/-/eslint-mdx-2.1.0.tgz#fd03b3aef07ba443f2a3b00c62d0e33b06674fe7"
   integrity sha512-dVLHDcpCFJRXZhxEQx8nKc68KT1qm+9JOeMD+j1/WW2h+oco1j7Qq+CLrX2kP64LI3fF9TUtj7a0AvncHUME6w==
@@ -1720,19 +1720,19 @@ eslint-plugin-markdown@^3.0.0:
   dependencies:
     mdast-util-from-markdown "^0.8.5"
 
-eslint-plugin-mdx@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-mdx/-/eslint-plugin-mdx-2.0.5.tgz#7717a6e2f5c8f28530b1ef7a612f55430fb4726e"
-  integrity sha512-j2xN97jSlc5IoH94rJTHqYMztl46+hHzyC8Zqjx+OI1Rvv33isyf8xSSBHN6f0z8IJmgPgGsb/fH90JbvKplXg==
+eslint-plugin-mdx@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-mdx/-/eslint-plugin-mdx-2.1.0.tgz#5650cd57428ead6be3a60b52f34bf00af45ceece"
+  integrity sha512-Q8P1JXv+OrD+xhWT95ZyV30MMdnqJ1voKtXfxWrJJ2XihJRI15gPmXbIWY9t8CjA8C//isfzNOmnVY9e3GTL0g==
   dependencies:
-    eslint-mdx "^2.0.5"
+    eslint-mdx "^2.1.0"
     eslint-plugin-markdown "^3.0.0"
-    remark-mdx "^2.1.3"
+    remark-mdx "^2.3.0"
     remark-parse "^10.0.1"
     remark-stringify "^10.0.2"
-    tslib "^2.4.0"
+    tslib "^2.5.0"
     unified "^10.1.2"
-    vfile "^5.3.4"
+    vfile "^5.3.7"
 
 eslint-plugin-prettier@^4.2.1:
   version "4.2.1"
@@ -1775,7 +1775,7 @@ eslint-scope@^7.2.0:
     esrecurse "^4.3.0"
     estraverse "^5.2.0"
 
-eslint-visitor-keys@^3.3.0, eslint-visitor-keys@^3.4.0, eslint-visitor-keys@^3.4.1:
+eslint-visitor-keys@^3.3.0, eslint-visitor-keys@^3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-3.4.1.tgz#c22c48f48942d08ca824cc526211ae400478a994"
   integrity sha512-pZnmmLwYzf+kWaM/Qgrvpen51upAktaaiI01nsJD/Yr3lMOdNtq0cxkrrg16w64VtisN6okbs7Q8AfGqj4c9fA==
@@ -4401,7 +4401,7 @@ remark-math@^5.1.1:
     micromark-extension-math "^2.0.0"
     unified "^10.0.0"
 
-remark-mdx@^2.0.0, remark-mdx@^2.1.3, remark-mdx@^2.3.0:
+remark-mdx@^2.0.0, remark-mdx@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/remark-mdx/-/remark-mdx-2.3.0.tgz#efe678025a8c2726681bde8bf111af4a93943db4"
   integrity sha512-g53hMkpM0I98MU266IzDFMrTD980gNF3BJnkyFcmN+dD873mQeD5rdMO3Y2X+x8umQfbSE0PcoEDl7ledSA+2g==
@@ -5332,7 +5332,7 @@ vfile-statistics@^2.0.0:
     vfile "^5.0.0"
     vfile-message "^3.0.0"
 
-vfile@^5.0.0, vfile@^5.1.0, vfile@^5.3.4, vfile@^5.3.7:
+vfile@^5.0.0, vfile@^5.1.0, vfile@^5.3.7:
   version "5.3.7"
   resolved "https://registry.yarnpkg.com/vfile/-/vfile-5.3.7.tgz#de0677e6683e3380fafc46544cfe603118826ab7"
   integrity sha512-r7qlzkgErKjobAmyNIkkSpizsFPYiUPuJb5pNW1RB4JcYVZhs4lIbVqk8XPk033CV/1z8ss5pkax8SuhGpcG8g==
