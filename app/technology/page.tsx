@@ -73,18 +73,18 @@ const animationSteps = [
     ),
   },
   {
-    name: 'Highcharts',
+    name: 'Chart.js',
     description: '',
-    href: 'https://highcharts.com',
+    href: 'https://chartjs.org',
     status: 'current',
     bonusBlock: (
       <>
         <q>
-          Highcharts makes it easy for developers to set up interactive charts
-          in their web pages
+          Chart.js provides a set of frequently used chart types, plugins, and
+          customization options.
         </q>
         <br />
-        {TextArrow('Highcharts')}
+        {TextArrow('Chart.js')}
       </>
     ),
   },

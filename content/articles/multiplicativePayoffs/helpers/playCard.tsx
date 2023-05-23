@@ -27,9 +27,6 @@ export default function PlayCard({
 
   const [curVal, setCurVal] = useState(game.startVal)
   const [values, setValues] = useState([game.startVal])
-
-  //   const [game, _] = useState(new CoinTossGame())
-
   const [playedAlready, setPlayedAlready] = useState(false)
   const [ready, setReady] = useState(true)
   const [pass, setPass] = useState(false)

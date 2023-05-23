@@ -90,8 +90,6 @@ export default function ArticleLayout({
 
   const MDXContent = getMDXComponent(article.body.code)
 
-  console.log({ mdxComponents })
-
   return (
     <article className='mx-auto max-w-xl py-8'>
       <Header title={article.title} className='mb-6' />

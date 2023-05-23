@@ -1,6 +1,46 @@
-import HighchartsReact from 'highcharts-react-official'
-import Highcharts from 'highcharts/highstock'
 import { useEffect, useState } from 'react'
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+} from 'chart.js'
+import { Bar } from 'react-chartjs-2'
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip)
+
+const options = {
+  responsive: true,
+  plugins: {
+    legend: false,
+    title: {
+      display: true,
+      text: 'Likelihood Of Getting X Heads',
+    },
+    tooltip: {
+      displayColors: false,
+      callbacks: {
+        title: function (context: any) {
+          return `${context[0].label} Heads`
+        },
+        label: function (context: any) {
+          return context.parsed.y.toFixed(2) + '%'
+        },
+      },
+    },
+  },
+  scales: {
+    y: {
+      ticks: {
+        callback: function (label: number) {
+          return label.toFixed(0) + '%'
+        },
+      },
+    },
+  },
+}
 
 export default function LikelihoodChart({
   className = '',
@@ -9,46 +49,29 @@ export default function LikelihoodChart({
   className?: string
   probabilities: number[]
 }) {
-  const [chartOptions, setChartOptions] = useState({})
+  const [data, setData] = useState(null)
+
   useEffect(() => {
-    let baseChartOptions = {
-      chart: {
-        type: 'areaspline',
-      },
-      title: {
-        text: 'Likelihood Of Getting X Heads',
-      },
-      series: [
+    const d = {
+      datasets: [
         {
-          showInLegend: false,
-          color: '#6465f1',
-          data: probabilities.map((p) => {
-            return 100 * p
-          }),
+          label: 'Heads',
+          data: Object.assign(
+            {},
+            probabilities.map((p) => {
+              return p * 100
+            })
+          ),
+          backgroundColor: 'rgba(100, 101, 241, 1)',
         },
       ],
-      yAxis: {
-        labels: {
-          // eslint-disable-next-line no-template-curly-in-string
-          format: '{value}%',
-        },
-        title: null,
-      },
-      tooltip: {
-        formatter(): string {
-          // @ts-ignore
-          return this.x + ' heads <br />' + this.y.toFixed(2) + '%'
-        },
-      },
     }
-    setChartOptions(baseChartOptions)
+    setData(d as any)
   }, [probabilities])
 
   return (
-    <HighchartsReact
-      containerProps={{ className }}
-      highcharts={Highcharts}
-      options={chartOptions}
-    />
+    <div className={className}>
+      {data && <Bar options={options as any} data={data} />}
+    </div>
   )
 }
