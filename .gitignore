@@ -15,6 +15,9 @@ tsconfig.tsbuildinfo
 /.next/
 /out/
 
+# contentlayer
+.contentlayer
+
 # production
 /build
 

@@ -1,48 +1,25 @@
+import { compareDesc } from 'date-fns'
+import { allArticles } from 'contentlayer/generated'
 import { Metadata } from 'next'
 import Header from 'components/header'
-import PostList from 'components/postList'
-import fs from 'fs'
-import { getFileList } from 'lib/api'
-import readingTime from 'reading-time'
+import ArticleList from 'components/contentHelpers/articleList'
 
-// export const metadata: Metadata = {
-//   title: 'Articles - Misikoff',
-//   description: 'Read stories introducing novel statistical concepts.',
-// }
+export const metadata: Metadata = {
+  title: 'Misikoff - Articles',
+  description:
+    'This is a growing hub where I discuss novel concepts and their applications.',
+}
 
-export default async function Home() {
-  const mdxFiles = await getFileList('app/articles')
-
-  console.log({ mdxFiles })
-
-  const posts = await Promise.all(
-    mdxFiles.map(async (p: string) => {
-      let metadata = {} as any
-      const curModule = await import(`${p}`)
-      if (curModule.metadata) {
-        metadata = curModule.metadata
-      }
-
-      const markdownWithMeta = fs.readFileSync(p, 'utf-8')
-      metadata = {
-        ...metadata,
-        wordCount: markdownWithMeta.split(/\s+/gu).length,
-        readingTime: readingTime(markdownWithMeta) as { time: number },
-      }
-      console.log(metadata)
-      return {
-        frontMatter: { ...metadata },
-        slug: p.replace('app/articles/', '').replace('/page.mdx', ''),
-      }
-    })
-  )
-  // console.log({ posts })
+export default function Home() {
+  const articles = allArticles
+    .filter((a) => a.published)
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
 
   return (
     <div className='flex flex-col items-center justify-center'>
       <main className='flex w-full flex-1 flex-col items-center justify-center px-4 text-center md:px-20'>
         <Header title='Articles' className='mb-4 md:mb-8' />
-        <PostList posts={posts} pathPrefix='/articles/' />
+        <ArticleList articles={articles} />
       </main>
     </div>
   )
