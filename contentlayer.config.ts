@@ -11,6 +11,11 @@ const Article = defineDocumentType(() => ({
       description: 'The title of the post',
       required: true,
     },
+    category: {
+      type: 'string',
+      description: 'The category of the post',
+      required: true,
+    },
     date: {
       type: 'date',
       description: 'The date of the post',
@@ -32,6 +37,10 @@ const Article = defineDocumentType(() => ({
       type: 'list',
       of: { type: 'string' },
       required: false,
+    },
+    published: {
+      type: 'boolean',
+      required: true,
     },
   },
   computedFields: {
@@ -86,6 +95,10 @@ const Sandbox = defineDocumentType(() => ({
       type: 'list',
       of: { type: 'string' },
       required: false,
+    },
+    published: {
+      type: 'boolean',
+      required: true,
     },
   },
   computedFields: {
