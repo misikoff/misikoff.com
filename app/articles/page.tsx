@@ -2,7 +2,7 @@ import { compareDesc } from 'date-fns'
 import { allArticles } from 'contentlayer/generated'
 import { Metadata } from 'next'
 import Header from 'components/header'
-import ArticleList from 'components/articleList'
+import ArticleList from 'components/contentHelpers/articleList'
 
 export const metadata: Metadata = {
   title: 'Misikoff - Articles',
@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
-  const articles = allArticles.sort((a, b) =>
-    compareDesc(new Date(a.date), new Date(b.date))
-  )
+  const articles = allArticles
+    .filter((a) => a.published)
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
 
   return (
     <div className='flex flex-col items-center justify-center'>

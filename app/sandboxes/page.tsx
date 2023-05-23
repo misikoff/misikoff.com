@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Header from 'components/header'
-import SandboxList from 'components/sandboxList'
+import SandboxList from 'components/contentHelpers/sandboxList'
 import { allSandboxes } from 'contentlayer/generated'
 import { compareDesc } from 'date-fns'
 
@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
-  const sandboxes = allSandboxes.sort((a, b) =>
-    compareDesc(new Date(a.date), new Date(b.date))
-  )
+  const sandboxes = allSandboxes
+    .filter((a) => a.published)
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
 
   console.log({ sandboxes })
 
