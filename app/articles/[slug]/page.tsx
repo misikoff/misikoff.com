@@ -34,7 +34,21 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   )
 
   if (article !== undefined) {
-    return { title: article.title }
+    return {
+      title: article.title,
+      openGraph: {
+        image: article.thumbnailUrl,
+        title: article.title,
+        description: article.description,
+        url: article.url,
+      },
+      twitter: {
+        title: article.title,
+        image: article.thumbnailUrl,
+        card: 'summary',
+        description: article.description,
+      },
+    }
   }
 }
 
