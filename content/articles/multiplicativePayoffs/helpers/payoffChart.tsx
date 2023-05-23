@@ -1,11 +1,52 @@
 import { useEffect, useState } from 'react'
-import HighchartsReact from 'highcharts-react-official'
-import Highcharts from 'highcharts/highstock'
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+} from 'chart.js'
+import { Bar } from 'react-chartjs-2'
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip)
 
 const nfObject = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
 })
+
+const options = {
+  responsive: true,
+  plugins: {
+    legend: false,
+    title: {
+      display: true,
+      text: 'Payoff For Getting X Heads',
+    },
+    tooltip: {
+      displayColors: false,
+      callbacks: {
+        title: function (context: any) {
+          return `${context[0].label} Heads`
+        },
+        label: function (context: any) {
+          return nfObject.format(context.parsed.y)
+        },
+      },
+    },
+  },
+  scales: {
+    y: {
+      ticks: {
+        callback: function (label: number) {
+          const x = '$' + label / 1000 + 'k'
+          return x //nfObject.format(label.toFixed(0))
+        },
+      },
+    },
+  },
+}
 
 export default function PayoffChart({
   className = '',
@@ -14,45 +55,24 @@ export default function PayoffChart({
   className?: string
   results: number[]
 }) {
-  const [chartOptions, setChartOptions] = useState({})
+  const [data, setData] = useState(null)
 
   useEffect(() => {
-    let baseChartOptions = {
-      chart: {
-        type: 'column',
-      },
-      title: {
-        text: 'Payoff For Getting X Heads',
-      },
-      series: [
+    const d = {
+      datasets: [
         {
-          showInLegend: false,
-          data: results,
-          color: '#6465f1',
+          label: 'Heads',
+          data: Object.assign({}, results),
+          backgroundColor: 'rgba(100, 101, 241, 1)',
         },
       ],
-      yAxis: {
-        labels: {
-          // eslint-disable-next-line no-template-curly-in-string
-          format: '${value:,.0f}',
-        },
-        title: null,
-      },
-      tooltip: {
-        formatter(): string {
-          // @ts-ignore
-          return this.x + ' heads <br />' + nfObject.format(this.y)
-        },
-      },
     }
-    setChartOptions(baseChartOptions)
+    setData(d as any)
   }, [results])
 
   return (
-    <HighchartsReact
-      containerProps={{ className }}
-      highcharts={Highcharts}
-      options={chartOptions}
-    />
+    <div className={className}>
+      {data && <Bar options={options as any} data={data} />}
+    </div>
   )
 }

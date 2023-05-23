@@ -1,11 +1,61 @@
-import HighchartsReact from 'highcharts-react-official'
-import Highcharts from 'highcharts/highstock'
 import { useEffect, useState } from 'react'
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+} from 'chart.js'
+import { Line } from 'react-chartjs-2'
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip
+)
 
 const nfObject = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
 })
+
+const options = {
+  responsive: true,
+  plugins: {
+    legend: false,
+    title: {
+      display: true,
+      text: 'Payoff For Getting X Heads',
+    },
+    tooltip: {
+      displayColors: false,
+      callbacks: {
+        title: function (context: any) {
+          // TODO: handle singular and plural
+          return `${context[0].label} Tosses`
+        },
+        label: function (context: any) {
+          return nfObject.format(context.parsed.y)
+        },
+      },
+    },
+  },
+  scales: {
+    y: {
+      ticks: {
+        callback: function (label: number) {
+          const x = '$' + label / 1000 + 'k'
+          return x //nfObject.format(label.toFixed(0))
+        },
+      },
+    },
+  },
+}
 
 export default function ResultChart({
   className = '',
@@ -14,48 +64,24 @@ export default function ResultChart({
   className?: string
   values: number[]
 }) {
-  const [chartOptions, setChartOptions] = useState({})
+  const [data, setData] = useState(null)
 
   useEffect(() => {
-    let baseChartOptions = {
-      lang: {
-        thousandsSep: ',',
-      },
-      chart: {
-        type: 'line',
-      },
-      title: {
-        text: '',
-      },
-      series: [
+    const d = {
+      datasets: [
         {
-          showInLegend: false,
-          data: values,
-          color: '#6465f1',
+          label: 'Heads',
+          data: Object.assign({}, values),
+          backgroundColor: 'rgba(100, 101, 241, 1)',
         },
       ],
-      yAxis: {
-        labels: {
-          // eslint-disable-next-line no-template-curly-in-string
-          format: '${value:,.0f}',
-        },
-        title: null,
-      },
-      tooltip: {
-        formatter(): string {
-          // @ts-ignore
-          return this.x + ' tosses <br />' + nfObject.format(this.y)
-        },
-      },
     }
-    setChartOptions(baseChartOptions)
+    setData(d as any)
   }, [values])
 
   return (
-    <HighchartsReact
-      highcharts={Highcharts}
-      options={chartOptions}
-      containerProps={{ className }}
-    />
+    <div className={className}>
+      {data && <Line options={options as any} data={data} />}
+    </div>
   )
 }
