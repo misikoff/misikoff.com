@@ -8,11 +8,7 @@ import PayoffChart from './payoffChart'
 import ResultChart from './resultChart'
 import PlayCard from './playCard'
 
-export default function Chassis({
-  children,
-}: {
-  children?: any //JSX.Element | string | null
-}) {
+export default function Chassis({ children }: { children?: React.ReactNode }) {
   const [game] = useState(new CoinTossGame())
   const [playedAlready, setPlayedAlready] = useState(game.playedAlready)
   const [values, setValues] = useState([game.startVal])
