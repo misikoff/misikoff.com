@@ -37,16 +37,37 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
     return {
       title: article.title,
       openGraph: {
-        image: article.thumbnailUrl,
         title: article.title,
         description: article.description,
-        url: article.url,
+        url: `https://misikoff.com/${article._raw.flattenedPath.replace(
+          '/page',
+          ''
+        )}`,
+        images: [
+          {
+            url: article.thumbnailUrl.replace('auto=format', 'fm=png'),
+            alt: article.alt,
+            // width: 800,
+            // height: 600,
+          },
+        ],
+        locale: 'en-US',
+        type: 'article',
+        publishedTime: article.published,
+        authors: ['Thomas Misikoff'],
       },
       twitter: {
         title: article.title,
-        image: article.thumbnailUrl,
         card: 'summary',
         description: article.description,
+        images: [
+          {
+            url: article.thumbnailUrl.replace('auto=format', 'fm=png'),
+            alt: article.alt,
+            // width: 800,
+            // height: 600,
+          },
+        ],
       },
     }
   }

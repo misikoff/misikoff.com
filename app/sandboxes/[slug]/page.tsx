@@ -40,13 +40,34 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
         image: sandbox.thumbnailUrl,
         title: sandbox.title,
         description: sandbox.description,
-        url: sandbox.url,
+        url: `https://misikoff.com/${sandbox._raw.flattenedPath.replace(
+          '/page',
+          ''
+        )}`,
+        siteName: 'Misikoff',
+        images: [
+          {
+            url: sandbox.thumbnailUrl.replace('auto=format', 'fm=png'),
+            alt: sandbox.alt,
+            // width: 800,
+            // height: 600,
+          },
+        ],
+        locale: 'en-US',
+        type: 'website',
       },
       twitter: {
         title: sandbox.title,
-        image: sandbox.thumbnailUrl,
         card: 'summary',
         description: sandbox.description,
+        images: [
+          {
+            url: sandbox.thumbnailUrl.replace('auto=format', 'fm=png'),
+            alt: sandbox.alt,
+            // width: 800,
+            // height: 600,
+          },
+        ],
       },
     }
   }
