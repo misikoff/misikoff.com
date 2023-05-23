@@ -34,7 +34,21 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   )
 
   if (sandbox !== undefined) {
-    return { title: sandbox.title }
+    return {
+      title: sandbox.title,
+      openGraph: {
+        image: sandbox.thumbnailUrl,
+        title: sandbox.title,
+        description: sandbox.description,
+        url: sandbox.url,
+      },
+      twitter: {
+        title: sandbox.title,
+        image: sandbox.thumbnailUrl,
+        card: 'summary',
+        description: sandbox.description,
+      },
+    }
   }
 }
 
