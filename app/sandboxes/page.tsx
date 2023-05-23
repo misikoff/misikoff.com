@@ -14,8 +14,6 @@ export default function Home() {
     .filter((a) => a.published)
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
 
-  console.log({ sandboxes })
-
   return (
     <div className='flex flex-col items-center justify-center'>
       <main className='flex w-full flex-1 flex-col items-center justify-center px-4 text-center md:px-20'>
