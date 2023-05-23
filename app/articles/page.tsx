@@ -2,7 +2,7 @@ import { compareDesc } from 'date-fns'
 import { allArticles } from 'contentlayer/generated'
 import { Metadata } from 'next'
 import Header from 'components/header'
-import PostList from 'components/postList'
+import ArticleList from 'components/articleList'
 
 export const metadata: Metadata = {
   title: 'Misikoff - Articles',
@@ -19,7 +19,7 @@ export default function Home() {
     <div className='flex flex-col items-center justify-center'>
       <main className='flex w-full flex-1 flex-col items-center justify-center px-4 text-center md:px-20'>
         <Header title='Articles' className='mb-4 md:mb-8' />
-        <PostList posts={articles} />
+        <ArticleList articles={articles} />
       </main>
     </div>
   )
