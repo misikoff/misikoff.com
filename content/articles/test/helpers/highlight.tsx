@@ -1,6 +1,6 @@
-import Header from '@/components/header'
+import Header from 'components/header'
 
-export default function Highlight({ children, color }) {
+export default function Highlight({ children, color }: any) {
   return (
     <>
       <span
