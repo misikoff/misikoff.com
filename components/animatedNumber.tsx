@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
+
 import { animate } from 'framer-motion'
 
 const defaultFormatter = new Intl.NumberFormat('en-US', {

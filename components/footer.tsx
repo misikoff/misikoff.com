@@ -1,10 +1,11 @@
 import Link from 'next/link'
+
 /* This example requires Tailwind CSS v2.0+ */
-import GitHubIcon from 'components/icons/social/GitHub'
 import CodePenIcon from 'components/icons/social/CodePen'
-import TwitterIcon from 'components/icons/social/Twitter'
-import LinkedInIcon from 'components/icons/social/LinkedIn'
 import DevpostIcon from 'components/icons/social/Devpost'
+import GitHubIcon from 'components/icons/social/GitHub'
+import LinkedInIcon from 'components/icons/social/LinkedIn'
+import TwitterIcon from 'components/icons/social/Twitter'
 
 const curYear = new Date().getFullYear()
 

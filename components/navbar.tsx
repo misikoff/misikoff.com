@@ -3,11 +3,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import Logo from 'public/icon.png'
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { clsx } from 'clsx'
 import { motion } from 'framer-motion'
+
+import Logo from 'public/icon.png'
 
 const navigation = [
   { name: 'Articles', href: '/articles', current: false },

@@ -1,13 +1,13 @@
-import { notFound } from 'next/navigation'
-import { allArticles, allSandboxes } from 'contentlayer/generated'
-import { getMDXComponent } from 'next-contentlayer/hooks'
-import Header from 'components/header'
-import type { MDXComponents } from 'mdx/types'
 import Link from 'next/link'
-import TailwindImage from '@/components/tailwindImage'
+import { notFound } from 'next/navigation'
+import type { MDXComponents } from 'mdx/types'
+import { getMDXComponent } from 'next-contentlayer/hooks'
+import { allSandboxes } from 'contentlayer/generated'
 
 // Multiplicative Payoffs
 import MultSandbox from 'content/sandboxes/multiplicativePayoffs/helpers/sandbox'
+import Header from 'components/header'
+import TailwindImage from 'components/tailwindImage'
 
 // Define your custom MDX components.
 const mdxComponents: MDXComponents = {
