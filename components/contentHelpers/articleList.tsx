@@ -18,7 +18,7 @@ export default function ArticleList({ articles = [] as Article[] }) {
                   alt={articles.alt}
                   width={600}
                   height={450}
-                  unsplash
+                  unsplash={articles.thumbnailUnsplash}
                 />
               </div>
               <div className='flex flex-1 flex-col justify-between bg-white p-6'>

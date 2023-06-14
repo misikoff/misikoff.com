@@ -54,7 +54,7 @@ export default async function IndexPage() {
                 </Link>
               </div>
             </div>
-            <Globe />
+            <Globe className='mt-8 h-48 w-48' />
           </div>
         </main>
       </div>

@@ -25,6 +25,11 @@ const Article = defineDocumentType(() => ({
       type: 'string',
       required: true,
     },
+    thumbnailUnsplash: {
+      type: 'boolean',
+      required: false,
+      default: false,
+    },
     alt: {
       type: 'string',
       required: true,
@@ -82,6 +87,11 @@ const Sandbox = defineDocumentType(() => ({
     thumbnailUrl: {
       type: 'string',
       required: true,
+    },
+    thumbnailUnsplash: {
+      type: 'boolean',
+      required: false,
+      default: false,
     },
     alt: {
       type: 'string',

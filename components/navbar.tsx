@@ -30,7 +30,7 @@ export default function Example({ className = '' }) {
       <div className='relative hidden sm:flex'>
         {/* <div className='absolute bottom-0 w-full '> */}
         <div className='absolute top-[18px] w-full '>
-          {shouldShowBar ? (
+          {shouldShowBar && (
             <motion.div
               layoutId='bottomBar'
               transition={{
@@ -40,8 +40,6 @@ export default function Example({ className = '' }) {
             >
               <div className='rounded-full border-b-2 border-indigo-500' />
             </motion.div>
-          ) : (
-            <div className='rounded-full border-b-2 border-transparent transition-colors duration-150 group-hover:border-gray-300' />
           )}
         </div>
       </div>

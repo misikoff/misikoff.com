@@ -1,8 +1,23 @@
 'use client'
 
+import clsx from 'clsx'
 import { motion } from 'framer-motion'
-// import utilityFunctions from 'lib/utilityFunctions'
-// consider how to implement shuffling
+
+const colorClasses = [
+  'bg-blue-300 group-hover:bg-blue-200',
+  'bg-blue-400 group-hover:bg-blue-200',
+  'bg-blue-500 group-hover:bg-blue-200',
+  'bg-blue-600 group-hover:bg-blue-200',
+]
+
+const textColorClasses = [
+  'text-blue-300',
+  'text-blue-400',
+  'text-blue-500',
+  'text-blue-600',
+]
+
+const positionClasses = ['top-1/5', 'top-2/5', 'top-3/5', 'top-4/5']
 
 const numWaves = 4
 const waveShapes = [
@@ -26,78 +41,58 @@ const waveShapes = [
   },
 ]
 
-const curWaves = waveShapes
+const waves = waveShapes
   .map((w) => {
     return w.d
   })
   .slice(0, numWaves)
 
-export default function Globe() {
+export default function Globe({ className }: { className?: string }) {
   return (
-    <div className='mt-8'>
-      <div
-        className='group relative mx-auto h-48 w-48 bg-blue-200 transition-colors duration-1000 hover:bg-blue-50 md:h-96 md:w-96'
-        style={{ clipPath: 'circle(50% at 50% 50%)' }}
-      >
-        {curWaves.map((wave, index) => {
-          return (
-            <div
-              key={index}
-              className={
-                'absolute h-1/5 w-full ' +
-                (index === 0
-                  ? 'top-1/5'
-                  : index === 1
-                  ? 'top-2/5'
-                  : index === 2
-                  ? 'top-3/5'
-                  : 'top-4/5')
-              }
+    <div
+      className={clsx(
+        className,
+        'group relative mx-auto bg-blue-200 transition-colors duration-1000 hover:bg-blue-50 md:h-96 md:w-96'
+      )}
+      style={{ clipPath: 'circle(50% at 50% 50%)' }}
+    >
+      {waves.map((wave, index) => {
+        return (
+          <div
+            key={index}
+            className={clsx('absolute h-1/5 w-full', positionClasses[index])}
+          >
+            <svg
+              className={clsx(
+                'transition-colors duration-1000 group-hover:text-blue-200',
+                textColorClasses[index]
+              )}
+              xmlns='http://www.w3.org/2000/svg'
+              viewBox='0 0 1440 320'
             >
-              <svg
-                className={
-                  'transition-colors duration-1000 group-hover:text-blue-200 ' +
-                  (index === 0
-                    ? 'text-blue-300'
-                    : index === 1
-                    ? 'text-blue-400'
-                    : index === 2
-                    ? 'text-blue-500'
-                    : 'text-blue-600')
-                }
-                xmlns='http://www.w3.org/2000/svg'
-                viewBox='0 0 1440 320'
-              >
-                <motion.path
-                  className='fill-current'
-                  fillOpacity='1'
-                  d={wave}
-                  transition={{
-                    ease: 'easeInOut',
-                    duration: 3,
-                    // delay: index,
-                    repeat: Infinity,
-                    repeatType: 'mirror',
-                  }}
-                  animate={{ d: curWaves[(index + 1) % curWaves.length] }}
-                />
-              </svg>
-              <div
-                className={
-                  '-mt-0.5 flex h-24 transition-colors duration-1000 ' +
-                  (index === 0
-                    ? 'bg-blue-300 group-hover:bg-blue-200'
-                    : index === 1
-                    ? 'bg-blue-400 group-hover:bg-blue-200'
-                    : index === 2
-                    ? 'bg-blue-500 group-hover:bg-blue-200'
-                    : 'bg-blue-600 group-hover:bg-blue-200')
-                }
+              <motion.path
+                className='fill-current'
+                fillOpacity='1'
+                d={wave}
+                transition={{
+                  ease: 'easeInOut',
+                  duration: 3,
+                  // delay: index,
+                  repeat: Infinity,
+                  repeatType: 'mirror',
+                }}
+                animate={{ d: waves[(index + 1) % waves.length] }}
               />
-            </div>
-          )
-        })}
-      </div>
+            </svg>
+            <div
+              className={clsx(
+                '-mt-0.5 flex h-24 transition-colors duration-1000',
+                colorClasses[index]
+              )}
+            />
+          </div>
+        )
+      })}
     </div>
   )
 }
