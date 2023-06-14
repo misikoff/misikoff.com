@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import Globe from 'components/globe'
+
 import DotPattern from 'components/dotPattern'
+import Globe from 'components/globe'
 
 export const metadata: Metadata = {
   title: 'misikoff',

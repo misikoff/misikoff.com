@@ -1,7 +1,8 @@
 import Link from 'next/link'
-import TailwindImage from 'components/tailwindImage'
-import { Article } from 'contentlayer/generated'
 import { format, parseISO } from 'date-fns'
+import { Article } from 'contentlayer/generated'
+
+import TailwindImage from 'components/tailwindImage'
 
 export default function ArticleList({ articles = [] as Article[] }) {
   return (

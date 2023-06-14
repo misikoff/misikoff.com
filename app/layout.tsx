@@ -1,8 +1,9 @@
 import { Metadata } from 'next'
-import Navbar from 'components/navbar'
-import Footer from 'components/footer'
-import { Analytics } from '@vercel/analytics/react'
 import { Inter } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
+
+import Footer from 'components/footer'
+import Navbar from 'components/navbar'
 import 'katex/dist/katex.min.css'
 import 'tailwindcss/tailwind.css'
 

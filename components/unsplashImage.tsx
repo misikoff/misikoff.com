@@ -1,4 +1,5 @@
 import Image from 'next/image'
+
 import TailwindImage from 'components/tailwindImage'
 
 type UnsplashProps = {
