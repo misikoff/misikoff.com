@@ -18,7 +18,7 @@ export default function SandboxList({ sandboxes = [] as Sandbox[] }) {
                   alt={sandbox.alt}
                   width={600}
                   height={450}
-                  unsplash
+                  unsplash={sandbox.thumbnailUnsplash}
                 />
               </div>
               <div className='flex flex-1 flex-col justify-between bg-white p-6'>
