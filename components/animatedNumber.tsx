@@ -9,11 +9,11 @@ const defaultFormatter = new Intl.NumberFormat('en-US', {
 
 export default function AnimatedNumber({
   className = '',
-  value,
+  value = 0,
   formatter = defaultFormatter,
 }: {
   className?: string
-  value: number
+  value?: number
   formatter?: Intl.NumberFormat
 }) {
   const [curVal, setCurVal] = useState(value)
@@ -38,5 +38,9 @@ export default function AnimatedNumber({
     }
   }, [curVal, formatter, value])
 
-  return <div ref={nodeRef} className={className} />
+  return (
+    <div ref={nodeRef} className={className}>
+      {formatter.format(curVal)}
+    </div>
+  )
 }

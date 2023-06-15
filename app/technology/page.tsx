@@ -3,8 +3,7 @@ import { ArrowLongRightIcon } from '@heroicons/react/24/outline'
 
 import Header from 'components/header'
 import Steps from 'components/steps'
-import HexagonGridAbsol from '@/components/fragments/hexagonGridAbsol'
-import TailwindImage from '@/components/tailwindImage'
+import TailwindImage from 'components/tailwindImage'
 
 export const metadata: Metadata = {
   title: 'Technology - Misikoff',
