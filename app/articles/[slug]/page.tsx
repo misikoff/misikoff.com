@@ -20,7 +20,7 @@ const mdxComponents: MDXComponents = {
   TailwindImage: (props) => <TailwindImage {...props} />,
 
   // Multiplicative Payoffs
-  Chassis: () => <Chassis />,
+  Chassis: ({ children }) => <Chassis>{children}</Chassis>,
 }
 
 export const generateStaticParams = async () =>

@@ -1,13 +1,15 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+
+import { clsx } from 'clsx'
+
 import { CoinTossGame } from 'content/articles/multiplicativePayoffs/helpers/coinToss'
 import LikelihoodChart from 'content/articles/multiplicativePayoffs/helpers/likelihoodChart'
 import PayoffChart from 'content/articles/multiplicativePayoffs/helpers/payoffChart'
-import ResultChart from 'content/articles/multiplicativePayoffs/helpers/resultChart'
 import PlayCard from 'content/articles/multiplicativePayoffs/helpers/playCard'
+import ResultChart from 'content/articles/multiplicativePayoffs/helpers/resultChart'
 import AnimatedNumber from 'components/animatedNumber'
-import { clsx } from 'clsx'
 
 export default function Sandbox() {
   const [game] = useState(new CoinTossGame())

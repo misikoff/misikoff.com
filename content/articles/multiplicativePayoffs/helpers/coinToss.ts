@@ -1,6 +1,7 @@
+import EventEmitter from 'events'
+
 import statisticsFunctions from 'lib/statistics'
 import utilityFunctions from 'lib/utilityFunctions'
-import EventEmitter from 'events'
 
 type BoundType = { [key: string]: number[] }
 const BOUNDS = {
