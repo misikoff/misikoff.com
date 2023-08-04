@@ -1,0 +1,59 @@
+---
+title: ESLint
+description:
+  a static code analysis tool for identifying problematic patterns found in
+  JavaScript code
+tags: ['linting']
+website: https://eslint.org
+repo: https://github.com/eslint/eslint
+enabled: true
+ecosystem: npm
+---
+
+# Setup
+
+```bash
+yarn add -D eslint eslint-config-prettier eslint-plugin-prettier
+```
+
+ESLint is a highly configurable JavaScript linter. In the config file below,
+I've built upon some great rulesets from `next/core-web-vitals` and
+`plugin:prettier/recommended`. By including the `prettier` plugin, we can allow
+ESLint to enforce Prettier's rules.
+
+```javascript title=".eslintrc.js" {3, 5}
+module.exports = {
+  extends: ['next/core-web-vitals', 'plugin:prettier/recommended'],
+  plugins: ['prettier'],
+  rules: {
+    'import/order': [
+      'error',
+      {
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+        },
+        groups: ['builtin', 'external', 'internal'],
+        pathGroups: [
+          { pattern: 'react', group: 'builtin', position: 'before' },
+
+          { pattern: 'next', group: 'external', position: 'before' },
+          { pattern: 'next/**', group: 'external', position: 'before' },
+          {
+            pattern: 'components/**',
+            group: 'internal',
+            position: 'before',
+          },
+        ],
+        pathGroupsExcludedImportTypes: [],
+        distinctGroup: false,
+      },
+    ],
+  },
+}
+```
+
+My newest addition to this file is the `import/order` rule. It ensures imports
+are grouped and sorted by their path. In this case, `react` is the first group,
+followed by `next`, it's modules, and `components`. My team and I have found
+that enforcing an import order greatly reduces the chances of a merge conflict.

@@ -1,8 +1,9 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 
-import DotPattern from 'components/dotPattern'
-import Globe from 'components/globe'
+import DotPattern from '@/components/dotPattern'
+import Hexagon from '@/components/fragments/hexagon'
+import Globe from '@/components/globe'
 
 export const metadata: Metadata = {
   title: 'misikoff',
@@ -18,9 +19,15 @@ export default async function IndexPage() {
         <main className='mx-auto max-w-7xl px-4 sm:mt-0'>
           <div className='text-center'>
             <h1 className='text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl'>
-              <span className=''>Tommy Misikoff</span>
-              <div className='flex flex-row items-center justify-center text-2xl text-blue-600 sm:text-3xl md:text-4xl'>
-                software engineer
+              <span className='font-serif lowercase'>
+                Tommy
+                <br />
+                Misikoff
+              </span>
+              <div className='flex flex-row justify-center font-mono text-2xl text-blue-600 sm:text-3xl md:text-4xl'>
+                software
+                <Hexagon className='m-2 h-6 w-6 fill-slate-500 transition-transform duration-1000 ease-in-out hover:rotate-180 md:mt-3' />
+                statistics
               </div>
             </h1>
             <p className='mx-auto mt-3 max-w-md text-left text-base text-gray-500 sm:text-lg md:mt-8 md:max-w-3xl md:text-xl'>

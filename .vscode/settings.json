@@ -2,11 +2,14 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
-  // "editor.quickSuggestions": {
-  //     "strings": true
-  // },
-  // "css.validate": false,
-  // "scss.validate": false,
+  "eslint.validate": [
+    "markdown",
+    "mdx",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    // "yaml",
+    "yml"
+  ]
 }

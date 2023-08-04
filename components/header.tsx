@@ -2,10 +2,12 @@ export default function Header({
   category,
   title,
   className,
+  children,
 }: {
   category?: string
   title?: string
   className?: string
+  children?: React.ReactNode
 }) {
   return (
     <div className={className}>
@@ -16,8 +18,8 @@ export default function Header({
       )}
       {title && (
         <h1>
-          <span className='mt-2 block text-center text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl'>
-            {title}
+          <span className=' mt-2 flex items-center justify-center gap-4 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl'>
+            {title} {children}
           </span>
         </h1>
       )}

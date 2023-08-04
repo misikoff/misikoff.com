@@ -2,14 +2,14 @@ import { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 
-import Footer from 'components/footer'
-import Navbar from 'components/navbar'
+import Footer from '@/components/footer'
+import Navbar from '@/components/navbar'
 import 'katex/dist/katex.min.css'
-import 'tailwindcss/tailwind.css'
+import '@/styles/globals.css'
 
 const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-inter',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -24,10 +24,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='en'>
-      <body
-        className={`${inter.variable} flex min-h-screen flex-col bg-white font-sans`}
-      >
+    <html lang='en' className={inter.className}>
+      <body className='flex min-h-screen flex-col bg-white'>
         <Analytics />
         <Navbar />
         <main className='flex-grow p-4'>{children}</main>

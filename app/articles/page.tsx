@@ -2,8 +2,8 @@ import { Metadata } from 'next'
 import { compareDesc } from 'date-fns'
 import { allArticles } from 'contentlayer/generated'
 
-import ArticleList from 'components/contentHelpers/articleList'
-import Header from 'components/header'
+import ArticleList from '@/components/contentHelpers/articleList'
+import Header from '@/components/header'
 
 export const metadata: Metadata = {
   title: 'Misikoff - Articles',

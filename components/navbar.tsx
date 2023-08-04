@@ -13,6 +13,9 @@ import Logo from 'public/icon.png'
 const navigation = [
   { name: 'Articles', href: '/articles', current: false },
   { name: 'Sandboxes', href: '/sandboxes', current: false },
+  { name: 'Games', href: '/games', current: false },
+  { name: 'Packages', href: '/packages', current: false },
+  { name: 'Words', href: '/words', current: false },
 ]
 
 export default function Example({ className = '' }) {

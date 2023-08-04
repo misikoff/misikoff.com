@@ -1,11 +1,6 @@
 import Link from 'next/link'
-
-/* This example requires Tailwind CSS v2.0+ */
-import CodePenIcon from 'components/icons/social/CodePen'
-import DevpostIcon from 'components/icons/social/Devpost'
-import GitHubIcon from 'components/icons/social/GitHub'
-import LinkedInIcon from 'components/icons/social/LinkedIn'
-import TwitterIcon from 'components/icons/social/Twitter'
+import { ImCodepen, ImGithub, ImLinkedin, ImTwitter } from 'react-icons/im'
+import { SiDevpost } from 'react-icons/si'
 
 const curYear = new Date().getFullYear()
 
@@ -15,27 +10,27 @@ const navigation = {
     {
       name: 'Twitter',
       href: 'https://twitter.com/tmisikoff',
-      icon: TwitterIcon,
+      icon: ImTwitter,
     },
     {
       name: 'GitHub',
       href: 'https://github.com/misikoff',
-      icon: GitHubIcon,
+      icon: ImGithub,
     },
     {
       name: 'CodePen',
       href: 'https://codepen.io/misikoff',
-      icon: CodePenIcon,
+      icon: ImCodepen,
     },
     {
       name: 'Devpost',
       href: 'https://devpost.com/misikoff',
-      icon: DevpostIcon,
+      icon: SiDevpost,
     },
     {
       name: 'LinkedIn',
       href: 'https://www.linkedin.com/in/misikoff',
-      icon: LinkedInIcon,
+      icon: ImLinkedin,
     },
   ],
 }
@@ -64,10 +59,13 @@ export default function Example() {
             <a
               key={item.name}
               href={item.href}
-              className='transform fill-gray-400 transition-all duration-75 hover:scale-125 hover:fill-gray-500'
+              className='transform transition-all duration-150 hover:scale-125 '
             >
               <span className='sr-only'>{item.name}</span>
-              <item.icon aria-hidden='true' />
+              <item.icon
+                className='h-6 w-6 fill-gray-400 transition-all duration-150 hover:fill-gray-500 '
+                aria-hidden='true'
+              />
             </a>
           ))}
         </div>

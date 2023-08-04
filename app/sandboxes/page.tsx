@@ -2,8 +2,8 @@ import { Metadata } from 'next'
 import { compareDesc } from 'date-fns'
 import { allSandboxes } from 'contentlayer/generated'
 
-import SandboxList from 'components/contentHelpers/sandboxList'
-import Header from 'components/header'
+import SandboxList from '@/components/contentHelpers/sandboxList'
+import Header from '@/components/header'
 
 export const metadata: Metadata = {
   title: 'Sandboxes - Misikoff',

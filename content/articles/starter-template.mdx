@@ -1,0 +1,302 @@
+---
+title: How I Setup A New Frontend Project
+category: Frontend Development
+tags: ['software', 'developer experience']
+description: dsadasda
+thumbnailUrl: https://images.unsplash.com/photo-1530893609608-32a9af3aa95c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA&ixlib=rb-1.2.1&auto=format
+thumbnailUnsplash: false
+alt: computer on desk
+date: 2023-06-26 CST
+published: false
+---
+
+export const thumbnailUrl =
+  'https://images.unsplash.com/photo-1530893609608-32a9af3aa95c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA&ixlib=rb-1.2.1&auto=format'
+export const alt = 'computer on desk'
+
+<figure>
+  <TailwindImage
+    className='h-96 w-full'
+    src={thumbnailUrl}
+    alt={alt}
+    width={600}
+    height={450}
+    priority
+    unsplash
+  />
+</figure>
+
+When starting a new project independently or within a team, there are a few
+pieces of setup I find myself repeating. This post will outline the steps I take
+to ensure a smooth development experience.
+
+This post uses VSCode and the Next.js framework. These ideas can be modified for
+other IDEs and frameworks.
+
+## Formatting & Linting
+
+Formatting refers to restructuring code to follow a consistent style.
+
+Linting refers to analyzing code for potential errors.
+
+Formatting and linting tools can take a bit of time to configure, but the
+consistency and discipline they promote can save a lot of time down the road.
+For an independent developer, these tools can save time organizing code and
+highlight potential problems. For a team, these tools enable a level of
+consistency that would otherwise be arduous to maintain and a nightmare to
+enforce.
+
+### Prettier
+
+Prettier is an opinionated code formatter, designed to stop tiresome debates
+over styles. It offers a few options, but it's value is in enforcing reasonable
+standards, rather than allowing for infinite customization. In the config file
+below I've configured a few simple rules according to my own preferences.
+
+```json title=".prettierrc"
+{
+  "arrowParens": "always",
+  "jsxSingleQuote": true,
+  "semi": false,
+  "singleQuote": true
+}
+```
+
+Prettier's website has a great
+[article](https://prettier.io/docs/en/why-prettier.html) about many of it's
+benefits.
+
+<p>
+  For more about this package and how I use it, check out the corresponding
+  <Link href='/packages/prettier'>page</Link> in my packages section.
+</p>
+
+### ESLint
+
+ESLint is a highly configurable JavaScript linter. In the config file below,
+I've built upon some great rulesets from `next/core-web-vitals` and
+`plugin:prettier/recommended`. By including the `prettier` plugin, we can allow
+ESLint to enforce Prettier's rules.
+
+```javascript title=".eslintrc.js" {3, 5}
+module.exports = {
+  extends: ['next/core-web-vitals', 'plugin:prettier/recommended'],
+  plugins: ['prettier'],
+  rules: {
+    'import/order': [
+      'error',
+      {
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+        },
+        groups: ['builtin', 'external', 'internal'],
+        pathGroups: [
+          { pattern: 'react', group: 'builtin', position: 'before' },
+
+          { pattern: 'next', group: 'external', position: 'before' },
+          { pattern: 'next/**', group: 'external', position: 'before' },
+          {
+            pattern: 'components/**',
+            group: 'internal',
+            position: 'before',
+          },
+        ],
+        pathGroupsExcludedImportTypes: [],
+        distinctGroup: false,
+      },
+    ],
+  },
+}
+```
+
+My newest addition to this file is the `import/order` rule. It ensures imports
+are grouped and sorted by their path. In this case, `react` is the first group,
+followed by `next`, it's modules, and `components`. My team and I have found
+that enforcing an import order greatly reduces the chances of a merge conflict.
+
+<p>
+  For more about this package and how I use it, check out the corresponding
+  <Link href='/packages/eslint'>page</Link> in my packages section.
+</p>
+
+### Automating via VSCode Actions on Save
+
+With a small change to our VSCode settings, we can have our editor run the auto
+fix action on file save. This means we don't have to worry about manually
+linting our files.
+
+```json title=".vscode/settings.json" {3}
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }
+}
+```
+
+To work properly, this requires the
+[ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+extension to be installed. To make this more explicit, we can add a
+`extensions.json` file to our `.vscode` folder. This will prompt other
+developers to install the extension when they open the project.
+
+```json title=".vscode/extensions.json"
+{
+  "recommendations": ["dbaeumer.vscode-eslint"]
+}
+```
+
+## Git Hooks
+
+### lint-staged
+
+This package gives us a simple way to ensure all staged files have been linted.
+
+```js title="lintstagedrc.js"
+const path = require('path')
+
+const buildEslintCommand = (filenames) =>
+  `next lint --fix --file ${filenames
+    .map((f) => path.relative(process.cwd(), f))
+    .join(' --file ')}`
+
+module.exports = {
+  '*.{js,jsx,ts,tsx}': [buildEslintCommand],
+}
+```
+
+<p>
+  For more about this package and how I use it, check out the corresponding
+  <Link href='/packages/lint-staged'>page</Link> in my packages section.
+</p>
+
+### commitlint
+
+```javascript title="commitlint.config.js"
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    'body-max-line-length': [0],
+  },
+}
+```
+
+<p>
+  For more about this package and how I use it, check out the corresponding
+  <Link href='/packages/commitlint'>page</Link> in my packages section.
+</p>
+
+### Automating via Husky
+
+The `commit-msg` hook, ensures that all commit messages follow the linting rules
+we've set up through `commitlint`.
+
+```bash title=".husky/commit-msg"
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+yarn commitlint --edit $1
+```
+
+The `pre-commit` hook, ensures that all staged files have been linted through
+`lint-staged`.
+
+```bash title="./husky/pre-commit"
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+yarn lint-staged
+```
+
+<p>
+  For more about this package and how I use it, check out the corresponding
+  <Link href='/packages/husky'>page</Link> in my packages section.
+</p>
+## GitHub Actions
+
+### Dependabot
+
+Sam Selikoff has a great [video](https://www.youtube.com/watch?v=BErzoFKLcKQ) on
+simplifying dependency updates through Dependabot. Check it out for more
+details. Below, I have simple Dependabot setup to automatically create PRs for
+`npm` and `github-actions` packages.
+
+```yml title=".github/dependabot.yml"
+version: 2
+updates:
+  # Fetch and update latest `npm` packages
+  - package-ecosystem: npm
+    directory: '/'
+    schedule:
+      interval: daily
+      time: '00:00'
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: fix
+      prefix-development: chore
+      include: scope
+  # Fetch and update latest `github-actions` pkgs
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: daily
+      time: '00:00'
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: fix
+      prefix-development: chore
+      include: scope
+```
+
+#### Auto-Merge PRs
+
+By adding the following action, we can have Dependabot automatically merge PRs
+that pass all checks. In the example below I only allow this behavior for patch
+and minor version updates. Major version updates still require manual review.
+This action saves us a lot of time keeping packages up to date and is an attempt
+to strike a balance between the safety of manual checks and the security of
+staying up-to-date with package versions.
+
+Try to be realistic when thinking about what kind of policy is best for your
+project. It's difficult to beat the safety of manual reviews, but without some
+automation you can miss out on timely security updates, or add a lot of work for
+your team.
+
+```yml title=".github/dependabot-auto-merge.yml" {19-22}
+name: Dependabot auto-merge
+on: pull_request
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Enable auto-merge for Dependabot PRs
+        if:
+          ${{ steps.metadata.outputs.update-type ==
+          'version-update:semver-patch' || steps.metadata.outputs.update-type ==
+          'version-update:semver-minor' }}
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+### Wrap Up
+
+For a quicker start, check out one of my Next.js templates. They include all of
+the packages, actions, and configurations mentioned above.
+
+- For a single project:
+  [Next Starter Template](https://github.com/misikoff/next-starter-template)
+- For a monorepo:
+  [Next Turbo Starter Template](https://github.com/misikoff/next-turbo-starter-template)
