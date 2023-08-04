@@ -2,12 +2,12 @@
 
 import React, { useEffect, useState } from 'react'
 
-import { clsx } from 'clsx'
+// import { clsx } from 'clsx'
 
 import { CoinTossGame } from 'content/sandboxes/petersburgMerchant/helpers/coinToss'
 import AnimatedNumber from '@/components/animatedNumber'
-import LikelihoodChart from '@/content/articles/risk/multiplicativePayoffs/helpers/likelihoodChart'
-import PayoffChart from '@/content/articles/risk/multiplicativePayoffs/helpers/payoffChart'
+// import LikelihoodChart from '@/content/articles/risk/multiplicativePayoffs/helpers/likelihoodChart'
+// import PayoffChart from '@/content/articles/risk/multiplicativePayoffs/helpers/payoffChart'
 import PlayCard from '@/content/articles/risk/multiplicativePayoffs/helpers/playCard'
 import ResultChart from '@/content/articles/risk/multiplicativePayoffs/helpers/resultChart'
 
@@ -28,7 +28,7 @@ export default function MerchantSandbox() {
   const [insuranceCost, setInsuranceCost] = useState(game.insuranceCost)
 
   // const [probabilities, setProbabilities] = useState(game.probabilities)
-  const [results, setResults] = useState(game.results)
+  // const [results, setResults] = useState(game.results)
 
   function handleStartChanged(event: any) {
     setStartVal(game.setStartVal(event.target.value))
@@ -47,7 +47,7 @@ export default function MerchantSandbox() {
   }
 
   function handleInsuredChanged(event: any) {
-    setInsured(game.setInsured(event.target.value))
+    setInsured(game.setInsured(event.target.value) as any)
   }
 
   function handleRiskOfLossChanged(event: any) {
@@ -349,7 +349,7 @@ export default function MerchantSandbox() {
                   name='insured'
                   className='mt-1 block rounded-md border-gray-300 pl-8 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm'
                   // placeholder='50'
-                  value={insured}
+                  value={insured as any}
                   onChange={handleInsuredChanged}
                 />
               </div>
@@ -440,7 +440,7 @@ export default function MerchantSandbox() {
         </div>
 
         <div className='flex w-full flex-col'>
-          <PlayCard game={game} />
+          {/* <PlayCard game={game as any} /> */}
           <div className='relative mt-4 flex w-full flex-shrink flex-grow'>
             <ResultChart className='flex-shrink flex-grow' values={values} />
           </div>
