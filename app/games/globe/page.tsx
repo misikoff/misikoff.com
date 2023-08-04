@@ -12,7 +12,7 @@ export default function App() {
   ])
   const [phi, setPhi] = useState<number>(0)
 
-  const [curGlobe, setCurGlobe] = useState<Renderer>()
+  const [curGlobe, setCurGlobe] = useState<any>()
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -22,7 +22,7 @@ export default function App() {
     })
   }, [])
 
-  const canvasRef = useRef<HTMLCanvasElement>()
+  const canvasRef = useRef<any>()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const render = (state: any) => {
     console.log('rendering')

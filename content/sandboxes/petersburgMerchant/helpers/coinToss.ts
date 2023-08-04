@@ -115,7 +115,7 @@ export class CoinTossGame extends EventEmitter {
   }
 
   public setStartVal(value: number) {
-    this.startVal = parseInt(handleBounds(value, 'startVal'))
+    this.startVal = parseInt(handleBounds(value, 'startVal') as any)
     this.handleChangeMade()
 
     return this.startVal
@@ -219,10 +219,12 @@ export class CoinTossGame extends EventEmitter {
   private getNextVal(successfulShipments: boolean, curVal: number) {
     if (this.insured) {
       return (
-        curVal + parseInt(this.profitPerShipment) - parseInt(this.insuranceCost)
+        curVal +
+        parseInt(this.profitPerShipment as any) -
+        parseInt(this.insuranceCost as any)
       )
     } else if (successfulShipments) {
-      return curVal + parseInt(this.profitPerShipment)
+      return curVal + parseInt(this.profitPerShipment as any)
     } else {
       return curVal
     }

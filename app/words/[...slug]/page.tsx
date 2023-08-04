@@ -21,7 +21,7 @@ const mdxComponents: MDXComponents = {
 export const generateStaticParams = async () =>
   allWords.map((word) => ({ slug: [word._raw.flattenedPath] }))
 
-export const generateMetadata = ({ params }: { params: { slug: string } }) => {
+export const generateMetadata = ({ params }: { params: { slug: any } }) => {
   const word = allWords.find(
     (word) =>
       word._raw.flattenedPath === `words/${params.slug.join('/')}` ||
