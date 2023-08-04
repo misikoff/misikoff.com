@@ -4,6 +4,7 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:markdown/recommended',
     'plugin:mdx/recommended',
+    'plugin:yml/recommended',
   ],
   plugins: ['prettier'],
   rules: {
@@ -47,4 +48,15 @@ module.exports = {
       },
     ],
   },
+  overrides: [
+    {
+      files: ['**/*.mdx'],
+      rules: {
+        // because some components are bundled with MDXContent
+        'react/jsx-no-undef': 'off',
+        // because math syntax causes false positives
+        'no-unused-expressions': 'off',
+      },
+    },
+  ],
 }

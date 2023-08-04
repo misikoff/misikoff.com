@@ -19,17 +19,27 @@ export default function AnimatedNumber({
   const [curVal, setCurVal] = useState(value)
   const nodeRef = useRef<HTMLDivElement | null>(null)
 
+  const prevValue = useRef<number>(0)
+
+  useEffect(() => {
+    prevValue.current = value
+  }, [value])
+
   useEffect(() => {
     if (curVal !== value) {
       const node = nodeRef.current
       if (node) {
         const controls = animate(curVal, value, {
-          duration: 1,
+          duration: 3,
           onUpdate(value) {
             node.textContent = formatter.format(value)
           },
           onComplete() {
             setCurVal(value)
+          },
+          onStop() {
+            // TODO: don't have the animation reset if it didn't finish before the value changed again
+            setCurVal(prevValue.current)
           },
         })
 

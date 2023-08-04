@@ -1,0 +1,36 @@
+---
+title: commitlint
+description: commitlint is a tool to lint your commit messages
+tags: ['linting']
+website: https://commitlint.js.org
+repo: https://github.com/conventional-changelog/commitlint
+enabled: true
+ecosystem: npm
+---
+
+# Setup
+
+```bash
+yarn add -D @commitlint/cli @commitlint/config-conventional
+```
+
+```javascript title="commitlint.config.js"
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    'body-max-line-length': [0],
+  },
+}
+```
+
+### Automating via Husky
+
+The following `commit-msg` hook, ensures that all commit messages follow the
+linting rules set up through `commitlint`.
+
+```bash title=".husky/commit-msg"
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+yarn commitlint --edit $1
+```

@@ -1,5 +1,13 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import readingTime from 'reading-time'
+import rehypeKatex from 'rehype-katex'
+import rehypePrettyCode from 'rehype-pretty-code'
+import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
+
+import { rehypePrettyCodeOptions } from './content/theme'
+
+export const HEADING_LINK_ANCHOR = `before:content-['#'] before:absolute before:-ml-[1em] before:text-rose-100/0 hover:before:text-rose-100/50 pl-[1em] -ml-[1em]`
 
 const Article = defineDocumentType(() => ({
   name: 'Article',
@@ -81,7 +89,7 @@ const Sandbox = defineDocumentType(() => ({
     },
     numbers: {
       type: 'json',
-      of: { variables: 'number', measures: 'number', charts: 'number' },
+      // of: { variables: 'number', measures: 'number', charts: 'number' },
       required: false,
     },
     thumbnailUrl: {
@@ -119,8 +127,127 @@ const Sandbox = defineDocumentType(() => ({
   },
 }))
 
+const Word = defineDocumentType(() => ({
+  name: 'Word',
+  filePathPattern: `**/words/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    author: {
+      type: 'string',
+      description: 'who said it',
+      required: true,
+    },
+    date: {
+      type: 'date',
+      description: 'The date of the post',
+      required: true,
+    },
+    title: {
+      type: 'string',
+      description: 'The entry of the post',
+      required: false,
+    },
+    description: {
+      type: 'string',
+      description: 'The entry of the post',
+      required: false,
+    },
+    place: {
+      type: 'string',
+      description: 'The entry of the post',
+      required: false,
+    },
+    icon: {
+      type: 'enum',
+      options: [
+        'capitol',
+        'temple',
+        'dumbbell',
+        'boxing glove',
+        'feather',
+        'Star Wars',
+        'British flag',
+        'fire',
+        'arch',
+      ],
+      default: 'dark',
+    },
+  },
+  computedFields: {
+    url: {
+      type: 'string',
+      resolve: (doc) => `/${doc._raw.flattenedPath.replace('/page', '')}`,
+    },
+  },
+}))
+
+const Package = defineDocumentType(() => ({
+  name: 'Package',
+  filePathPattern: `**/packages/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      description: 'The entry of the post',
+      required: true,
+    },
+    description: {
+      type: 'string',
+      description: 'The entry of the post',
+      required: false,
+    },
+    repo: {
+      type: 'string',
+      description: 'The entry of the post',
+      required: false,
+    },
+    website: {
+      type: 'string',
+      description: 'The entry of the post',
+      required: false,
+    },
+    tags: {
+      type: 'list',
+      of: { type: 'string' },
+      required: false,
+    },
+    ecosystem: {
+      type: 'string',
+      required: false,
+    },
+    enabled: {
+      type: 'boolean',
+      required: false,
+      default: false,
+    },
+  },
+  computedFields: {
+    url: {
+      type: 'string',
+      resolve: (doc) => `/${doc._raw.flattenedPath.replace('/page', '')}`,
+    },
+  },
+}))
+
 // readingTime: readingTime(markdownWithMeta) as { time: number },
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Article, Sandbox],
+  documentTypes: [Article, Sandbox, Word, Package],
+  mdx: {
+    remarkPlugins: [remarkMath, remarkGfm],
+    rehypePlugins: [
+      rehypeKatex,
+      [rehypePrettyCode, rehypePrettyCodeOptions],
+      // [rehypeSlug],
+      // [
+      //   rehypeAutolinkHeadings,
+      //   {
+      //     behavior: 'wrap',
+      //     properties: {
+      //       className: [HEADING_LINK_ANCHOR],
+      //     },
+      //   },
+      // ],
+    ],
+  },
 })

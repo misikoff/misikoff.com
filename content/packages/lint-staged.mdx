@@ -1,0 +1,42 @@
+---
+title: lint-staged
+description: run linters on git staged files
+tags: ['linting', 'git']
+website:
+repo: https://github.com/okonet/lint-staged
+enabled: true
+ecosystem: npm
+---
+
+This package gives us a simple way to ensure all staged files have been linted.
+
+# Setup
+
+```bash
+yarn add -D lint-staged
+```
+
+```js title="lintstagedrc.js"
+const path = require('path')
+
+const buildEslintCommand = (filenames) =>
+  `next lint --fix --file ${filenames
+    .map((f) => path.relative(process.cwd(), f))
+    .join(' --file ')}`
+
+module.exports = {
+  '*.{js,jsx,ts,tsx}': [buildEslintCommand],
+}
+```
+
+### Automating via Husky
+
+This `pre-commit` hook, ensures that all staged files have been linted through
+`lint-staged`.
+
+```bash title="./husky/pre-commit"
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+yarn lint-staged
+```

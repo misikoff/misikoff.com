@@ -20,5 +20,8 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/container-queries'),
+    require('@tailwindcss/typography'),
+  ],
 }

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { format, parseISO } from 'date-fns'
 import { Sandbox } from 'contentlayer/generated'
 
-import TailwindImage from 'components/tailwindImage'
+import TailwindImage from '@/components/tailwindImage'
 
 export default function SandboxList({ sandboxes = [] as Sandbox[] }) {
   return (

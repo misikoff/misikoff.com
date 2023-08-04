@@ -6,8 +6,9 @@ import { allSandboxes } from 'contentlayer/generated'
 
 // Multiplicative Payoffs
 import MultSandbox from 'content/sandboxes/multiplicativePayoffs/helpers/sandbox'
-import Header from 'components/header'
-import TailwindImage from 'components/tailwindImage'
+import MerchantSandbox from 'content/sandboxes/petersburgMerchant/helpers/sandbox'
+import Header from '@/components/header'
+import TailwindImage from '@/components/tailwindImage'
 
 // Define your custom MDX components.
 const mdxComponents: MDXComponents = {
@@ -21,6 +22,9 @@ const mdxComponents: MDXComponents = {
 
   // Multiplicative Payoffs
   MultSandbox: () => <MultSandbox />,
+
+  // Merchant Sandbox
+  MerchantSandbox: () => <MerchantSandbox />,
 }
 
 export const generateStaticParams = async () =>
@@ -92,6 +96,7 @@ export default function ArticleLayout({
 
   return (
     <article className='flex flex-col gap-y-6'>
+      <span className='main-content flex flex-col items-center gap-1 px-2' />
       <Header title={sandbox.title} />
       <MDXContent components={mdxComponents} />
     </article>

@@ -4,12 +4,12 @@ import React, { useEffect, useState } from 'react'
 
 import { clsx } from 'clsx'
 
-import { CoinTossGame } from 'content/articles/multiplicativePayoffs/helpers/coinToss'
-import LikelihoodChart from 'content/articles/multiplicativePayoffs/helpers/likelihoodChart'
-import PayoffChart from 'content/articles/multiplicativePayoffs/helpers/payoffChart'
-import PlayCard from 'content/articles/multiplicativePayoffs/helpers/playCard'
-import ResultChart from 'content/articles/multiplicativePayoffs/helpers/resultChart'
-import AnimatedNumber from 'components/animatedNumber'
+import AnimatedNumber from '@/components/animatedNumber'
+import { CoinTossGame } from '@/content/articles/risk/multiplicativePayoffs/helpers/coinToss'
+import LikelihoodChart from '@/content/articles/risk/multiplicativePayoffs/helpers/likelihoodChart'
+import PayoffChart from '@/content/articles/risk/multiplicativePayoffs/helpers/payoffChart'
+import PlayCard from '@/content/articles/risk/multiplicativePayoffs/helpers/playCard'
+import ResultChart from '@/content/articles/risk/multiplicativePayoffs/helpers/resultChart'
 
 export default function Sandbox() {
   const [game] = useState(new CoinTossGame())
@@ -267,7 +267,9 @@ export default function Sandbox() {
 
         <div className='flex w-full flex-col'>
           <PlayCard game={game} />
-          <ResultChart className='mt-4 flex-grow' values={values} />
+          <div className='relative mt-4 flex w-full flex-shrink flex-grow'>
+            <ResultChart className='flex-shrink flex-grow' values={values} />
+          </div>
         </div>
       </div>
 
