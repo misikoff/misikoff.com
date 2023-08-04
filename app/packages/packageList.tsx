@@ -94,7 +94,7 @@ export default function PackageList({ packages }: { packages: Package[] }) {
 
   return (
     <>
-      <div className='grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2'>
+      {/* <div className='grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2'>
         <div>
           <label
             htmlFor='search'
@@ -114,11 +114,11 @@ export default function PackageList({ packages }: { packages: Package[] }) {
               className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
             />
           </div>
+          searching for {search}
         </div>
-      </div>
-      searching for {search}
+      </div> */}
       <div
-        className='mx-auto mt-16 grid w-full max-w-md grid-flow-dense
+        className='mx-auto mt-4 grid w-full max-w-md grid-flow-dense
           grid-cols-1 grid-rows-[masonry] gap-8 text-sm
           leading-6 text-gray-900 sm:mt-20 sm:max-w-2xl
           sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-cols-4'
