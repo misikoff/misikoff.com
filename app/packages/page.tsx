@@ -15,8 +15,8 @@ export default function Home() {
   return (
     <div className='flex flex-col items-center justify-center'>
       <main className='flex w-full flex-1 flex-col items-center justify-center px-4 text-center md:px-20'>
-        <Header title='Packages' className='mb-4 md:mb-8' />
-        <p className='mb-8 max-w-lg text-lg leading-7 text-gray-500'>
+        <Header title='🚧 Packages 🚧' className='mb-4 md:mb-8' />
+        <p className='max-w-lg text-lg leading-7 text-gray-500'>
           This is a place for me keep track of packages I{"'"}ve found useful
           and take notes on my experiences with them for future reference. If
           someone else finds this helpful, that{"'"}s great!

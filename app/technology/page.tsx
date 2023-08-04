@@ -6,7 +6,7 @@ import { ArrowLongRightIcon } from '@heroicons/react/24/outline'
 import HexagonGridAbsol from '@/components/fragments/hexagonGridAbsol'
 import Header from '@/components/header'
 import Steps from '@/components/steps'
-import TailwindImage from '@/components/tailwindImage'
+// import TailwindImage from '@/components/tailwindImage'
 
 export const metadata: Metadata = {
   title: 'Technology - Misikoff',
@@ -152,10 +152,10 @@ export default function TechnologyPage() {
           </span>
           <Steps steps={pipelinesteps} />
         </div>
-        <TailwindImage
+        {/* <TailwindImage
           src='/misc/test.png'
           className='mx-auto h-32 w-32 transform rounded-lg border-2 border-gray-200 duration-200 ease-in-out hover:scale-150 hover:shadow-lg'
-        />
+        /> */}
         {/* <span style={{ color: '#6C6', fontSize: '135px' }}>
           &#x2B22; &#x2B22;
         </span> */}
@@ -164,7 +164,7 @@ export default function TechnologyPage() {
 
         <Hexagon className='h-8 w-8 transform fill-blue-400 duration-200 ease-in-out hover:rotate-90' /> */}
         {/* <HexagonGrid rows={8} cols={13} /> */}
-        <HexagonGridAbsol rows={10} cols={20} />
+        {/* <HexagonGridAbsol rows={10} cols={20} /> */}
       </div>
     </div>
   )

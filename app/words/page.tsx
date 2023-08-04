@@ -82,13 +82,13 @@ export default function Home() {
   return (
     <div className='flex flex-col items-center justify-center'>
       <main className='flex w-full flex-1 flex-col items-center justify-center px-4 text-center md:px-20'>
-        <Header title='Words' className='mb-4 md:mb-8' />
-        <p className='mb-8 text-lg leading-7 text-gray-500'>
+        <Header title='🚧 Words 🚧' className='mb-4 md:mb-8' />
+        <p className='text-lg leading-7 text-gray-500'>
           This is a list of nice words.
         </p>
 
         <div
-          className='mx-auto mt-16 grid w-full max-w-md grid-flow-dense
+          className='mx-auto grid w-full max-w-md grid-flow-dense
           grid-cols-1 grid-rows-[masonry] gap-8 text-sm
           leading-6 text-gray-900 sm:mt-20 sm:max-w-2xl
           sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-cols-4'

@@ -18,7 +18,7 @@ export default function Home() {
   const games: game[] = [
     {
       slug: '2048',
-      title: '2048',
+      title: '🚧 2048 🚧',
       description: 'A clone of the popular game 2048',
     },
     // {
@@ -39,7 +39,7 @@ export default function Home() {
                 href={`games/${game.slug}`}
                 className='group my-4 cursor-pointer'
               >
-                <div className=' flex w-full max-w-lg flex-col overflow-hidden rounded-lg shadow-md transition-shadow group-hover:shadow-lg'>
+                <div className='flex w-full max-w-lg flex-col overflow-hidden rounded-lg p-4 shadow-md transition-shadow group-hover:shadow-lg'>
                   <div className='mt-2 block'>
                     <p className='text-xl font-semibold text-gray-900'>
                       {game.title}
