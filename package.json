@@ -50,7 +50,7 @@
     "eslint-plugin-yml": "^1.8.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
-    "postcss": "^8.4.27",
+    "postcss": "^8.4.28",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.4.1",
     "tailwindcss": "^3.3.3"
