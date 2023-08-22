@@ -15,7 +15,7 @@
     "cobe": "^0.6.3",
     "contentlayer": "^0.3.4",
     "date-fns": "^2.30.0",
-    "framer-motion": "^10.16.0",
+    "framer-motion": "^10.16.1",
     "lodash-es": "^4.17.21",
     "next": "^13.4.19",
     "next-contentlayer": "^0.3.4",
