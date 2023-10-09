@@ -39,7 +39,7 @@
     "@tailwindcss/typography": "^0.5.10",
     "@types/lodash-es": "^4.17.9",
     "@types/react": "^18.2.25",
-    "@types/uuid": "^9.0.4",
+    "@types/uuid": "^9.0.5",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.50.0",
     "eslint-config-next": "^13.5.4",
