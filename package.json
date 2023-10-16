@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.2",
-    "@commitlint/config-conventional": "^17.7.0",
+    "@commitlint/config-conventional": "^17.8.0",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/typography": "^0.5.10",
     "@types/lodash-es": "^4.17.9",
