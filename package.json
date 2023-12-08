@@ -29,7 +29,7 @@
     "rehype-pretty-code": "^0.11.0",
     "remark-gfm": "^3.0.1",
     "remark-math": "^6.0.0",
-    "shiki": "^0.14.5",
+    "shiki": "^0.14.6",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
