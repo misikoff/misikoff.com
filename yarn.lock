@@ -5986,10 +5986,10 @@ rehype-parse@^9.0.0:
     hast-util-from-html "^2.0.0"
     unified "^11.0.0"
 
-rehype-pretty-code@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/rehype-pretty-code/-/rehype-pretty-code-0.12.0.tgz#d79639086879036b65d6cfff303b07fda1b82e49"
-  integrity sha512-3Gmp/AMazoM2ojDoLmTWSuDdtYJ3Qj39Q6FY3S+w9u1m0CAPLFUqo2GyC96C/3A9z2yW7SoSsUzUJ2RUwuDwZA==
+rehype-pretty-code@^0.12.1:
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/rehype-pretty-code/-/rehype-pretty-code-0.12.1.tgz#5b17e0014361c29c2d1a29f673d729ab1a324ee2"
+  integrity sha512-QeGvAPTc31KwP52wBjXqdXXfBAhEs6wETNlOcZRkaPKZZo6Alsz0U6yY05cCKQK53xYNeDCClVYDCyVMl3SP1Q==
   dependencies:
     "@types/hast" "^3.0.3"
     hast-util-to-string "^3.0.0"
