@@ -20,7 +20,7 @@ export default function PackageList({ packages }: { packages: Package[] }) {
         <figure
           className={clsx(
             'group space-y-6 rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5 transition hover:shadow-xl @lg:space-y-8 @lg:p-10',
-            !packageFound && 'hidden'
+            !packageFound && 'hidden',
           )}
         >
           {pack.ecosystem === 'npm' && (
@@ -88,7 +88,7 @@ export default function PackageList({ packages }: { packages: Package[] }) {
     setDisplayPackages(
       allPacks.filter((pack) => {
         return pack.title.toLowerCase().includes(search.toLowerCase())
-      })
+      }),
     )
   }, [allPacks, search])
 

@@ -29,7 +29,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   const pack = allPackages.find(
     (pack) =>
       pack._raw.flattenedPath === `packages/${params.slug}` ||
-      pack._raw.flattenedPath === `packages/${params.slug}/page`
+      pack._raw.flattenedPath === `packages/${params.slug}/page`,
   )
 
   console.log({ pack })
@@ -42,7 +42,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
         description: pack.description,
         url: `https://misikoff.com/${pack._raw.flattenedPath.replace(
           '/page',
-          ''
+          '',
         )}`,
         images: [
           {
@@ -84,7 +84,7 @@ export default function ArticleLayout({
     (pack) =>
       // true ||
       pack._raw.flattenedPath === `packages/${params.slug.join('/')}` ||
-      pack._raw.flattenedPath === `packages/${params.slug.join('/')}/page`
+      pack._raw.flattenedPath === `packages/${params.slug.join('/')}/page`,
   )
 
   // join array of strings into a path string

@@ -33,7 +33,7 @@ export default function HexagonGrid({
               className={clsx(
                 'flex w-auto flex-col',
                 ci > 0 && '-ml-1',
-                ci % 2 == 1 && 'pt-4'
+                ci % 2 == 1 && 'pt-4',
               )}
             >
               {rowNumbers.map((rx, ri) => {
