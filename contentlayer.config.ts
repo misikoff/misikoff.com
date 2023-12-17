@@ -237,7 +237,7 @@ export default makeSource({
     remarkPlugins: [remarkMath, remarkGfm],
     rehypePlugins: [
       rehypeKatex,
-      [rehypePrettyCode, rehypePrettyCodeOptions],
+      [rehypePrettyCode as any, rehypePrettyCodeOptions],
       // [rehypeSlug],
       // [
       //   rehypeAutolinkHeadings,
