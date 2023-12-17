@@ -34,7 +34,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   const sandbox = allSandboxes.find(
     (sandbox) =>
       sandbox._raw.flattenedPath === `articles/${params.slug}` ||
-      `sandboxes/${params.slug}/page`
+      `sandboxes/${params.slug}/page`,
   )
 
   if (sandbox !== undefined) {
@@ -46,7 +46,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
         description: sandbox.description,
         url: `https://misikoff.com/${sandbox._raw.flattenedPath.replace(
           '/page',
-          ''
+          '',
         )}`,
         siteName: 'Misikoff',
         images: [
@@ -85,7 +85,7 @@ export default function ArticleLayout({
   const sandbox = allSandboxes.find(
     (sandbox) =>
       sandbox._raw.flattenedPath === `sandboxes/${params.slug}` ||
-      sandbox._raw.flattenedPath === `sandboxes/${params.slug}/page`
+      sandbox._raw.flattenedPath === `sandboxes/${params.slug}/page`,
   )
 
   if (sandbox === undefined) {

@@ -12,7 +12,7 @@ export function factorial(n: number): number {
 }
 export function expectedValue(
   results: number[],
-  probabilities: number[]
+  probabilities: number[],
 ): number {
   let weightedAvg = 0
   if (results.length === probabilities.length) {
