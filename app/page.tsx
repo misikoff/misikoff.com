@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 
+import Hexagon from '@/components/blocks/hexagon'
 import DotPattern from '@/components/dotPattern'
-import Hexagon from '@/components/fragments/hexagon'
 import Globe from '@/components/globe'
 
 export const metadata: Metadata = {
