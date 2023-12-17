@@ -52,7 +52,7 @@ export default function Globe({ className }: { className?: string }) {
     <div
       className={clsx(
         className,
-        'group relative mx-auto bg-blue-200 transition-colors duration-1000 hover:bg-blue-50 md:h-96 md:w-96'
+        'group relative mx-auto bg-blue-200 transition-colors duration-1000 hover:bg-blue-50 md:h-96 md:w-96',
       )}
       style={{ clipPath: 'circle(50% at 50% 50%)' }}
     >
@@ -65,7 +65,7 @@ export default function Globe({ className }: { className?: string }) {
             <svg
               className={clsx(
                 'transition-colors duration-1000 group-hover:text-blue-200',
-                textColorClasses[index]
+                textColorClasses[index],
               )}
               xmlns='http://www.w3.org/2000/svg'
               viewBox='0 0 1440 320'
@@ -87,7 +87,7 @@ export default function Globe({ className }: { className?: string }) {
             <div
               className={clsx(
                 '-mt-0.5 flex h-24 transition-colors duration-1000',
-                colorClasses[index]
+                colorClasses[index],
               )}
             />
           </div>

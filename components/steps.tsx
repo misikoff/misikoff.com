@@ -19,7 +19,7 @@ export default function Example({ steps = [] as Step[] }) {
             key={step.name}
             className={clsx(
               stepIdx !== steps.length - 1 ? 'pb-10' : '',
-              'relative'
+              'relative',
             )}
           >
             {step.status === 'complete' ? (

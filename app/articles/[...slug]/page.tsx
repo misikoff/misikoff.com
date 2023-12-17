@@ -48,7 +48,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   const article = allArticles.find(
     (article) =>
       article._raw.flattenedPath === `articles/${params.slug}` ||
-      `articles/${params.slug}/page`
+      `articles/${params.slug}/page`,
   )
 
   if (article !== undefined) {
@@ -59,7 +59,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
         description: article.description,
         url: `https://misikoff.com/${article._raw.flattenedPath.replace(
           '/page',
-          ''
+          '',
         )}`,
         images: [
           {
@@ -99,7 +99,7 @@ export default function ArticleLayout({
   const article = allArticles.find(
     (article) =>
       article._raw.flattenedPath === `articles/${params.slug.join('/')}` ||
-      article._raw.flattenedPath === `articles/${params.slug.join('/')}/page`
+      article._raw.flattenedPath === `articles/${params.slug.join('/')}/page`,
   )
 
   if (article === undefined) {

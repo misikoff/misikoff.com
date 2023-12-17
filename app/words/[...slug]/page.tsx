@@ -25,7 +25,7 @@ export const generateMetadata = ({ params }: { params: { slug: any } }) => {
   const word = allWords.find(
     (word) =>
       word._raw.flattenedPath === `words/${params.slug.join('/')}` ||
-      word._raw.flattenedPath === `words/${params.slug.join('/')}/page`
+      word._raw.flattenedPath === `words/${params.slug.join('/')}/page`,
   )
 
   if (word !== undefined) {
@@ -36,7 +36,7 @@ export const generateMetadata = ({ params }: { params: { slug: any } }) => {
         description: word.description,
         url: `https://misikoff.com/${word._raw.flattenedPath.replace(
           '/page',
-          ''
+          '',
         )}`,
         images: [
           {
@@ -77,7 +77,7 @@ export default function ArticleLayout({
   const word = allWords.find(
     (word) =>
       word._raw.flattenedPath === `words/${params.slug.join('/')}` ||
-      word._raw.flattenedPath === `words/${params.slug.join('/')}/page`
+      word._raw.flattenedPath === `words/${params.slug.join('/')}/page`,
   )
 
   // join array of strings into a path string

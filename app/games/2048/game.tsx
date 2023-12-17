@@ -115,7 +115,7 @@ const moveLeft = (game: tile[][]) => {
           value: 0,
           id: null,
           new: true,
-        })
+        }),
       )
     }
   })
@@ -145,7 +145,7 @@ const moveRight = (game: tile[][]) => {
           value: 0,
           id: null,
           new: true,
-        })
+        }),
       )
       occupiedTiles.forEach((item) => {
         const nextItem = { value: item.value, id: item.id, new: false }
@@ -189,7 +189,7 @@ const moveUp = (game: tile[][]) => {
           value: 0,
           id: null,
           new: true,
-        })
+        }),
       )
     }
   })
@@ -221,7 +221,7 @@ const moveDown = (game: tile[][]) => {
           value: 0,
           id: null,
           new: true,
-        })
+        }),
       )
       occupiedTiles.forEach((item) => {
         const nextItem = { value: item.value, id: item.id, new: false }
@@ -398,7 +398,7 @@ export default function GameBoard({ className = '' }: { className?: string }) {
                           key={curGame[ri][ci].id}
                           className={clsx(
                             'absolute z-10 flex h-full w-full items-center justify-center rounded-md text-3xl font-bold',
-                            colors[Math.log2(curGame[ri][ci].value) - 1]
+                            colors[Math.log2(curGame[ri][ci].value) - 1],
                           )}
                           layoutId={curGame[ri][ci].id}
                           transition={{
