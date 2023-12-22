@@ -6512,17 +6512,17 @@ shiki@^0.14.6:
     vscode-oniguruma "^1.7.0"
     vscode-textmate "^8.0.0"
 
-shikiji-core@0.9.10:
-  version "0.9.10"
-  resolved "https://registry.yarnpkg.com/shikiji-core/-/shikiji-core-0.9.10.tgz#daf1105eb60f5fad94216880fa1adaff81376f81"
-  integrity sha512-s+aC66Fh343wpm7VyQTg+htdHM/tUb8R+yxdAdUpCtKkRWbSBIpqQ3xTSNjbCTnGv10xsT164SW0r1VV1N6ToA==
+shikiji-core@0.9.11:
+  version "0.9.11"
+  resolved "https://registry.yarnpkg.com/shikiji-core/-/shikiji-core-0.9.11.tgz#f0e2f81dbd76c7860496da15a0d07e39ea5db069"
+  integrity sha512-KbZdB+0oyoyNiQT0ueXCigp/0ilu1sMvb2aD3gDIDkaQwfayet0f1/9kkh0Wvtk42KMASDR36qA8ctnTQvpocA==
 
-shikiji@^0.9.10:
-  version "0.9.10"
-  resolved "https://registry.yarnpkg.com/shikiji/-/shikiji-0.9.10.tgz#c240ad094a2ca87dcd91c449bc49398c0f7316da"
-  integrity sha512-tqnoSWWb7NailWJ/72Bgi8Z5O+ul71SJ5EhXbfHprZg67RGwck5eVyv5Uv4pso06ZuzNpUabRTyyFKHN/Ea9Mw==
+shikiji@^0.9.11:
+  version "0.9.11"
+  resolved "https://registry.yarnpkg.com/shikiji/-/shikiji-0.9.11.tgz#b9cfd5bbd78af0f44ccb21f673d7168fdfa5b408"
+  integrity sha512-3lZxXOPdhUr42fDTWmWiSrWTbbrRR3YY70F24G+hwh3VmN33ocKdH8RpytyhBhYvSRpiPhHDwGl2C5ozlO6Xow==
   dependencies:
-    shikiji-core "0.9.10"
+    shikiji-core "0.9.11"
 
 side-channel@^1.0.4:
   version "1.0.4"
