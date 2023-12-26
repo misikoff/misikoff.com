@@ -32,7 +32,7 @@
     "remark-gfm": "^3.0.1",
     "remark-math": "^6.0.0",
     "shiki": "^0.14.6",
-    "shikiji": "^0.9.11",
+    "shikiji": "^0.9.12",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
