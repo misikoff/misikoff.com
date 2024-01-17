@@ -6219,10 +6219,10 @@ rehype-parse@^9.0.0:
     hast-util-from-html "^2.0.0"
     unified "^11.0.0"
 
-rehype-pretty-code@^0.12.3:
-  version "0.12.3"
-  resolved "https://registry.yarnpkg.com/rehype-pretty-code/-/rehype-pretty-code-0.12.3.tgz#1c066b786c9ca25c692a20810bb1e01c01df3cf7"
-  integrity sha512-6NbIit8A3hLrkKBEbNs862jVnTLeIOM2AmM0VZ/MtyHb+OuNMeCa6UZSx6UG4zrobm5tY9efTwhih1exsGYsiw==
+rehype-pretty-code@^0.12.4:
+  version "0.12.4"
+  resolved "https://registry.yarnpkg.com/rehype-pretty-code/-/rehype-pretty-code-0.12.4.tgz#a1e468dfc8b47450e43096dbaa15618b2fa672f2"
+  integrity sha512-J9QHfaG4dVKI1DPwdj8p0yfu5Kg6dh6/LWPFTJUh5D4PkZjYnMQATzmVj1CE3LVV6lqDyVT30iqz3n89m1MRUw==
   dependencies:
     "@types/hast" "^3.0.3"
     hast-util-to-string "^3.0.0"
