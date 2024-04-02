@@ -963,10 +963,10 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.4.0.tgz#77e948b9760bd22736a5d26e335a690f76fda37b"
   integrity sha512-cEjvTPU32OM9lUFegJagO0mRnIn+rbqrG89vV8/xLnLFX0DoR0r1oy5IlTga71Q7uT3Qus7qm7wgeiMT/+Irlg==
 
-"@shikijs/core@1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@shikijs/core/-/core-1.2.2.tgz#9993d6e73077f8246164546d2f78b949cae23b64"
-  integrity sha512-GXbTyNP6HlxpyWMR4eirW54Cxp84nVuivcV5hGVBgKnIl+UmD4AJgCX1uXuNRcFFAw58lB3HqryuezIc0iCLgw==
+"@shikijs/core@1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@shikijs/core/-/core-1.2.3.tgz#551c257b6e1575ef0b87635c515dec134b32f611"
+  integrity sha512-SM+aiQVaEK2P53dEcsvhq9+LJPr0rzwezHbMQhHaSrPN4OlOB4vp1qTdhVEKfMg6atdq8s9ZotWW/CSCzWftwg==
 
 "@swc/helpers@0.5.2":
   version "0.5.2"
@@ -6231,12 +6231,12 @@ shebang-regex@^3.0.0:
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
-shiki@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/shiki/-/shiki-1.2.2.tgz#b43632ad6f444da5501cebf804b34c20aa98b40a"
-  integrity sha512-nqazfFgrU+DBLqk4+WjmGQz8sVWkcUcGriHqSM2zGk0GhjirVz4FyJ3AABEx91OpjGiKpuKBg2diYfRfQG3Fbg==
+shiki@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/shiki/-/shiki-1.2.3.tgz#7da5c145205ce563245bd883d353a99ffa1e2a19"
+  integrity sha512-+v7lO5cJMeV2N2ySK4l+51YX3wTh5I49SLjAOs1ch1DbUfeEytU1Ac9KaZPoZJCVBGycDZ09OBQN5nbcPFc5FQ==
   dependencies:
-    "@shikijs/core" "1.2.2"
+    "@shikijs/core" "1.2.3"
 
 shikiji-core@0.10.2:
   version "0.10.2"
