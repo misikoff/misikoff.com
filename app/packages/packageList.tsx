@@ -8,7 +8,7 @@ import { ImGithub, ImNpm } from 'react-icons/im'
 import { IoLogoPython, IoPower } from 'react-icons/io5'
 import { Package } from 'contentlayer/generated'
 
-import RIcon from '@/components/icons/r'
+import RIcon from '../../components/icons/r'
 import { shuffle } from '@/lib/utilityFunctions'
 
 export default function PackageList({ packages }: { packages: Package[] }) {
