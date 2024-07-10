@@ -4205,10 +4205,10 @@ lru-cache@^6.0.0:
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-10.0.0.tgz#b9e2a6a72a129d81ab317202d93c7691df727e61"
   integrity sha512-svTf/fzsKHffP42sujkO/Rjs37BCIsQVRCeNYIm9WN8rgT7ffoUnRtZCqU+6BqcSBdv8gwJeTz8knJpgACeQMw==
 
-lucide-react@^0.403.0:
-  version "0.403.0"
-  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.403.0.tgz#453a48bb59261f7d925c2f8553bdbb0bd1648dce"
-  integrity sha512-ldD3NT444k4Mi+n+43xC8XaHr88MNdhOIApIE15r7O+PcVYEBXNOOFo904cBC6Hsja+zHc1lqw0mqUgBECeisw==
+lucide-react@^0.407.0:
+  version "0.407.0"
+  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.407.0.tgz#c8210b66c2fea265ab142ceb667b587d1eeaed1e"
+  integrity sha512-+dRIu9Sry+E8wPF9+sY5eKld2omrU4X5IKXxrgqBt+o11IIHVU0QOfNoVWFuj0ZRDrxr4Wci26o2mKZqLGE0lA==
 
 markdown-extensions@^1.0.0:
   version "1.1.1"
