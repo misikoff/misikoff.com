@@ -11,7 +11,7 @@ ecosystem: npm
 # Setup
 
 ```bash
-yarn add -D @commitlint/cli @commitlint/config-conventional
+pnpm add -D @commitlint/cli @commitlint/config-conventional
 ```
 
 ```javascript title="commitlint.config.js"
@@ -32,5 +32,5 @@ linting rules set up through `commitlint`.
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn commitlint --edit $1
+pnpm commitlint --edit $1
 ```

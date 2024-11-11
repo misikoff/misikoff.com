@@ -195,7 +195,7 @@ we've set up through `commitlint`.
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn commitlint --edit $1
+pnpm commitlint --edit $1
 ```
 
 The `pre-commit` hook, ensures that all staged files have been linted through
@@ -205,7 +205,7 @@ The `pre-commit` hook, ensures that all staged files have been linted through
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn lint-staged
+pnpm lint-staged
 ```
 
 <p>
