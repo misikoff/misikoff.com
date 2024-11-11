@@ -13,7 +13,7 @@ This package gives us a simple way to ensure all staged files have been linted.
 # Setup
 
 ```bash
-yarn add -D lint-staged
+pnpm add -D lint-staged
 ```
 
 ```js title="lintstagedrc.js"
@@ -38,5 +38,5 @@ This `pre-commit` hook, ensures that all staged files have been linted through
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn lint-staged
+pnpm lint-staged
 ```
