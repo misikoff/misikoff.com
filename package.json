@@ -33,7 +33,7 @@
     "remark-math": "^6.0.0",
     "shiki": "^1.24.1",
     "shikiji": "^0.10.2",
-    "uuid": "^9.0.1"
+    "uuid": "^11.0.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.0",
