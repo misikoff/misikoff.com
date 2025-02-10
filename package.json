@@ -18,7 +18,7 @@
     "date-fns": "^3.6.0",
     "framer-motion": "^11.18.1",
     "lodash-es": "^4.17.21",
-    "lucide-react": "^0.474.0",
+    "lucide-react": "^0.475.0",
     "next": "^14.2.15",
     "next-contentlayer": "^0.3.4",
     "react": "^18.3.1",
