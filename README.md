@@ -1,53 +1,36 @@
-# Next Starter Template
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-This template incorporates a few powerful additions to a basic [Next.js](https://nextjs.org) project. A [demo](https://next-starter-template-gamma.vercel.app/) of this template is deployed via [Vercel](https://vercel.com).
+## Getting Started
 
-**Use only what you need.** This template is just a starting point. Unwanted pieces of this template can be removed easily.
+First, run the development server:
 
-See the [Wiki](https://github.com/misikoff/next-starter-template/wiki) for more information.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-<p align="center">
- <a href="https://web.dev/measure">
-  <img alt="100% Lighthouse Scores" src="https://img.shields.io/badge/lighthouse-100%25-845EF7.svg?logo=lighthouse&logoColor=white&style=flat-square" />
- </a>
-</p>
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Getting started
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-1. [Use this template](https://github.com/misikoff/next-starter/generate)
-2. `pnpm` to install dependencies
-3. `pnpm dev` to run the development server
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Features
+## Learn More
 
-### Core Technologies
+To learn more about Next.js, take a look at the following resources:
 
-- 📖 [TypeScript](https://www.typescriptlang.org) - a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale
-- 🎆 [TailwindCSS](https://github.com/tailwindlabs/tailwindcss) for utility-first styling
-- 👓 [Sass](https://sass-lang.com) - a powerful extension of CSS
-- 📰 [MDX Support (via @mdx-js/loader, @next/mdx, next-mdx-loader)](https://mdxjs.com/)
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-### Dev Experience
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-- ✅ [ESLint](https://eslint.org) to find and fix problems in your JavaScript code
-- ✨ [Prettier](https://prettier.io) to automatically format your code
-- 🐕 [Husky](https://typicode.github.io/husky) for Git hooks
-- 🧹 [Lint-Staged](https://www.npmjs.com/package/lint-staged) to lint staged files
-- 🧾 [Commitlint](https://commitlint.js.org) for linting commit messages
+## Deploy on Vercel
 
-### Other Additions
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-- [headlessUI](https://headlessui.dev) - a library of completely unstyled, fully accessible UI components, designed to integrate beautifully with Tailwind CSS
-- [Heroicons](https://heroicons.com/) - beautiful hand-crafted SVG icons, by the makers of Tailwind CSS
-- [Lodash](https://lodash.com) - a powerful JavaScript utility-library
-
-### GitHub Settings
-
-- continous integration via Github Actions
-- Dependabot
-- semantic PRs
-
-### VSCode Setup
-
-- automatically format code when a file is saved
-- view recommended extensions
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
