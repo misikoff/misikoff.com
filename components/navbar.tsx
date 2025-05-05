@@ -16,6 +16,7 @@ const navigation = [
   { name: 'Games', href: '/games', current: false },
   { name: 'Packages', href: '/packages', current: false },
   { name: 'Words', href: '/words', current: false },
+  { name: 'About', href: '/about', current: false },
 ]
 
 export default function Example({ className = '' }) {

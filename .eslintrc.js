@@ -1,11 +1,5 @@
 module.exports = {
-  extends: [
-    'next/core-web-vitals',
-    'plugin:prettier/recommended',
-    'plugin:markdown/recommended',
-    'plugin:mdx/recommended',
-    'plugin:yml/recommended',
-  ],
+  extends: ['next/core-web-vitals', 'plugin:prettier/recommended'],
   plugins: ['prettier'],
   rules: {
     curly: ['error', 'all'],
@@ -19,27 +13,15 @@ module.exports = {
         groups: ['builtin', 'external', 'internal'],
         pathGroups: [
           { pattern: 'react', group: 'builtin', position: 'before' },
-
           { pattern: 'next', group: 'external', position: 'before' },
           { pattern: 'next/**', group: 'external', position: 'before' },
           {
-            pattern: 'contentlayer/generated',
-            group: 'external',
-            position: 'after',
-          },
-
-          {
-            pattern: 'lib/**',
+            pattern: '@repo/**',
             group: 'internal',
             position: 'before',
           },
           {
-            pattern: 'content/**',
-            group: 'internal',
-            position: 'before',
-          },
-          {
-            pattern: 'components/**',
+            pattern: '@/**',
             group: 'internal',
             position: 'before',
           },
@@ -48,16 +30,6 @@ module.exports = {
         distinctGroup: false,
       },
     ],
+    'react/self-closing-comp': 'error',
   },
-  overrides: [
-    {
-      files: ['**/*.mdx'],
-      rules: {
-        // because some components are bundled with MDXContent
-        'react/jsx-no-undef': 'off',
-        // because math syntax causes false positives
-        'no-unused-expressions': 'off',
-      },
-    },
-  ],
 }
