@@ -3,14 +3,14 @@
     "source.fixAll": "explicit"
   },
   "eslint.validate": [
-    "markdown",
-    "mdx",
+    // "markdown",
+    // "mdx",
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact",
     // "yaml",
-    "yml"
+    // "yml"
   ],
   "tailwindCSS.experimental.classRegex": [
     ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
