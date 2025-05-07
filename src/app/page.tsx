@@ -953,7 +953,7 @@ export default function Home() {
       <main className='flex flex-col gap-8 row-start-2 items-center sm:items-start text-center max-w-4xl'>
         <div className='dark:invert mx-auto'>
           <Image
-            className='mx-auto -mt-32 -mb-16 transform -scale-x-100 hover:drop-shadow-xl hover:drop-shadow-blue-400 transition-all duration-1000  drop-shadow-blue-300 drop-shadow-lg'
+            className='mx-auto -mt-32 -mb-16 transform hover:drop-shadow-xl hover:drop-shadow-blue-400 transition-all duration-1000  drop-shadow-blue-300 drop-shadow-lg'
             src='/logo.png'
             alt='Misikoff logo'
             width={180}
