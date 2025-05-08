@@ -1,6 +1,57 @@
 import Image from 'next/image'
 
 import SectionHeader from '@/components/SectionHeader'
+
+function CoolListElement(name: string, description: string) {
+  return (
+    <li className='mb-2 tracking-[-.01em] font-sans'>
+      <span className='font-mono font-bold'>{name}</span> |{description}
+    </li>
+  )
+}
+
+const developmentEthos = [
+  {
+    name: 'Product-First Approach',
+    description:
+      'Prioritizing clarity and user experience in complex data-heavy applications.',
+  },
+  {
+    name: 'Systems Thinking',
+    description:
+      'Approaching projects holistically to pinpoint links and dependencies.',
+  },
+  {
+    name: 'Iterative Development',
+    description:
+      'Fast prototyping and refining based on real-world feedback and analytics.',
+  },
+  {
+    name: 'Cross-Functional Collaboration',
+    description:
+      'Aligning engineering with design and product to maintain a unified product vision.',
+  },
+  {
+    name: 'Initiative & Ownership',
+    description:
+      'Identifying areas for improvement and pitching impactful solutions.',
+  },
+  {
+    name: 'Developer Experience Improvement',
+    description:
+      'Recognizing and resolving bottlenecks in developer flow to improve velocity.',
+  },
+  {
+    name: 'Clarity Over Complexity',
+    description:
+      'Eliminating noise to focus on the essential form and function.',
+  },
+  {
+    name: 'Code as Communication',
+    description: 'Writing code with readability in mind.',
+  },
+]
+
 type StackItem = {
   name: string
   description: string
@@ -932,7 +983,7 @@ const toolsItems: StackItem[] = [
 function bookMeetingButton() {
   return (
     <a
-      className='flex items-center gap-2 font-serif font-bold text-blue-400 uppercase duration-300 drop-shadow-lg drop-shadow-zinc-400 py-2 px-3 rounded-md shadow-2xl hover:text-shadow-amber-100 hover:text-shadow-sm text-shadow-none text-xl hover:drop-shadow-amber-500 transition-all'
+      className='flex items-center  gap-2 font-serif font-bold text-blue-600 uppercase duration-300 drop-shadow-lg drop-shadow-zinc-400 py-2 px-3 rounded-md shadow-2xl hover:text-shadow-amber-100 hover:text-shadow-sm text-shadow-none text-xl hover:drop-shadow-amber-500 transition-all'
       href='https://cal.com/misikoff/15min'
       target='_blank'
       rel='noopener noreferrer'
@@ -953,21 +1004,33 @@ export default function Home() {
       <main className='flex flex-col gap-8 row-start-2 items-center sm:items-start text-center max-w-4xl'>
         <div className='dark:invert mx-auto'>
           <Image
-            className='mx-auto -mt-32 -mb-16 transform hover:drop-shadow-xl hover:drop-shadow-blue-400 transition-all duration-1000  drop-shadow-blue-300 drop-shadow-lg'
-            src='/logo.png'
+            className='mx-auto -mt-32 -mb-8   hover:scale-105 ease-in-out hover:-translate-y-3 transform hover:drop-shadow-2xl hover:drop-shadow-blue-400 transition-all duration-1000  drop-shadow-blue-300 drop-shadow-lg'
+            src='/logo-sphere.png'
             alt='Misikoff logo'
             width={180}
             height={38}
             priority
           />
         </div>
-        <h1 className='mx-auto font-serif text-4xl sm:text-5xl tracking-[-.01em] text-center sm:text-left'>
+        <h1 className='mx-auto font-serif text-4xl sm:text-5xl low tracking-[-.01em] text-center sm:text-left'>
           Tommy Misikoff
         </h1>
-        <section className='w-full'>
-          <p className='text-center'>
-            Design-minded senior engineer with a passion for building clear,
-            intentional, and performant software.
+        <section className='flex flex-col gap-2 row-start-2 items-center text-center max-w-4xl w-full'>
+          <h2 className='text-2xl tracking-[-.01em] text-center'>
+            <span className='font-serif text-md italic whitespace-nowrap'>
+              Sculpting Ideas.
+            </span>{' '}
+            <span className='font-mono font-bold  whitespace-nowrap'>
+              Shaping
+              <span className='font-normal  text-xs tracking-tightest'> </span>
+              Code.
+            </span>
+          </h2>
+          <p className='text-center max-w-xl'>
+            Design-minded senior engineer with a passion for building{' '}
+            <span className='md:whitespace-nowrap'>
+              clear, intentional, and performant software.
+            </span>
           </p>
         </section>
         <section className='flex flex-col gap-8 row-start-2 items-center text-center max-w-4xl w-full'>
@@ -1004,56 +1067,11 @@ export default function Home() {
         <section className='flex flex-col gap-8 row-start-2 items-center sm:items-start text-center max-w-4xl w-full'>
           <SectionHeader className=''>Development Ethos</SectionHeader>
           <ul className='list-inside text-sm/6 text-left'>
-            <li className='mb-2 tracking-[-.01em] font-sans'>
-              <span className='font-mono font-bold'>
-                Product-First Approach
-              </span>{' '}
-              | Prioritizing clarity and user experience in complex data-heavy
-              applications.
-            </li>
-
-            <li className='mb-2 tracking-[-.01em] font-sans'>
-              <span className='font-mono font-bold'>Systems Thinking</span> |{' '}
-              Approaching projects holistically to pinpoint links and
-              dependencies
-            </li>
-            <li className='mb-2 tracking-[-.01em] font-sans'>
-              <span className='font-mono font-bold'>Iterative Development</span>{' '}
-              | Fast prototyping and refining based on real-world feedback and
-              analytics.
-            </li>
-            <li className='mb-2 tracking-[-.01em] font-sans'>
-              <span className='font-mono font-bold'>
-                Cross-Functional Collaboration
-              </span>{' '}
-              | Aligning engineering with design and product to maintain a
-              unified product vision.
-            </li>
-            <li className='mb-2 tracking-[-.01em] font-sans'>
-              <span className='font-mono font-bold'>
-                Initiative & Ownership
-              </span>{' '}
-              | Identifying areas for improvement and pitching impactful
-              solutions.
-            </li>
-            <li className='mb-2 tracking-[-.01em] font-sans'>
-              <span className='font-mono font-bold'>
-                Developer Experience Improvement
-              </span>{' '}
-              | Recognizing and resolving bottlenecks in developer flow to
-              improve velocity
-            </li>
-            <li className='mb-2 tracking-[-.01em] font-sans'>
-              <span className='font-mono font-bold'>
-                Clarity Over Complexity
-              </span>{' '}
-              | Prioritizing simplicity in design and implementation to promote
-              intuitive experiences
-            </li>
-            <li className='mb-2 tracking-[-.01em] font-sans'>
-              <span className='font-mono font-bold'>Code as Communication</span>{' '}
-              | Writing code with readability in mind
-            </li>
+            {developmentEthos.map((item) => (
+              <div key={item.name}>
+                {CoolListElement(item.name, item.description)}
+              </div>
+            ))}
           </ul>
         </section>
 
@@ -1078,7 +1096,7 @@ export default function Home() {
           </li>
         </ol> */}
 
-          <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 w-full'>
+          <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 w-full'>
             {[...stackItems, ...toolsItems]
               .sort(() => Math.random() - 0.5)
               .map((item) => (

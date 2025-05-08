@@ -59,11 +59,11 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.ico',
   },
-  themeColor: '#0A192F',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-  },
+  // themeColor: '#0A192F',
+  // viewport: {
+  //   width: 'device-width',
+  //   initialScale: 1,
+  // },
 }
 
 export default function RootLayout({
@@ -78,7 +78,7 @@ export default function RootLayout({
       >
         {/* <Navbar className='sticky top-0 z-20' /> */}
         <div className=''>{children}</div>
-        <p className='text-sm text-gray-500 mt-3 text-center'>
+        <p className='text-sm text-gray-500 mt-3 mb-1 text-center'>
           © MMXXV {/* {new Date().getFullYear()} */}
           Tommy Misikoff. All rights reserved.
         </p>
