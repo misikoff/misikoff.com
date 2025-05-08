@@ -5,7 +5,7 @@ import SectionHeader from '@/components/SectionHeader'
 function CoolListElement(name: string, description: string) {
   return (
     <li className='mb-2 tracking-[-.01em] font-sans'>
-      <span className='font-mono font-bold'>{name}</span> |{description}
+      <span className='font-mono font-bold'>{name}</span> | {description}
     </li>
   )
 }
@@ -669,13 +669,15 @@ const stackItems: StackItem[] = [
     name: 'Motion',
     description: 'A library for creating animations in React applications.',
     logo: () => (
-      <svg viewBox='0 0 24 9' id='svg12411545518'>
+      // <div className='w-full h-full p-2 rounded-lg flex items-center justify-center bg-[#fff312]'>
+      <svg viewBox='0 0 24 9' className=''>
         <path
           d='M 9.062 0 L 4.32 8.992 L 0 8.992 L 3.703 1.971 C 4.277 0.882 5.709 0 6.902 0 Z M 19.656 2.248 C 19.656 1.006 20.623 0 21.816 0 C 23.009 0 23.976 1.006 23.976 2.248 C 23.976 3.49 23.009 4.496 21.816 4.496 C 20.623 4.496 19.656 3.49 19.656 2.248 Z M 9.872 0 L 14.192 0 L 9.45 8.992 L 5.13 8.992 Z M 14.974 0 L 19.294 0 L 15.592 7.021 C 15.018 8.11 13.585 8.992 12.392 8.992 L 10.232 8.992 Z'
           // fill='var(--token-6d6f97c3-5f4a-41b8-a7b9-eff3df1acd75, rgb(255, 243, 18))'
-          className='fill-gray-500'
+          className='fill-black'
         />
       </svg>
+      // </div>
     ),
   },
   {
@@ -993,7 +995,7 @@ function bookMeetingButton() {
         backgroundImage: 'url(/marble-background.png)',
       }}
     >
-      Book a Meeting
+      Start a Conversation
     </a>
   )
 }
@@ -1003,14 +1005,16 @@ export default function Home() {
     <div className='grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
       <main className='flex flex-col gap-8 row-start-2 items-center sm:items-start text-center max-w-4xl'>
         <div className='dark:invert mx-auto'>
-          <Image
-            className='mx-auto -mt-32 -mb-8   hover:scale-105 ease-in-out hover:-translate-y-3 transform hover:drop-shadow-2xl hover:drop-shadow-blue-400 transition-all duration-1000  drop-shadow-blue-300 drop-shadow-lg'
-            src='/logo-sphere.png'
-            alt='Misikoff logo'
-            width={180}
-            height={38}
-            priority
-          />
+          <div className='relative w-44 h-44 -mt-32 -mb-8'>
+            <Image
+              className='mx-auto relative   hover:scale-105 ease-in-out hover:-translate-y-3 transform hover:drop-shadow-2xl hover:drop-shadow-blue-400 transition-all duration-1000  drop-shadow-blue-300 drop-shadow-lg'
+              src='/logo-sphere.png'
+              alt='Misikoff logo'
+              fill={true}
+              sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+              priority
+            />
+          </div>
         </div>
         <h1 className='mx-auto font-serif text-4xl sm:text-5xl low tracking-[-.01em] text-center sm:text-left'>
           Tommy Misikoff

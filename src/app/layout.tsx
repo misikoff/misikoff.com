@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 
 import '@/assets/globals.css'
-// import Navbar from '@/components/Navbar'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+
+import Footer from '@/components/Footer'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -76,12 +79,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#f2f4f1] `}
       >
-        {/* <Navbar className='sticky top-0 z-20' /> */}
-        <div className=''>{children}</div>
-        <p className='text-sm text-gray-500 mt-3 mb-1 text-center'>
-          © MMXXV {/* {new Date().getFullYear()} */}
-          Tommy Misikoff. All rights reserved.
-        </p>
+        <div>
+          {children}
+          <SpeedInsights />
+          <Analytics />
+        </div>
+
+        <Footer />
       </body>
     </html>
   )
