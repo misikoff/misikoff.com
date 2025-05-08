@@ -1,4 +1,3 @@
-import DownloadResumeButton from './DownloadResumeButton'
 import GitHubIcon from './icons/GitHub'
 import LinkedInIcon from './icons/LinkedIn'
 
