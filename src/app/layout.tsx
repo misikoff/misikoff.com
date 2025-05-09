@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Tommy Misikoff | Senior Product Engineer',
     description:
-      'Experienced software engineer specializing in building elegant, performant frontend experiences. Let’s create something impactful.',
+      "Experienced software engineer specializing in building elegant, performant frontend experiences. Let's create something impactful.",
     // images: ['https://misikoff.com/preview.jpg'],
   },
   icons: {

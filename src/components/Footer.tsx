@@ -44,10 +44,11 @@ export default function Footer({ className }: { className?: string }) {
         {getSocialIcon(links[0])}
         <a
           href='/TM-resume.pdf'
+          // href={process.env.NEXT_PUBLIC_RESUME_DOWNLOAD_URL}
           download
           className='flex items-center drop-shadow-sm hover:drop-shadow-md justify-center font-medium px-3 py-1 border-stone-300  text-black border-1 rounded-full bg-stone-100 hover:bg-stone-200 transition duration-300 ease-in-out'
         >
-          Download Résumé
+          Download Resume
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
