@@ -1063,7 +1063,7 @@ export default function Home() {
               </h3>
               <p className='mt-1'>
                 Building Toron, a purpose-driven strength training app. Focused
-                on delivering effortless interfaces and intuitive user flows.
+                on delivering and intuitive user flows with polished interfaces.
               </p>
             </div>
           </div>
