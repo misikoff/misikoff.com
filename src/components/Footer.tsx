@@ -39,7 +39,7 @@ export function getSocialIcon(link: LinkType) {
 
 export default function Footer({ className }: { className?: string }) {
   return (
-    <footer className='w-full pb-4 pt-8'>
+    <footer className='w-full py-4'>
       <div className='flex md:flex-row w-full justify-center items-center gap-4 mt-2'>
         {getSocialIcon(links[0])}
         <a

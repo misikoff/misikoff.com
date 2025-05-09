@@ -12,19 +12,14 @@ function CoolListElement(name: string, description: string) {
 
 const developmentEthos = [
   {
-    name: 'Product-First Approach',
+    name: 'Iterative Development',
     description:
-      'Prioritizing clarity and user experience in complex data-heavy applications.',
+      'Prototyping and refining based on real-world feedback and analytics.',
   },
   {
     name: 'Systems Thinking',
     description:
       'Approaching projects holistically to pinpoint links and dependencies.',
-  },
-  {
-    name: 'Iterative Development',
-    description:
-      'Fast prototyping and refining based on real-world feedback and analytics.',
   },
   {
     name: 'Cross-Functional Collaboration',
@@ -44,7 +39,7 @@ const developmentEthos = [
   {
     name: 'Clarity Over Complexity',
     description:
-      'Eliminating noise to focus on the essential form and function.',
+      'Promoting thoughtful design and implementation to deliver intuitive experiences.',
   },
   {
     name: 'Code as Communication',
@@ -1041,8 +1036,7 @@ export default function Home() {
           <SectionHeader className=''>About</SectionHeader>
           <p className='text-left max-w-xl'>
             I{"'"}m a senior engineer with a background in computer science and
-            statistics, focused on clarity, UX, and rapid iteration-a mix of
-            smooth technical operations and clear, easy-to-understand results.
+            statistics, focused on clarity, UX, and rapid iteration.
           </p>
           {bookMeetingButton()}
         </section>
@@ -1062,8 +1056,9 @@ export default function Home() {
                 Snow Gale Labs <span className='italic'>(Side Project)</span>
               </h3>
               <p className='mt-1'>
-                Building Toron, a purpose-driven strength training app. Focused
-                on delivering and intuitive user flows with polished interfaces.
+                Building <span className='font-mono font-bold'>Toron</span>, a
+                purpose-driven strength training app. Focused on delivering and
+                intuitive user flows with polished interfaces.
               </p>
             </div>
           </div>
