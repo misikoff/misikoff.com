@@ -1002,7 +1002,7 @@ export default function Home() {
         <div className='dark:invert mx-auto'>
           <div className='relative w-44 h-44 -mt-32 -mb-8'>
             <Image
-              className='mx-auto relative   hover:scale-105 ease-in-out hover:-translate-y-3 transform hover:drop-shadow-2xl hover:drop-shadow-blue-400 transition-all duration-1000  drop-shadow-blue-300 drop-shadow-lg'
+              className='mx-auto drop-shadow-blue-300 drop-shadow-lg'
               src='/logo-sphere.png'
               alt='Misikoff logo'
               fill={true}
