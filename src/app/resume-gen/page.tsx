@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 import {
   Page,
   Text,
@@ -9,6 +11,7 @@ import {
   PDFViewer,
   Link,
   Font,
+  Checkbox,
 } from '@react-pdf/renderer'
 
 import { awards } from '@/constants/awards'
@@ -98,7 +101,8 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 700,
     textTransform: 'uppercase',
-    marginBottom: 5,
+    marginTop: 5,
+    marginBottom: 10,
     color: '#626262',
     letterSpacing: 2,
   },
@@ -120,208 +124,303 @@ const styles = StyleSheet.create({
 })
 
 // Create Document Component
-const MyDocument = () => (
-  <Document
-    title='Tommy Misikoff Resume'
-    author='Tommy Misikoff'
-    subject='Software Engineer Resume'
-    keywords='resume, frontend, fullstack, React, Next.js'
-    creator='Tommy Misikoff'
-  >
-    <Page size='A4' style={styles.page}>
-      {/* section for overview with name, title, etc */}
-      <View style={styles.section}>
-        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-          <Text
-            style={{
-              fontSize: 30,
-              fontWeight: 500,
-              color: colors['text-300'],
-              letterSpacing: 8,
-            }}
-          >
-            {name}
-          </Text>
-        </View>
-        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-          <Text
-            style={{
-              fontSize: 12,
-              fontWeight: 500,
-              textTransform: 'uppercase',
-              letterSpacing: 4,
-              marginTop: 5,
-              marginBottom: 12,
-            }}
-          >
-            {title}
-          </Text>
-        </View>
-        <Divider />
-
-        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-          <Text>
-            {phoneNumber} | {email} | {location} |{' '}
-            <Link href={linkedIn} style={{ color: colors['text-100'] }}>
-              {linkedIn.replace('https://www.', '')}
-            </Link>{' '}
-            |{' '}
-            <Link href={personalWebsite} style={{ color: colors['text-100'] }}>
-              {personalWebsite.replace('https://', '')}
-            </Link>
-          </Text>
-        </View>
-        <Divider />
-      </View>
-
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Professional Overview</Text>
-        <Text style={{ lineHeight: 0.8 }}>{overview}</Text>
-        <Divider />
-      </View>
-
-      {/* work experience section. loop over jobs and actions */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Work Experience</Text>
-        {jobs.map((job, index) => (
-          <View
-            key={index}
-            style={{
-              marginBottom: 10,
-              // backgroundColor: 'red'
-            }}
-            wrap={false}
-          >
-            <View
+function MyDocument({
+  name,
+  title,
+  phoneNumber,
+  email,
+  location,
+  linkedIn,
+  personalWebsite,
+  overview,
+  jobs,
+  schools,
+  awards,
+  developmentEthos,
+}) {
+  return (
+    <Document
+      title='Tommy Misikoff Resume'
+      author='Tommy Misikoff'
+      subject='Software Engineer Resume'
+      keywords='resume, frontend, fullstack, React, Next.js'
+      creator='Tommy Misikoff'
+    >
+      <Page size='A4' style={styles.page}>
+        {/* section for overview with name, title, etc */}
+        <View style={styles.section}>
+          <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+            <Text
               style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                // flexGrow: 1,
-                // width: '100%',
-                // backgroundColor: 'blue',
-
-                marginBottom: 5,
+                fontSize: 30,
+                fontWeight: 500,
+                color: colors['text-300'],
+                letterSpacing: 8,
               }}
             >
-              <Text>
-                <Text style={{ fontWeight: 700, color: colors['text-300'] }}>
-                  {job.company}
-                </Text>{' '}
-                {job.bonusDescriptor && (
-                  <>
-                    <Text style={{ color: colors['text-300'] }}>
-                      ({job.bonusDescriptor})
-                    </Text>{' '}
-                  </>
-                )}
-                | {job.titles.join(' -> ')} {location && '@ ' + job.location}
-              </Text>
+              {name}
+            </Text>
+          </View>
+          <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+            <Text
+              style={{
+                fontSize: 12,
+                fontWeight: 500,
+                textTransform: 'uppercase',
+                letterSpacing: 4,
+                marginTop: 5,
+                marginBottom: 12,
+              }}
+            >
+              {title}
+            </Text>
+          </View>
 
-              <Text style={{ marginLeft: 'auto', marginRight: 0 }}>
-                {toDateFormat(job.startDate)} -{' '}
-                {job.endDate ? toDateFormat(job.endDate) : 'Present'}
-              </Text>
-            </View>
+          <Divider />
+          <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+            <Text>
+              {phoneNumber} | {email} | {location} |{' '}
+              <Link href={linkedIn} style={{ color: colors['text-100'] }}>
+                {linkedIn.replace('https://www.', '')}
+              </Link>{' '}
+              |{' '}
+              <Link
+                href={personalWebsite}
+                style={{ color: colors['text-100'] }}
+              >
+                {personalWebsite.replace('https://', '')}
+              </Link>
+            </Text>
+          </View>
+        </View>
 
-            {/* <Text style={{ fontStyle: 'italic' }}>{job.description}</Text> */}
-            {job.actions.map((action, index) => (
+        {overview && (
+          <View style={styles.section}>
+            <Divider />
+            <Text style={styles.sectionTitle}>Professional Overview</Text>
+            <Text style={{ lineHeight: 0.8 }}>{overview}</Text>
+          </View>
+        )}
+
+        {/* work experience section. loop over jobs and actions */}
+        {jobs.length > 0 && (
+          <View style={styles.section}>
+            <Divider />
+            <Text style={styles.sectionTitle}>Work Experience</Text>
+            {jobs.map((job, index) => (
               <View
                 key={index}
-                style={{ flexDirection: 'row', lineHeight: 0.8 }}
+                style={{
+                  marginBottom: 10,
+                  // backgroundColor: 'red'
+                }}
+                wrap={false}
               >
-                <Text style={{ marginLeft: 9, marginRight: 9 }}>•</Text>
-                <Text style={styles.textRow}>
-                  <Text>{action.text}</Text>
-                  {/* {action.stack && (
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    // flexGrow: 1,
+                    // width: '100%',
+                    // backgroundColor: 'blue',
+
+                    marginBottom: 5,
+                  }}
+                >
+                  <Text>
+                    <Text
+                      style={{ fontWeight: 700, color: colors['text-300'] }}
+                    >
+                      {job.company}
+                    </Text>{' '}
+                    {job.bonusDescriptor && (
+                      <>
+                        <Text style={{ color: colors['text-300'] }}>
+                          ({job.bonusDescriptor})
+                        </Text>{' '}
+                      </>
+                    )}
+                    | {job.titles.join(' -> ')}{' '}
+                    {location && '@ ' + job.location}
+                  </Text>
+
+                  <Text style={{ marginLeft: 'auto', marginRight: 0 }}>
+                    {toDateFormat(job.startDate)} -{' '}
+                    {job.endDate ? toDateFormat(job.endDate) : 'Present'}
+                  </Text>
+                </View>
+
+                {/* <Text style={{ fontStyle: 'italic' }}>{job.description}</Text> */}
+                {job.actions.map((action, index) => (
+                  <View
+                    key={index}
+                    style={{ flexDirection: 'row', lineHeight: 0.8 }}
+                  >
+                    <Text style={{ marginLeft: 9, marginRight: 9 }}>•</Text>
+                    <Text style={styles.textRow}>
+                      <Text>{action.text}</Text>
+                      {/* {action.stack && (
                   <Text style={{ fontStyle: 'italic' }}>
                   {action.stack.join(', ')}
                   </Text>
                   )} */}
-                </Text>
+                    </Text>
+                  </View>
+                ))}
               </View>
             ))}
           </View>
-        ))}
-      </View>
+        )}
 
-      <View style={styles.section} wrap={false}>
-        <Text style={styles.sectionTitle}>Education</Text>
-        {schools.map((school, index) => (
-          <View
-            key={index}
-            style={{
-              ...styles.award,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Text>
-              {school.institution} | {school.degree} | {school.location}
-            </Text>
-            <Text>{toDateFormat(school.graduationDate)}</Text>
+        {schools.length > 0 && (
+          <View style={styles.section} wrap={false}>
+            <Divider />
+            <Text style={styles.sectionTitle}>Education</Text>
+            {schools.map((school, index) => (
+              <View
+                key={index}
+                style={{
+                  ...styles.award,
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <Text>
+                  {school.institution} | {school.degree} | {school.location}
+                </Text>
+                <Text>{toDateFormat(school.graduationDate)}</Text>
+              </View>
+            ))}
           </View>
-        ))}
-      </View>
-      <Divider />
-      <View style={styles.section} wrap={false}>
-        <Text style={styles.sectionTitle}>Awards</Text>
-        {awards.map((award, index) => (
-          <View
-            key={index}
-            style={{
-              ...styles.award,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Text>{award.title}</Text> |{' '}
-            <Text> {toDateFormat(award.date)}</Text>
-            {/* {award.location && ` - ${award.location}`} */}
-            {/* {award.company && ` - ${award.company}`} */}
-            {/* {award.description && ` - ${award.description}`} */}
+        )}
+
+        {awards.length > 0 && (
+          <View style={styles.section} wrap={false}>
+            <Divider />
+            <Text style={styles.sectionTitle}>Awards</Text>
+            {awards.map((award, index) => (
+              <View
+                key={index}
+                style={{
+                  ...styles.award,
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <Text>{award.title}</Text>
+                <Text> {toDateFormat(award.date)}</Text>
+                {/* {award.location && ` - ${award.location}`} */}
+                {/* {award.company && ` - ${award.company}`} */}
+                {/* {award.description && ` - ${award.description}`} */}
+              </View>
+            ))}
           </View>
-        ))}
-      </View>
-      <Divider />
+        )}
 
-      <View style={styles.section} wrap={false}>
-        <Text style={styles.sectionTitle}>Tech Stack</Text>
-        {stackComponents.map((stackComponent, index) => (
-          <Text key={index} style={styles.textRow}>
-            <Text style={{ fontWeight: 700, color: colors['text-300'] }}>
-              {stackComponent.category}
-            </Text>{' '}
-            | {stackComponent.technologies.join(', ')}
-          </Text>
-        ))}
-      </View>
-      <Divider />
+        {stackComponents.length > 0 && (
+          <View style={styles.section} wrap={false}>
+            <Divider />
+            <Text style={styles.sectionTitle}>Tech Stack</Text>
+            {stackComponents.map((stackComponent, index) => (
+              <Text key={index} style={styles.textRow}>
+                <Text style={{ fontWeight: 700, color: colors['text-300'] }}>
+                  {stackComponent.category}
+                </Text>{' '}
+                | {stackComponent.technologies.join(', ')}
+              </Text>
+            ))}
+          </View>
+        )}
 
-      <View style={styles.section} wrap={false}>
-        <Text style={styles.sectionTitle}>Development Ethos</Text>
-        {developmentEthos.map((ethos, index) => (
-          <Text key={index} style={styles.award}>
-            <Text style={{ fontWeight: 700, color: colors['text-300'] }}>
-              {ethos.principle}
-            </Text>{' '}
-            | {ethos.description}
-          </Text>
-        ))}
-      </View>
-    </Page>
-  </Document>
-)
+        {developmentEthos.length > 0 && (
+          <View style={styles.section} wrap={false}>
+            <Divider />
+            <Text style={styles.sectionTitle}>Development Ethos</Text>
+            {developmentEthos.map((ethos, index) => (
+              <Text key={index} style={styles.award}>
+                <Text style={{ fontWeight: 700, color: colors['text-300'] }}>
+                  {ethos.principle}
+                </Text>{' '}
+                | {ethos.description}
+              </Text>
+            ))}
+          </View>
+        )}
+      </Page>
+    </Document>
+  )
+}
 export default function ResumeGen() {
+  const [activeJobs, setActiveJobs] = useState(
+    jobs.map((job) => {
+      job.shouldInclude = true
+      return job
+    }),
+  )
+
+  console.log({ activeJobs })
+
   return (
     <div className=' w-full h-full grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
       <div className='h-screen w-full'>
-        <h1 className='text-4xl font-bold'>Resume Generator</h1>
-        <PDFViewer
-          key={new Date().getTime()}
-          className='h-full w-full max-w-4xl'
-        >
-          <MyDocument />
-        </PDFViewer>
+        <h1 className='text-4xl font-bold mb-4'>Resume Generator</h1>
+        <div className='flex w-full h-full gap-4 justify-between'>
+          <div>
+            {/* list all jobs and toggle which ones are active */}
+            <h2 className='text-2xl font-bold'>Active Jobs</h2>
+            <div className='flex flex-col gap-4'>
+              {activeJobs.map((job) => (
+                <div key={job.id} className='flex items-center justify-between'>
+                  <div>
+                    <h3 className='text-xl font-bold'>{job.company}</h3>
+                    {/* <p>{job.titles.join(' -> ')}</p> */}
+                    {/* {job.id} */}
+                  </div>
+                  <input
+                    type='checkbox'
+                    checked={
+                      activeJobs.find((j) => j.id === job.id).shouldInclude
+                    }
+                    className='w-5 h-5'
+                    onChange={() => {
+                      setActiveJobs((prev) =>
+                        prev.map((j) =>
+                          j.id === job.id
+                            ? { ...j, shouldInclude: !j.shouldInclude }
+                            : j,
+                        ),
+                      )
+                    }}
+                    // className='bg-red-500 text-white px-4 py-2 rounded'
+                  />
+                  {/* Remove
+                  </input> */}
+                </div>
+              ))}
+            </div>
+          </div>
+          <PDFViewer
+            key={new Date().getTime()}
+            className='h-full w-full max-w-4xl'
+          >
+            <MyDocument
+              {...{
+                name,
+                title,
+                phoneNumber,
+                email,
+                location,
+                linkedIn,
+                personalWebsite,
+                overview,
+                jobs: activeJobs.filter((job) => job.shouldInclude),
+                schools,
+                awards,
+                developmentEthos,
+              }}
+            />
+          </PDFViewer>
+        </div>
       </div>
     </div>
   )
