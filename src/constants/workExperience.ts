@@ -5,8 +5,9 @@ type Job = {
   location: string
   company: string
   startDate: Date
-  endDate: Date
+  endDate: Date | null
   actions: Action[]
+  bonusDescriptor?: string
 }
 
 type Action = {
@@ -21,11 +22,15 @@ const viewportJob: Job = {
     'Led frontend architecture, implemented scalable systems, and optimized performance across multi-site deployments.',
   location: 'Remote',
   company: 'Viewport',
-  startDate: new Date(), //'June 2018',
-  endDate: new Date(), //'May 2025',
+  startDate: new Date('06/01/2018'), //'June 2018',
+  endDate: new Date('05/01/2025'), //'May 2025',
   actions: [
     {
       text: 'Architected and led migrations to Next.js for large-scale applications, leveraging App Router, content previews, SSR, SSG, and ISR to maximize performance, scalability, and SEO.',
+      stack: ['Next.js', 'React'],
+    },
+    {
+      text: 'Built and debugged revalidation relays to ensure prompt content updates across sites and debugged intermittent race conditions to achieve 100% success rate in API calls.',
       stack: ['Next.js', 'React'],
     },
     {
@@ -33,39 +38,71 @@ const viewportJob: Job = {
       stack: ['GraphQL', 'Contentful'],
     },
     {
-      text: 'Created an AI content pipeline using OpenAI API to expand existing content into new forms.',
+      text: 'Created an AI content pipeline with the OpenAI API to expand existing content into new forms.',
       stack: ['OpenAI API'],
     },
     {
-      text: 'Introduced theming logic for flexible, intuitive customization between sites with modular, reusable frontend components.',
+      text: 'Introduced theming logic to enable flexible, intuitive, customization between sites. This included modular, reusable frontend components that scaled across our multi-site architecture.',
       stack: ['React', 'CSS'],
+    },
+    {
+      text: 'Implemented experiment infrastructure for reliable A/B testing.',
+      stack: ['JavaScript', 'React'],
+    },
+    {
+      text: "Delivered polished UI's and animations both independently and in collaboration with designer partners.",
+      stack: ['Framer Motion', 'React'],
     },
     {
       text: 'Spearheaded the migration of multiple projects into a unified monorepo, significantly improving development speed, code sharing, and cross-team collaboration.',
       stack: ['Monorepo', 'GitHub Actions'],
     },
     {
+      text: 'Delivered high-performance frontend systems by optimizing bundling, routing, and rendering strategies, resulting in improved load times and user experience.',
+      stack: ['Next.js', 'React'],
+    },
+    {
       text: 'Implemented client and server components to improve page load speed.',
-      stack: ['Next.js'],
+      stack: ['Next.js', 'React'],
+    },
+    {
+      text: 'Collaborated closely with other teams to build powerful, intuitive internal tooling for content editing, including through rich text and markdown.',
+      stack: ['React', 'Markdown'],
     },
     {
       text: 'Set up custom build steps to skip deployments based on markdown in GitHub PR descriptions, reducing deployment queues.',
+      stack: ['GitHub Actions', 'Markdown'],
+    },
+    {
+      text: 'Implemented automatic release tagging for my team that was subsequently copied over to other parts of the engineering department.',
       stack: ['GitHub Actions'],
     },
     {
-      text: 'Implemented automatic release tagging adopted by other engineering teams.',
-      stack: ['GitHub Actions'],
+      text: 'Developed and improved CI/CD pipelines with automated linting, testing, release tagging, and deployment workflows, accelerating release cycles and increasing code quality.',
+      stack: ['GitHub Actions', 'Docker'],
+    },
+    {
+      text: 'Implemented thorough linting strategies, improving code quality and reducing merge conflicts, especially through explicit import ordering logic.',
+      stack: ['ESLint', 'Prettier'],
     },
     {
       text: 'Rebuilt flagship site from Nuxt.js (Vue.js) SSR to Next.js (React) ISR, resulting in a $40K/month cost reduction and reduced deployment times from 20 to 2 minutes.',
       stack: ['Next.js', 'Vue.js', 'Vercel'],
     },
     {
-      text: 'Led the migration from an in-house CMS to Contentful, enabling preview mode with on-demand static regeneration.',
+      text: 'Led the evaluation and migration of our in-house CMS to Contentful, enabling content editors to use preview mode with on-demand static regeneration.',
       stack: ['Contentful', 'Next.js'],
     },
     {
-      text: 'Managed large data migrations with minimal downtime.',
+      text: 'Scaled frontend infrastructure by implementing Doppler to manage environment variables across dozens of sites, reducing friction and configuration errors.',
+      stack: ['Doppler', 'Node.js'],
+    },
+    {
+      text: 'Managed multiple large data migrations while ensuring minimal downtime.',
+      stack: ['Python', 'AWS'],
+    },
+    {
+      text: 'Worked on high-volume data pipelines (Python) with real-time data, and implemented large imports, exports, and transformations.',
       stack: ['Python', 'AWS'],
     },
   ],
@@ -78,8 +115,8 @@ const idealSpotJob: Job = {
     'Led data-oriented project development, client collaboration, and geospatial application architecture.',
   location: 'Austin, TX',
   company: 'IdealSpot',
-  startDate: new Date(), //'June 2016',
-  endDate: new Date(), //'May 2018',
+  startDate: new Date('06/01/2016'), //'June 2016',
+  endDate: new Date('05/01/2018'), //'May 2018',
   actions: [
     {
       text: 'Assembled and led a small team with diverse skillsets to scale data-oriented offerings, executing through client discussions and developing a modular system for custom projects.',
@@ -115,8 +152,8 @@ const snowGaleLabsJob: Job = {
     'Shape product vision, architecture, and feature set for web and mobile apps under Snow Gale Labs.',
   location: 'Remote',
   company: 'Snow Gale Labs',
-  startDate: new Date(), //'Feb 2025',
-  endDate: new Date(), //null,
+  startDate: new Date('02/01/2025'), //'Feb 2025',
+  endDate: null,
   actions: [
     {
       text: 'Shape the product vision, user flow, and core feature set, focusing on clarity and utility.',
@@ -135,6 +172,7 @@ const snowGaleLabsJob: Job = {
       stack: ['TypeScript', 'Drizzle ORM', 'TanStack Query'],
     },
   ],
+  bonusDescriptor: 'Side Project',
 }
 
 export const jobs: Job[] = [viewportJob, snowGaleLabsJob, idealSpotJob]

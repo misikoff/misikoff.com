@@ -11,7 +11,7 @@ const dukeMS: School = {
   institution: 'Duke University',
   location: 'Durham, NC',
   degree: 'MS, Statistical Science',
-  graduationDate: new Date(), //'May 2024',
+  graduationDate: new Date('05/01/2024'), //'May 2024',
 }
 
 const utAustinBS: School = {
@@ -19,7 +19,7 @@ const utAustinBS: School = {
   institution: 'The University of Texas at Austin',
   location: 'Austin, TX',
   degree: 'BS, Computer Science',
-  graduationDate: new Date(), //'May 2017',
+  graduationDate: new Date('05/01/2017'), //'May 2017',
 }
 
 export const schools: School[] = [dukeMS, utAustinBS]

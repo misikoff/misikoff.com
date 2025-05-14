@@ -8,6 +8,7 @@ import {
   StyleSheet,
   PDFViewer,
   Link,
+  Font,
 } from '@react-pdf/renderer'
 
 import { awards } from '@/constants/awards'
@@ -25,9 +26,43 @@ import {
 } from '@/constants/misc'
 import { stackComponents } from '@/constants/stack'
 import { jobs } from '@/constants/workExperience'
+
+// const hyphenationCallback = (word) => {
+//   // Return word syllables in an array
+//   return word
+// }
+
+// Font.registerHyphenationCallback(hyphenationCallback)
+
+Font.registerHyphenationCallback((word) => {
+  // const middle = Math.floor(word.length / 2)
+  // const parts =
+  //   word.length === 1 ? [word] : [word.substr(0, middle), word.substr(middle)]
+
+  // // Check console to see words parts
+  // console.log(word, parts)
+
+  // return parts
+  return [word]
+})
+
+function toDateFormat(date: Date) {
+  return date.toLocaleDateString('en-US', {
+    month: 'short',
+    year: 'numeric',
+  })
+}
+
+const colors = {
+  'text-50': '#bfbfbf',
+  'text-100': '#808080',
+  'text-200': '#626262',
+  'text-300': '#595959',
+}
+
 const Divider = ({
   thickness = 1,
-  color = '#333',
+  color = colors['text-50'],
   width = '100%',
   margin = 8,
 }) => (
@@ -44,59 +79,110 @@ const Divider = ({
 // Create styles
 const styles = StyleSheet.create({
   page: {
+    fontFamily: 'Helvetica',
     flexDirection: 'column',
-    backgroundColor: '#E4E4E4',
+    // backgroundColor: '#E4E4E4',
+    padding: 20,
+    color: colors['text-100'],
   },
   section: {
-    margin: 10,
-    padding: 10,
+    // marginTop: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+
+    fontSize: 11,
     // flexGrow: 1,
   },
-  award: {
-    marginBottom: 5,
+  sectionTitle: {
+    // uppercase
     fontSize: 12,
+    fontWeight: 700,
+    textTransform: 'uppercase',
+    marginBottom: 5,
+    color: '#626262',
+    letterSpacing: 2,
+  },
+  award: {
+    // marginBottom: 5,
+    lineHeight: 0.8,
+    // fontSize: 12,
   },
   schools: {
     marginBottom: 5,
-    fontSize: 12,
+    // fontSize: 12,
   },
   textRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 5,
+    // marginBottom: 2,
+    lineHeight: 0.8,
   },
 })
 
 // Create Document Component
 const MyDocument = () => (
-  <Document>
+  <Document
+    title='Tommy Misikoff Resume'
+    author='Tommy Misikoff'
+    subject='Software Engineer Resume'
+    keywords='resume, frontend, fullstack, React, Next.js'
+    creator='Tommy Misikoff'
+  >
     <Page size='A4' style={styles.page}>
       {/* section for overview with name, title, etc */}
       <View style={styles.section}>
-        <Text style={{ fontSize: 24, fontWeight: 900 }}>{name}</Text>
-        <Text style={{ fontSize: 16, fontWeight: 900 }}>{title}</Text>
+        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+          <Text
+            style={{
+              fontSize: 30,
+              fontWeight: 500,
+              color: colors['text-300'],
+              letterSpacing: 8,
+            }}
+          >
+            {name}
+          </Text>
+        </View>
+        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+          <Text
+            style={{
+              fontSize: 12,
+              fontWeight: 500,
+              textTransform: 'uppercase',
+              letterSpacing: 4,
+              marginTop: 5,
+              marginBottom: 12,
+            }}
+          >
+            {title}
+          </Text>
+        </View>
         <Divider />
 
-        <Text style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
           <Text>
-            {phoneNumber} | {email} | {location} |
-            <Link href={linkedIn}>{linkedIn.replace('https://www.', '')}</Link>|{' '}
-            <Link href={personalWebsite}>
+            {phoneNumber} | {email} | {location} |{' '}
+            <Link href={linkedIn} style={{ color: colors['text-100'] }}>
+              {linkedIn.replace('https://www.', '')}
+            </Link>{' '}
+            |{' '}
+            <Link href={personalWebsite} style={{ color: colors['text-100'] }}>
               {personalWebsite.replace('https://', '')}
             </Link>
           </Text>
-        </Text>
+        </View>
+        <Divider />
       </View>
-      <Divider />
+
       <View style={styles.section}>
-        <Text>Professional Overview</Text>
-        <Text style={{ margin: 10, fontSize: 12 }}>{overview}</Text>
+        <Text style={styles.sectionTitle}>Professional Overview</Text>
+        <Text style={{ lineHeight: 0.8 }}>{overview}</Text>
         <Divider />
       </View>
 
       {/* work experience section. loop over jobs and actions */}
       <View style={styles.section}>
-        <Text>Work Experience</Text>
+        <Text style={styles.sectionTitle}>Work Experience</Text>
         {jobs.map((job, index) => (
           <View
             key={index}
@@ -104,6 +190,7 @@ const MyDocument = () => (
               marginBottom: 10,
               // backgroundColor: 'red'
             }}
+            wrap={false}
           >
             <View
               style={{
@@ -112,73 +199,112 @@ const MyDocument = () => (
                 // flexGrow: 1,
                 // width: '100%',
                 // backgroundColor: 'blue',
-                fontSize: 12,
+
+                marginBottom: 5,
               }}
             >
               <Text>
-                <Text style={{ fontWeight: 700 }}>{job.company}</Text> |{' '}
-                {job.titles.join(' -> ')} {location && '@ ' + job.location}
+                <Text style={{ fontWeight: 700, color: colors['text-300'] }}>
+                  {job.company}
+                </Text>{' '}
+                {job.bonusDescriptor && (
+                  <>
+                    <Text style={{ color: colors['text-300'] }}>
+                      ({job.bonusDescriptor})
+                    </Text>{' '}
+                  </>
+                )}
+                | {job.titles.join(' -> ')} {location && '@ ' + job.location}
               </Text>
 
               <Text style={{ marginLeft: 'auto', marginRight: 0 }}>
-                {job.startDate.toLocaleDateString()} -{' '}
-                {job.endDate ? job.endDate.toLocaleDateString() : 'Present'}
+                {toDateFormat(job.startDate)} -{' '}
+                {job.endDate ? toDateFormat(job.endDate) : 'Present'}
               </Text>
             </View>
 
-            <Text style={{ fontStyle: 'italic' }}>{job.description}</Text>
+            {/* <Text style={{ fontStyle: 'italic' }}>{job.description}</Text> */}
             {job.actions.map((action, index) => (
-              <Text key={index} style={styles.textRow}>
-                <Text>{action.text}</Text>
-                {/* {action.stack && (
+              <View
+                key={index}
+                style={{ flexDirection: 'row', lineHeight: 0.8 }}
+              >
+                <Text style={{ marginLeft: 9, marginRight: 9 }}>•</Text>
+                <Text style={styles.textRow}>
+                  <Text>{action.text}</Text>
+                  {/* {action.stack && (
                   <Text style={{ fontStyle: 'italic' }}>
-                    {action.stack.join(', ')}
+                  {action.stack.join(', ')}
                   </Text>
-                )} */}
-              </Text>
+                  )} */}
+                </Text>
+              </View>
             ))}
           </View>
         ))}
       </View>
 
-      <View style={styles.section}>
-        <Text>Education</Text>
+      <View style={styles.section} wrap={false}>
+        <Text style={styles.sectionTitle}>Education</Text>
         {schools.map((school, index) => (
-          <Text key={index} style={styles.award}>
-            {school.institution} - {school.degree} -{' '}
-            {school.graduationDate.toLocaleDateString()}
-            {school.location && ` - ${school.location}`}
-          </Text>
+          <View
+            key={index}
+            style={{
+              ...styles.award,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}
+          >
+            <Text>
+              {school.institution} | {school.degree} | {school.location}
+            </Text>
+            <Text>{toDateFormat(school.graduationDate)}</Text>
+          </View>
         ))}
       </View>
       <Divider />
-      <View style={styles.section}>
-        <Text>Awards</Text>
+      <View style={styles.section} wrap={false}>
+        <Text style={styles.sectionTitle}>Awards</Text>
         {awards.map((award, index) => (
-          <Text key={index} style={styles.award}>
-            {award.title} - {award.date.toLocaleDateString()}
-            {award.description && ` - ${award.description}`}
-          </Text>
+          <View
+            key={index}
+            style={{
+              ...styles.award,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}
+          >
+            <Text>{award.title}</Text> |{' '}
+            <Text> {toDateFormat(award.date)}</Text>
+            {/* {award.location && ` - ${award.location}`} */}
+            {/* {award.company && ` - ${award.company}`} */}
+            {/* {award.description && ` - ${award.description}`} */}
+          </View>
         ))}
       </View>
       <Divider />
 
-      <View style={styles.section}>
-        <Text>Tech Stack</Text>
+      <View style={styles.section} wrap={false}>
+        <Text style={styles.sectionTitle}>Tech Stack</Text>
         {stackComponents.map((stackComponent, index) => (
           <Text key={index} style={styles.textRow}>
-            <Text style={{ fontWeight: 900 }}>{stackComponent.category}</Text>-{' '}
-            {stackComponent.technologies.join(', ')}
+            <Text style={{ fontWeight: 700, color: colors['text-300'] }}>
+              {stackComponent.category}
+            </Text>{' '}
+            | {stackComponent.technologies.join(', ')}
           </Text>
         ))}
       </View>
       <Divider />
 
-      <View style={styles.section}>
-        <Text>Development Ethos</Text>
+      <View style={styles.section} wrap={false}>
+        <Text style={styles.sectionTitle}>Development Ethos</Text>
         {developmentEthos.map((ethos, index) => (
           <Text key={index} style={styles.award}>
-            {ethos.principle} | {ethos.description}
+            <Text style={{ fontWeight: 700, color: colors['text-300'] }}>
+              {ethos.principle}
+            </Text>{' '}
+            | {ethos.description}
           </Text>
         ))}
       </View>
@@ -187,13 +313,16 @@ const MyDocument = () => (
 )
 export default function ResumeGen() {
   return (
-    <div className='grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
-      <main className='flex flex-col gap-8 row-start-2 items-center sm:items-start text-center max-w-4xl h-full'>
+    <div className=' w-full h-full grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
+      <div className='h-screen w-full'>
         <h1 className='text-4xl font-bold'>Resume Generator</h1>
-        <PDFViewer className='h-full w-full max-w-4xl'>
+        <PDFViewer
+          key={new Date().getTime()}
+          className='h-full w-full max-w-4xl'
+        >
           <MyDocument />
         </PDFViewer>
-      </main>
+      </div>
     </div>
   )
 }
