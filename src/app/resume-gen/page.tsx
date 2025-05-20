@@ -18,7 +18,13 @@ import {
   Link,
   Font,
   Checkbox,
+  PDFDownloadLink,
 } from '@react-pdf/renderer'
+
+Font.register({
+  family: 'Lora',
+  src: 'Lora-VariableFont_wght.ttf',
+})
 
 import { awards } from '@/constants/awards'
 import { schools } from '@/constants/education'
@@ -37,6 +43,7 @@ import { stackComponents } from '@/constants/stack'
 import { jobs } from '@/constants/workExperience'
 
 import SortableItem from './SortableItem'
+import { createAIRequest } from './request'
 
 // const hyphenationCallback = (word) => {
 //   // Return word syllables in an array
@@ -155,10 +162,11 @@ function MyDocument({
           <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
             <Text
               style={{
-                fontSize: 30,
+                fontSize: 24,
                 fontWeight: 500,
                 color: colors['text-300'],
-                letterSpacing: 8,
+                letterSpacing: 6,
+                fontFamily: 'Lora',
               }}
             >
               {name}
@@ -238,8 +246,8 @@ function MyDocument({
                         </Text>{' '}
                       </>
                     )}
-                    | {job.titles.join(' -> ')}{' '}
-                    {location && '@ ' + job.location}
+                    | {job.titles.reverse().join(' <- ')}
+                    {location && ' @ ' + job.location}
                   </Text>
 
                   <Text style={{ marginLeft: 'auto', marginRight: 0 }}>
@@ -354,16 +362,41 @@ function MyDocument({
   )
 }
 export default function ResumeGen() {
+  console.log({ test: createAIRequest() })
+
   const [activeJobs, setActiveJobs] = useState(
     jobs.map((job) => ({
       ...job,
       shouldInclude: true,
-      actions: job.actions.map((action) => ({
+      actions: job.actions.map((action, idx) => ({
         ...action,
         shouldInclude: true,
+        id: action.id, //?? `${job.id}-action-${action.text}`, // fallback id
       })),
     })),
   )
+
+  const onActionDragEnd = (jobId: string, event: any) => {
+    const { active, over } = event
+    if (!over || active.id === over.id) {
+      return
+    }
+
+    setActiveJobs((prev) =>
+      prev.map((job) =>
+        job.id === jobId
+          ? {
+              ...job,
+              actions: arrayMove(
+                job.actions,
+                job.actions.findIndex((a) => a.id === active.id),
+                job.actions.findIndex((a) => a.id === over.id),
+              ),
+            }
+          : job,
+      ),
+    )
+  }
 
   console.log({ activeJobs })
 
@@ -399,8 +432,44 @@ export default function ResumeGen() {
     <div className=' w-full h-full grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
       <div className='h-screen w-full'>
         <h1 className='text-4xl font-bold mb-4'>Resume Generator</h1>
+
         <div className='flex w-full h-full gap-4 justify-between'>
           <div>
+            <div className='bg-red-300 block rounded-md'>
+              <PDFDownloadLink
+                key={new Date().getTime()}
+                document={
+                  <MyDocument
+                    {...{
+                      name,
+                      title,
+                      phoneNumber,
+                      email,
+                      location,
+                      linkedIn,
+                      personalWebsite,
+                      overview,
+                      jobs: activeJobs
+                        .filter((job) => job.shouldInclude)
+                        .map((job) => ({
+                          ...job,
+                          actions: job.actions.filter(
+                            (action) => action.shouldInclude,
+                          ),
+                        })),
+                      schools,
+                      awards,
+                      developmentEthos,
+                    }}
+                  />
+                }
+                fileName='My_Resume_TommyMisikoff.pdf'
+              >
+                {({ loading }) =>
+                  loading ? 'Loading document...' : 'Download Resume'
+                }
+              </PDFDownloadLink>
+            </div>
             <h2 className='text-2xl font-bold'>Active Jobs</h2>
             <DndContext
               collisionDetection={closestCenter}
@@ -457,32 +526,35 @@ export default function ResumeGen() {
                           />
                         </div>
                         {expandedJobs.includes(job.id) && (
-                          <SortableContext
-                            items={job.actions.map((action) => action.text)}
-                            strategy={verticalListSortingStrategy}
+                          <DndContext
+                            collisionDetection={closestCenter}
+                            onDragEnd={(event) =>
+                              onActionDragEnd(job.id, event)
+                            }
                           >
-                            <ul className='pl-8 list-disc text-sm'>
-                              {job.actions.map((action, idx) => (
-                                <SortableItem
-                                  key={action.text}
-                                  id={action.text}
-                                >
-                                  <li
-                                    // key={idx}
-                                    className='flex items-cente justify-between gap-2'
-                                  >
-                                    <span>{action.text}</span>
-                                    <input
-                                      type='checkbox'
-                                      checked={action.shouldInclude}
-                                      onChange={() => toggleAction(job.id, idx)}
-                                      className='w-4 h-4'
-                                    />
-                                  </li>
-                                </SortableItem>
-                              ))}
-                            </ul>
-                          </SortableContext>
+                            <SortableContext
+                              items={job.actions.map((action) => action.id)}
+                              strategy={verticalListSortingStrategy}
+                            >
+                              <ul className='pl-8 list-disc text-sm'>
+                                {job.actions.map((action, idx) => (
+                                  <SortableItem key={action.id} id={action.id}>
+                                    <li className='flex items-center w-full justify-between gap-2'>
+                                      <span>{action.text}</span>
+                                      <input
+                                        type='checkbox'
+                                        checked={action.shouldInclude}
+                                        onChange={() =>
+                                          toggleAction(job.id, idx)
+                                        }
+                                        className='w-4 h-4'
+                                      />
+                                    </li>
+                                  </SortableItem>
+                                ))}
+                              </ul>
+                            </SortableContext>
+                          </DndContext>
                         )}
                       </div>
                     </SortableItem>
@@ -493,7 +565,7 @@ export default function ResumeGen() {
           </div>
           <PDFViewer
             key={new Date().getTime()}
-            className='h-full w-full max-w-4xl'
+            className='min-h-full w-full max-w-4xl'
           >
             <MyDocument
               {...{

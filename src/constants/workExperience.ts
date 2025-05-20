@@ -13,6 +13,7 @@ type Job = {
 type Action = {
   stack?: string[]
   text: string
+  id?: number
 }
 
 const viewportJob: Job = {
@@ -105,12 +106,21 @@ const viewportJob: Job = {
       text: 'Worked on high-volume data pipelines (Python) with real-time data, and implemented large imports, exports, and transformations.',
       stack: ['Python', 'AWS'],
     },
+    {
+      text: 'Implemented complex data queries and transformations using SQL, including through Postgres and Athena.',
+      stack: ['Postgres', 'SQL', 'AWS Athena'],
+    },
+    {
+      // set up dashboards to answer business questions and allow for self-service data exploration
+      text: 'Designed and implemented dashboards to answer business questions and enable self-service data exploration.',
+      stack: ['Looker', 'SQL'],
+    },
   ],
 }
 
 const idealSpotJob: Job = {
   id: 'idealspot-data-solutions-manager',
-  titles: ['Data Solutions Manager', 'Software Engineer'],
+  titles: ['Software Engineer', 'Data Solutions Manager'],
   description:
     'Led data-oriented project development, client collaboration, and geospatial application architecture.',
   location: 'Austin, TX',
@@ -174,5 +184,19 @@ const snowGaleLabsJob: Job = {
   ],
   bonusDescriptor: 'Side Project',
 }
+
+// add ids for all the actions. they should be indices of the actions array
+viewportJob.actions = viewportJob.actions.map((action, index) => ({
+  ...action,
+  id: index,
+}))
+idealSpotJob.actions = idealSpotJob.actions.map((action, index) => ({
+  ...action,
+  id: index,
+}))
+snowGaleLabsJob.actions = snowGaleLabsJob.actions.map((action, index) => ({
+  ...action,
+  id: index,
+}))
 
 export const jobs: Job[] = [viewportJob, snowGaleLabsJob, idealSpotJob]
