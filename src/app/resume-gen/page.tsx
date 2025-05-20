@@ -355,13 +355,45 @@ function MyDocument({
 }
 export default function ResumeGen() {
   const [activeJobs, setActiveJobs] = useState(
-    jobs.map((job) => {
-      job.shouldInclude = true
-      return job
-    }),
+    jobs.map((job) => ({
+      ...job,
+      shouldInclude: true,
+      actions: job.actions.map((action) => ({
+        ...action,
+        shouldInclude: true,
+      })),
+    })),
   )
 
   console.log({ activeJobs })
+
+  const [expandedJobs, setExpandedJobs] = useState<string[]>([])
+
+  const toggleExpand = (jobId: string) => {
+    setExpandedJobs((prev) =>
+      prev.includes(jobId)
+        ? prev.filter((id) => id !== jobId)
+        : [...prev, jobId],
+    )
+  }
+
+  // Toggle action inclusion
+  const toggleAction = (jobId: string, actionIdx: number) => {
+    setActiveJobs((prev) =>
+      prev.map((job) =>
+        job.id === jobId
+          ? {
+              ...job,
+              actions: job.actions.map((action, idx) =>
+                idx === actionIdx
+                  ? { ...action, shouldInclude: !action.shouldInclude }
+                  : action,
+              ),
+            }
+          : job,
+      ),
+    )
+  }
 
   return (
     <div className=' w-full h-full grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
@@ -392,25 +424,66 @@ export default function ResumeGen() {
                 <div className='flex flex-col gap-4'>
                   {activeJobs.map((job) => (
                     <SortableItem key={job.id} id={job.id}>
-                      <div className='flex items-center w-full justify-between gap-2'>
-                        <div>
-                          <h3 className='text-xl font-bold'>{job.company}</h3>
+                      <div className='flex flex-col w-full gap-1 border rounded p-2'>
+                        <div className='flex items-center w-full justify-between gap-2'>
+                          <div className='flex items-center gap-2'>
+                            <button
+                              type='button'
+                              aria-label={
+                                expandedJobs.includes(job.id)
+                                  ? 'Collapse'
+                                  : 'Expand'
+                              }
+                              onClick={() => toggleExpand(job.id)}
+                              className='text-lg px-2'
+                            >
+                              {expandedJobs.includes(job.id) ? '▼' : '▶'}
+                            </button>
+                            <h3 className='text-xl font-bold'>{job.company}</h3>
+                          </div>
+                          <input
+                            type='checkbox'
+                            checked={job.shouldInclude}
+                            className='w-5 h-5'
+                            onChange={() => {
+                              setActiveJobs((prev) =>
+                                prev.map((j) =>
+                                  j.id === job.id
+                                    ? { ...j, shouldInclude: !j.shouldInclude }
+                                    : j,
+                                ),
+                              )
+                            }}
+                          />
                         </div>
-                        <input
-                          type='checkbox'
-                          checked={job.shouldInclude}
-                          className='w-5 h-5'
-                          onChange={() => {
-                            console.log('changing ')
-                            setActiveJobs((prev) =>
-                              prev.map((j) =>
-                                j.id === job.id
-                                  ? { ...j, shouldInclude: !j.shouldInclude }
-                                  : j,
-                              ),
-                            )
-                          }}
-                        />
+                        {expandedJobs.includes(job.id) && (
+                          <SortableContext
+                            items={job.actions.map((action) => action.text)}
+                            strategy={verticalListSortingStrategy}
+                          >
+                            <ul className='pl-8 list-disc text-sm'>
+                              {job.actions.map((action, idx) => (
+                                <SortableItem
+                                  key={action.text}
+                                  id={action.text}
+                                >
+                                  <li
+                                    // key={idx}
+                                    className='flex items-cente justify-between gap-2'
+                                  >
+                                    <span>{action.text}</span>
+                                    <input
+                                      type='checkbox'
+                                      checked={action.shouldInclude}
+                                      onChange={() => toggleAction(job.id, idx)}
+                                      className='w-4 h-4'
+                                    />
+                                  </li>
+                                </SortableItem>
+                              ))}
+                            </ul>
+                          </SortableContext>
+                        )}
                       </div>
                     </SortableItem>
                   ))}
@@ -432,7 +505,14 @@ export default function ResumeGen() {
                 linkedIn,
                 personalWebsite,
                 overview,
-                jobs: activeJobs.filter((job) => job.shouldInclude),
+                jobs: activeJobs
+                  .filter((job) => job.shouldInclude)
+                  .map((job) => ({
+                    ...job,
+                    actions: job.actions.filter(
+                      (action) => action.shouldInclude,
+                    ),
+                  })),
                 schools,
                 awards,
                 developmentEthos,
