@@ -2,6 +2,12 @@
 
 import { useState } from 'react'
 
+import { DndContext, closestCenter } from '@dnd-kit/core'
+import {
+  arrayMove,
+  SortableContext,
+  verticalListSortingStrategy,
+} from '@dnd-kit/sortable'
 import {
   Page,
   Text,
@@ -29,6 +35,8 @@ import {
 } from '@/constants/misc'
 import { stackComponents } from '@/constants/stack'
 import { jobs } from '@/constants/workExperience'
+
+import SortableItem from './SortableItem'
 
 // const hyphenationCallback = (word) => {
 //   // Return word syllables in an array
@@ -89,22 +97,18 @@ const styles = StyleSheet.create({
     color: colors['text-100'],
   },
   section: {
-    // marginTop: 5,
     paddingLeft: 10,
     paddingRight: 10,
-
     fontSize: 11,
-    // flexGrow: 1,
   },
   sectionTitle: {
-    // uppercase
     fontSize: 12,
     fontWeight: 700,
     textTransform: 'uppercase',
     marginTop: 5,
     marginBottom: 10,
     color: '#626262',
-    letterSpacing: 2,
+    letterSpacing: 1,
   },
   award: {
     // marginBottom: 5,
@@ -118,7 +122,6 @@ const styles = StyleSheet.create({
   textRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // marginBottom: 2,
     lineHeight: 0.8,
   },
 })
@@ -212,7 +215,6 @@ function MyDocument({
                 key={index}
                 style={{
                   marginBottom: 10,
-                  // backgroundColor: 'red'
                 }}
                 wrap={false}
               >
@@ -220,10 +222,6 @@ function MyDocument({
                   style={{
                     flexDirection: 'row',
                     justifyContent: 'space-between',
-                    // flexGrow: 1,
-                    // width: '100%',
-                    // backgroundColor: 'blue',
-
                     marginBottom: 5,
                   }}
                 >
@@ -251,19 +249,24 @@ function MyDocument({
                 </View>
 
                 {/* <Text style={{ fontStyle: 'italic' }}>{job.description}</Text> */}
-                {job.actions.map((action, index) => (
+                {job.actions.map((action, index: number) => (
                   <View
                     key={index}
-                    style={{ flexDirection: 'row', lineHeight: 0.8 }}
+                    style={{
+                      flexWrap: 'wrap',
+                      flexDirection: 'row',
+                      lineHeight: 0.8,
+                    }}
                   >
                     <Text style={{ marginLeft: 9, marginRight: 9 }}>•</Text>
-                    <Text style={styles.textRow}>
-                      <Text>{action.text}</Text>
-                      {/* {action.stack && (
-                  <Text style={{ fontStyle: 'italic' }}>
-                  {action.stack.join(', ')}
-                  </Text>
-                  )} */}
+
+                    <Text
+                      style={{
+                        ...styles.textRow,
+                        maxWidth: '95%',
+                      }}
+                    >
+                      {action.text}
                     </Text>
                   </View>
                 ))}
@@ -366,38 +369,54 @@ export default function ResumeGen() {
         <h1 className='text-4xl font-bold mb-4'>Resume Generator</h1>
         <div className='flex w-full h-full gap-4 justify-between'>
           <div>
-            {/* list all jobs and toggle which ones are active */}
             <h2 className='text-2xl font-bold'>Active Jobs</h2>
-            <div className='flex flex-col gap-4'>
-              {activeJobs.map((job) => (
-                <div key={job.id} className='flex items-center justify-between'>
-                  <div>
-                    <h3 className='text-xl font-bold'>{job.company}</h3>
-                    {/* <p>{job.titles.join(' -> ')}</p> */}
-                    {/* {job.id} */}
-                  </div>
-                  <input
-                    type='checkbox'
-                    checked={
-                      activeJobs.find((j) => j.id === job.id).shouldInclude
-                    }
-                    className='w-5 h-5'
-                    onChange={() => {
-                      setActiveJobs((prev) =>
-                        prev.map((j) =>
-                          j.id === job.id
-                            ? { ...j, shouldInclude: !j.shouldInclude }
-                            : j,
-                        ),
-                      )
-                    }}
-                    // className='bg-red-500 text-white px-4 py-2 rounded'
-                  />
-                  {/* Remove
-                  </input> */}
+            <DndContext
+              collisionDetection={closestCenter}
+              onDragEnd={(event) => {
+                const { active, over } = event
+                if (active.id !== over.id) {
+                  setActiveJobs((prev) => {
+                    const oldIndex = prev.findIndex(
+                      (job) => job.id === active.id,
+                    )
+                    const newIndex = prev.findIndex((job) => job.id === over.id)
+                    return arrayMove(prev, oldIndex, newIndex)
+                  })
+                }
+              }}
+            >
+              <SortableContext
+                items={activeJobs}
+                strategy={verticalListSortingStrategy}
+              >
+                <div className='flex flex-col gap-4'>
+                  {activeJobs.map((job) => (
+                    <SortableItem key={job.id} id={job.id}>
+                      <div className='flex items-center w-full justify-between gap-2'>
+                        <div>
+                          <h3 className='text-xl font-bold'>{job.company}</h3>
+                        </div>
+                        <input
+                          type='checkbox'
+                          checked={job.shouldInclude}
+                          className='w-5 h-5'
+                          onChange={() => {
+                            console.log('changing ')
+                            setActiveJobs((prev) =>
+                              prev.map((j) =>
+                                j.id === job.id
+                                  ? { ...j, shouldInclude: !j.shouldInclude }
+                                  : j,
+                              ),
+                            )
+                          }}
+                        />
+                      </div>
+                    </SortableItem>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </SortableContext>
+            </DndContext>
           </div>
           <PDFViewer
             key={new Date().getTime()}
