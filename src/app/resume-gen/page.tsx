@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { DndContext, closestCenter } from '@dnd-kit/core'
 import {
@@ -31,6 +31,12 @@ import { createAIRequest } from './request'
 
 export default function ResumeGen() {
   console.log({ test: createAIRequest() })
+
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const [curCompany, setCurCompany] = useState('')
   const [jobLink, setCurJobLink] = useState('')
   const [activeJobs, setActiveJobs] = useState(
@@ -215,30 +221,34 @@ export default function ResumeGen() {
               fetch posting
             </button>
 
-            <div className='bg-red-300 block rounded-md'>
-              <PDFDownloadLink
-                key={new Date().getTime()}
-                document={<MyDocument {...myDocArgs} />}
-                fileName={`TM-Resume-${curCompany}.pdf`}
-              >
-                {({ loading }) =>
-                  loading
-                    ? 'Loading document...'
-                    : 'Download Resume: ' + `TM-Resume-${curCompany}.pdf`
-                }
-              </PDFDownloadLink>
-            </div>
+            {mounted && (
+              <div className='bg-red-300 block rounded-md'>
+                <PDFDownloadLink
+                  key={new Date().getTime()}
+                  document={<MyDocument {...myDocArgs} />}
+                  fileName={`TM-Resume-${curCompany}.pdf`}
+                >
+                  {({ loading }) =>
+                    loading
+                      ? 'Loading document...'
+                      : 'Download Resume: ' + `TM-Resume-${curCompany}.pdf`
+                  }
+                </PDFDownloadLink>
+              </div>
+            )}
             <h2 className='text-2xl font-bold'>Active Jobs</h2>
             <DndContext
               collisionDetection={closestCenter}
               onDragEnd={(event) => {
                 const { active, over } = event
-                if (active.id !== over.id) {
+                if (active.id !== over?.id) {
                   setActiveJobs((prev) => {
                     const oldIndex = prev.findIndex(
                       (job) => job.id === active.id,
                     )
-                    const newIndex = prev.findIndex((job) => job.id === over.id)
+                    const newIndex = prev.findIndex(
+                      (job) => job.id === over?.id,
+                    )
                     return arrayMove(prev, oldIndex, newIndex)
                   })
                 }
@@ -291,12 +301,17 @@ export default function ResumeGen() {
                             }
                           >
                             <SortableContext
-                              items={job.actions.map((action) => action.id)}
+                              items={job.actions
+                                .map((action) => action.id)
+                                .filter((id) => id !== undefined)}
                               strategy={verticalListSortingStrategy}
                             >
                               <ul className='pl-8 list-disc text-sm'>
                                 {job.actions.map((action, idx) => (
-                                  <SortableItem key={action.id} id={action.id}>
+                                  <SortableItem
+                                    key={String(action.id)}
+                                    id={String(action.id)}
+                                  >
                                     <li className='flex items-center w-full justify-between gap-2'>
                                       <span>{action.text}</span>
                                       <input
@@ -321,12 +336,14 @@ export default function ResumeGen() {
               </SortableContext>
             </DndContext>
           </div>
-          <PDFViewer
-            key={new Date().getTime()}
-            className='min-h-full w-full max-w-4xl'
-          >
-            <MyDocument {...myDocArgs} />
-          </PDFViewer>
+          {mounted && (
+            <PDFViewer
+              key={new Date().getTime()}
+              className='min-h-full w-full max-w-4xl'
+            >
+              <MyDocument {...myDocArgs} />
+            </PDFViewer>
+          )}
         </div>
       </div>
     </div>

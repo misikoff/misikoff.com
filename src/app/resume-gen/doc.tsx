@@ -118,7 +118,7 @@ export default function MyDocument({
   schools,
   awards,
   developmentEthos,
-}) {
+}: any) {
   return (
     <Document
       title='Tommy Misikoff Resume'
@@ -189,7 +189,7 @@ export default function MyDocument({
           <View style={styles.section}>
             <Divider />
             <Text style={styles.sectionTitle}>Work Experience</Text>
-            {jobs.map((job, index) => (
+            {jobs.map((job: any, index: number) => (
               <View
                 key={index}
                 style={{
@@ -228,7 +228,7 @@ export default function MyDocument({
                 </View>
 
                 {/* <Text style={{ fontStyle: 'italic' }}>{job.description}</Text> */}
-                {job.actions.map((action, index: number) => (
+                {job.actions.map((action: any, index: number) => (
                   <View
                     key={index}
                     style={{
@@ -258,7 +258,7 @@ export default function MyDocument({
           <View style={styles.section} wrap={false}>
             <Divider />
             <Text style={styles.sectionTitle}>Education</Text>
-            {schools.map((school, index) => (
+            {schools.map((school: any, index: number) => (
               <View
                 key={index}
                 style={{
@@ -280,7 +280,7 @@ export default function MyDocument({
           <View style={styles.section} wrap={false}>
             <Divider />
             <Text style={styles.sectionTitle}>Awards</Text>
-            {awards.map((award, index) => (
+            {awards.map((award: any, index: number) => (
               <View
                 key={index}
                 style={{
@@ -318,7 +318,7 @@ export default function MyDocument({
           <View style={styles.section} wrap={false}>
             <Divider />
             <Text style={styles.sectionTitle}>Development Ethos</Text>
-            {developmentEthos.map((ethos, index) => (
+            {developmentEthos.map((ethos: any, index: number) => (
               <Text key={index} style={styles.award}>
                 <Text style={{ fontWeight: 700, color: colors['text-300'] }}>
                   {ethos.principle}

@@ -1,7 +1,13 @@
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 
-const SortableItem = ({ id, children }) => {
+const SortableItem = ({
+  id,
+  children,
+}: {
+  id: string
+  children: React.ReactNode
+}) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id })
 
@@ -16,7 +22,10 @@ const SortableItem = ({ id, children }) => {
   }
 
   return (
-    <div style={style} className='flex justify-start items-center gap-2'>
+    <div
+      style={style as React.CSSProperties}
+      className='flex justify-start items-center gap-2'
+    >
       <div
         ref={setNodeRef}
         className='dragHandle'
