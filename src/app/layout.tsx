@@ -5,6 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import '@/assets/globals.css'
 
 import Footer from '@/components/Footer'
+import { PostHogProvider } from '@/components/PostHogProvider'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -78,13 +79,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#f2f4f1] `}
       >
-        <div>
-          {children}
-          <SpeedInsights />
-          <Analytics />
-        </div>
+        <PostHogProvider>
+          <div>
+            {children}
+            <SpeedInsights />
+            <Analytics />
+          </div>
 
-        <Footer />
+          <Footer />
+        </PostHogProvider>
       </body>
     </html>
   )
