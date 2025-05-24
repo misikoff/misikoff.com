@@ -308,10 +308,7 @@ export default function ResumeGen() {
                             >
                               <ul className='pl-8 list-disc text-sm'>
                                 {job.actions.map((action, idx) => (
-                                  <SortableItem
-                                    key={String(action.id)}
-                                    id={String(action.id)}
-                                  >
+                                  <SortableItem key={action.id} id={action.id}>
                                     <li className='flex items-center w-full justify-between gap-2'>
                                       <span>{action.text}</span>
                                       <input

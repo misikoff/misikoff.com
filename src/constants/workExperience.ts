@@ -71,8 +71,8 @@ const viewportJob: Job = {
       stack: ['React', 'Markdown'],
     },
     {
-      text: 'Set up custom build steps to skip deployments based on markdown in GitHub PR descriptions, reducing deployment queues.',
-      stack: ['GitHub Actions', 'Markdown'],
+      text: 'Improved CI/CD pipelines and set up custom build steps to skip deployments based on markdown in GitHub PR descriptions, reducing deployment queues.',
+      stack: ['GitHub Actions', 'Markdown', 'CI/CD'],
     },
     {
       text: 'Implemented automatic release tagging for my team that was subsequently copied over to other parts of the engineering department.',
@@ -85,6 +85,10 @@ const viewportJob: Job = {
     {
       text: 'Implemented thorough linting strategies, improving code quality and reducing merge conflicts, especially through explicit import ordering logic.',
       stack: ['ESLint', 'Prettier'],
+    },
+    {
+      text: 'Wrote and refined tests in Jest and Playwright to ensure high code quality and reliability and implemented end-to-end testing with DataDog.',
+      stack: ['Jest', 'Playwright', 'DataDog'],
     },
     {
       text: 'Rebuilt flagship site from Nuxt.js (Vue.js) SSR to Next.js (React) ISR, resulting in a $40K/month cost reduction and reduced deployment times from 20 to 2 minutes.',

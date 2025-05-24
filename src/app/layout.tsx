@@ -77,16 +77,16 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#f2f4f1] `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#f2f4f1]`}
       >
         <PostHogProvider>
-          <div>
+          <div className='flex flex-col justify-between min-h-screen p-4'>
             {children}
             <SpeedInsights />
             <Analytics />
-          </div>
 
-          <Footer />
+            <Footer />
+          </div>
         </PostHogProvider>
       </body>
     </html>

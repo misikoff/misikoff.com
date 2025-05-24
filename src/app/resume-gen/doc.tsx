@@ -217,7 +217,7 @@ export default function MyDocument({
                         </Text>{' '}
                       </>
                     )}
-                    | {job.titles.reverse().join(' <- ')}
+                    | {job.titles.slice().reverse().join(' << ')}
                     {location && ' @ ' + job.location}
                   </Text>
 
