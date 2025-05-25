@@ -47,7 +47,7 @@ type Plan = (typeof plans)[number]
 type PriceObject = {
   label: string
   units: string
-  isaddOn?: boolean
+  isAddOn?: boolean
   basePrice?: number
   tiers: {
     [key in Plan]?: {
@@ -78,15 +78,7 @@ const pricingConfig: { [key: string]: PriceObject } = {
       // enterprise: { included: 5000, marginalCost: 0.1 },
     },
   },
-  functionInvocations: {
-    label: 'Edge Middleware Invocations',
-    units: 'million',
-    tiers: {
-      // hobby: { included: 1, marginalCost: 0.25 },
-      pro: { included: 1000000, marginalCost: 0.65, marginalUnit: 1000000 },
-      // enterprise: { included: 100, marginalCost: 0.15 },
-    },
-  },
+
   rateLimiting: {
     label: 'Rate Limiting',
     units: 'million',
@@ -362,25 +354,28 @@ export default function PricingPage() {
         {/* Sidebar with categories */}
         <div className='min-w-1/4 w-full max-w-1/3 pr-6'>
           {categoryNames.map((category) => {
-            const subtotal = categories[category].reduce((sum, key) => {
-              const used = activeFeatures[key] ? usage[key] || 0 : 0
-              let addOnCost = 0
+            const subtotal = (categories as any)[category].reduce(
+              (sum: number, key: string) => {
+                const used = activeFeatures[key] ? usage[key] || 0 : 0
+                let addOnCost = 0
 
-              if (activeFeatures[key] && pricingConfig[key].isAddOn) {
-                addOnCost = pricingConfig[key].basePrice || 0
-              }
+                if (activeFeatures[key] && pricingConfig[key].isAddOn) {
+                  addOnCost = pricingConfig[key].basePrice || 0
+                }
 
-              return (
-                sum +
-                addOnCost +
-                calculateCost(
-                  used,
-                  pricingConfig[key].tiers[selectedPlan].included,
-                  pricingConfig[key].tiers[selectedPlan].marginalCost,
-                  pricingConfig[key].tiers[selectedPlan].marginalUnit,
+                return (
+                  sum +
+                  addOnCost +
+                  calculateCost(
+                    used,
+                    pricingConfig[key].tiers[selectedPlan]?.included as any,
+                    pricingConfig[key].tiers[selectedPlan]?.marginalCost as any,
+                    pricingConfig[key].tiers[selectedPlan]?.marginalUnit,
+                  )
                 )
-              )
-            }, 0)
+              },
+              0,
+            )
 
             return (
               <div key={category}>
@@ -414,9 +409,9 @@ export default function PricingPage() {
                   addOnCost +
                   calculateCost(
                     used,
-                    config.tiers[selectedPlan].included,
-                    config.tiers[selectedPlan].marginalCost,
-                    config.tiers[selectedPlan].marginalUnit,
+                    config.tiers[selectedPlan]?.included as any,
+                    config.tiers[selectedPlan]?.marginalCost as any,
+                    config.tiers[selectedPlan]?.marginalUnit as any,
                   )
                 )
               }, 0)
@@ -427,7 +422,7 @@ export default function PricingPage() {
 
         {/* Active category details */}
         <div className='max-w-3/4 w-full space-y-6'>
-          {categories[activeCategory].map((key) => {
+          {(categories as any)[activeCategory].map((key: string) => {
             const config = pricingConfig[key]
             return (
               <div key={key} className='border rounded p-4'>
@@ -454,9 +449,13 @@ export default function PricingPage() {
                 </label>
                 <div className='text-sm text-gray-500 mt-1 ml-7'>
                   Included:{' '}
-                  {formatMarginalNumber(config.tiers[selectedPlan].included)},
-                  Overages @ $
-                  {formatMarginalCost(config.tiers[selectedPlan].marginalCost)}
+                  {formatMarginalNumber(
+                    config.tiers[selectedPlan]?.included as any,
+                  )}
+                  , Overages @ $
+                  {formatMarginalCost(
+                    config.tiers[selectedPlan]?.marginalCost as any,
+                  )}
                   {config.tiers[selectedPlan]?.marginalUnit
                     ? ` per ${formatMarginalNumber(config.tiers[selectedPlan].marginalUnit)}`
                     : ''}
@@ -466,7 +465,12 @@ export default function PricingPage() {
                     <input
                       type='range'
                       min={0}
-                      max={config.tiers[selectedPlan]?.marginalUnit * 10}
+                      max={
+                        Math.max(
+                          config.tiers[selectedPlan]?.marginalUnit as any,
+                          config.tiers[selectedPlan]?.included as any,
+                        ) * 10
+                      }
                       step={1}
                       list={`ticks-${key}`}
                       value={usage[key]}
@@ -477,7 +481,8 @@ export default function PricingPage() {
                     />
                     <datalist id={`ticks-${key}`}>
                       {[...Array(5)].map((_, i) => {
-                        const max = config.tiers[selectedPlan].included * 2
+                        const max =
+                          (config.tiers[selectedPlan]?.included as any) * 10
                         const val = Math.round((max * i) / 4)
                         const label =
                           val >= 1_000_000
@@ -504,6 +509,45 @@ export default function PricingPage() {
             )
           })}
         </div>
+      </div>
+
+      {/* Summary */}
+      {/* add a summary of all used features, the amount used and the cost */}
+      <div className='mt-10 w-full max-w-3xl'>
+        <h2 className='text-2xl font-semibold mb-4'>Summary</h2>
+        <table className='w-full border-collapse'>
+          <thead>
+            <tr>
+              <th className='border p-2 text-left'>Feature</th>
+              <th className='border p-2 text-right'>Usage</th>
+              <th className='border p-2 text-right'>Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.entries(pricingConfig).map(([key, config]) => {
+              if (!activeFeatures[key]) {
+                return null
+              }
+              const used = usage[key] || 0
+              const cost = calculateCost(
+                used,
+                config.tiers[selectedPlan]?.included as any,
+                config.tiers[selectedPlan]?.marginalCost as any,
+                config.tiers[selectedPlan]?.marginalUnit as any,
+              )
+              return (
+                <tr key={key}>
+                  <td className='border p-2'>{config.label}</td>
+                  <td className='border p-2 text-right'>
+                    {formatNormalNumber(used)}
+                    {config.units !== 'million' ? ' ' + config.units : ''}
+                  </td>
+                  <td className='border p-2 text-right'>${cost.toFixed(2)}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
       </div>
     </div>
   )

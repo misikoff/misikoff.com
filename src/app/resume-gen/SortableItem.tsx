@@ -5,11 +5,11 @@ const SortableItem = ({
   id,
   children,
 }: {
-  id: string
+  id: any
   children: React.ReactNode
 }) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id })
+    useSortable({ id } as any)
 
   const style = {
     transform: CSS.Transform.toString(transform),
