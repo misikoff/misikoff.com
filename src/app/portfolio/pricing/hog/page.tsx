@@ -66,7 +66,7 @@ const pricingConfig: { [key: string]: PriceObject } = {
 }
 
 export default function PricingPage() {
-  const [selectedPlan, setSelectedPlan] = useState<Plan>('hobby')
+  const [selectedPlan, setSelectedPlan] = useState<Plan>('pro')
   const [usage, setUsage] = useState<Record<string, number>>(() =>
     Object.keys(pricingConfig).reduce(
       (acc, key) => {
@@ -77,10 +77,30 @@ export default function PricingPage() {
     ),
   )
 
+  const [activeFeatures, setActiveFeatures] = useState<Record<string, boolean>>(
+    () =>
+      Object.keys(pricingConfig).reduce(
+        (acc, key) => {
+          acc[key] = false
+          return acc
+        },
+        {} as Record<string, boolean>,
+      ),
+  )
+
+  const categories = {
+    Infrastructure: ['edgeRequests', 'bandwidth', 'functionInvocations'],
+    Media: ['imageOptimizations'],
+    Analytics: ['analyticsEvents', 'observabilityEvents'],
+  }
+
+  const categoryNames = Object.keys(categories)
+  const [activeCategory, setActiveCategory] = useState<string>('Infrastructure')
+
   return (
-    <div className='flex flex-col items-center justify-center w-full h-full p-6'>
+    <div className='flex flex-col items-center w-full h-full p-6'>
       <h1 className='text-4xl font-bold mb-4'>Pricing Calculator</h1>
-      <div className='flex gap-4 mb-8'>
+      {/* <div className='flex gap-4 mb-8'>
         {plans.map((plan) => (
           <button
             key={plan}
@@ -92,65 +112,52 @@ export default function PricingPage() {
             {plan.charAt(0).toUpperCase() + plan.slice(1)}
           </button>
         ))}
-      </div>
+      </div> */}
 
-      <div className='w-full max-w-3xl space-y-6'>
-        {/* Infrastructure Category */}
-        <div>
-          <h2 className='text-xl font-semibold mb-2'>Infrastructure</h2>
-          {['edgeRequests', 'bandwidth', 'functionInvocations'].map((key) => {
-            const config = pricingConfig[key]
+      <div className='flex w-full max-w-5xl'>
+        {/* Sidebar with categories */}
+        <div className='w-1/4 pr-6'>
+          {categoryNames.map((category) => {
+            const subtotal = categories[category].reduce((sum, key) => {
+              const used = activeFeatures[key] ? usage[key] || 0 : 0
+              const tier = pricingConfig[key].tiers[selectedPlan]
+              const overage = Math.max(0, used - tier.included)
+              return sum + overage * tier.marginalCost
+            }, 0)
+
             return (
-              <div key={key} className='border rounded p-4 mb-2'>
-                <label className='flex items-center space-x-4'>
-                  <input
-                    type='checkbox'
-                    checked={Boolean(usage[key])}
-                    onChange={(e) =>
-                      setUsage({ ...usage, [key]: e.target.checked ? 1 : 0 })
-                    }
-                  />
-                  <span className='text-lg font-medium'>{config.label}</span>
-                </label>
-                <div className='text-sm text-gray-500 mt-1 ml-7'>
-                  Included: {config.tiers[selectedPlan].included}, Overages @ $
-                  {config.tiers[selectedPlan].marginalCost.toFixed(4)}
-                </div>
-                {Boolean(usage[key]) && (
-                  <div className='mt-2 ml-7'>
-                    <input
-                      type='range'
-                      min={0}
-                      max={config.tiers[selectedPlan].included * 2}
-                      value={usage[key]}
-                      onChange={(e) =>
-                        setUsage({ ...usage, [key]: Number(e.target.value) })
-                      }
-                      className='w-full'
-                    />
-                    <div className='text-sm text-gray-600 mt-1'>
-                      Usage: {usage[key]}
-                    </div>
-                  </div>
-                )}
+              <div key={category}>
+                <button
+                  onClick={() => setActiveCategory(category)}
+                  className={`w-full text-left px-4 py-2 mb-2 rounded flex justify-between ${
+                    activeCategory === category
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-gray-200'
+                  }`}
+                >
+                  <span>{category}</span>
+                  <span className='text-sm'>${subtotal.toFixed(2)}</span>
+                </button>
               </div>
             )
           })}
         </div>
 
-        {/* Media Category */}
-        <div>
-          <h2 className='text-xl font-semibold mb-2'>Media</h2>
-          {['imageOptimizations'].map((key) => {
+        {/* Active category details */}
+        <div className='w-3/4 space-y-6'>
+          {categories[activeCategory].map((key) => {
             const config = pricingConfig[key]
             return (
-              <div key={key} className='border rounded p-4 mb-2'>
+              <div key={key} className='border rounded p-4'>
                 <label className='flex items-center space-x-4'>
                   <input
                     type='checkbox'
-                    checked={Boolean(usage[key])}
+                    checked={activeFeatures[key]}
                     onChange={(e) =>
-                      setUsage({ ...usage, [key]: e.target.checked ? 1 : 0 })
+                      setActiveFeatures({
+                        ...activeFeatures,
+                        [key]: e.target.checked,
+                      })
                     }
                   />
                   <span className='text-lg font-medium'>{config.label}</span>
@@ -159,61 +166,39 @@ export default function PricingPage() {
                   Included: {config.tiers[selectedPlan].included}, Overages @ $
                   {config.tiers[selectedPlan].marginalCost.toFixed(4)}
                 </div>
-                {Boolean(usage[key]) && (
+                {activeFeatures[key] && (
                   <div className='mt-2 ml-7'>
                     <input
                       type='range'
                       min={0}
                       max={config.tiers[selectedPlan].included * 2}
+                      step={1}
+                      list={`ticks-${key}`}
                       value={usage[key]}
                       onChange={(e) =>
                         setUsage({ ...usage, [key]: Number(e.target.value) })
                       }
                       className='w-full'
                     />
-                    <div className='text-sm text-gray-600 mt-1'>
-                      Usage: {usage[key]}
-                    </div>
-                  </div>
-                )}
-              </div>
-            )
-          })}
-        </div>
-
-        {/* Analytics Category */}
-        <div>
-          <h2 className='text-xl font-semibold mb-2'>Analytics</h2>
-          {['analyticsEvents', 'observabilityEvents'].map((key) => {
-            const config = pricingConfig[key]
-            return (
-              <div key={key} className='border rounded p-4 mb-2'>
-                <label className='flex items-center space-x-4'>
-                  <input
-                    type='checkbox'
-                    checked={Boolean(usage[key])}
-                    onChange={(e) =>
-                      setUsage({ ...usage, [key]: e.target.checked ? 1 : 0 })
-                    }
-                  />
-                  <span className='text-lg font-medium'>{config.label}</span>
-                </label>
-                <div className='text-sm text-gray-500 mt-1 ml-7'>
-                  Included: {config.tiers[selectedPlan].included}, Overages @ $
-                  {config.tiers[selectedPlan].marginalCost.toFixed(4)}
-                </div>
-                {Boolean(usage[key]) && (
-                  <div className='mt-2 ml-7'>
-                    <input
-                      type='range'
-                      min={0}
-                      max={config.tiers[selectedPlan].included * 2}
-                      value={usage[key]}
-                      onChange={(e) =>
-                        setUsage({ ...usage, [key]: Number(e.target.value) })
-                      }
-                      className='w-full'
-                    />
+                    <datalist id={`ticks-${key}`}>
+                      {[...Array(5)].map((_, i) => {
+                        const max = config.tiers[selectedPlan].included * 2
+                        const val = Math.round((max * i) / 4)
+                        const label =
+                          val >= 1_000_000
+                            ? `${val / 1_000_000}M`
+                            : val >= 1_000
+                              ? `${val / 1_000}k`
+                              : `${val}`
+                        return (
+                          <option
+                            key={i + '-' + key}
+                            value={val}
+                            label={label}
+                          />
+                        )
+                      })}
+                    </datalist>
                     <div className='text-sm text-gray-600 mt-1'>
                       Usage: {usage[key]}
                     </div>
@@ -229,7 +214,7 @@ export default function PricingPage() {
         Estimated Cost: $
         {Object.entries(pricingConfig)
           .reduce((total, [key, config]) => {
-            const used = usage[key] || 0
+            const used = activeFeatures[key] ? usage[key] || 0 : 0
             if (!used) {
               return total
             }
