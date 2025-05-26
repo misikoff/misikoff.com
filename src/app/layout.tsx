@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Tommy Misikoff | Senior Product Engineer',
+  title: 'Tommy Misikoff | Product Engineer',
   description:
     'Experienced software engineer specializing in building elegant, performant frontend experiences. Let’s create something impactful.',
   keywords: [

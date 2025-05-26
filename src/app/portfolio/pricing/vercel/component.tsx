@@ -137,21 +137,21 @@ const pricingConfig: { [key: string]: PriceObject } = {
     },
   },
   storageSize: {
-    label: 'Storage Size',
+    label: 'Blob Storage Size',
     units: 'GB',
     tiers: {
       pro: { included: 5, marginalCost: 0.023, marginalUnit: 1 },
     },
   },
   simpleOperations: {
-    label: 'Simple Operations',
+    label: 'Blob Simple Operations',
     units: 'million',
     tiers: {
       pro: { included: 100000, marginalCost: 0.4, marginalUnit: 1000000 },
     },
   },
   advancedOperations: {
-    label: 'Advanced Operations',
+    label: 'Blob Advanced Operations',
     units: 'million',
     tiers: {
       pro: { included: 10000, marginalCost: 5, marginalUnit: 1000000 },
@@ -271,7 +271,7 @@ const pricingConfig: { [key: string]: PriceObject } = {
   },
   speedInsights: {
     label: 'Speed Insights',
-    units: 'million',
+    units: '10k',
     // todo: $10 per project
     tiers: {
       pro: { included: 0, marginalCost: 0.65, marginalUnit: 10000 },
@@ -279,7 +279,7 @@ const pricingConfig: { [key: string]: PriceObject } = {
   },
   webAnalytics: {
     label: 'Web Analytics',
-    units: 'million',
+    units: '100k',
     tiers: {
       pro: { included: 100000, marginalCost: 3, marginalUnit: 100000 },
     },
@@ -452,7 +452,9 @@ export default function PricingComponent() {
                     config.tiers[selectedPlan]?.marginalCost as any,
                   )}
                   {config.tiers[selectedPlan]?.marginalUnit
-                    ? ` per ${formatMarginalNumber(config.tiers[selectedPlan].marginalUnit)}`
+                    ? config.tiers[selectedPlan].marginalUnit !== 1
+                      ? ` per ${formatMarginalNumber(config.tiers[selectedPlan].marginalUnit)}`
+                      : ' each'
                     : ''}
                 </div>
                 {activeFeatures[key] && (
@@ -512,7 +514,12 @@ export default function PricingComponent() {
                               ? `${val / 1_000}k`
                               : `${val}`
                         if (val !== Math.round(val)) {
-                          return <></>
+                          return (
+                            <span
+                              key={i + '-label-' + key}
+                              className='hidden'
+                            />
+                          )
                         }
                         return (
                           <span key={i + '-label-' + key} className='w-4'>
@@ -523,7 +530,9 @@ export default function PricingComponent() {
                     </div>
                     <div className='text-sm text-gray-600 mt-1'>
                       Usage: {formatNormalNumber(usage[key])}
-                      {config.units !== 'million'
+                      {config.units !== 'million' &&
+                      config.units !== '10k' &&
+                      config.units !== '100k'
                         ? ' ' + handlePlural(config.units, usage[key])
                         : ''}
                     </div>
@@ -588,7 +597,9 @@ export default function PricingComponent() {
                   <td className='p-2'>{config.label}</td>
                   <td className='p-2 text-right'>
                     {formatNormalNumber(used)}
-                    {config.units !== 'million'
+                    {config.units !== 'million' &&
+                    config.units !== '10k' &&
+                    config.units !== '100k'
                       ? ' ' + handlePlural(config.units, used)
                       : ''}
                   </td>
