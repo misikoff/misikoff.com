@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 // metadata for SEO
 export const metadata = {
-  title: 'Vercel Pricing Calculator',
+  title: 'Vercel Usage Pricing Calculator',
   description:
     'Estimate your Vercel costs based on usage. Calculate costs for edge requests, bandwidth, functions, and more.',
   keywords: [
