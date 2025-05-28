@@ -18,7 +18,7 @@ export const metadata = {
 export default function PricingPage() {
   return (
     <div className='flex flex-col items-center w-full h-full p-6'>
-      <h1 className='text-4xl font-bold mb-4'>
+      <h1 className='text-4xl text-center font-bold mb-4'>
         Vercel Usage Pricing Calculator
       </h1>
       {/* last updated */}
