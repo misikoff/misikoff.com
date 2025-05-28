@@ -401,7 +401,7 @@ export default function PricingComponent() {
               <div key={category}>
                 <button
                   onClick={() => setActiveCategory(category)}
-                  className={`w-full text-left px-4 py-2 mb-2 items-baseline -lg flex md:flex-row flex-col justify-between ${
+                  className={`w-full text-left px-4 py-2 mb-2 items-baseline rounded-lg flex md:flex-row flex-col justify-between ${
                     activeCategory === category
                       ? 'bg-blue-500 text-white'
                       : 'bg-gray-200'
