@@ -67,7 +67,17 @@ In the project directory, you can run:
 The project includes a `resume-gen` feature that allows you to generate a personalized resume by modifying the contents of the files in the `constants` folder.
 
 ### Steps to Customize Your Resume
+To create your own resume:
 
+1. Copy the template folder:
+
+   ```bash
+   cp -r src/app/resume-gen/constants-example src/app/resume-gen/constants
+   ```
+
+2. Modify the files inside `src/resume-gen/constants/` with your own information.
+
+This folder is `.gitignore`d to keep your info private.
 1. Navigate to the `src/app/resume-gen/constants` directory.
 
 2. Edit the following files to input your personal information:

@@ -48,6 +48,19 @@ const SECTION_LABELS: Record<string, string> = {
   developmentEthos: 'Development Ethos',
 }
 
+// for each job in jobs, add a unique id for each action
+const jobsWithIds = jobs.map((job) => {
+  job.actions.forEach((action, idx) => {
+    // if action.id is not defined, set it to a unique id
+    if (!action.id) {
+      action.id = `${job.id}-action-${idx}` as any
+    }
+  })
+  return job
+})
+
+console.log({ jobsWithIds })
+
 function SectionOrderItem({
   id,
   checked,
@@ -100,7 +113,7 @@ export default function ResumeGen() {
   const [curCompany, setCurCompany] = useState('')
   // const [jobLink, setCurJobLink] = useState('')
   const [activeJobs, setActiveJobs] = useState(
-    jobs.map((job) => ({
+    jobsWithIds.map((job) => ({
       ...job,
       shouldInclude: true,
       actions: job.actions.map((action, idx) => ({
