@@ -15,7 +15,7 @@ Font.register({
   src: 'Lora-VariableFont_wght.ttf',
 })
 
-import { stackComponents } from '@/app/resume-gen/constants/stack'
+import { stackComponents } from './constants/stack'
 
 // const hyphenationCallback = (word) => {
 //   // Return word syllables in an array
