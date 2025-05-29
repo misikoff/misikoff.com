@@ -1,4 +1,4 @@
-import { jobs } from './constants/workExperience'
+import { jobs } from '@/app/resume-gen/constants/workExperience'
 
 export function createAIRequest() {
   console.log('Creating AI request...')
