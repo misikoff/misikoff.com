@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# misikoff.com
+
+This is a personal website built with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), and [TypeScript](https://www.typescriptlang.org/). It serves as an online portfolio and includes a dynamic resume generation feature.
+
+## Table of Contents
+
+- [misikoff.com](#misikoffcom)
+  - [Table of Contents](#table-of-contents)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+  - [Available Scripts](#available-scripts)
+  - [Generating Your Own Resume](#generating-your-own-resume)
+    - [Steps to Customize Your Resume](#steps-to-customize-your-resume)
 
 ## Getting Started
 
-First, run the development server:
+To set up the project locally, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Node.js](https://nodejs.org/) (version 14 or higher)
+- [pnpm](https://pnpm.io/) (preferred), or alternatively `npm` or `yarn`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Clone the repository:
 
-## Learn More
+   ```bash
+   git clone https://github.com/misikoff/misikoff.com.git
+   cd misikoff.com
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Install dependencies:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   pnpm install
+   # or
+   npm install
+   # or
+   yarn install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. Run the development server:
 
-## Deploy on Vercel
+   ```bash
+   pnpm dev
+   # or
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Available Scripts
+
+In the project directory, you can run:
+
+- `pnpm dev` - Runs the app in development mode.
+- `pnpm build` - Builds the app for production.
+- `pnpm start` - Starts the production server.
+- `pnpm lint` - Runs ESLint to analyze code for potential errors.
+
+## Generating Your Own Resume
+
+The project includes a `resume-gen` feature that allows you to generate a personalized resume by modifying the contents of the files in the `constants` folder.
+
+### Steps to Customize Your Resume
+
+1. Navigate to the `src/app/resume-gen/constants` directory.
+
+2. Edit the following files to input your personal information:
+
+   - `bio.ts` - Contains your biography and personal details.
+   - `education.ts` - Lists your educational background.
+   - `experience.ts` - Details your work experience.
+   - `projects.ts` - Showcases your projects.
+   - `skills.ts` - Enumerates your skills.
+   - `socials.ts` - Links to your social media profiles.
+
+3. Save the changes to these files.
+
+4. Start the development server if it's not already running:
+
+   ```bash
+   pnpm dev
+   # or
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+5. Open [http://localhost:3000/resume-gen](http://localhost:3000/resume-gen) in your browser to view your customized resume. It can be edited in real-time, and you can see the changes immediately. When ready, use the "Download PDF" button to download your resume.

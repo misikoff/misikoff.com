@@ -17,7 +17,7 @@ import {
   overview,
   name,
   phoneNumber,
-  title,
+  titles,
   location,
   email,
   linkedIn,
@@ -29,16 +29,35 @@ import SortableItem from './SortableItem'
 import MyDocument from './doc'
 import { createAIRequest } from './request'
 
+function getFileName(name: string, company?: string) {
+  let filename = 'Resume.pdf'
+  if (company) {
+    filename = `${company.replaceAll(' ', '')}-${filename}`
+  }
+  if (name) {
+    // get initials from name
+    const initials = name
+      .split(' ')
+      .map((part) => part.charAt(0).toUpperCase())
+      .join('')
+    filename = `${initials}-${filename}`
+    // filename = `${name.replaceAll(' ', '')}-${filename}`
+  }
+  return filename
+}
+
 export default function ResumeGen() {
   console.log({ test: createAIRequest() })
 
   const [mounted, setMounted] = useState(false)
+  const [selectedTitle, setSelectedTitle] = useState(titles[0] || '')
+
   useEffect(() => {
     setMounted(true)
   }, [])
 
   const [curCompany, setCurCompany] = useState('')
-  const [jobLink, setCurJobLink] = useState('')
+  // const [jobLink, setCurJobLink] = useState('')
   const [activeJobs, setActiveJobs] = useState(
     jobs.map((job) => ({
       ...job,
@@ -105,7 +124,7 @@ export default function ResumeGen() {
 
   const myDocArgs = {
     name,
-    title,
+    title: selectedTitle,
     phoneNumber,
     email,
     location,
@@ -125,14 +144,33 @@ export default function ResumeGen() {
 
   return (
     <div className=' w-full h-full grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
-      <div className='min-h-screen w-full'>
-        <h1 className='text-4xl font-bold mb-4'>Resume Generator</h1>
+      <div className='w-full'>
+        <h1 className='text-4xl text-center font-bold mb-4'>
+          Resume Generator
+        </h1>
 
-        <div className='flex w-full h-full gap-4 justify-between'>
-          <div>
+        <div className='flex w-full h-full gap-6 justify-center'>
+          <div className='flex flex-col w-full max-w-2xl gap-4'>
+            <div className='mb-4'>
+              <label htmlFor='title' className='mr-2 font-semibold'>
+                Title:
+              </label>
+              <select
+                id='title'
+                value={selectedTitle}
+                onChange={(e) => setSelectedTitle(e.target.value)}
+                className='border rounded px-2 py-1'
+              >
+                {titles.map((t) => (
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
+                ))}
+              </select>
+            </div>
             <div className='mb-4'>
               <label htmlFor='curCompany' className='mr-2 font-semibold'>
-                Current Company:
+                Target Company:
               </label>
               <input
                 id='curCompany'
@@ -140,10 +178,10 @@ export default function ResumeGen() {
                 value={curCompany}
                 onChange={(e) => setCurCompany(e.target.value)}
                 className='border rounded px-2 py-1'
-                placeholder='Enter your current company'
+                placeholder='Enter the target company'
               />
             </div>
-            <label htmlFor='jobLink' className='mr-2 font-semibold'>
+            {/* <label htmlFor='jobLink' className='mr-2 font-semibold'>
               job link
             </label>
             <input
@@ -153,9 +191,9 @@ export default function ResumeGen() {
               onChange={(e) => setCurJobLink(e.target.value)}
               className='border rounded px-2 py-1'
               placeholder='Enter the job posting link'
-            />
+            /> */}
 
-            <button
+            {/* <button
               onClick={async () => {
                 // curl the job link and return the body
                 const res = await fetch(`https://corsproxy.io/?url=${jobLink}`)
@@ -219,23 +257,8 @@ export default function ResumeGen() {
               }}
             >
               fetch posting
-            </button>
+            </button> */}
 
-            {mounted && (
-              <div className='bg-red-300 block rounded-md'>
-                <PDFDownloadLink
-                  key={new Date().getTime()}
-                  document={<MyDocument {...myDocArgs} />}
-                  fileName={`TM-Resume-${curCompany}.pdf`}
-                >
-                  {({ loading }) =>
-                    loading
-                      ? 'Loading document...'
-                      : 'Download Resume: ' + `TM-Resume-${curCompany}.pdf`
-                  }
-                </PDFDownloadLink>
-              </div>
-            )}
             <h2 className='text-2xl font-bold'>Active Jobs</h2>
             <DndContext
               collisionDetection={closestCenter}
@@ -334,12 +357,35 @@ export default function ResumeGen() {
             </DndContext>
           </div>
           {mounted && (
-            <PDFViewer
-              key={new Date().getTime()}
-              className='min-h-full w-full max-w-4xl'
-            >
-              <MyDocument {...myDocArgs} />
-            </PDFViewer>
+            <div className='w-full max-w-4xl flex flex-col gap-4'>
+              <div className='bg-blue-700 shadow-2xl text-white text-lg flex w-fit rounded-md px-3 py-2'>
+                <PDFDownloadLink
+                  key={new Date().getTime()}
+                  document={<MyDocument {...myDocArgs} />}
+                  fileName={getFileName(name, curCompany)}
+                >
+                  {({ loading }) =>
+                    loading ? (
+                      'Loading document...'
+                    ) : (
+                      <>
+                        Download Resume as{' '}
+                        <span className='font-mono'>
+                          {getFileName(name, curCompany)}
+                        </span>
+                      </>
+                    )
+                  }
+                </PDFDownloadLink>
+              </div>
+
+              <PDFViewer
+                key={new Date().getTime()}
+                className='min-h-screen w-full'
+              >
+                <MyDocument {...myDocArgs} />
+              </PDFViewer>
+            </div>
           )}
         </div>
       </div>
