@@ -35,6 +35,10 @@ const viewportJob: Job = {
       stack: ['Next.js', 'React'],
     },
     {
+      text: 'Built a customizable blogging and content system supporting dynamic, real-time previews in Next.js, supporting markdown, rich text, and embedded custom React components, enabling content editors to create and manage content seamlessly.',
+      stack: ['Next.js', 'React', 'Markdown', 'Contentful'],
+    },
+    {
       text: 'Implemented composable GraphQL calls to CMS to optimize caching and page speed.',
       stack: ['GraphQL', 'Contentful'],
     },
@@ -51,7 +55,7 @@ const viewportJob: Job = {
       stack: ['JavaScript', 'React'],
     },
     {
-      text: "Delivered polished UI's and animations both independently and in collaboration with designer partners.",
+      text: "Delivered polished UI's and animations both independently and in collaboration with design partners.",
       stack: ['Framer Motion', 'React'],
     },
     {
@@ -98,6 +102,7 @@ const viewportJob: Job = {
       text: 'Led the evaluation and migration of our in-house CMS to Contentful, enabling content editors to use preview mode with on-demand static regeneration.',
       stack: ['Contentful', 'Next.js'],
     },
+
     {
       text: 'Scaled frontend infrastructure by implementing Doppler to manage environment variables across dozens of sites, reducing friction and configuration errors.',
       stack: ['Doppler', 'Node.js'],

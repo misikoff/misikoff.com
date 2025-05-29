@@ -1,6 +1,8 @@
 export const name = 'Tommy Misikoff'
 export const phoneNumber = '***REMOVED***'
-export const title = 'Senior Software Engineer'
+// export const title = 'Senior Software Engineer'
+export const title = 'Senior Full Stack Engineer'
+
 export const location = 'Austin, TX'
 export const email = '***REMOVED***'
 // Links

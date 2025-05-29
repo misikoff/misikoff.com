@@ -125,7 +125,7 @@ export default function ResumeGen() {
 
   return (
     <div className=' w-full h-full grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
-      <div className='h-screen w-full'>
+      <div className='min-h-screen w-full'>
         <h1 className='text-4xl font-bold mb-4'>Resume Generator</h1>
 
         <div className='flex w-full h-full gap-4 justify-between'>
