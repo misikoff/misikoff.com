@@ -61,7 +61,7 @@ export default function LikelihoodChart({
             {},
             probabilities.map((p) => {
               return p * 100
-            })
+            }),
           ),
           backgroundColor: 'rgba(100, 101, 241, 1)',
         },

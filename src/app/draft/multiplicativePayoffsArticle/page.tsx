@@ -3,9 +3,9 @@ import Link from 'next/link'
 import Chassis from '../helpers/chassis'
 // import TailwindImage from '@/components/TailwindImage'
 
-export const thumbnailUrl =
-  'https://images.unsplash.com/photo-1585347374528-f2a81c8693b3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format'
-export const alt = 'coin embedded in snow'
+// export const thumbnailUrl =
+//   'https://images.unsplash.com/photo-1585347374528-f2a81c8693b3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format'
+// export const alt = 'coin embedded in snow'
 
 export default function MultiplicativePayoffsArticle() {
   return (

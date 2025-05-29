@@ -17,7 +17,7 @@ ChartJS.register(
   PointElement,
   LineElement,
   Title,
-  Tooltip
+  Tooltip,
 )
 
 const nfObject = new Intl.NumberFormat('en-US', {
