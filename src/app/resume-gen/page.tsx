@@ -29,6 +29,46 @@ import { jobs } from './constants/workExperience'
 import MyDocument from './doc'
 import { createAIRequest } from './request'
 
+const DEFAULT_SECTION_ORDER = [
+  'overview',
+  'jobs',
+  'schools',
+  'awards',
+  'stackComponents',
+  'developmentEthos',
+]
+
+const SECTION_LABELS: Record<string, string> = {
+  overview: 'Overview',
+  jobs: 'Jobs',
+  schools: 'Schools',
+  awards: 'Awards',
+  stackComponents: 'Tech Stack',
+  developmentEthos: 'Development Ethos',
+}
+
+function SectionOrderItem({
+  id,
+  checked,
+  onToggle,
+}: {
+  id: string
+  checked: boolean
+  onToggle: () => void
+}) {
+  return (
+    <div className='px-3 py-2 rounded bg-stone-100 border flex items-center justify-between cursor-move'>
+      <span className='font-medium'>{SECTION_LABELS[id] || id}</span>
+      <input
+        type='checkbox'
+        checked={checked}
+        onChange={onToggle}
+        className='w-4 h-4 ml-4'
+      />
+    </div>
+  )
+}
+
 function getFileName(name: string, company?: string) {
   let filename = 'Resume.pdf'
   if (company) {
@@ -128,6 +168,26 @@ export default function ResumeGen() {
   const [includeAwards, setIncludeAwards] = useState(true)
   const [includeDevelopmentEthos, setIncludeDevelopmentEthos] = useState(true)
   const [includeStackComponents, setIncludeStackComponents] = useState(true)
+  const [sectionOrder, setSectionOrder] = useState(DEFAULT_SECTION_ORDER)
+
+  // Map section keys to their toggle state and setter
+  const sectionToggles: Record<
+    string,
+    { checked: boolean; setChecked: (v: boolean) => void }
+  > = {
+    overview: { checked: includeOverview, setChecked: setIncludeOverview },
+    jobs: { checked: includeJobs, setChecked: setIncludeJobs },
+    schools: { checked: includeSchools, setChecked: setIncludeSchools },
+    awards: { checked: includeAwards, setChecked: setIncludeAwards },
+    developmentEthos: {
+      checked: includeDevelopmentEthos,
+      setChecked: setIncludeDevelopmentEthos,
+    },
+    stackComponents: {
+      checked: includeStackComponents,
+      setChecked: setIncludeStackComponents,
+    },
+  }
 
   const myDocArgs = {
     name,
@@ -150,6 +210,20 @@ export default function ResumeGen() {
     awards: includeAwards ? awards : undefined,
     developmentEthos: includeDevelopmentEthos ? developmentEthos : undefined,
     stackComponents: includeStackComponents ? stackComponents : undefined,
+    sectionOrder,
+  }
+
+  // Section order drag handler
+  const onSectionOrderDragEnd = (event: any) => {
+    const { active, over } = event
+    if (!over || active.id === over.id) {
+      return
+    }
+    setSectionOrder((prev) => {
+      const oldIndex = prev.indexOf(active.id)
+      const newIndex = prev.indexOf(over.id)
+      return arrayMove(prev, oldIndex, newIndex)
+    })
   }
 
   return (
@@ -158,63 +232,6 @@ export default function ResumeGen() {
         <h1 className='text-4xl text-center font-bold mb-4'>
           Resume Generator
         </h1>
-
-        <div className='mb-4 flex flex-wrap gap-4'>
-          <label className='flex items-center gap-2'>
-            <input
-              type='checkbox'
-              checked={includeOverview}
-              onChange={() => setIncludeOverview((v) => !v)}
-              className='w-4 h-4'
-            />
-            Overview
-          </label>
-          <label className='flex items-center gap-2'>
-            <input
-              type='checkbox'
-              checked={includeJobs}
-              onChange={() => setIncludeJobs((v) => !v)}
-              className='w-4 h-4'
-            />
-            Jobs
-          </label>
-          <label className='flex items-center gap-2'>
-            <input
-              type='checkbox'
-              checked={includeSchools}
-              onChange={() => setIncludeSchools((v) => !v)}
-              className='w-4 h-4'
-            />
-            Schools
-          </label>
-          <label className='flex items-center gap-2'>
-            <input
-              type='checkbox'
-              checked={includeAwards}
-              onChange={() => setIncludeAwards((v) => !v)}
-              className='w-4 h-4'
-            />
-            Awards
-          </label>
-          <label className='flex items-center gap-2'>
-            <input
-              type='checkbox'
-              checked={includeDevelopmentEthos}
-              onChange={() => setIncludeDevelopmentEthos((v) => !v)}
-              className='w-4 h-4'
-            />
-            Development Ethos
-          </label>
-          <label className='flex items-center gap-2'>
-            <input
-              type='checkbox'
-              checked={includeStackComponents}
-              onChange={() => setIncludeStackComponents((v) => !v)}
-              className='w-4 h-4'
-            />
-            Stack Components
-          </label>
-        </div>
 
         <div className='flex w-full h-full gap-6 justify-center'>
           <div className='flex flex-col w-full max-w-2xl gap-4'>
@@ -422,6 +439,36 @@ export default function ResumeGen() {
                 </div>
               </SortableContext>
             </DndContext>
+
+            {/* Section Order with Toggles */}
+            <div className='mb-6'>
+              <h2 className='font-semibold mb-2'>Section Order</h2>
+              <DndContext
+                collisionDetection={closestCenter}
+                onDragEnd={onSectionOrderDragEnd}
+              >
+                <SortableContext
+                  items={sectionOrder}
+                  strategy={verticalListSortingStrategy}
+                >
+                  <div className='flex flex-col gap-2'>
+                    {sectionOrder.map((section) => (
+                      <SortableItem key={section} id={section}>
+                        <SectionOrderItem
+                          id={section}
+                          checked={sectionToggles[section]?.checked}
+                          onToggle={() =>
+                            sectionToggles[section]?.setChecked(
+                              !sectionToggles[section].checked,
+                            )
+                          }
+                        />
+                      </SortableItem>
+                    ))}
+                  </div>
+                </SortableContext>
+              </DndContext>
+            </div>
           </div>
           {mounted && (
             <div className='w-full max-w-4xl flex flex-col gap-4'>

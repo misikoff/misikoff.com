@@ -103,6 +103,210 @@ const styles = StyleSheet.create({
   },
 })
 
+function OverviewSection({ overview }: { overview?: string }) {
+  if (!overview) {
+    return null
+  }
+  return (
+    <View style={styles.section}>
+      <Divider />
+      <Text style={styles.sectionTitle}>Professional Overview</Text>
+      <Text style={{ lineHeight: 0.8 }}>{overview}</Text>
+    </View>
+  )
+}
+
+function JobsSection({ jobs }: { jobs?: any[] }) {
+  if (!Array.isArray(jobs) || jobs.length === 0) {
+    return null
+  }
+  return (
+    <View style={styles.section}>
+      <Divider />
+      <Text style={styles.sectionTitle}>Work Experience</Text>
+      {jobs.map((job: any, index: number) => (
+        <View
+          key={index}
+          style={{
+            marginBottom: 10,
+          }}
+          wrap={false}
+        >
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              marginBottom: 5,
+            }}
+          >
+            <Text>
+              {job.company && (
+                <Text style={{ fontWeight: 700, color: colors['text-300'] }}>
+                  {job.company}
+                </Text>
+              )}
+              {job.bonusDescriptor && (
+                <>
+                  <Text style={{ color: colors['text-300'] }}>
+                    {' '}
+                    ({job.bonusDescriptor})
+                  </Text>{' '}
+                </>
+              )}
+              {(job.company || job.bonusDescriptor) && ' | '}
+              {Array.isArray(job.titles) &&
+                job.titles.length > 0 &&
+                job.titles.slice().reverse().join(' << ')}
+              {job.location && ' @ ' + job.location}
+            </Text>
+
+            {(job.startDate || job.endDate) && (
+              <Text style={{ marginLeft: 'auto', marginRight: 0 }}>
+                {job.startDate && toDateFormat(job.startDate)} -{' '}
+                {job.endDate
+                  ? toDateFormat(job.endDate)
+                  : job.startDate
+                    ? 'Present'
+                    : ''}
+              </Text>
+            )}
+          </View>
+
+          {Array.isArray(job.actions) &&
+            job.actions.map((action: any, index: number) => (
+              <View
+                key={index}
+                style={{
+                  flexWrap: 'wrap',
+                  flexDirection: 'row',
+                  lineHeight: 0.8,
+                }}
+              >
+                <Text style={{ marginLeft: 9, marginRight: 9 }}>•</Text>
+                <Text
+                  style={{
+                    ...styles.textRow,
+                    maxWidth: '95%',
+                  }}
+                >
+                  {action.text}
+                </Text>
+              </View>
+            ))}
+        </View>
+      ))}
+    </View>
+  )
+}
+
+function SchoolsSection({ schools }: { schools?: any[] }) {
+  if (!Array.isArray(schools) || schools.length === 0) {
+    return null
+  }
+  return (
+    <View style={styles.section} wrap={false}>
+      <Divider />
+      <Text style={styles.sectionTitle}>Education</Text>
+      {schools.map((school: any, index: number) => (
+        <View
+          key={index}
+          style={{
+            ...styles.award,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}
+        >
+          <Text>
+            {school.institution && school.institution}
+            {school.degree && ` | ${school.degree}`}
+            {school.location && ` | ${school.location}`}
+          </Text>
+          {school.graduationDate && (
+            <Text>{toDateFormat(school.graduationDate)}</Text>
+          )}
+        </View>
+      ))}
+    </View>
+  )
+}
+
+function AwardsSection({ awards }: { awards?: any[] }) {
+  if (!Array.isArray(awards) || awards.length > 3) {
+    return null
+  }
+  return (
+    <View style={styles.section} wrap={false}>
+      <Divider />
+      <Text style={styles.sectionTitle}>Awards</Text>
+      {awards.map((award: any, index: number) => (
+        <View
+          key={index}
+          style={{
+            ...styles.award,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}
+        >
+          <Text>{award.title}</Text>
+          {award.date && <Text> {toDateFormat(award.date)}</Text>}
+        </View>
+      ))}
+    </View>
+  )
+}
+
+function TechStackSection({ stackComponents }: { stackComponents?: any[] }) {
+  if (!Array.isArray(stackComponents) || stackComponents.length === 0) {
+    return null
+  }
+  return (
+    <View style={styles.section} wrap={false}>
+      <Divider />
+      <Text style={styles.sectionTitle}>Tech Stack</Text>
+      {stackComponents.map((stackComponent, index) => (
+        <Text key={index} style={styles.textRow}>
+          <Text style={{ fontWeight: 700, color: colors['text-300'] }}>
+            {stackComponent.category}
+          </Text>{' '}
+          | {stackComponent.technologies.join(', ')}
+        </Text>
+      ))}
+    </View>
+  )
+}
+
+function EthosSection({ developmentEthos }: { developmentEthos?: any[] }) {
+  if (!Array.isArray(developmentEthos) || developmentEthos.length === 0) {
+    return null
+  }
+  return (
+    <View style={styles.section} wrap={false}>
+      <Divider />
+      <Text style={styles.sectionTitle}>Development Ethos</Text>
+      {developmentEthos.map((ethos: any, index: number) => (
+        <Text key={index} style={styles.award}>
+          <Text style={{ fontWeight: 700, color: colors['text-300'] }}>
+            {ethos.principle}
+          </Text>{' '}
+          | {ethos.description}
+        </Text>
+      ))}
+    </View>
+  )
+}
+
+const SECTION_COMPONENTS: Record<
+  string,
+  (props: any) => React.JSX.Element | null
+> = {
+  overview: OverviewSection,
+  jobs: JobsSection,
+  schools: SchoolsSection,
+  awards: AwardsSection,
+  stackComponents: TechStackSection,
+  developmentEthos: EthosSection,
+}
+
 export default function MyDocument({
   name,
   title,
@@ -117,13 +321,29 @@ export default function MyDocument({
   awards,
   developmentEthos,
   stackComponents,
+  sectionOrder = [
+    'overview',
+    'jobs',
+    'schools',
+    'awards',
+    'stackComponents',
+    'developmentEthos',
+  ],
 }: any) {
+  const sectionProps: { [key: string]: any } = {
+    overview,
+    jobs,
+    schools,
+    awards,
+    stackComponents,
+    developmentEthos,
+  }
+
   return (
     <Document
       title={name + ' Resume'}
       author={name}
       subject={title + ' Resume'}
-      // keywords='resume, frontend, fullstack, React, Next.js'
       creator={name}
     >
       <Page size='A4' style={styles.page}>
@@ -193,169 +413,12 @@ export default function MyDocument({
           )}
         </View>
 
-        {overview && (
-          <View style={styles.section}>
-            <Divider />
-            <Text style={styles.sectionTitle}>Professional Overview</Text>
-            <Text style={{ lineHeight: 0.8 }}>{overview}</Text>
-          </View>
-        )}
-
-        {Array.isArray(jobs) && jobs.length > 0 && (
-          <View style={styles.section}>
-            <Divider />
-            <Text style={styles.sectionTitle}>Work Experience</Text>
-            {jobs.map((job: any, index: number) => (
-              <View
-                key={index}
-                style={{
-                  marginBottom: 10,
-                }}
-                wrap={false}
-              >
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    marginBottom: 5,
-                  }}
-                >
-                  <Text>
-                    {job.company && (
-                      <Text
-                        style={{ fontWeight: 700, color: colors['text-300'] }}
-                      >
-                        {job.company}
-                      </Text>
-                    )}
-                    {job.bonusDescriptor && (
-                      <>
-                        <Text style={{ color: colors['text-300'] }}>
-                          {' '}
-                          ({job.bonusDescriptor})
-                        </Text>{' '}
-                      </>
-                    )}
-                    {(job.company || job.bonusDescriptor) && ' | '}
-                    {Array.isArray(job.titles) &&
-                      job.titles.length > 0 &&
-                      job.titles.slice().reverse().join(' << ')}
-                    {job.location && ' @ ' + job.location}
-                  </Text>
-
-                  {(job.startDate || job.endDate) && (
-                    <Text style={{ marginLeft: 'auto', marginRight: 0 }}>
-                      {job.startDate && toDateFormat(job.startDate)} -{' '}
-                      {job.endDate
-                        ? toDateFormat(job.endDate)
-                        : job.startDate
-                          ? 'Present'
-                          : ''}
-                    </Text>
-                  )}
-                </View>
-
-                {Array.isArray(job.actions) &&
-                  job.actions.map((action: any, index: number) => (
-                    <View
-                      key={index}
-                      style={{
-                        flexWrap: 'wrap',
-                        flexDirection: 'row',
-                        lineHeight: 0.8,
-                      }}
-                    >
-                      <Text style={{ marginLeft: 9, marginRight: 9 }}>•</Text>
-                      <Text
-                        style={{
-                          ...styles.textRow,
-                          maxWidth: '95%',
-                        }}
-                      >
-                        {action.text}
-                      </Text>
-                    </View>
-                  ))}
-              </View>
-            ))}
-          </View>
-        )}
-
-        {Array.isArray(schools) && schools.length > 0 && (
-          <View style={styles.section} wrap={false}>
-            <Divider />
-            <Text style={styles.sectionTitle}>Education</Text>
-            {schools.map((school: any, index: number) => (
-              <View
-                key={index}
-                style={{
-                  ...styles.award,
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <Text>
-                  {school.institution && school.institution}
-                  {school.degree && ` | ${school.degree}`}
-                  {school.location && ` | ${school.location}`}
-                </Text>
-                {school.graduationDate && (
-                  <Text>{toDateFormat(school.graduationDate)}</Text>
-                )}
-              </View>
-            ))}
-          </View>
-        )}
-
-        {Array.isArray(awards) && awards.length > 0 && (
-          <View style={styles.section} wrap={false}>
-            <Divider />
-            <Text style={styles.sectionTitle}>Awards</Text>
-            {awards.map((award: any, index: number) => (
-              <View
-                key={index}
-                style={{
-                  ...styles.award,
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <Text>{award.title}</Text>
-                {award.date && <Text> {toDateFormat(award.date)}</Text>}
-              </View>
-            ))}
-          </View>
-        )}
-
-        {Array.isArray(stackComponents) && stackComponents.length > 0 && (
-          <View style={styles.section} wrap={false}>
-            <Divider />
-            <Text style={styles.sectionTitle}>Tech Stack</Text>
-            {stackComponents.map((stackComponent, index) => (
-              <Text key={index} style={styles.textRow}>
-                <Text style={{ fontWeight: 700, color: colors['text-300'] }}>
-                  {stackComponent.category}
-                </Text>{' '}
-                | {stackComponent.technologies.join(', ')}
-              </Text>
-            ))}
-          </View>
-        )}
-
-        {Array.isArray(developmentEthos) && developmentEthos.length > 0 && (
-          <View style={styles.section} wrap={false}>
-            <Divider />
-            <Text style={styles.sectionTitle}>Development Ethos</Text>
-            {developmentEthos.map((ethos: any, index: number) => (
-              <Text key={index} style={styles.award}>
-                <Text style={{ fontWeight: 700, color: colors['text-300'] }}>
-                  {ethos.principle}
-                </Text>{' '}
-                | {ethos.description}
-              </Text>
-            ))}
-          </View>
-        )}
+        {sectionOrder.map((key: string) => {
+          const Section = SECTION_COMPONENTS[key]
+          return Section ? (
+            <Section key={key} {...{ [key]: sectionProps[key] }} />
+          ) : null
+        })}
       </Page>
     </Document>
   )
