@@ -72,12 +72,12 @@ The project includes a `resume-gen` feature that allows you to generate a person
 
 2. Edit the following files to input your personal information:
 
-   - `bio.ts` - Contains your biography and personal details.
+   - `awards.ts` - Highlights any awards or recognitions you've received.
    - `education.ts` - Lists your educational background.
+   - `ethos.ts` - Describes your personal ethos or philosophy.
    - `experience.ts` - Details your work experience.
-   - `projects.ts` - Showcases your projects.
-   - `skills.ts` - Enumerates your skills.
-   - `socials.ts` - Links to your social media profiles.
+   - `misc.ts` - Contains your biography and personal details.
+   - `stack.ts` - Lists your favorite technologies and tools.
 
 3. Save the changes to these files.
 

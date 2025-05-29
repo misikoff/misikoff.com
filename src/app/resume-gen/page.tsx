@@ -13,6 +13,7 @@ import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer'
 import { awards } from '@/app/resume-gen/constants/awards'
 import { schools } from '@/app/resume-gen/constants/education'
 import { developmentEthos } from '@/app/resume-gen/constants/ethos'
+import { jobs } from '@/app/resume-gen/constants/experience'
 import {
   overview,
   name,
@@ -24,7 +25,6 @@ import {
   personalWebsite,
 } from '@/app/resume-gen/constants/misc'
 import { stackComponents } from '@/app/resume-gen/constants/stack'
-import { jobs } from '@/app/resume-gen/constants/workExperience'
 
 import SortableItem from './SortableItem'
 import MyDocument from './doc'
