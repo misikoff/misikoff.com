@@ -1,5 +1,5 @@
 export const name = 'Tommy Misikoff'
-export const phoneNumber = '[REDACTED]'
+export const phoneNumber = '***REMOVED***'
 // export const title = 'Senior Software Engineer'
 export const title = 'Senior Full Stack Engineer'
 
