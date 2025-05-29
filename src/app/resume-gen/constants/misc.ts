@@ -1,10 +1,10 @@
 export const name = 'Tommy Misikoff'
-export const phoneNumber = '***REMOVED***'
+export const phoneNumber = process.env.NEXT_PUBLIC_PHONE //'***REMOVED***'
 // export const title = 'Senior Software Engineer'
 export const title = 'Senior Full Stack Engineer'
 
 export const location = 'Austin, TX'
-export const email = '***REMOVED***'
+export const email = process.env.NEXT_PUBLIC_EMAIL //'***REMOVED***'
 // Links
 export const linkedIn = 'https://www.linkedin.com/in/misikoff'
 export const personalWebsite = 'https://misikoff.com'

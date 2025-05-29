@@ -10,9 +10,9 @@ import {
 } from '@dnd-kit/sortable'
 import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer'
 
-import { awards } from '@/constants/awards'
-import { schools } from '@/constants/education'
-import { developmentEthos } from '@/constants/ethos'
+import { awards } from '@/app/resume-gen/constants/awards'
+import { schools } from '@/app/resume-gen/constants/education'
+import { developmentEthos } from '@/app/resume-gen/constants/ethos'
 import {
   overview,
   name,
@@ -22,8 +22,8 @@ import {
   email,
   linkedIn,
   personalWebsite,
-} from '@/constants/misc'
-import { jobs } from '@/constants/workExperience'
+} from '@/app/resume-gen/constants/misc'
+import { jobs } from '@/app/resume-gen/constants/workExperience'
 
 import SortableItem from './SortableItem'
 import MyDocument from './doc'
