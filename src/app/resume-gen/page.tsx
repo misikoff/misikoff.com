@@ -24,6 +24,7 @@ import {
   linkedIn,
   personalWebsite,
 } from './constants/misc'
+import { stackComponents } from './constants/stack'
 import { jobs } from './constants/workExperience'
 import MyDocument from './doc'
 import { createAIRequest } from './request'
@@ -121,6 +122,13 @@ export default function ResumeGen() {
     )
   }
 
+  const [includeOverview, setIncludeOverview] = useState(true)
+  const [includeJobs, setIncludeJobs] = useState(true)
+  const [includeSchools, setIncludeSchools] = useState(true)
+  const [includeAwards, setIncludeAwards] = useState(true)
+  const [includeDevelopmentEthos, setIncludeDevelopmentEthos] = useState(true)
+  const [includeStackComponents, setIncludeStackComponents] = useState(true)
+
   const myDocArgs = {
     name,
     title: selectedTitle,
@@ -129,24 +137,84 @@ export default function ResumeGen() {
     location,
     linkedIn,
     personalWebsite,
-    overview,
-    jobs: activeJobs
-      .filter((job) => job.shouldInclude)
-      .map((job) => ({
-        ...job,
-        actions: job.actions.filter((action) => action.shouldInclude),
-      })),
-    schools,
-    awards,
-    developmentEthos,
+    overview: includeOverview ? overview : undefined,
+    jobs: includeJobs
+      ? activeJobs
+          .filter((job) => job.shouldInclude)
+          .map((job) => ({
+            ...job,
+            actions: job.actions.filter((action) => action.shouldInclude),
+          }))
+      : undefined,
+    schools: includeSchools ? schools : undefined,
+    awards: includeAwards ? awards : undefined,
+    developmentEthos: includeDevelopmentEthos ? developmentEthos : undefined,
+    stackComponents: includeStackComponents ? stackComponents : undefined,
   }
 
   return (
-    <div className=' w-full h-full grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
+    <div className='w-full h-full grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
       <div className='w-full'>
         <h1 className='text-4xl text-center font-bold mb-4'>
           Resume Generator
         </h1>
+
+        <div className='mb-4 flex flex-wrap gap-4'>
+          <label className='flex items-center gap-2'>
+            <input
+              type='checkbox'
+              checked={includeOverview}
+              onChange={() => setIncludeOverview((v) => !v)}
+              className='w-4 h-4'
+            />
+            Overview
+          </label>
+          <label className='flex items-center gap-2'>
+            <input
+              type='checkbox'
+              checked={includeJobs}
+              onChange={() => setIncludeJobs((v) => !v)}
+              className='w-4 h-4'
+            />
+            Jobs
+          </label>
+          <label className='flex items-center gap-2'>
+            <input
+              type='checkbox'
+              checked={includeSchools}
+              onChange={() => setIncludeSchools((v) => !v)}
+              className='w-4 h-4'
+            />
+            Schools
+          </label>
+          <label className='flex items-center gap-2'>
+            <input
+              type='checkbox'
+              checked={includeAwards}
+              onChange={() => setIncludeAwards((v) => !v)}
+              className='w-4 h-4'
+            />
+            Awards
+          </label>
+          <label className='flex items-center gap-2'>
+            <input
+              type='checkbox'
+              checked={includeDevelopmentEthos}
+              onChange={() => setIncludeDevelopmentEthos((v) => !v)}
+              className='w-4 h-4'
+            />
+            Development Ethos
+          </label>
+          <label className='flex items-center gap-2'>
+            <input
+              type='checkbox'
+              checked={includeStackComponents}
+              onChange={() => setIncludeStackComponents((v) => !v)}
+              className='w-4 h-4'
+            />
+            Stack Components
+          </label>
+        </div>
 
         <div className='flex w-full h-full gap-6 justify-center'>
           <div className='flex flex-col w-full max-w-2xl gap-4'>
