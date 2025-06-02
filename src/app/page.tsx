@@ -1,6 +1,9 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import SectionHeader from '@/components/SectionHeader'
+import WorkCard from '@/components/WorkCard'
+import { Button } from '@/components/ui/button'
 
 function CoolListElement(name: string, description: string) {
   return (
@@ -1040,18 +1043,139 @@ export default function Home() {
           </p>
           {bookMeetingButton()}
         </section>
-        <section className='mt-4 flex flex-col gap-8 row-start-2 items-center sm:items-start text-center max-w-4xl'>
+        <section className='mt-4 flex flex-col w-full gap-8 row-start-2 items-center sm:items-start text-center max-w-4xl'>
           <SectionHeader className=''>Selected Work</SectionHeader>
-          <div className='flex flex-col md:flex-row w-full items-start gap-4 md:gap-6'>
-            <div className='w-full text-left'>
+          <div className='grid grid-cols-1 md:grid-cols-2 mx-auto place-items-center gap-4 md:gap-8'>
+            <WorkCard
+              title='Vercel Pricing Explorer'
+              imagePath='/demo/vercel.png'
+            >
+              <div className='text-gray-700 mt-2'>
+                An interactive pricing calculator to explore how different
+                features and usage levels affect your Vercel bill. Designed to
+                model real-world usage across categories like bandwidth,
+                function invocations, and edge middleware.
+              </div>
+              <div className='mt-6 space-y-2 text-sm text-gray-600'>
+                <ul className='list-disc list-inside'>
+                  <li>Dynamic sliders for request volume, image usage, etc.</li>
+                  <li>Subtotals per feature category</li>
+                  <li>Real-time cost updates</li>
+                  <li>PostHog-inspired UX</li>
+                </ul>
+              </div>
+              {/* <div className='mt-6'>
+                <h4 className='font-semibold text-sm text-gray-700 mb-1'>
+                  Stack:
+                </h4>
+                <p className='text-sm text-gray-600'>
+                  Next.js App Router, Tailwind CSS, useState/useMemo, Vercel
+                </p>
+              </div> */}
+              <br />
+              <Link
+                href='/portfolio/pricing/vercel'
+                // className='text-sm'
+                // target='_blank'
+              >
+                <Button>Go To Calculator</Button>
+              </Link>
+              {/* <a
+                  href='https://github.com/misikoff/vercel-pricing-calc'
+                  className='text-blue-600 underline text-sm'
+                  target='_blank'
+                >
+                  📂 GitHub Repo
+                </a> */}
+            </WorkCard>
+            <WorkCard title='Resume Generator' imagePath='/demo/resume.png'>
+              This tool lets you structure and rearrange resume sections with
+              intent—highlighting the skills and experiences most relevant to
+              the job at hand. Define your work history, projects, and
+              achievements, then generate custom resumes tailored for each
+              application.
+              <br />
+              <div className='mt-6 space-y-2 text-sm text-gray-600'>
+                <ul className='list-disc list-inside'>
+                  <li>drag-and-drop reordering</li>
+                  <li>toggles for sections and bullet points</li>
+                  <li>live previews</li>
+                  {/* <li>customizable templates</li> */}
+                  <li>PDF exports</li>
+
+                  {/* coming soon section about using ai to pick what to include */}
+                  {/* section header */}
+                  <div className='mt-4'>
+                    <h4 className='font-semibold text-sm text-gray-700 mb-1'>
+                      Coming Soon
+                    </h4>
+                  </div>
+                  <li>
+                    ✨ AI-powered suggestions for tailoring content to job
+                    descriptions
+                  </li>
+                </ul>
+                <br />
+                <a
+                  href='https://github.com/misikoff/misikoff.com#generating-your-own-resume'
+                  target='_blank'
+                >
+                  <Button>View the README for more details</Button>
+                </a>
+              </div>
+            </WorkCard>
+            <WorkCard
+              title='Snow Gale Labs'
+              imagePath='/demo/SGL.png'
+              category='SGL'
+            >
+              <div className='space-y-2'>
+                <p className='text-gray-600'>
+                  I co-founded{' '}
+                  <span className='font-mono font-bold'>Snow Gale Labs</span>, a
+                  small, deliberate software studio focused on building tools
+                  that sharpen thought, encourage discipline, and respect the
+                  user
+                  {"'"}s time. We create products in health, data, and
+                  decision-making—crafted with restraint, philosophical roots,
+                  and a preference for durability over scale.
+                </p>
+                <br />
+                <a href='https://snowgalelabs.com' target='_blank'>
+                  <Button>Check Out Snow Gale Labs</Button>
+                </a>
+              </div>
+            </WorkCard>
+            <WorkCard title='Toron' imagePath='/demo/Toron.png' category='SGL'>
+              <div>
+                Toron helps experienced lifters train with clarity and intent.
+                It tracks reps, weight, and effort using RIR (Reps in Reserve),
+                visualizes stagnation and recovery patterns, and avoids
+                distractions like streaks or gamification. Designed to be
+                minimalist, injury-conscious, and philosophically grounded,
+                Toron is strength training—refined.
+                <br />
+                <br />
+                <span className='italic'>
+                  Toron is currently in private beta and undergoing web and iOS
+                  development.
+                </span>
+              </div>
+              <br />
+              <a href='https://toron.snowgalelabs.com' target='_blank'>
+                <Button>Check Out Toron</Button>
+              </a>
+            </WorkCard>
+
+            {/* <div className='w-full text-left'>
               <h3 className='font-bold'>Viewport</h3>
               <p className='mt-1'>
                 Developed large-scale web platforms emphasizing clean UX and
                 performant architectures. Independently drove migrations to
                 cutting-edge stacks.
               </p>
-            </div>
-            <div className='w-full text-left'>
+            </div> */}
+            {/* <div className='w-full text-left'>
               <h3 className='font-bold'>
                 Snow Gale Labs <span className='italic'>(Side Project)</span>
               </h3>
@@ -1060,7 +1184,7 @@ export default function Home() {
                 purpose-driven strength training app. Focused on delivering and
                 intuitive user flows with polished interfaces.
               </p>
-            </div>
+            </div> */}
           </div>
         </section>
         <section className='flex flex-col gap-8 row-start-2 items-center sm:items-start text-center max-w-4xl w-full'>
