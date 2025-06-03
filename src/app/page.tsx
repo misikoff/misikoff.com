@@ -3,6 +3,10 @@ import Link from 'next/link'
 
 import SectionHeader from '@/components/SectionHeader'
 import WorkCard from '@/components/WorkCard'
+import ResumeIcon from '@/components/icons/ResumeIcon'
+import SnowGaleLabsIcon from '@/components/icons/SnowGaleLabs'
+import ToronLogoIcon from '@/components/icons/ToronLogo'
+import VercelIcon from '@/components/icons/Vercel'
 import { Button } from '@/components/ui/button'
 
 function CoolListElement(name: string, description: string) {
@@ -56,20 +60,6 @@ type StackItem = {
   logo?: () => React.ReactNode
 }
 const stackItems: StackItem[] = [
-  // {
-  //   name: 'JavaScript',
-  //   description: 'A versatile programming language for web development.',
-  //   logo: () => (
-  //     <svg
-  //       xmlns='http://www.w3.org/2000/svg'
-  //       viewBox='0 0 630 630'
-  //       className='rounded-sm'
-  //     >
-  //       <rect width='630' height='630' fill='#f7df1e' />
-  //       <path d='m423.2 492.19c12.69 20.72 29.2 35.95 58.4 35.95 24.53 0 40.2-12.26 40.2-29.2 0-20.3-16.1-27.49-43.1-39.3l-14.8-6.35c-42.72-18.2-71.1-41-71.1-89.2 0-44.4 33.83-78.2 86.7-78.2 37.64 0 64.7 13.1 84.2 47.4l-46.1 29.6c-10.15-18.2-21.1-25.37-38.1-25.37-17.34 0-28.33 11-28.33 25.37 0 17.76 11 24.95 36.4 35.95l14.8 6.34c50.3 21.57 78.7 43.56 78.7 93 0 53.3-41.87 82.5-98.1 82.5-54.98 0-90.5-26.2-107.88-60.54zm-209.13 5.13c9.3 16.5 17.76 30.45 38.1 30.45 19.45 0 31.72-7.61 31.72-37.2v-201.3h59.2v202.1c0 61.3-35.94 89.2-88.4 89.2-47.4 0-74.85-24.53-88.81-54.075z' />
-  //     </svg>
-  //   ),
-  // },
   {
     name: 'React',
     description: 'A JavaScript library for building user interfaces.',
@@ -210,7 +200,6 @@ const stackItems: StackItem[] = [
           fill='#fff'
           fillRule='evenodd'
         />
-        {/* <script xmlns='' /> */}
       </svg>
     ),
   },
@@ -232,103 +221,9 @@ const stackItems: StackItem[] = [
             <path fill='#fff' d='M0 0h54v32.4H0z' />
           </clipPath>
         </defs>
-        {/* <script xmlns='' /> */}
       </svg>
     ),
   },
-  // {
-  //   name: 'Node.js',
-  //   description: "JavaScript runtime built on Chrome's V8 engine.",
-  //   logo: () => (
-  //     <svg
-  //       xmlns='http://www.w3.org/2000/svg'
-  //       width='589.827'
-  //       height='361.238'
-  //       version='1.2'
-  //       viewBox='0 0 442.37 270.929'
-  //     >
-  //       <defs>
-  //         <clipPath id='a'>
-  //           <path d='M239.03 226.605l-42.13 24.317c-1.578.91-2.546 2.59-2.546 4.406v48.668c0 1.817.968 3.496 2.546 4.406l42.133 24.336c1.575.907 3.517.907 5.09 0l42.126-24.336c1.57-.91 2.54-2.59 2.54-4.406v-48.668c0-1.816-.97-3.496-2.55-4.406l-42.12-24.317c-.79-.453-1.67-.68-2.55-.68-.88 0-1.76.227-2.55.68' />
-  //         </clipPath>
-  //         <linearGradient
-  //           id='b'
-  //           x1='-.348'
-  //           x2='1.251'
-  //           gradientTransform='rotate(116.114 53.1 202.97) scale(86.48)'
-  //           gradientUnits='userSpaceOnUse'
-  //         >
-  //           <stop offset='.3' stopColor='#3E863D' />
-  //           <stop offset='.5' stopColor='#55934F' />
-  //           <stop offset='.8' stopColor='#5AAD45' />
-  //         </linearGradient>
-  //         <clipPath id='c'>
-  //           <path d='M195.398 307.086c.403.523.907.976 1.5 1.316l36.14 20.875 6.02 3.46c.9.52 1.926.74 2.934.665.336-.027.672-.09 1-.183l44.434-81.36c-.34-.37-.738-.68-1.184-.94l-27.586-15.93-14.582-8.39c-.414-.24-.863-.41-1.32-.53zm0 0' />
-  //         </clipPath>
-  //         <linearGradient
-  //           id='d'
-  //           x1='-.456'
-  //           x2='.582'
-  //           gradientTransform='rotate(-36.46 550.846 -214.337) scale(132.798)'
-  //           gradientUnits='userSpaceOnUse'
-  //         >
-  //           <stop offset='.57' stopColor='#3E863D' />
-  //           <stop offset='.72' stopColor='#619857' />
-  //           <stop offset='1' stopColor='#76AC64' />
-  //         </linearGradient>
-  //         <clipPath id='e'>
-  //           <path d='M241.066 225.953c-.707.07-1.398.29-2.035.652l-42.01 24.247 45.3 82.51c.63-.09 1.25-.3 1.81-.624l42.13-24.336c1.3-.754 2.19-2.03 2.46-3.476l-46.18-78.89c-.34-.067-.68-.102-1.03-.102-.14 0-.28.007-.42.02' />
-  //         </clipPath>
-  //         <linearGradient
-  //           id='f'
-  //           x1='.043'
-  //           x2='.984'
-  //           gradientTransform='translate(192.862 279.652) scale(97.417)'
-  //           gradientUnits='userSpaceOnUse'
-  //         >
-  //           <stop offset='.16' stopColor='#6BBF47' />
-  //           <stop offset='.38' stopColor='#79B461' />
-  //           <stop offset='.47' stopColor='#75AC64' />
-  //           <stop offset='.7' stopColor='#659E5A' />
-  //           <stop offset='.9' stopColor='#3E863D' />
-  //         </linearGradient>
-  //       </defs>
-  //       <path
-  //         fill='#689f63'
-  //         d='M218.647 270.93c-1.46 0-2.91-.383-4.19-1.12l-13.337-7.896c-1.992-1.114-1.02-1.508-.363-1.735 2.656-.93 3.195-1.14 6.03-2.75.298-.17.688-.11.993.07l10.246 6.08c.37.2.895.2 1.238 0l39.95-23.06c.37-.21.61-.64.61-1.08v-46.1c0-.46-.24-.87-.618-1.1l-39.934-23.04c-.37-.22-.86-.22-1.23 0l-39.926 23.04c-.387.22-.633.65-.633 1.09v46.1c0 .44.24.86.62 1.07l10.94 6.32c5.94 2.97 9.57-.53 9.57-4.05v-45.5c0-.65.51-1.15 1.16-1.15h5.06c.63 0 1.15.5 1.15 1.15v45.52c0 7.92-4.32 12.47-11.83 12.47-2.31 0-4.13 0-9.21-2.5l-10.48-6.04c-2.59-1.5-4.19-4.3-4.19-7.29v-46.1c0-3 1.6-5.8 4.19-7.28l39.99-23.07c2.53-1.43 5.89-1.43 8.4 0l39.94 23.08c2.58 1.49 4.19 4.28 4.19 7.28v46.1c0 2.99-1.61 5.78-4.19 7.28l-39.94 23.07c-1.28.74-2.73 1.12-4.21 1.12'
-  //       />
-  //       <path
-  //         fill='#689f63'
-  //         d='M230.987 239.164c-17.48 0-21.145-8.024-21.145-14.754 0-.64.516-1.15 1.157-1.15h5.16c.57 0 1.05.415 1.14.978.78 5.258 3.1 7.91 13.67 7.91 8.42 0 12-1.902 12-6.367 0-2.57-1.02-4.48-14.1-5.76-10.94-1.08-17.7-3.49-17.7-12.24 0-8.06 6.8-12.86 18.19-12.86 12.79 0 19.13 4.44 19.93 13.98.03.33-.09.65-.31.89-.22.23-.53.37-.85.37h-5.19c-.54 0-1.01-.38-1.12-.9-1.25-5.53-4.27-7.3-12.48-7.3-9.19 0-10.26 3.2-10.26 5.6 0 2.91 1.26 3.76 13.66 5.4 12.28 1.63 18.11 3.93 18.11 12.56 0 8.7-7.26 13.69-19.92 13.69m48.66-48.89h1.34c1.1 0 1.31-.77 1.31-1.22 0-1.18-.81-1.18-1.26-1.18h-1.38zm-1.63-3.78h2.97c1.02 0 3.02 0 3.02 2.28 0 1.59-1.02 1.92-1.63 2.12 1.19.08 1.27.86 1.43 1.96.08.69.21 1.88.45 2.28h-1.83c-.05-.4-.33-2.6-.33-2.72-.12-.49-.29-.73-.9-.73h-1.51v3.46h-1.67zm-3.57 4.3c0 3.58 2.89 6.48 6.44 6.48 3.58 0 6.47-2.96 6.47-6.48 0-3.59-2.93-6.44-6.48-6.44-3.5 0-6.44 2.81-6.44 6.43m14.16.03c0 4.24-3.47 7.7-7.7 7.7-4.2 0-7.7-3.42-7.7-7.7 0-4.36 3.58-7.7 7.7-7.7 4.15 0 7.69 3.35 7.69 7.7'
-  //       />
-  //       <path
-  //         fill='#333'
-  //         fillRule='evenodd'
-  //         d='M94.936 90.55c0-1.84-.97-3.53-2.558-4.445l-42.356-24.37c-.715-.42-1.516-.64-2.328-.67h-.438c-.812.03-1.613.25-2.34.67L2.562 86.105C.984 87.025 0 88.715 0 90.555l.093 65.64c0 .91.47 1.76 1.27 2.21.78.48 1.76.48 2.54 0l25.18-14.42c1.59-.946 2.56-2.618 2.56-4.44V108.88c0-1.83.97-3.52 2.555-4.43l10.72-6.174c.796-.46 1.67-.688 2.56-.688.876 0 1.77.226 2.544.687l10.715 6.172c1.586.91 2.56 2.6 2.56 4.43v30.663c0 1.82.983 3.5 2.565 4.44l25.164 14.41c.79.47 1.773.47 2.56 0 .776-.45 1.268-1.3 1.268-2.21zm199.868 34.176c0 .457-.243.88-.64 1.106l-14.548 8.386c-.395.227-.883.227-1.277 0l-14.55-8.386c-.4-.227-.64-.65-.64-1.106V107.93c0-.458.24-.88.63-1.11l14.54-8.4c.4-.23.89-.23 1.29 0l14.55 8.4c.4.23.64.652.64 1.11zM298.734.324c-.794-.442-1.76-.43-2.544.027-.78.46-1.262 1.3-1.262 2.21v65c0 .64-.34 1.23-.894 1.55-.55.32-1.235.32-1.79 0L281.634 63c-1.58-.914-3.526-.914-5.112 0l-42.37 24.453c-1.583.91-2.56 2.6-2.56 4.42v48.92c0 1.83.977 3.51 2.56 4.43l42.37 24.47c1.582.91 3.53.91 5.117 0l42.37-24.48c1.58-.92 2.56-2.6 2.56-4.43V18.863c0-1.856-1.01-3.563-2.63-4.47zm141.093 107.164c1.574-.914 2.543-2.602 2.543-4.422V91.21c0-1.824-.97-3.507-2.547-4.425l-42.1-24.44c-1.59-.92-3.54-.92-5.13 0l-42.36 24.45c-1.59.92-2.56 2.6-2.56 4.43v48.9c0 1.84.99 3.54 2.58 4.45l42.09 23.99c1.55.89 3.45.9 5.02.03l25.46-14.15c.8-.45 1.31-1.3 1.31-2.22 0-.92-.49-1.78-1.29-2.23l-42.62-24.46c-.8-.45-1.29-1.3-1.29-2.21v-15.34c0-.916.48-1.76 1.28-2.216l13.26-7.65c.79-.46 1.76-.46 2.55 0l13.27 7.65c.79.45 1.28 1.3 1.28 2.21v12.06c0 .91.49 1.76 1.28 2.22.79.45 1.77.45 2.56-.01zm0 0'
-  //       />
-  //       <path
-  //         fill='#689f63'
-  //         fillRule='evenodd'
-  //         d='M394.538 105.2c.3-.177.676-.177.98 0l8.13 4.69c.304.176.49.5.49.85v9.39c0 .35-.186.674-.49.85l-8.13 4.69c-.304.177-.68.177-.98 0l-8.125-4.69c-.31-.176-.5-.5-.5-.85v-9.39c0-.35.18-.674.49-.85zm0 0'
-  //       />
-  //       <g clipPath='url(#a)' transform='translate(-78.306 -164.016)'>
-  //         <path
-  //           fill='url(#b)'
-  //           d='M331.363 246.793l-118.715-58.19-60.87 124.174L270.49 370.97zm0 0'
-  //         />
-  //       </g>
-  //       <g clipPath='url(#c)' transform='translate(-78.306 -164.016)'>
-  //         <path
-  //           fill='url(#d)'
-  //           d='M144.07 264.004l83.825 113.453 110.86-81.906-83.83-113.45zm0 0'
-  //         />
-  //       </g>
-  //       <g clipPath='url(#e)' transform='translate(-78.306 -164.016)'>
-  //         <path fill='url(#f)' d='M197.02 225.934v107.43h91.683v-107.43zm0 0' />
-  //       </g>
-  //     </svg>
-  //   ),
-  // },
   {
     name: 'GraphQL',
     description:
@@ -476,83 +371,9 @@ const stackItems: StackItem[] = [
             d='M200,74c-19.3,0-34.9-15.6-34.9-34.9c0-19.3,15.6-34.9,34.9-34.9c19.3,0,34.9,15.6,34.9,34.9   C234.9,58.4,219.3,74,200,74'
           />
         </g>
-        {/* <script xmlns='' /> */}
       </svg>
     ),
   },
-  // {
-  //   name: 'GitHub',
-  //   description: 'A platform for version control and collaboration.',
-  //   logo: () => (
-  //     <svg
-  //       xmlns='http://www.w3.org/2000/svg'
-  //       width='98'
-  //       height='96'
-  //       viewBox='0 0 98 96'
-  //     >
-  //       <path
-  //         fillRule='evenodd'
-  //         clipRule='evenodd'
-  //         d='M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z'
-  //         fill='#24292f'
-  //       />
-  //     </svg>
-  //   ),
-  // },
-  // {
-  //   name: 'Drizzle ORM',
-  //   description: 'TypeScript ORM for SQL databases.',
-  //   logo: () => (
-  //     <svg
-  //       viewBox='0 0 72 72'
-  //       // fill='none'
-  //       className='fill-black'
-  //       xmlns='http://www.w3.org/2000/svg'
-  //     >
-  //       <rect
-  //         width='5.25365'
-  //         height='22.2834'
-  //         rx='2.62683'
-  //         transform='matrix(0.873028 0.48767 -0.497212 0.867629 16.0791 30.3292)'
-  //         fill='currentFill'
-  //       />
-  //       <rect
-  //         width='5.25365'
-  //         height='22.2834'
-  //         rx='2.62683'
-  //         transform='matrix(0.873028 0.48767 -0.497212 0.867629 34.3301 19)'
-  //         fill='currentFill'
-  //       />
-  //       <rect
-  //         width='5.25365'
-  //         height='22.2834'
-  //         rx='2.62683'
-  //         transform='matrix(0.873028 0.48767 -0.497212 0.867629 62.4131 19.0005)'
-  //         fill='currentFill'
-  //       />
-  //       <rect
-  //         width='5.25365'
-  //         height='22.2834'
-  //         rx='2.62683'
-  //         transform='matrix(0.873028 0.48767 -0.497212 0.867629 44.1562 30.3292)'
-  //         fill='currentFill'
-  //       />
-  //     </svg>
-  //   ),
-  // },
-  // {
-  //   name: 'TanStack Query',
-  //   description: 'Powerful data-fetching library for React.',
-  //   logo: () => (
-  //     <Image
-  //       src='/tanstack-logo.png'
-  //       alt='TanStack Query Logo'
-  //       width={100}
-  //       height={100}
-  //       // className='h-10 w-10'
-  //     />
-  //   ),
-  // },
   {
     name: 'PostgreSQL',
     description: 'A powerful, open-source relational database system.',
@@ -562,7 +383,6 @@ const stackItems: StackItem[] = [
         width='432.071pt'
         height='445.383pt'
         viewBox='0 0 432.071 445.383'
-        // xml:space='preserve'
       >
         <g
           id='orginal'
@@ -572,7 +392,6 @@ const stackItems: StackItem[] = [
             stroke: '#000000',
             strokeMiterlimit: 4,
           }}
-          // style='fillRule:nonzero;clip-rule:nonzero;stroke:#000000;stroke-miterlimit:4;'
         />
         <g
           id='Layer_x0020_3'
@@ -586,7 +405,6 @@ const stackItems: StackItem[] = [
             strokeLinejoin: 'round',
             strokeMiterlimit: 4,
           }}
-          // style='fillRule:nonzero;clip-rule:nonzero;fill:none;stroke:#FFFFFF;strokeWidth:12.4651;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
         >
           <path
             style={{
@@ -596,7 +414,6 @@ const stackItems: StackItem[] = [
               strokeLinecap: 'butt',
               strokeLinejoin: 'miter',
             }}
-            // style='fill:#000000;stroke:#000000;strokeWidth:37.3953;stroke-linecap:butt;stroke-linejoin:miter;'
             d='M323.205,324.227c2.833-23.601,1.984-27.062,19.563-23.239l4.463,0.392c13.517,0.615,31.199-2.174,41.587-7c22.362-10.376,35.622-27.7,13.572-23.148c-50.297,10.376-53.755-6.655-53.755-6.655c53.111-78.803,75.313-178.836,56.149-203.322    C352.514-5.534,262.036,26.049,260.522,26.869l-0.482,0.089c-9.938-2.062-21.06-3.294-33.554-3.496c-22.761-0.374-40.032,5.967-53.133,15.904c0,0-161.408-66.498-153.899,83.628c1.597,31.936,45.777,241.655,98.47,178.31    c19.259-23.163,37.871-42.748,37.871-42.748c9.242,6.14,20.307,9.272,31.912,8.147l0.897-0.765c-0.281,2.876-0.157,5.689,0.359,9.019c-13.572,15.167-9.584,17.83-36.723,23.416c-27.457,5.659-11.326,15.734-0.797,18.367c12.768,3.193,42.305,7.716,62.268-20.224    l-0.795,3.188c5.325,4.26,4.965,30.619,5.72,49.452c0.756,18.834,2.017,36.409,5.856,46.771c3.839,10.36,8.369,37.05,44.036,29.406c29.809-6.388,52.6-15.582,54.677-101.107'
           />
           <path
@@ -604,7 +421,6 @@ const stackItems: StackItem[] = [
               fill: '#336791',
               stroke: 'none',
             }}
-            // style='fill:#336791;stroke:none;'
             d='M402.395,271.23c-50.302,10.376-53.76-6.655-53.76-6.655c53.111-78.808,75.313-178.843,56.153-203.326c-52.27-66.785-142.752-35.2-144.262-34.38l-0.486,0.087c-9.938-2.063-21.06-3.292-33.56-3.496c-22.761-0.373-40.026,5.967-53.127,15.902    c0,0-161.411-66.495-153.904,83.63c1.597,31.938,45.776,241.657,98.471,178.312c19.26-23.163,37.869-42.748,37.869-42.748c9.243,6.14,20.308,9.272,31.908,8.147l0.901-0.765c-0.28,2.876-0.152,5.689,0.361,9.019c-13.575,15.167-9.586,17.83-36.723,23.416    c-27.459,5.659-11.328,15.734-0.796,18.367c12.768,3.193,42.307,7.716,62.266-20.224l-0.796,3.188c5.319,4.26,9.054,27.711,8.428,48.969c-0.626,21.259-1.044,35.854,3.147,47.254c4.191,11.4,8.368,37.05,44.042,29.406c29.809-6.388,45.256-22.942,47.405-50.555    c1.525-19.631,4.976-16.729,5.194-34.28l2.768-8.309c3.192-26.611,0.507-35.196,18.872-31.203l4.463,0.392c13.517,0.615,31.208-2.174,41.591-7c22.358-10.376,35.618-27.7,13.573-23.148z'
           />
           <path d='M215.866,286.484c-1.385,49.516,0.348,99.377,5.193,111.495c4.848,12.118,15.223,35.688,50.9,28.045c29.806-6.39,40.651-18.756,45.357-46.051c3.466-20.082,10.148-75.854,11.005-87.281' />
@@ -614,7 +430,6 @@ const stackItems: StackItem[] = [
             style={{
               strokeLinejoin: 'bevel',
             }}
-            // style='stroke-linejoin:bevel;'
             d='M348.282,263.953c0,0,3.461,17.036,53.764,6.653c22.04-4.552,8.776,12.774-13.577,23.155c-18.345,8.514-59.474,10.696-60.146-1.069c-1.729-30.355,21.647-21.133,19.96-28.739c-1.525-6.85-11.979-13.573-18.894-30.338    c-6.037-14.633-82.796-126.849,21.287-110.183c3.813-0.789-27.146-99.002-124.553-100.599c-97.385-1.597-94.19,119.762-94.19,119.762'
           />
           <path d='M188.604,274.334c-13.577,15.166-9.584,17.829-36.723,23.417c-27.459,5.66-11.326,15.733-0.797,18.365c12.768,3.195,42.307,7.718,62.266-20.229c6.078-8.509-0.036-22.086-8.385-25.547c-4.034-1.671-9.428-3.765-16.361,3.994z' />
@@ -626,7 +441,6 @@ const stackItems: StackItem[] = [
               strokeLinecap: 'butt',
               strokeLinejoin: 'miter',
             }}
-            // style='fill:#FFFFFF;strokeWidth:4.155;stroke-linecap:butt;stroke-linejoin:miter;'
             d='M172.517,141.7c-0.288,2.039,3.733,7.48,8.976,8.207c5.234,0.73,9.714-3.522,9.998-5.559c0.284-2.039-3.732-4.285-8.977-5.015c-5.237-0.731-9.719,0.333-9.996,2.367z'
           />
           <path
@@ -636,7 +450,6 @@ const stackItems: StackItem[] = [
               strokeLinecap: 'butt',
               strokeLinejoin: 'miter',
             }}
-            // style='fill:#FFFFFF;strokeWidth:2.0775;stroke-linecap:butt;stroke-linejoin:miter;'
             d='M331.941,137.543c0.284,2.039-3.732,7.48-8.976,8.207c-5.238,0.73-9.718-3.522-10.005-5.559c-0.277-2.039,3.74-4.285,8.979-5.015c5.239-0.73,9.718,0.333,10.002,2.368z'
           />
           <path d='M350.676,123.432c0.863,15.994-3.445,26.888-3.988,43.914c-0.804,24.748,11.799,53.074-7.191,81.435' />
@@ -768,216 +581,6 @@ const toolsItems: StackItem[] = [
       </svg>
     ),
   },
-  // {
-  //   name: 'Figma',
-  //   description: 'A collaborative interface design tool.',
-  //   logo: () => (
-  //     <svg
-  //       xmlns='http://www.w3.org/2000/svg'
-  //       id='Layer_1'
-  //       viewBox='0 0 200 300'
-  //       width='1667'
-  //       height='2500'
-  //     >
-  //       <title>Figma.logo</title>
-  //       <desc>Created using Figma</desc>
-  //       <path
-  //         fill='#0acf83'
-  //         d='M50 300c27.6 0 50-22.4 50-50v-50H50c-27.6 0-50 22.4-50 50s22.4 50 50 50z'
-  //       />
-  //       <path
-  //         fill='#a259ff'
-  //         d='M0 150c0-27.6 22.4-50 50-50h50v100H50c-27.6 0-50-22.4-50-50z'
-  //       />
-  //       <path
-  //         fill='#f24e1e'
-  //         d='M0 50C0 22.4 22.4 0 50 0h50v100H50C22.4 100 0 77.6 0 50z'
-  //       />
-  //       <path
-  //         fill='#ff7262'
-  //         d='M100 0h50c27.6 0 50 22.4 50 50s-22.4 50-50 50h-50V0z'
-  //       />
-  //       <path
-  //         fill='#1abcfe'
-  //         d='M200 150c0 27.6-22.4 50-50 50s-50-22.4-50-50 22.4-50 50-50 50 22.4 50 50z'
-  //       />
-  //     </svg>
-  //   ),
-  // },
-  // {
-  //   name: 'VS Code',
-  //   description: 'A source-code editor developed by Microsoft.',
-  //   logo: () => (
-  //     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'>
-  //       <mask
-  //         id='mask0'
-  //         mask-type='alpha'
-  //         maskUnits='userSpaceOnUse'
-  //         x='0'
-  //         y='0'
-  //         width='100'
-  //         height='100'
-  //         viewBox='0 0 100 100'
-  //       >
-  //         <path
-  //           fillRule='evenodd'
-  //           clipRule='evenodd'
-  //           d='M70.9119 99.3171C72.4869 99.9307 74.2828 99.8914 75.8725 99.1264L96.4608 89.2197C98.6242 88.1787 100 85.9892 100 83.5872V16.4133C100 14.0113 98.6243 11.8218 96.4609 10.7808L75.8725 0.873756C73.7862 -0.130129 71.3446 0.11576 69.5135 1.44695C69.252 1.63711 69.0028 1.84943 68.769 2.08341L29.3551 38.0415L12.1872 25.0096C10.589 23.7965 8.35363 23.8959 6.86933 25.2461L1.36303 30.2549C-0.452552 31.9064 -0.454633 34.7627 1.35853 36.417L16.2471 50.0001L1.35853 63.5832C-0.454633 65.2374 -0.452552 68.0938 1.36303 69.7453L6.86933 74.7541C8.35363 76.1043 10.589 76.2037 12.1872 74.9905L29.3551 61.9587L68.769 97.9167C69.3925 98.5406 70.1246 99.0104 70.9119 99.3171ZM75.0152 27.2989L45.1091 50.0001L75.0152 72.7012V27.2989Z'
-  //           fill='white'
-  //         />
-  //       </mask>
-  //       <g mask='url(#mask0)'>
-  //         <path
-  //           d='M96.4614 10.7962L75.8569 0.875542C73.4719 -0.272773 70.6217 0.211611 68.75 2.08333L1.29858 63.5832C-0.515693 65.2373 -0.513607 68.0937 1.30308 69.7452L6.81272 74.754C8.29793 76.1042 10.5347 76.2036 12.1338 74.9905L93.3609 13.3699C96.086 11.3026 100 13.2462 100 16.6667V16.4275C100 14.0265 98.6246 11.8378 96.4614 10.7962Z'
-  //           fill='#0065A9'
-  //         />
-  //         <g filter='url(#filter0_d)'>
-  //           <path
-  //             d='M96.4614 89.2038L75.8569 99.1245C73.4719 100.273 70.6217 99.7884 68.75 97.9167L1.29858 36.4169C-0.515693 34.7627 -0.513607 31.9063 1.30308 30.2548L6.81272 25.246C8.29793 23.8958 10.5347 23.7964 12.1338 25.0095L93.3609 86.6301C96.086 88.6974 100 86.7538 100 83.3334V83.5726C100 85.9735 98.6246 88.1622 96.4614 89.2038Z'
-  //             fill='#007ACC'
-  //           />
-  //         </g>
-  //         <g filter='url(#filter1_d)'>
-  //           <path
-  //             d='M75.8578 99.1263C73.4721 100.274 70.6219 99.7885 68.75 97.9166C71.0564 100.223 75 98.5895 75 95.3278V4.67213C75 1.41039 71.0564 -0.223106 68.75 2.08329C70.6219 0.211402 73.4721 -0.273666 75.8578 0.873633L96.4587 10.7807C98.6234 11.8217 100 14.0112 100 16.4132V83.5871C100 85.9891 98.6234 88.1786 96.4586 89.2196L75.8578 99.1263Z'
-  //             fill='#1F9CF0'
-  //           />
-  //         </g>
-  //         <g style={{ mixBlendMode: 'overlay' }} opacity='0.25'>
-  //           <path
-  //             fillRule='evenodd'
-  //             clipRule='evenodd'
-  //             d='M70.8511 99.3171C72.4261 99.9306 74.2221 99.8913 75.8117 99.1264L96.4 89.2197C98.5634 88.1787 99.9392 85.9892 99.9392 83.5871V16.4133C99.9392 14.0112 98.5635 11.8217 96.4001 10.7807L75.8117 0.873695C73.7255 -0.13019 71.2838 0.115699 69.4527 1.44688C69.1912 1.63705 68.942 1.84937 68.7082 2.08335L29.2943 38.0414L12.1264 25.0096C10.5283 23.7964 8.29285 23.8959 6.80855 25.246L1.30225 30.2548C-0.513334 31.9064 -0.515415 34.7627 1.29775 36.4169L16.1863 50L1.29775 63.5832C-0.515415 65.2374 -0.513334 68.0937 1.30225 69.7452L6.80855 74.754C8.29285 76.1042 10.5283 76.2036 12.1264 74.9905L29.2943 61.9586L68.7082 97.9167C69.3317 98.5405 70.0638 99.0104 70.8511 99.3171ZM74.9544 27.2989L45.0483 50L74.9544 72.7012V27.2989Z'
-  //             fill='url(#paint0_linear)'
-  //           />
-  //         </g>
-  //       </g>
-  //       <defs>
-  //         <filter
-  //           id='filter0_d'
-  //           x='-8.39411'
-  //           y='15.8291'
-  //           width='116.727'
-  //           height='92.2456'
-  //           filterUnits='userSpaceOnUse'
-  //           colorInterpolationFilters='sRGB'
-  //         >
-  //           <feFlood floodOpacity='0' result='BackgroundImageFix' />
-  //           <feColorMatrix
-  //             in='SourceAlpha'
-  //             type='matrix'
-  //             values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
-  //           />
-  //           <feOffset />
-  //           <feGaussianBlur stdDeviation='4.16667' />
-  //           <feColorMatrix
-  //             type='matrix'
-  //             values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0'
-  //           />
-  //           <feBlend
-  //             mode='overlay'
-  //             in2='BackgroundImageFix'
-  //             result='effect1_dropShadow'
-  //           />
-  //           <feBlend
-  //             mode='normal'
-  //             in='SourceGraphic'
-  //             in2='effect1_dropShadow'
-  //             result='shape'
-  //           />
-  //         </filter>
-  //         <filter
-  //           id='filter1_d'
-  //           x='60.4167'
-  //           y='-8.07558'
-  //           width='47.9167'
-  //           height='116.151'
-  //           filterUnits='userSpaceOnUse'
-  //           colorInterpolationFilters='sRGB'
-  //         >
-  //           <feFlood floodOpacity='0' result='BackgroundImageFix' />
-  //           <feColorMatrix
-  //             in='SourceAlpha'
-  //             type='matrix'
-  //             values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
-  //           />
-  //           <feOffset />
-  //           <feGaussianBlur stdDeviation='4.16667' />
-  //           <feColorMatrix
-  //             type='matrix'
-  //             values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0'
-  //           />
-  //           <feBlend
-  //             mode='overlay'
-  //             in2='BackgroundImageFix'
-  //             result='effect1_dropShadow'
-  //           />
-  //           <feBlend
-  //             mode='normal'
-  //             in='SourceGraphic'
-  //             in2='effect1_dropShadow'
-  //             result='shape'
-  //           />
-  //         </filter>
-  //         <linearGradient
-  //           id='paint0_linear'
-  //           x1='49.9392'
-  //           y1='0.257812'
-  //           x2='49.9392'
-  //           y2='99.7423'
-  //           gradientUnits='userSpaceOnUse'
-  //         >
-  //           <stop stopColor='white' />
-  //           <stop offset='1' stopColor='white' stopOpacity='0' />
-  //         </linearGradient>
-  //       </defs>
-  //     </svg>
-  //   ),
-  // },
-  // {
-  //   name: 'OpenAI',
-  //   description: 'A research organization focused on AI.',
-  //   logo: () => (
-  //     <svg
-  //       xmlns='http://www.w3.org/2000/svg'
-  //       width='721'
-  //       height='721'
-  //       viewBox='0 0 721 721'
-  //       fill='none'
-  //     >
-  //       <g clipPath='url(#clip0_1637_2934)'>
-  //         <g clipPath='url(#clip1_1637_2934)'>
-  //           <path
-  //             d='M304.246 294.611V249.028C304.246 245.189 305.687 242.309 309.044 240.392L400.692 187.612C413.167 180.415 428.042 177.058 443.394 177.058C500.971 177.058 537.44 221.682 537.44 269.182C537.44 272.54 537.44 276.379 536.959 280.218L441.954 224.558C436.197 221.201 430.437 221.201 424.68 224.558L304.246 294.611ZM518.245 472.145V363.224C518.245 356.505 515.364 351.707 509.608 348.349L389.174 278.296L428.519 255.743C431.877 253.826 434.757 253.826 438.115 255.743L529.762 308.523C556.154 323.879 573.905 356.505 573.905 388.171C573.905 424.636 552.315 458.225 518.245 472.141V472.145ZM275.937 376.182L236.592 353.152C233.235 351.235 231.794 348.354 231.794 344.515V238.956C231.794 187.617 271.139 148.749 324.4 148.749C344.555 148.749 363.264 155.468 379.102 167.463L284.578 222.164C278.822 225.521 275.942 230.319 275.942 237.039V376.186L275.937 376.182ZM360.626 425.122L304.246 393.455V326.283L360.626 294.616L417.002 326.283V393.455L360.626 425.122ZM396.852 570.989C376.698 570.989 357.989 564.27 342.151 552.276L436.674 497.574C442.431 494.217 445.311 489.419 445.311 482.699V343.552L485.138 366.582C488.495 368.499 489.936 371.379 489.936 375.219V480.778C489.936 532.117 450.109 570.985 396.852 570.985V570.989ZM283.134 463.99L191.486 411.211C165.094 395.854 147.343 363.229 147.343 331.562C147.343 294.616 169.415 261.509 203.48 247.593V356.991C203.48 363.71 206.361 368.508 212.117 371.866L332.074 441.437L292.729 463.99C289.372 465.907 286.491 465.907 283.134 463.99ZM277.859 542.68C223.639 542.68 183.813 501.895 183.813 451.514C183.813 447.675 184.294 443.836 184.771 439.997L279.295 494.698C285.051 498.056 290.812 498.056 296.568 494.698L417.002 425.127V470.71C417.002 474.549 415.562 477.429 412.204 479.346L320.557 532.126C308.081 539.323 293.206 542.68 277.854 542.68H277.859ZM396.852 599.776C454.911 599.776 503.37 558.513 514.41 503.812C568.149 489.896 602.696 439.515 602.696 388.176C602.696 354.587 588.303 321.962 562.392 298.45C564.791 288.373 566.231 278.296 566.231 268.224C566.231 199.611 510.571 148.267 446.274 148.267C433.322 148.267 420.846 150.184 408.37 154.505C386.775 133.392 357.026 119.958 324.4 119.958C266.342 119.958 217.883 161.22 206.843 215.921C153.104 229.837 118.557 280.218 118.557 331.557C118.557 365.146 132.95 397.771 158.861 421.283C156.462 431.36 155.022 441.437 155.022 451.51C155.022 520.123 210.682 571.466 274.978 571.466C287.931 571.466 300.407 569.549 312.883 565.228C334.473 586.341 364.222 599.776 396.852 599.776Z'
-  //             fill='black'
-  //           />
-  //         </g>
-  //       </g>
-  //       <defs>
-  //         <clipPath id='clip0_1637_2934'>
-  //           <rect
-  //             width='720'
-  //             height='720'
-  //             fill='white'
-  //             transform='translate(0.606934 0.0999756)'
-  //           />
-  //         </clipPath>
-  //         <clipPath id='clip1_1637_2934'>
-  //           <rect
-  //             width='484.139'
-  //             height='479.818'
-  //             fill='white'
-  //             transform='translate(118.557 119.958)'
-  //           />
-  //         </clipPath>
-  //       </defs>
-  //     </svg>
-  //   ),
-  // },
-  // {
-  //   name: 'Slack',
-  //   description: 'A messaging app for teams.',
-  // },
 ]
 
 function bookMeetingButton() {
@@ -1045,10 +648,11 @@ export default function Home() {
         </section>
         <section className='mt-4 flex flex-col w-full gap-8 row-start-2 items-center sm:items-start text-center max-w-4xl'>
           <SectionHeader className=''>Selected Work</SectionHeader>
-          <div className='grid grid-cols-1 md:grid-cols-2 mx-auto place-items-center gap-4 md:gap-8'>
+          <div className='grid grid-cols-1 w-full md:grid-cols-2 mx-auto place-items-center gap-4 md:gap-8'>
             <WorkCard
               title='Vercel Pricing Explorer'
               imagePath='/demo/vercel.png'
+              Icon={VercelIcon}
             >
               <div className='text-gray-700 mt-2'>
                 An interactive pricing calculator to explore how different
@@ -1064,31 +668,17 @@ export default function Home() {
                   <li>PostHog-inspired UX</li>
                 </ul>
               </div>
-              {/* <div className='mt-6'>
-                <h4 className='font-semibold text-sm text-gray-700 mb-1'>
-                  Stack:
-                </h4>
-                <p className='text-sm text-gray-600'>
-                  Next.js App Router, Tailwind CSS, useState/useMemo, Vercel
-                </p>
-              </div> */}
+
               <br />
-              <Link
-                href='/portfolio/pricing/vercel'
-                // className='text-sm'
-                // target='_blank'
-              >
+              <Link href='/portfolio/pricing/vercel'>
                 <Button>Go To Calculator</Button>
               </Link>
-              {/* <a
-                  href='https://github.com/misikoff/vercel-pricing-calc'
-                  className='text-blue-600 underline text-sm'
-                  target='_blank'
-                >
-                  📂 GitHub Repo
-                </a> */}
             </WorkCard>
-            <WorkCard title='Resume Generator' imagePath='/demo/resume.png'>
+            <WorkCard
+              title='Resume Generator'
+              imagePath='/demo/resume.png'
+              Icon={ResumeIcon}
+            >
               This tool lets you structure and rearrange resume sections with
               intent—highlighting the skills and experiences most relevant to
               the job at hand. Define your work history, projects, and
@@ -1128,6 +718,7 @@ export default function Home() {
               title='Snow Gale Labs'
               imagePath='/demo/SGL.png'
               category='SGL'
+              Icon={SnowGaleLabsIcon}
             >
               <div className='space-y-2'>
                 <p className='text-gray-600'>
@@ -1146,7 +737,12 @@ export default function Home() {
                 </a>
               </div>
             </WorkCard>
-            <WorkCard title='Toron' imagePath='/demo/Toron.png' category='SGL'>
+            <WorkCard
+              title='Toron'
+              imagePath='/demo/Toron.png'
+              category='SGL'
+              Icon={ToronLogoIcon}
+            >
               <div>
                 Toron helps experienced lifters train with clarity and intent.
                 It tracks reps, weight, and effort using RIR (Reps in Reserve),
@@ -1166,25 +762,6 @@ export default function Home() {
                 <Button>Check Out Toron</Button>
               </a>
             </WorkCard>
-
-            {/* <div className='w-full text-left'>
-              <h3 className='font-bold'>Viewport</h3>
-              <p className='mt-1'>
-                Developed large-scale web platforms emphasizing clean UX and
-                performant architectures. Independently drove migrations to
-                cutting-edge stacks.
-              </p>
-            </div> */}
-            {/* <div className='w-full text-left'>
-              <h3 className='font-bold'>
-                Snow Gale Labs <span className='italic'>(Side Project)</span>
-              </h3>
-              <p className='mt-1'>
-                Building <span className='font-mono font-bold'>Toron</span>, a
-                purpose-driven strength training app. Focused on delivering and
-                intuitive user flows with polished interfaces.
-              </p>
-            </div> */}
           </div>
         </section>
         <section className='flex flex-col gap-8 row-start-2 items-center sm:items-start text-center max-w-4xl w-full'>
@@ -1200,24 +777,6 @@ export default function Home() {
 
         <section className='flex flex-col gap-8 w-full row-start-2 items-center sm:items-start text-center max-w-4xl'>
           <SectionHeader className=''>Favorite Tools</SectionHeader>
-          {/* <p className='text-left max-w-xl'>
-            I{"'"}m a senior engineer with a background in computer science and
-            statistics, focused on clarity, UX, and rapid iteration-a mix of
-            smooth technical operations and clear, easy-to-understand results.
-          </p> */}
-          {/* <ol className='list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]'>
-          <li className='mb-2 tracking-[-.01em]'>
-            Get started by editing{' '}
-            <code className='bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold'>
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-
-          <li className='tracking-[-.01em]'>
-            Save and see your changes instantly.
-          </li>
-        </ol> */}
 
           <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 w-full'>
             {[...stackItems, ...toolsItems]
@@ -1246,81 +805,8 @@ export default function Home() {
               ))}
           </div>
         </section>
-
-        {/* <div className='flex gap-4 items-center flex-col sm:flex-row'>
-          <a
-            className='rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto'
-            href='https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <Image
-              className='dark:invert'
-              src='/vercel.svg'
-              alt='Vercel logomark'
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className='rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]'
-            href='https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Read our docs
-          </a>
-        </div> */}
       </main>
       <footer className='row-start-3 flex gap-[24px] flex-wrap items-center justify-center'>
-        {/* <a
-          className='flex items-center gap-2 hover:underline hover:underline-offset-4'
-          href='https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <Image
-            aria-hidden
-            src='/file.svg'
-            alt='File icon'
-            width={16}
-            height={16}
-          />
-          Learn
-        </a> */}
-        {/* <a
-          className='flex items-center gap-2 hover:underline hover:underline-offset-4'
-          href='https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <Image
-            aria-hidden
-            src='/window.svg'
-            alt='Window icon'
-            width={16}
-            height={16}
-          />
-          Examples
-        </a> */}
-        {/* <a
-          className='flex items-center gap-2 hover:underline hover:underline-offset-4'
-          href='https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <Image
-            aria-hidden
-            src='/globe.svg'
-            alt='Globe icon'
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a> */}
-
-        {/* add a paragraph inviting people to book a meeting to discuss opportunities to work together */}
         <p className='text-md font-bold text-left'>
           Interested in working together? Let{"'"}s talk.
         </p>

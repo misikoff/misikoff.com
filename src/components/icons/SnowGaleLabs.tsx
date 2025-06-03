@@ -1,3 +1,5 @@
+'use client'
+
 export default function SnowGaleLabsIcon({
   className,
 }: {
@@ -13,12 +15,13 @@ export default function SnowGaleLabsIcon({
       height='1024.000000pt'
       preserveAspectRatio='xMidYMid meet'
     >
-      <rect x='0' y='0' width='1000%' height='1000%' fill='#e5f0f7' />
+      {/* <rect x='0' y='0' width='1000%' height='1000%' fill='#e5f0f7' /> */}
 
       <g
         transform='translate(0.000000,1024.000000) scale(0.100000,-0.100000)'
-        fill='black'
+        // fill='black'
         stroke='none'
+        className='fill-blue-900'
       >
         <path
           d='M3403 8709 c-53 -16 -100 -70 -123 -145 -23 -74 -27 -191 -9 -276 14
