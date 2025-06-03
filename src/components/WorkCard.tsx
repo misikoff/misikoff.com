@@ -30,16 +30,16 @@ export default function WorkCard({
     <Dialog>
       <DialogTrigger asChild>
         <div
-          className={`rounded-lg shadow-md w-full p-6 bg-white cursor-pointer hover:shadow-lg transition ${className ?? ''}`}
+          className={`group rounded-lg shadow-md w-full p-6 bg-white cursor-pointer hover:shadow-lg transition ${className ?? ''}`}
         >
-          <div className='-mt-6 -mx-6 rounded-t-lg h-48 relative'>
+          <div className='-mt-6 -mx-6 rounded-t-lg h-48 relative overflow-hidden'>
             <Image
               className='absolute inset-0 rounded-t-lg h-64 object-cover opacity-80 bg-[#f2f4f1]'
               src='/demo/image.png'
               alt={title}
               fill
             />
-            <Icon className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-2/3' />
+            <Icon className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-2/3 group-hover:-mt-2 duration-200 ease-in-out group-hover:fill-yellow-600 transition-all' />
             {category && (
               <span className='absolute top-2 left-2 bg-white/80 text-xs font-semibold px-2 py-1 rounded shadow'>
                 {category}

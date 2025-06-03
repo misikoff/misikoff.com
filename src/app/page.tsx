@@ -587,7 +587,7 @@ function bookMeetingButton() {
   return (
     <a
       className='flex items-center  gap-2 font-serif font-bold text-blue-600 uppercase duration-300 drop-shadow-lg drop-shadow-zinc-400 py-2 px-3 rounded-md shadow-2xl hover:text-shadow-amber-100 hover:text-shadow-sm text-shadow-none text-xl hover:drop-shadow-amber-500 transition-all'
-      href='https://cal.com/misikoff/15min'
+      href='https://cal.com/misikoff/meeting'
       target='_blank'
       rel='noopener noreferrer'
       style={{

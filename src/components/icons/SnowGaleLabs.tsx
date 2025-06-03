@@ -7,7 +7,7 @@ export default function SnowGaleLabsIcon({
 }) {
   return (
     <svg
-      className={`${className}`}
+      className={`${className} fill-blue-900`}
       version='1.0'
       xmlns='http://www.w3.org/2000/svg'
       viewBox='100 120 824 774'
@@ -17,12 +17,7 @@ export default function SnowGaleLabsIcon({
     >
       {/* <rect x='0' y='0' width='1000%' height='1000%' fill='#e5f0f7' /> */}
 
-      <g
-        transform='translate(0.000000,1024.000000) scale(0.100000,-0.100000)'
-        // fill='black'
-        stroke='none'
-        className='fill-blue-900'
-      >
+      <g transform='translate(0.000000,1024.000000) scale(0.100000,-0.100000)'>
         <path
           d='M3403 8709 c-53 -16 -100 -70 -123 -145 -23 -74 -27 -191 -9 -276 14
 -70 88 -222 134 -275 l36 -42 -47 -58 c-107 -130 -225 -335 -289 -501 -81
