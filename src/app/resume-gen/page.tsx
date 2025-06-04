@@ -147,8 +147,6 @@ export default function ResumeGen() {
     )
   }
 
-  console.log({ activeJobs })
-
   const [expandedJobs, setExpandedJobs] = useState<string[]>([])
 
   const toggleExpand = (jobId: string) => {
@@ -298,10 +296,10 @@ export default function ResumeGen() {
                 const parsedBody = await getParsedJobDescription(jobLink)
 
                 // create a request to the AI with the active jobs
-                // const skillResponse = await createAIRequest(
-                //   activeJobs,
-                //   parsedBody,
-                // )
+                const skillResponse = await createAIRequest(
+                  activeJobs,
+                  parsedBody,
+                )
                 // console.log({ skillResponse })
 
                 // if only receiving relevant skills, then filter the active jobs to only include those skills
@@ -334,16 +332,6 @@ export default function ResumeGen() {
                 // )
 
                 // if receiving all skills, just sort them
-
-                const skillResponse = {
-                  '0': [
-                    0, 1, 2, 9, 10, 8, 12, 19, 14, 13, 18, 20, 21, 22, 23, 5, 6,
-                    17, 7, 11, 15, 16, 3, 4,
-                  ],
-                  '1': [1, 3, 2, 0],
-                  '2': [2, 0, 1, 3, 5, 4],
-                }
-                console.log({ skillResponse })
                 setActiveJobs((prev) => {
                   // sort each jobs actions based on the skillResponse
                   return prev.map((job, i) => {

@@ -1,4 +1,4 @@
-export async function createAIRequest(jobs, body: string) {
+export async function createAIRequest(jobs: any, body: string) {
   console.log('Creating AI request...')
   // create a the text of the request: it should be a string that lists all the work experiences as json objects
   // and then asks the ai which of the experiences are relevant to the job description
@@ -6,9 +6,9 @@ export async function createAIRequest(jobs, body: string) {
   // Given the following work experiences, which ones are relevant to the job description?\\n\\n
 
   console.log({ jobs })
-  const payload = jobs.map((job, index: number) => ({
+  const payload = jobs.map((job: any, index: number) => ({
     id: index,
-    actions: job.actions.map((action, aIndex: number) => ({
+    actions: job.actions.map((action: any, aIndex: number) => ({
       index: aIndex,
       text: action.text,
       stack: action.stack || [],
