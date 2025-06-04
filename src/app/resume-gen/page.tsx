@@ -25,9 +25,11 @@ import {
   personalWebsite,
 } from '@/app/resume-gen/constants/misc'
 import { stackComponents } from '@/app/resume-gen/constants/stack'
+import { Button } from '@/components/ui/button'
 
 import SortableItem from './SortableItem'
 import MyDocument from './doc'
+import getParsedJobDescription from './functions'
 import { createAIRequest } from './request'
 
 const DEFAULT_SECTION_ORDER = [
@@ -101,17 +103,16 @@ function getFileName(name: string, company?: string) {
 }
 
 export default function ResumeGen() {
-  console.log({ test: createAIRequest() })
-
   const [mounted, setMounted] = useState(false)
-  const [selectedTitle, setSelectedTitle] = useState(titles[0] || '')
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
+  const [selectedTitle, setSelectedTitle] = useState(titles[0] || '')
+
   const [curCompany, setCurCompany] = useState('')
-  // const [jobLink, setCurJobLink] = useState('')
+  const [jobLink, setCurJobLink] = useState('')
   const [activeJobs, setActiveJobs] = useState(
     jobsWithIds.map((job) => ({
       ...job,
@@ -279,7 +280,7 @@ export default function ResumeGen() {
                 placeholder='Enter the target company'
               />
             </div>
-            {/* <label htmlFor='jobLink' className='mr-2 font-semibold'>
+            <label htmlFor='jobLink' className='mr-2 font-semibold'>
               job link
             </label>
             <input
@@ -289,73 +290,88 @@ export default function ResumeGen() {
               onChange={(e) => setCurJobLink(e.target.value)}
               className='border rounded px-2 py-1'
               placeholder='Enter the job posting link'
-            /> */}
+            />
 
-            {/* <button
+            <Button
+              disabled={!jobLink}
               onClick={async () => {
-                // curl the job link and return the body
-                const res = await fetch(`https://corsproxy.io/?url=${jobLink}`)
-                console.log({ res })
-                // read body and log it
-                const body = await res.text() // Read the response body as text
-                console.log({ body })
-                // remove all svgs
-                const parser = new DOMParser()
-                const doc = parser.parseFromString(body, 'text/html')
-                doc.querySelectorAll('svg').forEach((svg) => {
-                  svg.remove()
-                })
-                // remove all script tags
-                doc.querySelectorAll('script').forEach((script) => {
-                  script.remove()
-                })
-                // remove all style tags
-                doc.querySelectorAll('style').forEach((style) => {
-                  style.remove()
-                })
-                // remove all meta tags
-                doc.querySelectorAll('meta').forEach((meta) => {
-                  meta.remove()
-                })
-                // remove all classes
-                doc.querySelectorAll('*').forEach((el) => {
-                  // el.removeAttribute('class')
-                  // el.removeAttribute('style')
-                  // el.removeAttribute('id')
-                  Array.from(el.attributes).forEach((attr) =>
-                    el.removeAttribute(attr.name),
-                  )
-                })
+                const parsedBody = await getParsedJobDescription(jobLink)
 
-                // remove empty elements
-                doc.querySelectorAll('*:empty').forEach((el) => {
-                  el.remove()
-                })
-                doc.querySelectorAll('*:empty').forEach((el) => {
-                  el.remove()
-                })
-                doc.querySelectorAll('*:empty').forEach((el) => {
-                  el.remove()
-                })
-                doc.querySelectorAll('*:empty').forEach((el) => {
-                  el.remove()
-                })
-                doc.querySelectorAll('*:empty').forEach((el) => {
-                  el.remove()
-                })
+                // create a request to the AI with the active jobs
+                // const skillResponse = await createAIRequest(
+                //   activeJobs,
+                //   parsedBody,
+                // )
+                // console.log({ skillResponse })
 
-                // remove all comments
-                doc.querySelectorAll('*').forEach((el) => {
-                  if (el.nodeType === Node.COMMENT_NODE) {
-                    el.remove()
-                  }
+                // if only receiving relevant skills, then filter the active jobs to only include those skills
+                // setActiveJobs((prev) =>
+                //   prev.map((job, i) => {
+                //     // if i is a key in bestSkills, then set it's actions to the bestSkills[i]
+                //     if (skillResponse[i]) {
+                //       const jobsToInclude = job.actions
+                //         .filter((action, idx) => skillResponse[i].includes(idx))
+                //         .map((action) => ({
+                //           ...action,
+                //           shouldInclude: true, // Ensure included actions are marked as such
+                //         }))
+                //       const jobsToExclude = job.actions
+                //         .filter(
+                //           (action, idx) => !skillResponse[i].includes(idx),
+                //         )
+                //         .map((action) => ({
+                //           ...action,
+                //           shouldInclude: false, // Ensure excluded actions are marked as such
+                //         }))
+
+                //       return {
+                //         ...job,
+                //         actions: [...jobsToInclude, ...jobsToExclude],
+                //       }
+                //     }
+                //     return job
+                //   }),
+                // )
+
+                // if receiving all skills, just sort them
+
+                const skillResponse = {
+                  '0': [
+                    0, 1, 2, 9, 10, 8, 12, 19, 14, 13, 18, 20, 21, 22, 23, 5, 6,
+                    17, 7, 11, 15, 16, 3, 4,
+                  ],
+                  '1': [1, 3, 2, 0],
+                  '2': [2, 0, 1, 3, 5, 4],
+                }
+                console.log({ skillResponse })
+                setActiveJobs((prev) => {
+                  // sort each jobs actions based on the skillResponse
+                  return prev.map((job, i) => {
+                    const actions = job.actions
+                      // .filter((action) => action.shouldInclude) // Only include actions that are marked as shouldInclude
+                      .sort((a, b) => {
+                        const aIndex = skillResponse[i]?.indexOf(
+                          job.actions.indexOf(a),
+                        )
+                        const bIndex = skillResponse[i]?.indexOf(
+                          job.actions.indexOf(b),
+                        )
+                        return (aIndex ?? Infinity) - (bIndex ?? Infinity)
+                      })
+
+                    return {
+                      ...job,
+                      actions: actions.map((action) => ({
+                        ...action,
+                        shouldInclude: true, // Ensure included actions are marked as such
+                      })),
+                    }
+                  })
                 })
-                const parsedBody = doc.body.innerHTML
-                console.log({ parsedBody })
               }}
             >
-              fetch posting
-            </button> */}
+              set resume based on job description
+            </Button>
 
             <h2 className='text-2xl font-bold'>Active Jobs</h2>
             <DndContext
@@ -486,26 +502,24 @@ export default function ResumeGen() {
           </div>
           {mounted && (
             <div className='w-full max-w-4xl flex flex-col gap-4'>
-              <div className='bg-blue-700 shadow-2xl text-white text-lg flex w-fit rounded-md px-3 py-2'>
-                <PDFDownloadLink
-                  key={new Date().getTime()}
-                  document={<MyDocument {...myDocArgs} />}
-                  fileName={getFileName(name, curCompany)}
-                >
-                  {({ loading }) =>
-                    loading ? (
-                      'Loading document...'
-                    ) : (
-                      <>
-                        Download Resume as{' '}
-                        <span className='font-mono'>
-                          {getFileName(name, curCompany)}
-                        </span>
-                      </>
-                    )
-                  }
-                </PDFDownloadLink>
-              </div>
+              <PDFDownloadLink
+                key={new Date().getTime()}
+                document={<MyDocument {...myDocArgs} />}
+                fileName={getFileName(name, curCompany)}
+              >
+                {({ loading }) =>
+                  loading ? (
+                    'Loading document...'
+                  ) : (
+                    <Button>
+                      Download Resume as{' '}
+                      <span className='font-mono'>
+                        {getFileName(name, curCompany)}
+                      </span>
+                    </Button>
+                  )
+                }
+              </PDFDownloadLink>
 
               <PDFViewer
                 key={new Date().getTime()}
