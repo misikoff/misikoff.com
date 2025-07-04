@@ -22,7 +22,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.511.0",
     "motion": "^12.14.0",
-    "next": "15.3.3",
+    "next": "15.3.5",
     "posthog-js": "^1.245.1",
     "posthog-node": "^4.17.1",
     "react": "^19.0.0",
